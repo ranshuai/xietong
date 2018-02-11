@@ -1,0 +1,180 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+@import "ionic.globals";
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+$colors: (
+  primary:    #488aff,
+  secondary:  #32db64,
+  danger:     #f53d3d,
+  light:      #f4f4f4,
+  dark:       #222
+
+);
+
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+@import "ionic.theme.default";
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+@import "ionic.ionicons";
+@import "roboto";
+@import "noto-sans";
+//使用px还是rem   px为true   rem为false
+$isPx:true;
+// $isPx:false;
+$a: (750/100);
+$r: ($a * 10);
+@function pxrem($px) {
+  @if($isPx){
+    @return ($px / 2)*1px;
+  }@else{
+    @return ($px / $r) * 1rem;
+  }
+};
+
+
+/*************color***************/
+//--------------------------------
+$userPrimaryColor: #f2786b;
+$grey: #7b7d81;
+$greyLight: #565656;
+$greyShadow: #e1e1e1;
+$greyBackground: #e6e8ea;
+$greyBorder: #d9dbdd;
+$greyLightBorder: #d9dbdd;
+$greyFont: #9099a6;
+$greyNoMoreFont: #838589;
+$black: #1b1b1b;
+$headerDefulColor:#000;
+
+
+/****Html***/
+//----------
+body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+input,
+button,
+select {
+    outline: none;
+    border: none;
+}
+img {
+    border: 0;
+}
+
+
+/*
+夜间模式
+*/
+.light-mode{
+  position:fixed;
+  top: 0px;
+  left: 0px;
+  outline:pxrem(5000) solid rgba(0, 0, 0, 0.3);
+  z-index: 99999;
+}
+
+
+
+/*************icons*********/
+//-----------------------------------------
+[class*=" ion-ios-icon-"]{
+  font-size: pxrem(36)
+}
+
+
+/***********tabs***********/
+//-----------------------------------------
+.ion-ios-icon-gxk-2:before { content: "\e902"; }//.ion-ios-icon-gxk-3
+.ion-ios-icon-gxk-2-outline:before { content: "\e901"; }//.ion-ios-icon-gxk-3
+.ion-ios-icon-gxk-11-outline:before { content: "\e909"}//ion-ios-icon-gxk-10
+.ion-ios-icon-gxk-13-outline:before { content: "\e90b"}//ion-ios-icon-gxk-12
+.ion-ios-icon-gxk-5-outline:before { content : "\e903"}//ion-ios-icon-gxk-4
+.ion-ios-icon-gxk-7-outline:before { content : "\e905"}//ion-ios-icon-gxk-6
+
+// .ion-ios-icon-gxk-144:before { content: "\e9a5"; }//.ion-ios-icon-gxk-144
+// .ion-ios-icon-gxk-144-outline:before { content: "\e9a6"; }//.ion-ios-icon-gxk-145
+// .ion-ios-icon-gxk-146-outline:before { content : "\e9a8"}//ion-ios-icon-gxk-147
+// .ion-ios-icon-gxk-152-outline:before { content : "\e9ae"}//ion-ios-icon-gxk-153
+// .ion-ios-icon-gxk-150-outline:before { content : "\e9ac"}//ion-ios-icon-gxk-151
+// .ion-ios-icon-gxk-148-outline:before { content : "\e9aa"}//ion-ios-icon-gxk-149
+
+.ion-ios-icon-gxk-23-outline:before { content: "\e918"; }
+.ion-ios-icon-gxk-20-outline:before { content: "\e914"; }//.ion-ios-icon-gxk-21
+.ion-ios-icon-gxk-22-outline:before { content: "\e916"; }//.ion-ios-icon-gxk-23
+.ion-ios-icon-gxk-8-outline:before { content: "\e909"; }//.ion-ios-icon-gxk-8
+
+//店铺
+.ion-ios-icon-gxk-99-outline:before{content: "\e966";}//ion-ios-icon-gxk-98
+.ion-ios-icon-gxk-101-outline:before{content: "\e968";}//ion-ios-icon-gxk-100
+.ion-ios-icon-gxk-85-outline:before{content: "\e95a";}//ion-ios-icon-gxk-86
+.ion-ios-icon-gxk-142-outline:before{content: "\e9a4";}//ion-ios-icon-gxk-143
+
+
+/*************button*********/
+//-----------------------------------------
+$button-ios-background-color:  transparent;
+
+
+/***********header***********/
+//-----------------------------------------
+ion-header {
+  ion-navbar.toolbar {
+      .back-button { //返回按钮颜色
+          color: $black;
+      }
+  }
+}
+
+/***********header***********/
+//-----------------------------------------
+
+ion-refresher-content,ion-infinite-scroll-content{
+  ion-spinner{
+    width: pxrem(28);
+    height: pxrem(28);
+    stroke: #444;
+    fill: #222;
+  }
+}
+
+$toolbar-ios-title-font-weight:400;

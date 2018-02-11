@@ -1,0 +1,143 @@
+page-user-info-wallet {
+  .scroll-content {
+    background: #e6e8ea!important;
+  }
+  .money_box {
+    background-color: white;
+    .big_money_box {
+      padding: pxrem(80) pxrem(24);
+      text-align: center;
+      .money_num {
+        display: block;
+        font-size: pxrem(78);
+        font-family: '苹方 粗体';
+        color: $userPrimaryColor;
+      }
+      .money_text {
+        display: block;
+        color: #5b5b5b;
+        font-size: pxrem(24);
+        margin-top: pxrem(28);
+      }
+    }
+    .user_money_box {
+      background: #fff;
+      border-top: pxrem(2) solid #e5e5e5;
+      padding: pxrem(24);
+      overflow: hidden;
+      margin-bottom: pxrem(10);
+      .left_item {
+        padding: 0 pxrem(30) 0 pxrem(20);
+        font-size: pxrem(28);
+        line-height: pxrem(70);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        float: left;
+      }
+      .right_item {
+        width: pxrem(360);
+        float: right;
+        .recharge,
+        .withdraw_cash {
+          position: relative;
+          border-radius: pxrem(8);
+          width: 47%;
+          height: pxrem(68);
+          color: #f2786b;
+          font-size: pxrem(28);
+          text-align: center;
+          line-height: pxrem(74);
+        }
+        .recharge:before,
+        .withdraw_cash:before {
+          content: "";
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: pxrem(2) solid #f2786b;
+          border-radius: pxrem(8);
+        }
+        .recharge {
+          float: left;
+        }
+        .withdraw_cash {
+          float: right;
+        }
+      }
+    }
+  }
+  .nav_list {
+    background: white;
+    overflow: hidden;
+    .nav_item {
+      width: 50%;
+      float: left;
+      text-align: center;
+      font-size: pxrem(30);
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      height: pxrem(88);
+      border-top: pxrem(2) solid #ddd;
+      line-height: pxrem(86);
+    }
+    .nav_item.active {
+      color: #f2786b;
+      border-bottom: pxrem(4) solid #f2786b;
+    }
+  }
+  .lzy_cell {
+    padding: pxrem(38) pxrem(24);
+    border-bottom: pxrem(2) solid #e5e5e5;
+    background: white;
+    overflow: hidden;
+    .lzy_left_item {
+      width: 56%;
+      float: left;
+      color: #333;
+      .item_type {
+        font-size: pxrem(28);
+        margin: 0;
+      }
+      .balance {
+        font-size: pxrem(24);
+        margin: pxrem(16) 0 0 0;
+      }
+    }
+    .lzy_right_item {
+      width:44%;
+      float: right;
+      .date_time {
+        line-height: pxrem(89);
+        font-size: pxrem(24);
+        color: #a3a3a3;
+        margin: 0;
+      }
+    }
+    .lzy_right_item.funin {
+      .money {
+        font-size: pxrem(28);
+        color: #f2786b;
+        text-align: right;
+        margin: 0;
+      }
+      .date_time {
+      padding-top: pxrem(16);
+      line-height: normal;
+      }
+    }
+  }
+  ion-slides {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin-top: pxrem(647);
+}
+}

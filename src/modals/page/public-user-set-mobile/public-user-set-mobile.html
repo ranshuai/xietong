@@ -1,0 +1,50 @@
+<!--
+  Generated template for the PublicUserSetMobilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{type?"绑定手机":"换绑手机"}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="modifyMobileForm">
+    <div class="from_inputItem showIcon">
+      <ion-item>
+        <ion-input class="input" placeholder="请输入新的手机号" type="tel" maxlength="11" formControlName="phone" *ngIf="type != 1"></ion-input>
+        <ion-input class="input" placeholder="请输入绑定手机号" type="tel" maxlength="11" formControlName="phone" *ngIf="type == 1"></ion-input>
+      </ion-item>
+      <div class="input_errorMsg" *ngIf="modifyMobileMessages.phone.errorMsg">{{modifyMobileMessages.phone.errorMsg}}</div>
+    </div>
+    <div class="from_inputItem showIcon">
+      <ion-item>
+        <ion-input class="input" placeholder="请输入登录密码" type="password" minlength="6" maxlength="10" formControlName="password" *ngIf="type != 1"></ion-input>
+        <ion-input class="input" placeholder="请设置登录密码" type="password" minlength="6" maxlength="10" formControlName="password" *ngIf="type == 1"></ion-input>
+      </ion-item>
+      <ion-icon class="password_icon icon ion-ios-icon-gxk-75" [showPassicon]></ion-icon>
+      <div class="input_errorMsg" *ngIf="modifyMobileMessages.password.errorMsg">{{modifyMobileMessages.password.errorMsg}}</div>
+    </div>
+    <div class="from_inputItem code_item">
+      <ion-item>
+        <ion-input class="input" (ionChange)="checkImgCode()" placeholder="请输入图形验证码" type="text" formControlName="imgCode" maxlength="4"></ion-input>
+      </ion-item>
+      <div class="img_code" [ngImgCode]="{img:imgCode.img}" (click)="getImgCode()"></div>
+      <div class="img_code" *ngIf="imgCode.error" (click)="getImgCode()">重新获取验证码</div>
+      <div class="input_errorMsg" *ngIf="modifyMobileMessages.imgCode.errorMsg">{{modifyMobileMessages.imgCode.errorMsg}}</div>
+    </div>
+    <div class="from_inputItem code_item">
+      <ion-item>
+        <ion-input class="input" placeholder="请输入短信验证码" type="tel" formControlName="code" maxlength="4"></ion-input>
+      </ion-item>
+      <div class="msg_code" *ngIf="mainCtrl.commonModel.interva.modifyMobile==60" (click)="getPhoneCode()">获取验证码</div>
+      <div class="msg_code" *ngIf="mainCtrl.commonModel.interva.modifyMobile!=60">{{mainCtrl.commonModel.interva.modifyMobile}}秒重新获取</div>
+      <div class="input_errorMsg" *ngIf="modifyMobileMessages.code.errorMsg">{{modifyMobileMessages.code.errorMsg}}</div>
+    </div>
+    <div class="from_subBtn" (click)="modifyMobule()" [ngClass]="{'disabledBtn':!modifyMobileForm.valid}">{{type?"确认绑定手机":"确认换绑手机"}}</div>
+  </form>
+
+</ion-content>

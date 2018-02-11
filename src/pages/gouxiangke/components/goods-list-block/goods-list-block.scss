@@ -1,0 +1,293 @@
+goods-list-block {
+  .self_nearby{
+    position: absolute;
+    width: 100%;
+    background: rgba(0, 0, 0, .5);
+    color:#fff;
+    height: pxrem(60);
+    line-height: pxrem(60);
+    left:0;
+    bottom: 0;
+    padding-left: pxrem(16);
+    font-size: pxrem(22)
+  }
+  .img-wrap{
+    position: relative;
+  }
+  .wrap {
+    overflow: hidden;
+    background: #ffffff;
+    .list::after {
+      display: block;
+      clear: both;
+      content: '';
+    }
+    .clear::before {
+      display: block;
+      clear: both;
+      content: '';
+    }
+    .item {
+      position: relative;
+      float: left;
+      border-radius: pxrem(10);
+      img {
+        width: 100%;
+        height: 100%;
+        border-radius: pxrem(10);
+      }
+      .name {
+        // display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-align: left;
+        font-size: pxrem(24);
+        color: $greyLight;
+      }
+      .price {
+        margin-top: pxrem(5);
+        text-align: left;
+        font-size: pxrem(24);
+      }
+      .cart-btn {
+        position: absolute;
+        overflow: hidden;
+        width: pxrem(60);
+        height: pxrem(60);
+        border-radius: pxrem(30);
+        text-align: center;
+        background: #ff5050;
+        box-shadow: 0 0 pxrem(20) 1px #ff5050;
+        right: pxrem(20);
+        bottom: pxrem(20);
+        ion-icon {
+          text-align: center;
+          line-height: pxrem(60);
+          font-size: pxrem(35);
+          color: #ffffff;
+        }
+      }
+      .collect {
+        display: none;
+      }
+    }
+  }
+  .one {
+    padding: 0 pxrem(40);
+    .item {
+      position: relative;
+      width: 100%;
+      height: pxrem(260);
+      padding: pxrem(40) pxrem(40) pxrem(40) pxrem(200);
+      border-bottom: 1px solid #e2e2e2;
+      &:last-child {
+        border-bottom: none;
+      }
+      .img-wrap {
+        position: absolute;
+        top: pxrem(40);
+        left: 0;
+        width: pxrem(180);
+        height: pxrem(180);
+      }
+      .name {
+        font-size: pxrem(28);
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+      }
+      .price {
+        position: absolute;
+        bottom: pxrem(40);
+        left: pxrem(200);
+        font-size: pxrem(32);
+        color: #ff5050;
+      }
+      .cart-btn {
+        display: block;
+        right: pxrem(12);
+        bottom: pxrem(40);
+        background: #3191e1;
+        box-shadow: 0 0 pxrem(20) 1px #3191e1;
+      }
+    }
+  }
+  .two {
+    padding: 0 pxrem(24);
+    .item {
+      width:48.9%;
+      margin: pxrem(10) 0;
+      padding-bottom: pxrem(20);
+      box-shadow: 0 0 pxrem(20) pxrem(5) $greyShadow;
+      &:nth-child(2n+1) {
+        margin-right: 2.1%;
+        .img-wrap::before {
+          display: block;
+          content: '';
+          clear: both;
+        }
+      }
+      .img-wrap {
+        height: pxrem(338);
+      }
+      .name {
+        // display: -webkit-box; 单行显示出现省略号
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        margin-top: pxrem(10);
+        text-indent: pxrem(15);
+      }
+      .price {
+        text-indent: pxrem(15);
+      }
+    }
+  }
+  .three {
+    padding: pxrem(30) pxrem(20) 0;
+    .item {
+      width: 48.9%;
+      height: pxrem(378);
+      margin-bottom: pxrem(35);
+      &:nth-child(3n+2) {
+        margin: 0 pxrem(19);
+      }
+      &:nth-child(3n+1) {
+        .img-wrap::before {
+          display: block;
+          content: '';
+          clear: both;
+        }
+      }
+      .img-wrap {
+        height: pxrem(225);
+        img {
+          border-radius: 0;
+        }
+      }
+      .name {
+        margin-top: pxrem(20);
+      }
+      .price {
+        position: absolute;
+        bottom: pxrem(15);
+        left: pxrem(5);
+        color: $userPrimaryColor;
+      }
+      .cart-btn {
+        display: block;
+        right: pxrem(12);
+        bottom: 0;
+        background: #ff5050;
+        box-shadow: 0 0 pxrem(20) 1px #ff5050;
+      }
+    }
+  }
+  .big {
+    .item {
+      float: none;
+      padding-bottom: pxrem(55);
+      .img-wrap {
+        width: 100%;
+        height: pxrem(750);
+        text-align: center;
+        img {
+          max-height: 100%;
+          border-radius: 0;
+        }
+      }
+      .name {
+        padding: 0 pxrem(40);
+        padding-top: pxrem(35);
+        font-size: pxrem(26);
+        line-height: pxrem(36);
+      }
+      .price {
+        padding: 0 pxrem(40);
+        margin-top: pxrem(30);
+        font-size: pxrem(32);
+        color: #ff5050;
+      }
+      .cart-btn {
+        display: block;
+        right: pxrem(40);
+        bottom: pxrem(50);
+        background: #3191e1;
+        box-shadow: 0 0 pxrem(20) 1px #3191e1;
+        contain: none;
+      }
+      .collect {
+        display: block;
+        position: absolute;
+        top: pxrem(40);
+        right: 0;
+        width: pxrem(110);
+        height: pxrem(50);
+        border-top-left-radius: pxrem(25);
+        border-bottom-left-radius: pxrem(25);
+        font-size: pxrem(30);
+        background: rgba(255, 255, 255, .8);
+        &.active {
+          ion-icon {
+            color: #3191e1;
+          }
+        }
+        ion-icon {
+          line-height: pxrem(50);
+          vertical-align: middle;
+          color: #646464;
+        }
+      }
+    }
+  }
+  .special {
+    padding: 0 pxrem(40);
+    .item {
+      width:48.9%;
+      height: pxrem(485);
+      margin-bottom: pxrem(40);
+      &:nth-child(2n+1) {
+        margin-right:  2.1%;
+        .img-wrap::before {
+          display: block;
+          content: '';
+          clear: both;
+        }
+      }
+      .line {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box; //display: box;
+        -webkit-box-orient: vertical;
+    }
+    
+    .line.line-1 {
+        -webkit-line-clamp: 1;
+    }
+
+      .img-wrap {
+        height: pxrem(315);
+      }
+      .name {
+        margin-top: pxrem(20);
+        font-size: pxrem(26);
+      }
+      .price {
+        position: absolute;
+        left: 0;
+        bottom: pxrem(20);
+        font-size: pxrem(32);
+        color: #ff5050;
+      }
+      .cart-btn {
+        display: block;
+        position: absolute;
+        right: pxrem(12);
+        bottom: 0;
+        background: #3191e1;
+        box-shadow: 0 0 pxrem(20) 1px #3191e1;
+      }
+    }
+  }
+}

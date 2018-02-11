@@ -1,0 +1,74 @@
+
+<ion-header>
+	<ion-navbar>
+		<ion-title>拼团详情</ion-title>
+		<ion-buttons><button></button></ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content id="goods-detail-group">
+	<div *ngIf="goodsInfo&&groupInfo" >
+
+	    <goods-imgs [data]="goodsInfo.goodsImgs"></goods-imgs>
+		<!-- S=活动时间 -->
+	    <section class="goods-info bg-fff">
+	    	<p class="p-t20 font36">
+	    	{{groupInfo[0].goodsName}}
+	    	</p>
+	    	<del style="display: block;" class="p-t20 red font36">
+	    	{{goodsInfo.shopPrice | currency:'CNY':true }}
+	    	</del>
+	    	<p class="p-t20 font24 color-333">
+	    		<span>活动时间: </span>
+	    		<span>{{groupInfo[0].begintime | date:'MM月dd日 HH:mm:ss'}}</span>
+	    	</p>
+	    	<p class="p-t20 border-b2"></p>
+	    	<p class="p-t20"></p>
+	    </section>
+	    <!-- 截止时间 -->
+		<section class="m-t10 bg-fff">
+			<p class="p32 border-b2 red2 font28">
+				<span>截止时间</span>
+				<span>{{groupInfo[0].endtime| date:'MM月dd日 HH:mm:ss'}}</span>
+			</p>
+		</section>
+		<!-- 拼团 -->
+		<section class="bg-fff">
+			<ul class="group-list">
+				<li *ngFor="let item of groupInfo  index as index">
+					<div class="user-img-warp border-b2">
+						<div *ngIf="item.tpShPromisonTaskResponseVOs.length>0">
+						<div class="user-img fl" *ngFor="let _img of item.tpShPromisonTaskResponseVOs[0].tpShPromisonGroupResponseVOs">
+							<img src="{{_img.userPic}}" alt="图片">
+						</div>
+					</div>
+						<div class="remainder fr red2 font28" style="line-height: 80px">
+							还差<span>{{(item.tpShPromisonTaskResponseVOs[0] &&
+                            item.tpShPromisonTaskResponseVOs[0].peopleRemaining) || item.qty}}</span>人
+						</div>
+					</div>
+					<div class="join-group p24 border-b2">
+						<div class="font28">	
+							<span>{{item.qty}}</span><span>人团：</span> <span>{{item.price|currency:'CNY':true }}</span>
+						</div>	
+						<div class="font28">
+							<div class="group-btn bg-f2786b " [ngClass]="{disabledBtn: item.tpShPromisonTaskResponseVOs.length>0 && item.tpShPromisonTaskResponseVOs[0].isOffered}" (click)="openModal(item,item.id)" >我要参团 </div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</section>
+
+		<goods-store-bar [data]="goodsInfo"></goods-store-bar>
+
+		<goods-detail-comment [data]="goodsInfo"></goods-detail-comment>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar *ngIf="goodsInfo">
+
+    <goods-detail-group-footer [data]="goodsInfo" ></goods-detail-group-footer>
+
+  </ion-toolbar>
+</ion-footer>

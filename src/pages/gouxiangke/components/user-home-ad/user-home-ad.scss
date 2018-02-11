@@ -1,0 +1,14 @@
+user-home-ad {
+  .outter {
+    height: pxrem(420);
+    .wrap {
+      height: pxrem(420);
+      .slide-zoom {
+        height: 100%;
+        .img {
+          height: 100%;
+        }
+      }
+    }
+  }
+}

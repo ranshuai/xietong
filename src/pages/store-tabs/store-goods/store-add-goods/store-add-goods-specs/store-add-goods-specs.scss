@@ -1,0 +1,55 @@
+page-store-add-goods-specs {
+    .button-inner{
+        color:#fff !important;
+      }
+    .modal-wrap {
+        position: relative;
+        height: 100%;
+        .content-wrap {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: pxrem(900);
+            max-height: 100%;
+            background: #ffffff;
+        }
+    }
+    .list {
+        padding: 0 pxrem(24);
+        .item {
+            border-bottom: 1px solid #f2786b;
+            .title {
+                font-size: pxrem(30);
+                line-height: pxrem(50);
+            }
+            a {
+                overflow: hidden;
+                display: inline-block;
+                // float: left;
+                max-width: pxrem(700);
+                height: pxrem(46);
+                margin-right: pxrem(20); // margin-top: pxrem(20);
+                margin-bottom: pxrem(20);
+                padding: 0 pxrem(24);
+                border: 1px solid #f2786b;
+                border-radius: pxrem(24);
+                font-size: pxrem(24);
+                line-height: pxrem(46);
+                color: #f2786b;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                &.active {
+                    background: #f2786b;
+                    color: #ffffff;
+                }
+            }
+        }
+    }
+    button.active {
+        background: #41b3e2;
+        &.activated {
+            background: #41b3e2;
+        }
+    }
+}

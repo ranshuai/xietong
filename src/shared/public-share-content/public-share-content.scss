@@ -1,0 +1,35 @@
+public-share-content {
+    .share-wrap {
+        padding: 0 pxrem(24);
+        .in-wrap {
+            border-bottom: 1px solid #e5e5e5;
+        }
+    }
+    .share-title {
+        height: pxrem(80);
+        border-bottom: 1px solid #e5e5e5;
+        line-height: pxrem(80);
+        .share-arrows {
+            display: inline-block;
+            float: right;
+            transform: rotate(-90deg);
+            -webkit-transform: rotate(-90deg);
+            -moz-transform: rotate(-90deg);
+        }
+    }
+    .right {
+        color: #999999;
+        margin-top: pxrem(20);
+    }
+    .share-content {
+        padding: pxrem(10);
+        font-size: pxrem(28);
+        color: #333;
+    }
+    .share-qrcode {
+        text-align: center;
+    }
+    .hide {
+        display: none;
+    }
+}

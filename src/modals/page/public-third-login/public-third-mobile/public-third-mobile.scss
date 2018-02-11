@@ -1,0 +1,105 @@
+page-public-third-mobile {
+  .login-head {
+    width: 100%;
+    padding: pxrem(160) pxrem(316);
+    text-align: center;
+    img {
+      width: pxrem(120);
+      height: pxrem(120);
+    }
+  }
+  .form_item:after {
+    content: '';
+    background-color: #f5f5f5;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+  }
+  .form_item {
+    width: 70%;
+    margin-left: 15%;
+    position: relative;
+    padding: pxrem(43) 0 0px 0;
+    .text-input {
+      width: 50%;
+      font-size: pxrem(28);
+      display: block;
+      outline: none;
+      margin: 0;
+      padding: pxrem(20) 0;
+    }
+    .password_icon {
+      position: absolute;
+      right: 0;
+      top: pxrem(43);
+      height: pxrem(72);
+      line-height: pxrem(72);
+      padding: 0 pxrem(24);
+      font-size: pxrem(32);
+    }
+  }
+  .form_info_box {
+    .forgetPaw {
+      width: 100%;
+      font-size: pxrem(28);
+      color: #f2786b;
+      text-align: right;
+      position: relative;
+      right: pxrem(40);
+      p {
+        margin: pxrem(20) 0;
+      }
+    }
+    .form_subBtn {
+      margin: pxrem(60) pxrem(40) 0 pxrem(40);
+    }
+    .other_box {
+      margin-top: pxrem(239);
+      .other_title {
+        margin: pxrem(30) 0;
+      }
+    }
+  }
+  .form_subBtn {
+    width: 70%;
+    display: block;
+    height: pxrem(80);
+    line-height: pxrem(80);
+    text-align: center;
+    font-size: pxrem(30);
+    font-family: "PingFang SC";
+    background-color: #f2786b;
+    color: white;
+    pointer-events: auto !important;
+    pointer-events: none;
+    border-radius: pxrem(10);
+    margin-top: pxrem(140);
+    margin-left: 15%;
+  }
+  .form_subBtn.active {
+    background-color: #f2786b;
+    pointer-events: auto;
+  }
+
+  .linkImgIcon {
+    width: pxrem(90);
+    height: pxrem(90);
+    margin: 0 auto;
+    .c-imgicon {
+      display: inline-block;
+      width: 100%;
+      padding-top: 110%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-image: url(../assets/img/wx_login.png);
+    }
+    .qq {
+      background-image: url(../assets/img/qq.png);
+    }
+    .weibo {
+      background-image: url(../assets/img/weibo.png);
+    }
+  }
+}

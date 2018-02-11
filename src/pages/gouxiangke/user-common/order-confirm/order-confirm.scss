@@ -1,0 +1,75 @@
+page-order-confirm {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+    position: absolute;
+    top: 50%;
+    right: pxrem(24);
+    margin-top: - pxrem(11);
+    font-size: pxrem(22);
+  }
+  .content {
+    background: #e6e8ea;
+    .scroll-content{
+      margin-top: pxrem(90);
+    }
+  }
+  ion-toolbar {
+    line-height: pxrem(98);
+    .left {
+      float: left;
+      padding-left: pxrem(24);
+      font-size: pxrem(30);
+      span {
+        color: $userPrimaryColor;
+      }
+    }
+  }
+  .sale {
+    overflow: hidden;
+    margin-top: pxrem(8);
+    padding-left: pxrem(24);
+    border-top: 1px solid #e5e5e5;
+    background: #ffffff;
+    line-height: pxrem(105);
+    font-size: pxrem(28);
+    .left {
+      float: left;
+    }
+    .info {
+      float: right;
+      padding-right: pxrem(55);
+      color: $userPrimaryColor;
+    }
+  }
+  .pay-type {
+    overflow: hidden;
+    margin: pxrem(8) 0;
+    padding-left: pxrem(24);
+    border-top: 1px solid #e5e5e5;
+    background: #ffffff;
+    font-size: pxrem(28);
+    line-height: pxrem(105);
+    .left {
+      float: left;
+    }
+    .type {
+      float: right;
+      padding-right: pxrem(24);
+      .check {
+        float: left;
+        width: pxrem(38);
+        height: pxrem(38);
+        margin-top: pxrem(33);
+        margin-right: pxrem(20);
+        margin-left: pxrem(40);
+        background-repeat: no-repeat;
+        background-position: center center;
+      }
+      span {
+        float: left;
+        vertical-align: middle;
+        line-height: pxrem(105);
+      }
+    }
+  }
+}

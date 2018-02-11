@@ -1,0 +1,48 @@
+<!-- Generated template for the OrderGoodsListComponent component -->
+<div class="wrap" *ngIf="data">
+    <div class="store-list">
+      <div class="store-item" *ngFor="let store of data">
+        <div *ngIf="store.hasBuy">
+          <div class="store-title">
+            <div class="check-btn">
+              <span>店铺：{{ store.storeName }}</span>
+            </div>
+          </div>
+          <div class="goods-list">
+            <div class="goods-item" *ngFor="let goods of store.goods">
+              <div class="goods" *ngIf="goods.selected">
+                <div class="left">
+                  <img [src]="goods.goodsImg">
+                </div>
+                <div class="middle">
+                  <div class="goods-title">{{ goods.goodsName }}</div>
+                  <div class="specs">商品属性：{{ goods.specKeyName }}</div>
+                  <div class="price">{{ goods.goodsPrice | currency:'CNY':true }}</div>
+                </div>
+                <div class="number">x{{ goods.goodsNum }}</div>
+              </div>
+              <div class="gift" *ngFor="let giftOption of goods.gifts" (click)="selectGift(goods,giftOption)" [ngClass]="{ 'active': giftOption.selected }">
+                <div class="gift-l">赠品:</div>
+                <div class="gift-r">
+                  <div class="line right-arrow" *ngFor="let giftVO of giftOption.giftVOS">
+                    <span class="name">{{ giftVO.goodsName }}</span>
+                    <span class="specKeyName">{{ giftVO.specKeyName }}</span>
+                    <span class="number">X{{ giftVO.goodsNum }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ion-item class="leave-message">
+            <ion-label>备注：</ion-label>
+            <ion-input placeholder="（选填）请填写对商家的留言信息~" [(ngModel)]="store.leaveMessage"></ion-input>
+          </ion-item>
+          <div class="total">
+            <div class="left">商品合计</div>
+            <div class="price">{{ store.price | currency:'CNY':true }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,49 @@
+home-platform {
+  .outter{
+    width: 100%;
+    margin-bottom: pxrem(20);
+    .wrap{
+      width: 90%;
+      height: pxrem(60);
+      display: flex;
+      margin-left: 5%;
+      background-color: #fff;
+      border-radius: pxrem(64);
+      line-height: pxrem(60);
+      padding:0 pxrem(20);
+      .title{
+        img{
+          width: pxrem(110);
+          height: pxrem(32);
+          margin-top: pxrem(14);
+        }
+      }
+      .slides{
+          width: 90%;
+          ion-slide{
+            .content{
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              overflow: hidden;
+              line-height: pxrem(34);
+              // margin-top: 5px;
+              text-align: left;
+              color: #333333;
+              font-size: pxrem(24);
+              padding-left: pxrem(20);
+            }
+          }
+      }
+      .more{
+        width: pxrem(80);
+        height: pxrem(32);
+        border-left: 1px solid #333;
+        margin-top: pxrem(14);
+        line-height: pxrem(32);
+        text-align: center;
+        font-size: pxrem(24);
+      }
+    }
+  }
+}

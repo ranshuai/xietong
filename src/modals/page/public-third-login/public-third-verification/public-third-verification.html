@@ -1,0 +1,45 @@
+<!--
+  Generated template for the PublicThirdVerificationPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>绑定手机</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <div class="login-head">
+      <div class="linkImgIcon" *ngIf="source == 'weixin'">
+        <span class="c-imgicon"></span>
+      </div>
+      <div class="linkImgIcon" *ngIf="source == 'qq'">
+        <span class="c-imgicon qq"></span>
+      </div>
+      <div class="linkImgIcon" *ngIf="source == 'weibo'">
+        <span class="c-imgicon weibo"></span>
+      </div>
+        <!-- <img src="../assets/images/public/version.png"> -->
+    </div>
+    <div class="form_item">
+      <ion-input maxlength="4" placeholder="请输入图形验证码" (ionChange)="checkImgCode()" [(ngModel)]="pageData.imageCode"></ion-input>
+      <div class="imgcode" [ngImgCode]="{img:imgCode.img}" (click)="getImgCode()" *ngIf="!imgCode.error"></div>
+      <div class="imgcode" (click)="getImgCode()" *ngIf="imgCode.error">
+        <img src="assets/img/img_code.png">
+      </div>
+    </div>
+  <div class="form_item">
+      <ion-input maxlength="4" [(ngModel)]="pageData.msgCode " placeholder="请输入短信验证码 "></ion-input>
+      <div class="phonecode" *ngIf="mainCtrl.commonModel.interva.thirdlogin==60 " (click)="getPhoneCode() ">获取验证码</div>
+      <div class="phonecode_btn " *ngIf="mainCtrl.commonModel.interva.thirdlogin!=60 ">{{mainCtrl.commonModel.interva.thirdlogin}}S</div>
+  </div>
+  
+  <div class="form_subBtn" (click)="confirm()" [ngClass]="{ 'active':pageData.imageCode&&pageData.msgCode} ">
+    登录
+</div>
+</ion-content>

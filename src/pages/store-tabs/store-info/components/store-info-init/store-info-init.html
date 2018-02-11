@@ -1,0 +1,28 @@
+<!-- 图片上传 店面照 -->
+<input type="file" id="imgUpdate" accept="image/*" (change)="fileChange($event)" multiple style="display:none">
+
+<div class="common_store_info_bg" *ngIf="data">
+
+    <img *ngIf="data.storeFront"src={{data.storeFront}} alt="店面照" (click)="addImg('storeFront')">
+    <img *ngIf=" !data.storeFront"src='./assets/img/wechatIMG175.jpeg' alt="店面照" (click)="addImg('storeFront')">
+    <!-- 店面照 -->
+    <div class="common_store_info">
+      <div class="common_store_info_pic">
+        <img *ngIf="data.logo" src={{data.logo}} alt="pic" (click)="addImg('logo')">
+        <img *ngIf=" !data.logo" src='./assets/img/shop-head-pic.png' alt="pic" (click)="addImg('logo')">
+ 
+      </div>
+      <h2 class="font_30 padding_t_20">{{data.name}}</h2>
+      <!-- <p>{{data.des}}</p> -->
+      <p class="font_20">
+          <ion-icon name="ios-address2"></ion-icon>
+          <span>{{data.address}}</span>
+      </p>
+      <div class="common_store_info_money">
+        <div class="_set_l" *ngFor="let item of data.lists ">
+          <p>{{item.num}}</p>
+          <p>{{item.name}}</p>
+        </div>
+      </div>
+    </div> 
+  </div>

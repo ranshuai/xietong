@@ -1,0 +1,77 @@
+<!--
+  Generated template for the OtherGoodsListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>商品列表</ion-title>
+    <!-- <ion-buttons end>
+      <button class="sort-btn" (click)="openSort();common.stopProp($event)" [ngClass]="{ 'active': sortOn }">排序</button>
+    </ion-buttons> -->
+  </ion-navbar>
+  <ion-toolbar>
+
+    <div class="search-wrap">
+      <search-bar placeholder="输入关键词搜索" (searchEmit)="search($event)" right="true"></search-bar>
+    </div>
+
+  </ion-toolbar>
+  <!-- <ul class="nav-wrap" >
+    <li [ngClass]="{ac:navIndex == 1}" (click) ="tabNav(1)">
+      一级分类
+      <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+    </li>
+    <li [ngClass]="{ac:navIndex == 2}" (click) ="tabNav(2)">
+      二级分类
+      <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+    </li>
+    <li [ngClass]="{ac:navIndex == 3}" (click) ="tabNav(3)">
+      三级分类
+      <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+    </li>
+  </ul> -->
+
+  <ul class="nav-wrap">
+    <li>
+      <ion-item>
+        <ion-select interface="popover" *ngIf="config"  (ionChange)="CateIdChange($event,1)" placeholder="一级分类">
+          <ion-option [value]="item.id" *ngFor="let item of config.oneList">{{item.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </li>
+    <li>
+      <ion-item>
+        <ion-select interface="popover" *ngIf="config"  (ionChange)="CateIdChange($event,2)" placeholder="二级分类">
+          <ion-option [value]="item.id" *ngFor="let item of config.twoList">{{item.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </li>
+    <li>
+      <ion-item>
+        <ion-select interface="popover" *ngIf="config"  (ionChange)="CateIdChange($event,3)" placeholder="三级分类">
+          <ion-option [value]="item.id" *ngFor="let item of config.threeList">{{item.name}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </li>
+  </ul>
+
+  <!-- 后台接口没有排序的字段 隐藏 -->
+  <!-- <ul class="sort-wrap" *ngIf="sortOn">
+    <li (click)="clickSort('sales_sum');common.stopProp($event)">销量</li>
+    <li (click)="clickSort('comment_rank');common.stopProp($event)">好评</li>
+    <li (click)="clickSort('store_count');common.stopProp($event)">利润</li>
+    <li (click)="clickSort('store_count');common.stopProp($event)">默认</li>
+  </ul> -->
+
+</ion-header>
+<store-goods-list [otherGoodsListParams] = 'otherGoodsListParams' [other]="true"></store-goods-list>
+
+<!-- <div class="ready_add_other" (click)="readyAddOther()"> 
+  <ion-icon class="store_cart"></ion-icon>
+  <i>
+    {{commonModel && commonModel.cacheOtherGoodsListLength}}
+  </i>
+</div> -->

@@ -1,0 +1,51 @@
+select-address-bar {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+  } 
+  .wrap {
+    position: relative;
+    margin-bottom: pxrem(8);
+    padding: 0 pxrem(24);
+    border-bottom: 1px solid #c4c5c7;
+    background: #ffffff;
+    ion-icon {
+      position: absolute;
+      top: 50%;
+      right: pxrem(24);
+      margin-top: pxrem(-11);
+      font-size: pxrem(22);
+    }
+    .add-address {
+      line-height: pxrem(105);
+      font-size: pxrem(28);
+    }
+    .address-info {
+      padding-top: pxrem(40);
+      line-height: 1;
+      .person {
+        font-size: pxrem(28);
+        color: #333333;
+        .mobile {
+          margin: 0 pxrem(20) 0 pxrem(40);
+        }
+        .is-default {
+          display: inline-block;
+          width: pxrem(100);
+          height: pxrem(28);
+          border: 1px solid $userPrimaryColor;
+          border-radius: pxrem(14);
+          font-size: pxrem(20);
+          text-align: center;
+          line-height: pxrem(30);
+          color: $userPrimaryColor;
+        }
+      }
+      .address {
+        margin-top: pxrem(20);
+        color: #a3a3a3;
+        font-size: pxrem(24);
+        margin-bottom: pxrem(40);
+      }
+    }
+  }
+}

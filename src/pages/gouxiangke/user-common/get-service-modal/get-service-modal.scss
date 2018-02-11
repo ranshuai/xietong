@@ -1,0 +1,40 @@
+page-get-service-modal {
+  ion-content{
+    background-color: transparent !important;
+  }
+  .warp{
+    height:100%;
+
+    .specs-wrap {
+      position: absolute;
+      left: 0;
+      bottom: pxrem(130);
+      width: 100%;
+      background: #fff;
+      max-height: pxrem(700);
+    }
+    p{
+      line-height:  pxrem(110);
+      text-align: center;
+      font-size:  pxrem(34);
+      border-bottom: 1px solid #E5E5E5
+      span{
+        color: #1494FC !important;
+      }
+      span{
+        color:#1494FC;
+      }
+    }
+    .self_btn{
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      line-height:  pxrem(110);
+      text-align: center;
+      color:  #1494FC;
+      font-size:  pxrem(34);
+      background: #fff;
+    }
+  }
+}

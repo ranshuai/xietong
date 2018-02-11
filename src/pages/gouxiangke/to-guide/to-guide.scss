@@ -1,0 +1,19 @@
+page-to-guide {
+  ion-content{
+    background-color: transparent !important;
+  }
+  img {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+}
+
+.to_guide{
+  ion-backdrop{
+    opacity:0.7 !important;
+  }
+}

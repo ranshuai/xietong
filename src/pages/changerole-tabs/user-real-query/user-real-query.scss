@@ -1,0 +1,74 @@
+page-user-real-query {
+    .gray-bg {
+        background: $greyBackground;
+    }
+
+    .input-warp {
+        position: relative;
+        .input_errorMsg {
+            position: absolute;
+            top: pxrem(36);
+            right: pxrem(20);
+            font-size: pxrem(24);
+            color: red;
+        }
+    }
+
+    .img-input {
+        margin-bottom: pxrem(8);
+        background: #ffffff;
+        .title {
+            padding-left: pxrem(24);
+            border-bottom: pxrem(1) solid #e5e5e5;
+            line-height: pxrem(105);
+            font-size: pxrem(28);
+        }
+        .tip {
+            padding-left: pxrem(24);
+            line-height: pxrem(105);
+            color: #a3a3a3;
+            font-size: pxrem(24);
+        }
+        .img-wrap {
+            padding: 0 pxrem(24);
+            overflow: hidden;
+            .left {
+                float: left;
+                width: 50%;
+            }
+            .right {
+                float: left;
+                width: 50%;
+                .img {
+                    border: pxrem(1) dotted #a3a3a3;
+                }
+            }
+            .img {
+                width: pxrem(331);
+                height: pxrem(204);
+            }
+            .name {
+                font-size: pxrem(24);
+                color: #a3a3a3;
+                line-height: pxrem(100);
+                text-align: center;
+            }
+        }
+    }
+
+    ion-toolbar {
+        .toolbar-content {
+            div {
+                height: pxrem(98);
+                font-size: pxrem(32);
+                color: #fff;
+                line-height: pxrem(98);
+                text-align: center;
+                background-color: #838589
+            }
+            .ac {
+                background-color: #f2786b;
+            }
+        }
+    }
+}

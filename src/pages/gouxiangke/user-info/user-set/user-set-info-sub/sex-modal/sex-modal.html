@@ -1,0 +1,42 @@
+<div class="wrap" (click)="closeModal()">
+  <div class="wrap_content" (click)="$event.stopPropagation();">
+    
+    <div class="alert_confirm_box" >
+      <div class="alert_confirm_title">
+          <div class="header">
+            性别
+          </div>
+          <div class="content">
+            <div class="sex_btn" (click)="state=1">
+              <i class="check_icon" [ngClass]="{'active':state==1}"></i>男
+            </div>
+  <div class="sex_btn" (click)="state=2">
+               <i class="check_icon" [ngClass]="{'active':state==2}" ></i>女
+            </div>
+          </div>
+      </div>
+      <div class="alert_confirm_box">
+        <div class="alert_confirm_btn cancel_btn" (click)="closeModal()">
+          取消
+        </div>
+        <div class="alert_confirm_btn submit_btn" (click)="setSex()">
+          确认
+        </div>
+      </div>
+    </div>   
+
+    <div class="alert_confirm_box" *ngIf="state==5">
+      <div class="alert_confirm_title">
+     确定删除这笔订单吗？
+      </div>
+      <div class="alert_confirm_box">
+        <div class="alert_confirm_btn cancel_btn" (click)="closeModal()">
+          取消
+        </div>
+        <div class="alert_confirm_btn submit_btn" (click)="deleteOrderPop()">
+          确认
+        </div>
+      </div>
+    </div>  
+  </div>
+</div>

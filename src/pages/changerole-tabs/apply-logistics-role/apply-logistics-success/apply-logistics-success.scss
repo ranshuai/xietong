@@ -1,0 +1,34 @@
+page-apply-logistics-success {
+    .success {
+        padding-top: pxrem(200);
+        font-size: pxrem(36);
+        line-height: pxrem(48);
+        text-align: center;
+    }
+    .undobtn {
+        width: 80%;
+        background-color: #ffffff !important;
+        border: 1px solid #666666;
+        position: absolute;
+        left: 10%;
+        bottom: pxrem(40);
+        span {
+            color: #333;
+        }
+    }
+    .toolbar-content {
+        height: 100%;
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: pxrem(30);
+            background: #41b3e2;
+            &.activated {
+                background: #41b3e2;
+            }
+            span {
+                color: #ffffff;
+            }
+        }
+    }
+}

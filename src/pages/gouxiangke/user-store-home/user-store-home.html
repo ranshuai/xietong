@@ -1,0 +1,165 @@
+
+<ion-content class="grey-bg">
+  <!-- 切换角色 -->
+  <!-- <ion-buttons left class="change-btn" (click)= "openChangeModal()">
+    <button>
+      <ion-icon class="ios-change-btn">
+
+      </ion-icon>
+    </button>
+  </ion-buttons> -->
+  <!-- 广告 -->
+  <user-home-ad *ngIf="advImgs.length > 0" [data]="advImgs"></user-home-ad>
+  <!-- 需求改动没有轮播图也显示搜索条 老盛-->
+  <search-bar-fake placeholder="输入搜索商品名的关键词"></search-bar-fake>
+  <!-- 模板一 -->
+  <div class="template1" *ngIf="template == 1">
+
+    <div class="shortcut clear" *ngIf="navImgs.length > 0">
+      <div class="left" (click)="goToCollectPage()" *ngIf="navImgs[0]" [ngBackImg]="{ img: navImgs[0].adCode }">
+        <p>
+          <span>我的收藏-</span>
+          <em>点击查看</em>
+        </p>
+      </div>
+      <div class="right">
+        <div class="order" (click)="goToHistoryOrderPage()" *ngIf="navImgs[1]" [ngBackImg]="{ img: navImgs[1].adCode }">
+          <p>
+            <span>我的订单-</span>
+            <em>点击查看</em>
+          </p>
+        </div>
+        <div class="coupon" (click)="goToCouponPage()" *ngIf="navImgs[2]" [ngBackImg]="{ img: navImgs[2].adCode }">
+          <p>
+            <span>优惠券</span>
+            <em>点击查看</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="shortcut clear" *ngIf="navImgs.length == 0">
+      <div class="left" (click)="goToCollectPage()">
+        <p>
+          <span>我的收藏</span>
+          <em>点击查看</em>
+        </p>
+      </div>
+      <div class="right">
+        <div class="order" (click)="goToHistoryOrderPage()">
+          <p>
+            <span>我的订单</span>
+            <em>点击查看</em>
+          </p>
+        </div>
+        <div class="coupon" (click)="goToCouponPage()">
+          <p>
+            <span>优惠券</span>
+            <em>点击查看</em>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
+
+    <div [ngShow]="navData.view == 'left'">
+      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="3"></goods-list-block>
+    </div>
+
+    <div [ngShow]="navData.view == 'right'">
+      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="3" ></goods-list-block>
+    </div>
+
+  </div>
+    <!-- 模板二 -->
+  <div class="template2" *ngIf="template == 2">
+
+      <div class="shortcut clear" *ngIf="navImgs.length > 0">
+        <div class="category" (click)="goToCategoryPage()" *ngIf="navImgs[0]" [ngBackImg]="{ img: navImgs[0].adCode }">全部分类</div>
+        <div class="order" (click)="goToHistoryOrderPage()" *ngIf="navImgs[1]" [ngBackImg]="{ img: navImgs[1].adCode }">历史订单</div>
+        <div class="collect" (click)="goToCollectPage()" *ngIf="navImgs[2]" [ngBackImg]="{ img: navImgs[2].adCode }">我的收藏</div>
+        <div class="user" (click)="goToUserInfoPage()" *ngIf="navImgs[3]" [ngBackImg]="{ img: navImgs[3].adCode }">个人中心</div>
+      </div>
+
+      <div class="shortcut clear" *ngIf="navImgs.length == 0">
+        <div class="category" (click)="goToCategoryPage()">全部分类</div>
+        <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
+        <div class="collect" (click)="goToCollectPage()">我的收藏</div>
+        <div class="user" (click)="goToUserInfoPage()">个人中心</div>
+      </div>
+
+      <div class="ad-wrap" *ngIf="adImg">
+        <div class="ad-img" [ngBackImg]="{img:adImg}"></div>
+        <span>广告</span>
+      </div>
+
+      <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
+
+      <div [ngShow]="navData.view == 'left'">
+        <goods-list-block #leftList [noMore]="true"  [loadParams]="goodsListParams" [colNum]="1"></goods-list-block>
+      </div>
+
+      <div [ngShow]="navData.view == 'right'">
+        <goods-list-block #rightList [noMore]="true"  [loadParams]="salesListParam" [colNum]="1"></goods-list-block>
+      </div>
+
+  </div>
+
+   <!-- 模板三 -->
+   <div class="template3" *ngIf="template == 3">
+
+    <div class="shortcut clear" *ngIf="navImgs.length > 0">
+      <div class="collect" (click)="goToCollectPage()" *ngIf="navImgs[0]" [ngBackImg]="{ img: navImgs[0].adCode }">我的收藏</div>
+      <div class="coupon" (click)="goToCouponPage()" *ngIf="navImgs[1]" [ngBackImg]="{ img: navImgs[1].adCode }">优惠券</div>
+      <div class="order" (click)="goToHistoryOrderPage()" *ngIf="navImgs[2]" [ngBackImg]="{ img: navImgs[2].adCode }">历史订单</div>
+    </div>
+
+    <div class="shortcut clear" *ngIf="navImgs.length == 0">
+      <div class="collect" (click)="goToCollectPage()">我的收藏</div>
+      <div class="coupon" (click)="goToCouponPage()">优惠券</div>
+      <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
+    </div>
+
+    <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
+
+    <div [ngShow]="navData.view == 'left'">
+      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="11"></goods-list-block>
+    </div>
+
+    <div [ngShow]="navData.view == 'right'">
+      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="11"></goods-list-block>
+    </div>
+
+  </div>
+
+  <!-- 模板四 -->
+  <div class="template4" *ngIf="template == 4">
+
+    <div class="shortcut clear" *ngIf="navImgs.length > 0">
+      <div class="coupon" (click)="goToCouponPage()" *ngIf="navImgs[0]" [ngBackImg]="{ img: navImgs[0].adCode }">优惠券</div>
+      <div class="order" (click)="goToHistoryOrderPage()" *ngIf="navImgs[1]" [ngBackImg]="{ img: navImgs[1].adCode }">历史订单</div>
+      <div class="collect" (click)="goToCollectPage()" *ngIf="navImgs[2]" [ngBackImg]="{ img: navImgs[2].adCode }">我的收藏</div>
+      <div class="user" (click)="goToUserInfoPage()" *ngIf="navImgs[3]" [ngBackImg]="{ img: navImgs[3].adCode }">个人中心</div>
+    </div>
+
+    <div class="shortcut clear" *ngIf="navImgs.length == 0">
+      <div class="coupon" (click)="goToCouponPage()">优惠券</div>
+      <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
+      <div class="collect" (click)="goToCollectPage()">我的收藏</div>
+      <div class="user" (click)="goToUserInfoPage()">个人中心</div>
+    </div>
+
+    <title-more *ngIf="hotGoodsList" title="促销活动" noMore="true"></title-more>
+    <hot-goods-swiper *ngIf="hotGoodsList" [data]="hotGoodsList" slidesPerView="3.64" spaceBetween="40"></hot-goods-swiper>
+
+    <div class="ad-wrap" *ngIf="adImg">
+      <div class="ad-img" [ngBackImg]="{img:adImg}"></div>
+      <span>广告</span>
+    </div>
+
+    <title-more title="商品列表" noMore="true"></title-more>
+    <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="22"></goods-list-block>
+
+  </div>
+</ion-content>

@@ -1,0 +1,33 @@
+goods-info-bar {
+  .wrap {
+    padding: 0 pxrem(24);
+    .title {
+      font-size: pxrem(36);
+      line-height: 1;
+      padding: pxrem(40) 0;
+    }
+    .price {
+      color: $userPrimaryColor;
+      font-size: pxrem(36);
+      line-height: 1;
+    }
+    .other {
+      border-bottom: 1px solid #e5e5e5;
+      line-height: pxrem(100);
+      font-size: pxrem(24);
+      color: #838589;
+      .l {
+        float: left;
+        width: pxrem(200);
+      }
+      .m {
+        float: left;
+        width: 50%; // margin: 0 pxrem(200);
+      }
+      .r {
+        // width: pxrem(200);
+        margin-left: 50%;
+      }
+    }
+  }
+}

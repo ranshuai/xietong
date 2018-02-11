@@ -1,0 +1,34 @@
+user-topic-list {
+  .topic_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      position: relative;
+      height: pxrem(404);
+      margin-bottom: pxrem(8);
+      background-color: #f1f1f1;
+      background-repeat: no-repeat;
+      background-size: cover;
+      .title {
+        position: absolute;
+        width: 100%;
+        height: pxrem(94);
+        bottom: pxrem(0);
+        padding: 0 pxrem(22) 0 pxrem(34);
+        line-height: pxrem(94);
+        background: rgba(0, 0, 0, .5);
+        overflow: hidden;
+        span {
+          font-size: pxrem(30);
+          color: white;
+        }
+        i {
+          float: right;
+          font-size: pxrem(34);
+          color: white;
+        }
+      }
+    }
+  }
+}

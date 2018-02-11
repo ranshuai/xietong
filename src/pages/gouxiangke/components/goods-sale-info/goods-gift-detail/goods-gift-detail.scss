@@ -1,0 +1,26 @@
+page-goods-gift-detail {
+  .modal-wrap {
+    overflow: hidden;
+    height: 100%;
+    .gift-list {
+      margin-top: pxrem(385);
+      background: #ffffff;
+      .title {
+        line-height: pxrem(150);
+        font-size: pxrem(32);
+        text-align: center;
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .list {
+        line-height: pxrem(105);
+        font-size: pxrem(29);
+        color: #f2786b;
+        padding: 0 pxrem(24);
+        .number {
+          float: right;
+          margin-right: pxrem(50);
+        }
+      }
+    }
+  }
+}

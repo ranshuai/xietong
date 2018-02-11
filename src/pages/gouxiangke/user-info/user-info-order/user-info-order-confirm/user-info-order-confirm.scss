@@ -1,0 +1,211 @@
+page-user-info-order-confirm {
+    .scroll-content {
+        background: #e6e8ea!important;
+        padding-bottom: pxrem(30);
+        margin-bottom: pxrem(98);
+    }
+    section {
+        // 用户地址
+        .user_address_box li {
+            padding-left: pxrem(24);
+            background: white;
+            margin-top: pxrem(10);
+            .type {
+                font-size: pxrem(28);
+                margin-right: pxrem(20);
+                color: rgb(51, 51, 51);
+              }
+              .type_value {
+                font-size: pxrem(28);
+                color: rgb(51, 51, 51);
+              }
+            .confirm-box.active {
+                .type {
+                  color: #f2786b
+                }
+                .type_value {
+                  color: #f2786b
+                }
+              }
+
+        }
+        .confirm-box {
+            position: relative;
+            padding: pxrem(30) 0 pxrem(28) 0;
+            overflow: hidden;
+            .order_user_name {
+                margin-bottom: pxrem(10);
+                padding-right: pxrem(24);
+                span {
+                    margin-right: pxrem(20);
+                    color: rgb(51, 51, 51);
+                    font-size: pxrem(28);
+                }
+            }
+            .order_user_address {
+                padding-right: pxrem(24);
+                span {
+                    color: rgb(163, 163, 163);
+                    font-size: pxrem(24);
+                }
+            }
+            .orer_money {
+                font-size: pxrem(28);
+                color: rgb(51, 51, 51);
+                float: right;
+            }
+        }
+        .confirm-box:after,
+        .only_buttom_border:after {
+            content: '';
+            background-color: #d9d9d9;
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: 0;
+            bottom: pxrem(0);
+        } //商品详情
+        .confirm-content {
+            padding-right: 0;
+            display: -webkit-box;
+            .confirm-goods_img {
+                padding-right: pxrem(20);
+                float: left;
+                width: pxrem(150);
+                div {
+                    width: pxrem(130);
+                    height: pxrem(130);
+                    position: relative;
+                    background-color: #f1f1f1;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                }
+            }
+            .confirm-goods_content {
+                padding-right: pxrem(24);
+                display: flex;
+                display: -webkit-box;
+                display: -webkit-flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: auto;
+                -webkit-box-flex: 1;
+                .goods_title {
+                    font-size: pxrem(28);
+                    line-height: pxrem(32);
+                    color: #232326;
+                    position: relative;
+                    padding-right: pxrem(60);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    .goods_count {
+                        position: absolute;
+                        right: 0;
+                        font-size: pxrem(24);
+                    }
+                }
+                .goods_property {
+                    display: inline-flex;
+                    .property_list {
+                        font-size: pxrem(24);
+                        color: #a3a3a3;
+                    }
+                    .property_price {
+                        font-size: pxrem(24);
+                        color: #333333;
+                    }
+                }
+            }
+        }
+    } // 商品备注
+    .only_buttom_border {
+        padding: pxrem(24) pxrem(32) pxrem(24) 0;
+        overflow: hidden;
+        position: relative;
+        span {
+            font-size: pxrem(24);
+        }
+        .good_count {
+            margin-right: pxrem(20)
+        }
+    } //支付类型
+    .payType {
+        position: relative;
+        i {
+            position: absolute;
+            width: pxrem(34);
+            height: pxrem(34);
+            background-repeat: no-repeat;
+            background-position: center;
+            top: pxrem(36.5);
+        }
+        .ali {
+            background-image: url('../assets/img/ali.png');
+            background-size: 100% 100%
+        }
+        .wx {
+            background-image: url('../assets/img/wx.png');
+            background-size: 100% 100%
+        }
+        .money {
+            background-image: url('../assets/img/money.png');
+            background-size: 100% 100%
+        }
+        .payType .yl {
+            background-image: url('../assets/img/yl.png');
+            background-size: 100% 100%
+        }
+        .hd {
+            background-image: url('../assets/img/money.png');
+            background-size: 100% 100%
+        }
+        .paytype_content {
+            margin: 0 pxrem(64);
+        }
+        .check_icon {
+            position: absolute;
+            width: pxrem(40);
+            height: pxrem(40);
+            right: pxrem(24);
+            top: pxrem(24);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url('../assets/img/pay-check.png');
+            background-size: 100% 100%
+        }
+        .check_icon.active {
+            background-image: url('../assets/img/pay-checked.png');
+            background-size: 100% 100%
+        }
+    }
+    .form_item_small {
+        padding: pxrem(20);
+        color: #838589;
+        font-size: pxrem(28);
+    }
+    .form_item {
+        border-color: #ddd;
+        background-color: #fff;
+        color: #444;
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin: pxrem(-2);
+        padding: pxrem(32);
+        border-width: pxrem(2);
+        border-style: solid;
+        font-size: pxrem(32);
+    }
+    ion-toolbar {
+        .left {
+            float: left;
+            padding-left: pxrem(24);
+            line-height: pxrem(98);
+            font-size: pxrem(30);
+            span {
+                color: $userPrimaryColor;
+            }
+        }
+    }
+}

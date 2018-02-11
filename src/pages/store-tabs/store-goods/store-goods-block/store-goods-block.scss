@@ -1,0 +1,106 @@
+store-goods-block {
+  .store_goods_block{
+    margin-bottom: pxrem(8)
+  }
+  .goods-wrap {
+    .addbtn{
+      right:pxrem(44);
+      top:50%;
+      margin-top:- pxrem(36);
+      position: absolute;
+      width: pxrem(36);
+      height:pxrem(36);
+      font-size: pxrem(38);
+      ion-icon{
+        color: #F2786B;
+      }
+    }
+    position: relative;
+    border-bottom: 1px solid #E5E5E5;
+    overflow: hidden;
+    padding:pxrem(40) pxrem(24);
+    border-bottom: 1px solid #c4c5c6;
+    background: #ffffff;
+    .left {
+      float: left;
+      width: pxrem(140);
+      img {
+        width: pxrem(124);
+        height: pxrem(124);
+        border-radius: pxrem(10);
+      }
+    }
+    .right {
+      .name-line {
+        margin-left: pxrem(140);
+        margin-bottom: pxrem(30);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: pxrem(30);
+        line-height: 1;
+        .proxy {
+          display: block;
+          float: left;
+          width: pxrem(110);
+          height: pxrem(28);
+          margin-right: pxrem(8);
+          margin-top: pxrem(3);
+          border-radius: pxrem(5);
+          color: #ffffff;
+          background: #41b3e2;
+          text-align: center;
+          line-height: pxrem(28);
+          font-size: pxrem(20);
+        }
+      }
+      .extra {
+        margin-top: pxrem(20);
+        line-height: 1;
+        font-size: pxrem(24);
+        color: #a3a3a3;
+        .l {
+          float: left;
+          width: pxrem(240);
+          comment-rank {
+            color: #f2786b;
+            font-size: pxrem(20);
+          }
+        }
+        .r {
+          margin-left: pxrem(240);
+          &.red {
+            color: #f2786b;
+          }
+          &.blue {
+            color: #41b3e2;
+          }
+        }
+      }
+    }
+
+    
+  }
+
+  .goods-button{
+    background: #fff;
+    padding:pxrem(12) pxrem(24);
+    button{
+      min-width:pxrem(140);
+      height:pxrem(68);
+      border-radius: pxrem(6);
+      line-height: pxrem(68);
+      text-align: center;
+      font-size: pxrem(28);
+      border:1px solid #575757;
+      margin-left: pxrem(20);
+    }
+  }
+
+  .check-btn{
+    position: absolute;
+    top: 50%;
+    left: pxrem(24);
+    margin-top: - pxrem(20);
+  }
+}

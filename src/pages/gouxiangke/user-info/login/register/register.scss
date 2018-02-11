@@ -1,0 +1,82 @@
+  register {
+    .register_header {
+      display: block;
+      height: pxrem(88);
+      z-index: 101;
+    }
+    .scroll-content {
+      background: white;
+      padding-top: pxrem(110);
+      .navlist {
+        display: block;
+        letter-spacing: pxrem(-4);
+        li {
+          position: relative;
+          width: 50%;
+          padding: pxrem(39);
+          font-size: pxrem(30);
+          text-align: center;
+          display: inline-block;
+          letter-spacing: 0;
+        }
+        li:after {
+          content: '';
+          background-color: #f5f5f5;
+          position: absolute;
+          width: 100%;
+          height: pxrem(4);
+          left: 0;
+          bottom: 0;
+        }
+        li.active {
+          color: #f2786b;
+        }
+        li.active:after {
+          content: '';
+          background-color: #f2786b;
+          position: absolute;
+          width: 100%;
+          height: pxrem(4);
+          left: 0;
+          bottom: 0;
+        }
+      }
+      .form_info_box {
+        .form_item {
+          .text-input {
+            margin: 0 0 0 pxrem(40);
+            padding: pxrem(20) 0;
+          }
+        }
+        .form_subBtn {
+          margin: pxrem(60) pxrem(40) 0 pxrem(40);
+        }
+        .other_box {
+          margin-top: pxrem(239);
+          .other_title {
+            margin: pxrem(30) 0;
+          }
+        }
+      }
+      
+    }
+    .register_btn {
+      font-size: pxrem(14);
+      padding: pxrem(10);
+      color: #333;
+      position: absolute;
+      right: pxrem(16);
+      bottom: pxrem(0);
+    }
+    .protocol_msg{
+      display: block;
+      margin-top:pxrem(409);
+        font-size: pxrem(24);
+        font-family: "PingFang SC";
+        color: rgb(51, 51, 51);
+        text-align: center;
+        span{
+          color: #488aff;
+        }
+    }
+  }

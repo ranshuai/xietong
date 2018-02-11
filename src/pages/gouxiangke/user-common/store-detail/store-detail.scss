@@ -1,0 +1,127 @@
+page-store-detail {
+  .whiteBg .button-inner{
+    color: #fff;
+  }
+  ion-header.header .icon {
+    color: #ffffff;
+  }
+  ion-header.header {
+    ion-navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+    }
+    .toolbar:last-child {
+      .toolbar-background {
+        border: none;
+        background: none;
+      }
+    }
+    .icon {
+      color: #ffffff;
+    }
+  }
+  ion-content {
+    .scroll-content {
+      margin: 0 !important;
+    }
+  }
+  .store-info {
+    position: relative;
+    padding-top: pxrem(350);
+    padding-bottom: pxrem(50);
+    background-color: #ffffff;
+    background-size: 100% pxrem(420);
+    background-image: none;
+     background-repeat: no-repeat;
+    text-align: center;
+    line-height: 1;
+    .headpic {
+      img {
+        width: pxrem(135);
+        height: pxrem(135);
+        border-radius: pxrem(10);
+      }
+    }
+    .name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: pxrem(20);
+      font-size: pxrem(30);
+      ion-icon{
+        margin-left: 5px;
+        color:#40B3E2;
+      }
+      .hide{
+        display: none;
+      }
+    }
+    .intro {
+      margin-top: pxrem(20);
+      font-size: pxrem(22);
+      color: #9099a6;
+    }
+    .address {
+      margin-top: pxrem(20);
+      color: #9099a6;
+      font-size: pxrem(20);
+      ion-icon {
+        font-size: pxrem(20);
+        vertical-align: middle;
+      }
+      span {
+        vertical-align: middle;
+      }
+    }
+    .collect {
+      margin-top: pxrem(45);
+      .button-outline {
+        color: #9099a6;
+        border: 1px solid #9099a6;
+      }
+      button {
+        width: pxrem(300);
+        height: pxrem(70);
+        border-radius: pxrem(10);
+        font-size: pxrem(22);
+        &:nth-child(1) {
+          margin-right: pxrem(45);
+        }
+        &:active {
+          background: none;
+        }
+      }
+    }
+  }
+  .sub-nav {
+    overflow: hidden;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background: #ffffff;
+    line-height: pxrem(85);
+    text-align: center;
+    font-size: pxrem(30);
+    div {
+      float: left;
+      width: 50%;
+      color: #7b7d81;
+      border-bottom: pxrem(4) solid transparent;
+      &.active {
+        color: $userPrimaryColor;
+        border-bottom: pxrem(4) solid $userPrimaryColor;
+      }
+    }
+  }
+  .list-wrap {
+    display: flex;
+    position: relative;
+    height: 100%;
+
+    div[ng-reflect-ng-show]{
+      width: 100%;
+    }
+  }
+}

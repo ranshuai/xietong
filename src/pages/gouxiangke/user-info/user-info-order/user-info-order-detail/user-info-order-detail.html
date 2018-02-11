@@ -1,0 +1,166 @@
+<!--
+  Generated template for the UserInfoOrderDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>订单详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  <section *ngIf="orderDetailModelData">
+    <ul>
+      <li>
+        <div class="order_shop_box">
+            <span class="shop_title">{{orderDetailModelData.store.companyAlias||orderDetailModelData.store.name}}
+                <span class="span" (click)="servicePopup(orderDetailModelData.storeId)">
+                    <ion-icon class="ion-ios-icon-gxk-48"></ion-icon>
+                    <span class="server_style">联系客服
+                    </span>
+                  </span>
+            </span>
+
+          <span *ngIf="[0,2].indexOf(orderDetailModelData.payStatus)>-1&&orderDetailModelData.orderStatus==0" class="shop_flag">待付款</span>
+          <span *ngIf="[0,1].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0" class="shop_flag">待发货</span>
+          <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" class="shop_flag">待收货</span>
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==4" class="shop_flag">已完成</span>
+          <span *ngIf="orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3 " class="shop_flag">已取消</span>
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2" class="shop_flag">待评价</span>
+          <span *ngIf="orderDetailModelData.payStatus == 1 && orderDetailModelData.shippingStatus >= 1 && orderDetailModelData.aftersale == -1" class="shop_flag">售后中</span>
+          <span *ngIf="orderDetailModelData.payStatus == 1 && orderDetailModelData.shippingStatus >= 1&& orderDetailModelData.aftersale == 2" class="shop_flag">售后完成</span>
+          <span *ngIf="orderDetailModelData.orderStatus == 5" class="shop_flag">已作废</span>
+        </div>
+        <div class="confirm-box  count_detal_box" *ngFor="let goods of orderDetailModelData.goods">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:goods.goodsImg,type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x {{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="orderDetailModelData.activety&&orderDetailModelData.activety.giftMap&&orderDetailModelData.activety.giftMap[goods.goodsId]">
+            <div class="count_box">
+              <div class="left_box">赠品:</div>
+              <div class="right_box">
+                <div class="count_item" *ngFor="let activety of orderDetailModelData.activety.giftMap[goods.goodsId] ">{{activety.goodsName}}
+                  <span class="specKeyName">{{activety.specKeyName}}</span>
+                  <ion-icon >x{{activety.goodsNum}}</ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="only_buttom_border">
+          <span class="type">备注:</span>
+          <span>{{ orderDetailModelData.userNote }}</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="orderDetailModelData">
+    <ul>
+      <li>
+        <div class="confirm-box">
+          <div class="order_user_name">
+            <span>{{orderDetailModelData.consignee}}</span>
+          </div>
+          <div class="order_user_address">
+            <span>{{orderDetailModelData.provinceName}}-{{orderDetailModelData.cityName}}-{{orderDetailModelData.districtName}}-{{orderDetailModelData.address}}</span>
+          </div>
+        </div>
+        <div class="confirm-box" *ngIf="orderDetailModelData.shippingName">
+          <span class="type">配送方式:</span>
+          <span class="type_value">{{orderDetailModelData.shippingName}}</span>
+        </div>
+        <div class="confirm-box" *ngIf="orderDetailModelData.payName">
+          <span class="type">支付方式:</span>
+          <span class="type_value">{{orderDetailModelData.payName}}</span>
+        </div>
+
+        <div class="confirm-box" *ngIf="orderDetailModelData.payName">
+          <span class="type">商品总价:</span>
+          <span class="type_value">￥ {{orderDetailModelData.totalAmount}}</span>
+        </div>
+        <div class="confirm-box">
+          <span class="type">配送运费:</span>
+          <span class="type_value">{{orderDetailModelData.shippingPrice | currency}}</span>
+        </div>
+        <div class="confirm-box">
+          <span class="type">优惠券:</span>
+          <span class="type_value">{{orderDetailModelData.couponPrice | currency}}</span>
+        </div>
+        <div class="confirm-box active ">
+          <span class="type">订单金额:</span>
+          <span class="type_value">{{orderDetailModelData.goodsPrice | currency}}</span>
+        </div>
+
+        <div class="oderform_list_btns">
+          <!-- 代付款 -->
+          <span *ngIf="([0,2].indexOf(orderDetailModelData.payStatus)>-1)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)"  (click)="cancelOrderPop(orderDetailModelData)">取消订单</span>
+          <span *ngIf="([0,2].indexOf(orderDetailModelData.payStatus)>-1)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)" class="active" (click)="goToPage('订单确认',orderDetailModelData)">去付款</span>
+          <!-- 待发货 -->
+          <span *ngIf="([0,1].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0)" (click)="cancelOrderPop(orderDetailModelData)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)">取消订单</span>
+
+          <!-- 代收货   -->
+          <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" (click)="openChangeModal(orderDetailModelData)">查看物流</span>
+          <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" class="active" (click)="confirm_receiptPopup(orderDetailModelData)">确认收货</span>
+
+          <!-- 待评价 -->
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2" (click)="goToPage('申请售后',orderDetailModelData)">申请售后</span>
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2"  (click)="goToPage('评价',orderDetailModelData)">我要评价</span>
+
+          <!-- 已完成    -->
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==4"  (click)="deleteOrderPop(orderDetailModelData)">删除订单</span>
+
+          <!-- 已取消 -->
+          <span *ngIf="orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3" (click)="deleteOrderPop(orderDetailModelData)">删除订单</span>
+
+          <span *ngIf="orderDetailModelData.groupOrder && !(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)" (click)="goToPage('召集小伙伴',orderDetailModelData)">召集小伙伴</span>
+        </div>
+      </li>
+      <li>
+        <div class="order_number_box">
+          <span class="order_number">
+            订单编号：{{orderDetailModelData.orderSn}}
+          </span>
+          <span class="order_time">
+            下单时间：{{orderDetailModelData.addTime | date:'yyyy-MM-dd HH:mm:ss'}}
+          </span>
+          <span class="order_time" *ngIf="!orderDetailModelData.payTime == 0">
+            付款时间：{{orderDetailModelData.payTime | date:'yyyy-MM-dd HH:mm:ss'}}
+          </span>
+          <span class="order_time" *ngIf="!orderDetailModelData.shippingTime == 0">
+            发货时间：{{orderDetailModelData.shippingTime | date:'yyyy-MM-dd HH:mm:ss'}}
+          </span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="relateGoodsList">
+    <ul>
+      <li>
+        <div class="confirm-box margin-bottom-10">
+          <span class="type">相关商品</span>
+        </div>
+        <hot-goods-swiper [data]="relateGoodsList"></hot-goods-swiper>
+      </li>
+    </ul>
+  </section>
+</ion-content>

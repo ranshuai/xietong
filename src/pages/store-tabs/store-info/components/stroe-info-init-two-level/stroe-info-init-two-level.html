@@ -1,0 +1,14 @@
+<!--
+  Generated template for the StroeInfoInitTwoLevelPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+  <ul class="store_list_link" *ngIf="data">
+    <li class="padding_20" *ngFor="let item of data" (click)="goToLink({link:item.link,companyId:item.companyId,quit:item.quit})">
+      <ion-icon class="{{item.icon}}"></ion-icon>
+      <span>{{item.name}}</span>
+      <ion-icon name="ios-forward" style="float: right;"></ion-icon>
+    </li>
+  </ul>

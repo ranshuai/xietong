@@ -1,0 +1,70 @@
+{
+  "list": null,
+  "success": true,
+  "code": 200,
+  "msg": "查询成功",
+  "status": 1,
+  "language": "zh_CN",
+  "result": [
+    {
+      "beUserId": 2,
+      "userName": "断水流大师兄",
+      "headPic": "./assets/images/sns/dashixiong.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我不是针对你，我是说在座的各位都是辣鸡！",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    },
+    {
+      "beUserId": 10236,
+      "userName": "龚建国",
+      "headPic": "http://snsall.oss-cn-qingdao.aliyuncs.com/goods/jfdyHxKy3D.jpg",
+      "unreadCount": 9,
+      "recentlyChat": "我想和你困觉",
+      "updateTime": "17:08"
+    }
+  ],
+  "page": 0,
+  "pageNo": 0,
+  "totalPageCount": 0,
+  "totalCount": 1
+}

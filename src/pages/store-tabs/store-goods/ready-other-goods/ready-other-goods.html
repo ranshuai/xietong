@@ -1,0 +1,53 @@
+<!--
+  Generated template for the ReadyOtherGoodsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>准备代售</ion-title>
+    <ion-buttons end *ngIf="editConfig && data && data.length>0">
+        <button *ngIf="editConfig.footerType" (click)="changeView(0)">{{editConfig.txt}}</button>
+        <button *ngIf="!editConfig.footerType" (click)="changeView(1)" [ngClass]="{'editConfig.txtClass':'editConfig.txtClass'}" >{{editConfig.txt}}</button>
+      </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content *ngIf="data && data.length>0">
+    <!-- Generated template for the StoreGoodsBlockComponent component -->
+  <div *ngIf="data">
+      <store-goods-block *ngFor="let item of data;let _index = index" [data]="item" [readyOtherEdit]="true" [other]="true"></store-goods-block>
+  </div>
+   
+
+</ion-content>
+<ion-footer *ngIf="editConfig && data &&data.length>0">
+  <div class="footer" *ngIf="!editConfig.footerType" (click)="save()">
+    {{editConfig.footerTxt}}
+  </div>
+
+  <div class="footer fff" *ngIf="editConfig.footerType" >
+      <div class="check-btn">
+        <ion-checkbox [(ngModel)]="storeCacheInfoProvider.checkBoxAll" (click)="updataCheckBoxAll()"></ion-checkbox>
+        <span>
+          全选
+        </span>
+      </div>
+      <div class="footer_delete" (click)="delete()">
+          {{editConfig.footerTxt}}
+      </div>
+    </div>
+
+
+</ion-footer>
+<ion-content *ngIf="data &&  data.length == 0">
+  <div class="empty_data">
+    <img src="./assets/img/consignee.png" alt="">
+    <p>亲，这里是空的耶，还可以再逛逛哦～</p>
+    <button (click)="commonProvider.popToPage()">
+      去逛逛
+    </button>
+  </div>
+</ion-content>
+

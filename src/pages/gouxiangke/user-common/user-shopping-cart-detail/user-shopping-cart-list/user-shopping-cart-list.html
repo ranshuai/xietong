@@ -1,0 +1,33 @@
+<!-- Generated template for the UserShoppingCartListComponent component -->
+<div class="wrap" *ngIf="data">
+  <div class="store-list">
+    <div class="store-item" *ngFor="let store of data.stores">
+      <div class="store-title">
+        <div class="check-btn">
+          <ion-checkbox [checked]="store[view]" (click)="checkStore(store)"></ion-checkbox>
+          <span>{{ store.storeName }}</span>
+        </div>
+      </div>
+      <div class="goods-list">
+        <div class="goods-item" *ngFor="let goods of store.goods" (click)="goToGoodsDetail(goods)">
+          <div class="left">
+            <ion-checkbox [checked]="goods[view]" (click)="checkGoods(store, goods)"></ion-checkbox>
+            <img [src]="mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80')" [ngClass]="{ 'lose-efficacy': goods.isLose }">
+          </div>
+          <div class="middle">
+            <div class="goods-title">{{ goods.goodsName }}</div>
+            <div class="specs">{{ goods.specKeyName }}</div>
+            <div class="price">
+              <span>{{ goods.goodsPrice | currency:'CNY':true }}</span>
+              <span class="coupon-icon" *ngIf="goods.hasSale">券</span>
+              <span class="gift-icon" *ngIf="goods.hasGifts">赠</span>
+            </div>
+          </div>
+          <div class="number">x{{ goods.goodsNum }}</div>
+          <!-- <div class="edit-btn" *ngIf="view == 'edit'" (click)="openSpecsModal(goods)">编辑</div> -->
+          <div class="edit-btn" (click)="openSpecsModal(goods);stopProp($event)">编辑</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

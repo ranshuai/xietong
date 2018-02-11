@@ -1,0 +1,26 @@
+page-user-info-set {
+  .toggle .toggle-icon::before {
+    background-color: transparent;
+  }
+  .item.noborder .item-inner {
+    border-bottom: none;
+  }
+  .height98 {
+    height: 98px;
+  }
+  .toogleStyle {
+    width: 102px;
+    height: 62px;
+  }
+  .btn-delete{
+    height:pxrem(94);
+    background:rgba(242,120,107,1);
+    border-radius: pxrem(12) ;
+    color: white !important;
+  }
+  .add-blacklist{
+    font-size:pxrem(30);
+    font-family:PingFang-SC-Medium;
+    color:rgba(51,51,51,1);
+   }
+}

@@ -1,0 +1,201 @@
+<!--
+  Generated template for the ApplyCompanyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar hideBackButton>
+        <ion-buttons left>
+            <button ion-button icon-only (click)="navCtrl.push('UserPage')" style="color:#636464">
+                <ion-icon class="_setback" name="ios-back" md="md-arrow-back" style="">
+                    
+                </ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-title>申请公司</ion-title>
+    </ion-navbar>
+</ion-header>
+<input type="file" id="fileInput" accept="image/*" (change)="fileChange($event)" style="display: none;">
+<ion-content class="gray-bg">
+    <!-- 表单信息=S -->
+    <form [formGroup]="companyFrom" onsubmit="return false;">
+        <ion-list>
+            <div class="input-title">基本信息</div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>
+                        单位名称
+                    </ion-label>
+                    <ion-input type="text" formControlName="companyName" placeholder="只能设置一次，28字符以内，请输入..." maxlength="28">
+                    </ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.companyName.errorMsg">{{ applyFormMsg.companyName.errorMsg }}</div>
+            </div>
+            <div class="input-wrap right-arrow" (click)="openShopTypeSelect()">
+                <ion-item>
+                    <ion-label>单位类型</ion-label>
+                    <ion-input type="text" formControlName="companyType" readonly></ion-input>
+                </ion-item>
+                <ion-icon name="ios-forward"></ion-icon>
+            </div>
+            <div class="input-wrap right-arrow" (click)="openIsAccountSelect()">
+                <ion-item>
+                    <ion-label>独立会计实体</ion-label>
+                    <ion-input type="text" formControlName="isAccount" readonly></ion-input>
+                </ion-item>
+                <ion-icon name="ios-forward"></ion-icon>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>查询上级单位</ion-label>
+                    <ion-input type="text" placeholder="输入单位全称..." formControlName="superiorUnit" maxlength="11"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.superiorUnit.errorMsg">{{ applyFormMsg.superiorUnit.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>法人姓名 </ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="10" formControlName="legalperson"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.legalperson.errorMsg">{{ applyFormMsg.legalperson.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>法人身份证 </ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="18" formControlName="legal" required></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.legal.errorMsg">{{ applyFormMsg.legal.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>负责人姓名</ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="10" formControlName="director" required></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.director.errorMsg">{{ applyFormMsg.director.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>负责人手机号</ion-label>
+                    <ion-input type="tel" placeholder="请输入..." maxlength="11" formControlName="directorMobile"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.directorMobile.errorMsg">{{ applyFormMsg.directorMobile.errorMsg }}</div>
+            </div>
+            <div class="input-title">公司地址</div>
+            <div class="input-wrap right-arrow" (click)="openAddressSelect()">
+                <ion-item>
+                    <ion-input type="text" placeholder="省份、城市、区县" formControlName="city" readonly></ion-input>
+                </ion-item>
+                <ion-icon name="ios-forward"></ion-icon>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-input type="text" placeholder="请输入详细地址，如街道、门牌号..." formControlName="detailedAddress"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.detailedAddress.errorMsg">{{ applyFormMsg.detailedAddress.errorMsg }}</div>
+            </div>
+            <div class="input-title">对公账户</div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>银行账号:</ion-label>
+                    <ion-input type="text" placeholder="请输入..." formControlName="bankAccount"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.bankAccount.errorMsg">{{ applyFormMsg.bankAccount.errorMsg }}</div>
+            </div>
+            <div class="input-wrap  right-arrow" (click)="openIsbankAccounts()">
+                <ion-item>
+                    <ion-label>选择开户行</ion-label>
+                    <ion-input type="text" placeholder="未选择" formControlName="bankAccounts" readonly></ion-input>
+                </ion-item>
+                <ion-icon name="ios-forward"></ion-icon>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>开户名</ion-label>
+                    <ion-input type="text" placeholder="请输入..." formControlName="accountName"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.accountName.errorMsg">{{ applyFormMsg.accountName.errorMsg }}</div>
+            </div>
+            <div class="input-title">单位资质</div>
+            <div class="input-wrap">
+                <ion-item>
+                    <!-- <ion-label>统一社会信用代码</ion-label> -->
+                    <ion-input placeholder="统一社会信用代码" readonly></ion-input>
+                </ion-item>
+                <!-- <div class="message" *ngIf="applyFormMsg.ownerMobile.errorMsg">{{ applyFormMsg.ownerMobile.errorMsg }}</div> -->
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-input type="text" placeholder="请输入..." formControlName="creditCode"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.creditCode.errorMsg">{{ applyFormMsg.creditCode.errorMsg }}</div>
+            </div>
+            <div class="img-input">
+                <div class="title">上传营业执照照片</div>
+                <div class="tip">请确保营业执照清晰可见，勿重叠遮挡，参考照片</div>
+                <div class="img-wrap">
+                    <div class="left">
+                        <div class="img" [ngBackImg]="{ img: 'assets/img/businessLicense.png' }"></div>
+                        <div class="name">参考照片</div>
+                    </div>
+                    <div class="right">
+                        <div class="img" (click)="upload('businessLicense')" [ngBackImg]="{ img: applyFormData.businessLicense || 'assets/img/upload.png' }"></div>
+                        <div class="name">你的照片</div>
+                    </div>
+                </div>
+                <input type="hidden" required formControlName="businessLicense">
+            </div>
+            <div class="img-input">
+                <div class="title">上传法人身份证正面照片</div>
+                <div class="tip">请确保身份证清晰可见，勿重叠遮挡，参考照片</div>
+                <div class="img-wrap">
+                    <div class="left">
+                        <div class="img" [ngBackImg]="{ img: 'assets/img/idCard.png' }"></div>
+                        <div class="name">参考照片</div>
+                    </div>
+                    <div class="right">
+                        <div class="img" (click)="upload('idCardFront')" [ngBackImg]="{ img: applyFormData.idCardFront || 'assets/img/upload.png' }"></div>
+                        <div class="name">你的照片</div>
+                    </div>
+                </div>
+                <input type="hidden" required formControlName="idCardFront">
+            </div>
+            <div class="img-input">
+                <div class="title">上传法人身份证反面照片</div>
+                <div class="tip">请确保身份证清晰可见，勿重叠遮挡，参考照片</div>
+                <div class="img-wrap">
+                    <div class="left">
+                        <div class="img" [ngBackImg]="{ img: 'assets/img/idCardReverse.png' }"></div>
+                        <div class="name">参考照片</div>
+                    </div>
+                    <div class="right">
+                        <div class="img" (click)="upload('idCardReverse')" [ngBackImg]="{ img: applyFormData.idCardReverse || 'assets/img/upload.png' }"></div>
+                        <div class="name">你的照片</div>
+                    </div>
+                </div>
+                <input type="hidden" required formControlName="idCardReverse">
+            </div>
+            <div class="img-input">
+                <div class="title">上传法人手持身份证照片</div>
+                <div class="tip">请确保身份证清晰可见，勿重叠遮挡，参考照片</div>
+                <div class="img-wrap">
+                    <div class="left">
+                        <div class="img" [ngBackImg]="{ img: 'assets/img/idCardHandheld.png' }"></div>
+                        <div class="name">参考照片</div>
+                    </div>
+                    <div class="right">
+                        <div class="img" (click)="upload('idCardHandheld')" [ngBackImg]="{ img: applyFormData.idCardHandheld || 'assets/img/upload.png' }"></div>
+                        <div class="name">你的照片</div>
+                    </div>
+                </div>
+                <input type="hidden" required formControlName="idCardHandheld">
+            </div>
+        </ion-list>
+    </form>
+    <!-- 表单信息=E -->
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button ion-button (click)="submit()" [disabled]="!companyFrom.valid" [ngClass]="{ 'active': companyFrom.valid }">提交信息</button>
+    </ion-toolbar>
+</ion-footer>

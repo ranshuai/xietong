@@ -1,0 +1,306 @@
+page-user-home-home {
+  .grey-bg {
+    background: $greyBackground;
+  }
+  .scroll-content{
+    background-color: #f5f5f5 !important;
+  }
+  .template1 {
+    search-bar-fake {
+      .wrap {
+        background: #ffffff;
+      }
+    }
+    .shortcut {
+      padding-bottom: pxrem(20);
+      background: #ffffff;
+      text-align: center;
+      .left {
+        float: left;
+        width: pxrem(365);
+        height: pxrem(365);
+        background: url('../../../../assets/img/home-collect.png') no-repeat;
+      }
+      .right {
+        float: right;
+        div {
+          width: pxrem(365);
+          height: pxrem(173);
+        }
+        .order {
+          background: url('../../../../assets/img/home-order.png') no-repeat;
+        }
+        .coupon {
+          margin-top: pxrem(20);
+          background: url('../../../../assets/img/home-coupon.png') no-repeat;
+        }
+      }
+    }
+  }
+  .template2 {
+    search-bar-fake {
+      .wrap {
+        position: absolute;
+        top: pxrem(290);
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        input {
+          background: #ffffff;
+        }
+      }
+    }
+    sub-nav {
+      div {
+        height: pxrem(105);
+        line-height: pxrem(105);
+        &.active {
+          color: #3191e1;
+          border-bottom: pxrem(4) solid #3191e1;
+        }
+      }
+    }
+    .shortcut {
+      overflow: hidden;
+      background: #ffffff;
+      text-align: center;
+      div {
+        float: left;
+        width: 25%;
+        height: pxrem(205);
+        padding-top: pxrem(135);
+        font-size: pxrem(22);
+      }
+      .category {
+        background: url('.././../../../assets/img/home-icon1.png') no-repeat center pxrem(40);
+      }
+      .order {
+        background: url('.././../../../assets/img/home-icon2.png') no-repeat center pxrem(40);
+      }
+      .collect {
+        background: url('.././../../../assets/img/home-icon3.png') no-repeat center pxrem(40);
+      }
+      .user {
+        background: url('.././../../../assets/img/home-icon4.png') no-repeat center pxrem(40);
+      }
+    }
+  }
+  .template3 {
+    search-bar-fake {
+      .wrap {
+        position: absolute;
+        top: pxrem(290);
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        input {
+          background: #ffffff;
+        }
+      }
+    }
+    .shortcut {
+      overflow: hidden;
+      margin-bottom: pxrem(8);
+      background: #ffffff;
+      text-align: center;
+      div {
+        float: left;
+        width: 33.33%;
+        height: pxrem(185);
+        padding-top: pxrem(120);
+        font-size: pxrem(26);
+        color: #3586c4;
+      }
+      .collect {
+        background: url('.././../../../assets/img/home-icon5.png') no-repeat center pxrem(40);
+      }
+      .coupon {
+        background: url('.././../../../assets/img/home-icon6.png') no-repeat center pxrem(40);
+      }
+      .order {
+        background: url('.././../../../assets/img/home-icon7.png') no-repeat center pxrem(40);
+      }
+    }
+    sub-nav {
+      div {
+        height: pxrem(105);
+        line-height: pxrem(105);
+        &.active {
+          color: #3191e1;
+          border-bottom: pxrem(4) solid #3191e1;
+        }
+      }
+    }
+  }
+  .template4 {
+    search-bar-fake {
+      .wrap {
+        position: absolute;
+        top: pxrem(290);
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        input {
+          background: #ffffff;
+        }
+      }
+    }
+    .shortcut {
+      overflow: hidden;
+      margin-bottom: pxrem(10);
+      background: #ffffff;
+      text-align: center;
+      div {
+        float: left;
+        width: 25%;
+        height: pxrem(205);
+        padding-top: pxrem(135);
+        font-size: pxrem(22);
+      }
+      .coupon {
+        background: url('.././../../../assets/img/home-icon8.png') no-repeat center pxrem(40);
+      }
+      .order {
+        background: url('.././../../../assets/img/home-icon2.png') no-repeat center pxrem(40);
+      }
+      .collect {
+        background: url('.././../../../assets/img/home-icon3.png') no-repeat center pxrem(40);
+      }
+      .user {
+        background: url('.././../../../assets/img/home-icon4.png') no-repeat center pxrem(40);
+      }
+    }
+    hot-goods-swiper {
+      .wrap {
+        .swiper-container {
+          padding: 0 pxrem(40);
+          ion-slide {
+            width: pxrem(155);
+            height: auto;
+            margin-right: pxrem(40);
+            box-shadow: none;
+            .img-wrap {
+              height: pxrem(155);
+            }
+            .name {
+              -webkit-line-clamp: 2;
+              margin-top: pxrem(20);
+              padding: 0;
+              text-indent: 0;
+            }
+            .price {
+              margin-top: pxrem(10);
+              padding: 0;
+              color: #ff5050;
+              text-indent: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .ad-wrap {
+    position: relative;
+    height: pxrem(140);
+    margin: pxrem(12) 0;
+    span {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: pxrem(60);
+      background: rgba(0, 0, 0, .5);
+      line-height: pxrem(28);
+      text-align: center;
+      font-size: pxrem(18);
+      color: #ffffff;
+    }
+  }
+  .homeNav{
+    display: flex;
+    justify-content: space-between;
+    margin: pxrem(20) 0;
+    .nav{
+      width: 25%;
+      text-align: center;
+      .icons{
+        width: pxrem(84);
+        height: pxrem(84);
+        // background-color: #ff5050;
+        border-radius: 50%;
+        color: #fff;
+        line-height: pxrem(104);
+        [class*=" ion-ios-icon-"]{
+        font-size: pxrem(44);
+        }
+      }
+      p{
+        font-size: pxrem(20);
+        color: #575757;
+        margin-top: pxrem(10);
+      }
+    }
+    .home .icons{
+      background: linear-gradient(to bottom,#E6187C,#FA6E91);
+    }
+    .homeNear .icons{
+      background: linear-gradient(to bottom,#FF060A,#FF6F6D);
+    }
+    .homeHost .icons{
+      background: linear-gradient(to bottom,#FE9B10,#FFD03E);
+    }
+    .homeHistory .icons{
+      background: linear-gradient(to bottom,#8F00F8,#E017FF);
+    }
+  }
+  .goods{
+    .two{
+      padding: 0;
+    }
+    .wrap{
+      background-color: transparent;
+      .list{
+        .item{
+          background-color: #fff;
+          box-shadow: initial;
+          border-radius: 0;
+          img{
+            border-radius: 0;
+          }
+          .name{
+            margin-top: pxrem(24);
+          }
+          .price{
+            text-indent:pxrem(11);
+            margin-top: pxrem(16);
+          }
+          .cart-btn{
+            display: none;
+          }
+          .self_min_buy_num_warp{
+            display: none;
+          }
+          .img-wrap{
+            height: pxrem(364);
+            border-bottom: 1px solid #D8D8D8;
+          }
+        }
+      }
+    }
+  }
+  .title{
+    .wrap{
+      background-color: #f5f5f5;
+      .left{
+        margin-left: 36%;
+      }
+    }
+  }
+  .titles{
+    .wrap{
+      background-color: #f5f5f5;
+      .left{
+        margin-left: 36%;
+      }
+    }
+  }
+}

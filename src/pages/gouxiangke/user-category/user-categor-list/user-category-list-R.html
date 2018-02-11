@@ -1,0 +1,78 @@
+<!--S=分类列表二级-->
+
+<ion-content *ngIf="configProviders.PLATFORM == 'WX' || configProviders.PLATFORM == 'APP'">
+  <!-- S=下拉刷新 -->
+  <!-- <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher> -->
+  <!-- E=下拉刷新 -->
+  <div>
+    <!-- <ul>
+      <li *ngFor="let item of data;let i = index;" (click)="goToGoodsDetailPage(item)">
+        <img src="{{item.originalImg}}" alt="商品">
+        <div class="cont">
+          <span class="name">
+            {{item.goodsName}}
+          </span>
+          <span class="price">{{ item.price | currency}}</span>
+          <div class="cart-btn" (click)="addCart($event, item)">
+            <ion-icon name="ios-cart" style="font-size:35px; line-height:60px;"></ion-icon>
+          </div>
+        </div>
+      </li>
+    </ul> -->
+    <ul class="aopollo-category-style-1">
+      <li *ngFor="let item of data;let i = index;" (click)="goToGoodsListPage(item.id)">
+          <a href="javascript:;">
+              <img  *ngIf="!item.img"src= 'http://snsall.oss-cn-qingdao.aliyuncs.com/6B8E218337401D22/store/75616/4dd1988d-34ae-4439-8feb-28f89155f579.jpg' alt="商品">
+              <img *ngIf="item.img" src={{item.img}} alt="商品">
+              <span class="ng-binding">{{item.mobileName}}</span>
+          </a>
+      </li>
+    </ul>
+  </div>
+  <!-- S=上拉加载更多 -->
+  <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!loadEnd">
+    <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+  <!-- E=上拉加载更多 -->
+  <!-- <div class="no-more-data" *ngIf="loadEnd">{{ '没有更多了~' }}</div> -->
+</ion-content>
+<!--E=分类列表二级-->
+
+<ion-content *ngIf="configProviders.PLATFORM == 'STOREAPPWX' || configProviders.PLATFORM == 'STOREAPP'" class="store_category_list">
+ <!-- S=下拉刷新 -->
+ <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+  <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+</ion-refresher>
+<!-- E=下拉刷新 -->
+<div>
+  <ul>
+    <li *ngFor="let item of data;let i = index;" (click)="goToGoodsDetailPage(item)">
+      <img src="{{item.originalImg}}" alt="商品">
+      <div class="cont">
+        <span class="name">
+          {{item.goodsName}}
+        </span>
+        <span *ngIf="commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1'&& item.minBuyNum >0" class="name min_buy_num_style ">
+           起批数量：{{item.minBuyNum}}
+        </span>
+        <span class="price">{{ item.price | currency}}
+          <span class="coupon-icon" *ngIf="item.hasSale">券</span>
+          <span class="gift-icon" *ngIf="item.hasGifts">赠</span>
+        </span>
+        <div class="cart-btn" (click)="addCart($event, item)">
+          <ion-icon name="ios-cart" class="ios-cart" style=""></ion-icon>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+<!-- S=上拉加载更多 -->
+<ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!loadEnd">
+  <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+<!-- E=上拉加载更多 -->
+<div class="no-more-data" *ngIf="loadEnd">{{ '没有更多了~' }}</div>
+
+</ion-content>

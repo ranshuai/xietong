@@ -1,0 +1,117 @@
+<!--
+  Generated template for the StoreAddGoodsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>发布商品</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="grey-bg">
+
+  <form [formGroup]="goodsForm" onsubmit="return false;">
+    <ion-list>
+
+      <div class="input-wrap right-arrow" (click)="openCategory()">
+        <ion-item required>
+          <ion-label>分类:</ion-label>
+          <ion-input type="text" formControlName="goodsCategory" placeholder="选择分类" readonly required></ion-input>
+        </ion-item>
+        <ion-icon name="ios-forward"></ion-icon>
+      </div>
+
+      <div class="input-wrap right-arrow" (click)="openSpecs()">
+        <ion-item required>
+          <ion-label>规格:</ion-label>
+          <ion-input type="text" formControlName="specsName" placeholder="选择规格" readonly required></ion-input>
+        </ion-item>
+        <ion-icon name="ios-forward"></ion-icon>
+      </div>
+
+      <div class="input-wrap">
+        <ion-item required>
+          <ion-label>商品名称:</ion-label>
+          <ion-input type="text" formControlName="goodsName" placeholder="请输入..." required></ion-input>
+        </ion-item>
+        <div class="message" *ngIf="goodsFormMsg.goodsName.errorMsg">{{ goodsFormMsg.goodsName.errorMsg }}</div>
+      </div>
+
+      <div class="input-wrap">
+        <ion-item required>
+          <ion-label>商品售价(元):</ion-label>
+          <ion-input type="number" formControlName="specDataPrice" placeholder="请输入..." required moneyTrue></ion-input>
+        </ion-item>
+        <div class="message" *ngIf="goodsFormMsg.specDataPrice.errorMsg">{{ goodsFormMsg.specDataPrice.errorMsg }}</div>
+      </div>
+
+      <div class="input-wrap">
+        <ion-item required>
+          <ion-label>库存:</ion-label>
+          <ion-input type="number" formControlName="storeCount" placeholder="请输入..." required></ion-input>
+        </ion-item>
+        <div class="message" *ngIf="goodsFormMsg.storeCount.errorMsg">{{ goodsFormMsg.storeCount.errorMsg }}</div>
+      </div>
+
+      <div class="input-wrap">
+        <div class="input-item">
+          <div class="input-label">商品类型:</div>
+          <input-radio-group formControlName="isReal" [data]="isRealList"></input-radio-group>
+        </div>
+      </div>
+
+      <div class="input-wrap">
+        <ion-item>
+          <ion-label>商品编号:</ion-label>
+          <ion-input type="text" formControlName="goodsSn" placeholder="请输入..."></ion-input>
+        </ion-item>
+      </div>
+
+      <div class="input-wrap">
+        <ion-item required>
+          <ion-label>营销比例(%):</ion-label>
+          <!-- <ion-range formControlName="commission" max="30" min="0" step="1" snaps="true"></ion-range>  -->
+          <ion-input type="number" formControlName="commission" placeholder="请输入..." required max30></ion-input>
+        </ion-item>
+        <div class="message" *ngIf="goodsFormMsg.commission.errorMsg">{{ goodsFormMsg.commission.errorMsg }}</div>
+      </div>
+
+      <!-- <div class="input-wrap">
+        <ion-item ng-toggle>
+          <ion-label>允许代售:</ion-label>
+          <ion-toggle formControlName="allowProxy"></ion-toggle>
+        </ion-item>
+      </div> -->
+
+      <!-- <div class="input-wrap">
+        <ion-item required>
+          <ion-label>代售比例(%):</ion-label>
+          <ion-input type="nmber" formControlName="proxyMission" placeholder="请输入..." required max30></ion-input>
+        </ion-item>
+        <div class="message" *ngIf="goodsFormMsg.proxyMission.errorMsg">{{ goodsFormMsg.proxyMission.errorMsg }}</div>
+      </div> -->
+
+      <!-- <div class="input-wrap" *ngIf="domainRate">
+        <ion-item required>
+          <ion-label>平台抽成比例(%):</ion-label>
+          <ion-input type="text" [value]="domainRate" readonly></ion-input>
+        </ion-item>
+      </div> -->
+
+    </ion-list>
+  </form>
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+    <button ion-button class="submit" [disabled]="!goodsForm.valid" [ngClass]="{ 'active': goodsForm.valid }" (click)="next()">下一步</button>
+  </ion-toolbar>
+
+</ion-footer>

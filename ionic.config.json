@@ -1,0 +1,10 @@
+{
+  "name": "ionic2_aliipay",
+  "app_id": "",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {},
+    "gulp": {}
+  },
+  "watchPatterns": []
+}

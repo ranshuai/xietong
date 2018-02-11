@@ -1,0 +1,19 @@
+<div class="collection_company">
+  <ul class="shop_list">
+    <li *ngFor="let item of data">
+      <div class="shop-logo-box">
+        <div class="shop-logo" [ngBackImg]="{img:item.headPic||'./assets/img/shop-head-pic.png',type:1}"></div>
+      </div>
+      <div class="shop-info">
+        <div class="shop-name">{{item.companyAlias || item.companyName}}</div>
+        <div class="shop-data">
+          <span class="sale-num">销量 {{item.goodsSales}}</span>
+          <span class="goods-count">商品共 {{item.goodsCount}}</span>
+        </div>
+      </div>
+      <div class="com-btn" (click)="goTopageCompanyDetail(item)">
+        <button>进店</button>
+      </div>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,42 @@
+search-bar {
+  .wrap {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: pxrem(55);
+    input {
+      width: 100%;
+      height: 100%;
+      border: none;
+      border-radius: pxrem(10);
+      background: #eaebed;
+      text-indent: pxrem(60);
+      font-size: pxrem(30);
+      font-weight: normal;
+    }
+    .glass {
+      position: absolute;
+      top: pxrem(10);
+      left: pxrem(10);
+      font-size: pxrem(40);
+      &.icon.ion-ios-search {
+        color: #646464;
+      }
+    }
+    .clear {
+      position: absolute;
+      top: pxrem(12);
+      right: pxrem(15);
+      font-size: pxrem(30);
+    }
+    &.right {
+      input {
+        text-indent: pxrem(20);
+      }
+      .glass {
+        left: auto;
+        right: pxrem(10);
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+page-pay-success {
+  .ion-ios-icon-gxk-67{
+    color: #ffffff;
+  }
+  .button-inner{
+    color: #f2786b;
+  }
+  .screen {
+    height: pxrem(712);
+    margin-bottom: pxrem(90);
+    background: $userPrimaryColor;
+    text-align: center;
+    color: #ffffff;
+    ion-icon {
+      margin-top: pxrem(180);
+      font-size: pxrem(145);
+    }
+    .title {
+      margin: pxrem(40) 0 pxrem(60);
+      font-size: pxrem(36);
+      line-height: 1;
+    }
+    .tip {
+      margin-bottom: pxrem(20);
+      font-size: pxrem(28);
+    }
+  }
+  .order {
+    width: pxrem(600);
+    height: pxrem(90);
+    margin: 0 auto pxrem(40);
+    border-radius: pxrem(10);
+    font-size: pxrem(30);
+  }
+  .home {
+    width: pxrem(600);
+    height: pxrem(90);
+    margin: 0 auto;
+    border-radius: pxrem(10);
+    font-size: pxrem(30);
+  }
+}

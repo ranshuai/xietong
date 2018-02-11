@@ -1,0 +1,61 @@
+<!--
+  Generated template for the StoreOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>店铺订单</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <div class="search-wrap">
+      <search-bar placeholder="输入订单号搜索" (searchEmit)="search($event)" right="true"></search-bar>
+    </div>
+    <ion-slides  slidesPerView=5  >
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'notPay' }" (click)="view = 'notPay'">待付款</div>
+      </ion-slide>
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'toSendGoods' }" (click)="
+        view = 'toSendGoods'">待发货</div>
+      </ion-slide>
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'delivering' }" (click)="view = 'delivering'">配送中</div>
+      </ion-slide>
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'finish' }" (click)="view = 'finish'">已完成</div>
+      </ion-slide>
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'aftersale' }" (click)="view = 'aftersale'">售后中</div>
+      </ion-slide>
+
+      <ion-slide>
+        <div [ngClass]="{ 'active': view == 'cancel' }" (click)="view = 'cancel'">已取消</div>
+      </ion-slide>
+  
+    </ion-slides>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<!--待付款-->
+<store-order-list #notPay *ngIf="view == 'notPay'" view="notPay"></store-order-list>
+
+<!--待发货-->
+<store-order-list #toSendGoods *ngIf="view == 'toSendGoods'" view="toSendGoods"></store-order-list>
+
+<!--配送中-->
+<store-order-list #delivering *ngIf="view == 'delivering'" view="delivering"></store-order-list>
+
+<!--已完成-->
+<store-order-list #finish *ngIf="view == 'finish'" view="finish"></store-order-list>
+
+<!--售后中-->
+<store-order-list #aftersale *ngIf="view == 'aftersale'" view="aftersale"></store-order-list>
+
+<!--已取消-->
+<store-order-list #cancel *ngIf="view == 'cancel'" view="cancel"></store-order-list>

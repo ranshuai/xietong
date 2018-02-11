@@ -1,0 +1,26 @@
+page-user-info-bank-new {
+  .scroll-content {
+    background: #e6e8ea!important;
+  }
+form .from_inputItem.showIcon {
+    padding-right: pxrem(300);
+    .input_errorMsg{
+      right: pxrem(30);
+    }
+}
+  .payType .paytype_content {
+    margin: 0 pxrem(64);
+    margin-left: 0;
+}
+  .item-block{
+    padding: 0 pxrem(30) !important;
+    border-bottom: none !important;
+  }
+  .check_icon{
+    background-image: url(../assets/img/pay-check.png);
+    background-size: 100% 100%;
+}
+.item.item-block{
+  border-bottom: none !important;
+}
+}

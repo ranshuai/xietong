@@ -1,0 +1,32 @@
+{
+  "list": null,
+  "success": true,
+  "code": 200,
+  "msg": "查询成功",
+  "status": 1,
+  "language": "zh_CN",
+  "result": [
+    {
+      "userId": 1,
+      "nickName": "张三",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 0
+    },
+    {
+      "userId": 2,
+      "nickName": "张三疯",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 1
+    },
+    {
+      "userId": 3,
+      "nickName": "张三疯了",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 2
+    }
+  ],
+  "page": 0,
+  "pageNo": 0,
+  "totalPageCount": 0,
+  "totalCount": 1
+}

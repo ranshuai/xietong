@@ -1,0 +1,25 @@
+rongim-message {
+  //悬浮通知样式 by mwh
+  .msgNotifyBar{
+    width: 90%;
+    margin: 0 auto;
+    background-color: white;
+    height: 60px;
+    z-index: 1000;
+    position: absolute;
+    left: 0;
+    right: 0;top:-60px;
+
+    .notifyItem{
+      border-radius: 5px;
+    }
+    .notifyPortrait{
+      width: 50px;height: 50px;border-radius:50%
+    }
+    .notifyTime{
+      float: right;    font-size: 14px;
+      color: darkgray;
+    }
+
+  }
+}

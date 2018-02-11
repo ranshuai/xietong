@@ -1,0 +1,32 @@
+<div class="share-wrap">
+  <div class="in-wrap">
+    <div class="share-title" (click)="sharedContentHide(1)">
+      分享得奖金：
+      <span style="color:red;">{{data.expectedIncome}}</span> 元
+      <span class="share-arrows" [ngStyle]="arrows">
+        <i class="right ion-ios-icon-gxk-51"></i>
+      </span>
+    </div>
+    <div class="share-content" *ngIf="shareHide">
+      <p>分享方式:</p>
+      <p>点击”立即分享”或分享二维码</p>
+      <p>玩法说明:</p>
+      <p>1、您可以在本详情页,将购买过的商品分享给好友。好友购买后，您将获得惊喜。</p>
+      <p>2、每次收到惊喜，您都可在【个人中心-我的钱包】中查看详情。</p>
+    </div>
+  </div>
+</div>
+
+<div class="in-wrap">
+  <div class="share-wrap">
+    <div class="share-title" (click)="sharedContentHide(2)">
+      分享二维码
+      <span class="share-arrows" [ngStyle]="arrows2">
+        <i class="right ion-ios-icon-gxk-51"></i>
+      </span>
+    </div>
+    <div class="share-qrcode" *ngIf="shareHide2">
+      <img src="{{data.qrCode}}" alt="">
+    </div>
+  </div>
+</div>

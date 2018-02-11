@@ -1,0 +1,100 @@
+user-shopping-cart-list {
+    .store-list {
+        .store-item {
+            margin-top: pxrem(8);
+            padding-left: pxrem(24);
+            background: #ffffff;
+        }
+        .store-title {
+            overflow: hidden;
+            .check-btn {
+                float: left;
+                ion-checkbox {
+                    line-height: pxrem(105);
+                    vertical-align: middle;
+                    margin-right: pxrem(20);
+                }
+                span {
+                    font-size: pxrem(28);
+                    vertical-align: middle;
+                    line-height: pxrem(105);
+                }
+            }
+        }
+        .goods-list {
+            overflow: hidden;
+            .goods-item {
+                position: relative;
+                height: pxrem(205);
+                border-top: 1px solid #e5e5e5;
+                .left,
+                .middle {
+                    float: left;
+                }
+                .left {
+                    margin-right: pxrem(20);
+                    vertical-align: middle;
+                    line-height: pxrem(205);
+                    ion-checkbox {
+                        margin-right: pxrem(20);
+                        vertical-align: middle;
+                    }
+                    img {
+                        width: pxrem(124);
+                        height: pxrem(124);
+                        border-radius: pxrem(10);
+                        vertical-align: middle;
+                    }
+                }
+            }
+            .middle {
+                display: -webkit-box;
+                display: flex;
+                max-width: pxrem(440);
+                height: pxrem(124);
+                margin-top: pxrem(40);
+                padding-left: pxrem(20);
+                line-height: 1;
+                flex-direction: column;
+                justify-content: space-between;
+                .goods-title {
+                    display: -webkit-box;
+                    -webkit-box-orient: vertical;
+                    -webkit-line-clamp: 2;
+                    overflow: hidden;
+                    font-size: pxrem(28);
+                    line-height: pxrem(29.5);
+                }
+                .specs {
+                    overflow: hidden;
+                    max-height: pxrem(50);
+                    line-height: 1.1;
+                    font-size: pxrem(24);
+                    color: #a3a3a3;
+                }
+                .price {
+                    font-size: pxrem(24);
+                    span {
+                        vertical-align: middle;
+                        &:first-child {
+                            margin-right: pxrem(10);
+                        }
+                    }
+                }
+            }
+            .number {
+                position: absolute;
+                top: pxrem(40);
+                right: pxrem(24);
+                font-size: pxrem(24);
+            }
+            .edit-btn {
+                position: absolute;
+                bottom: pxrem(35);
+                right: pxrem(24);
+                color: #f2786b;
+                font-size: pxrem(24);
+            }
+        }
+    }
+}

@@ -1,0 +1,105 @@
+user-set-info-sub {
+    .div_input_self{
+        margin-left: pxrem(16) !important;
+        input{
+            margin-left: 0 !important;
+        }
+    }
+    .toolbar-title {
+        color: $headerDefulColor;
+    }
+    .scroll-content {
+        background: #e6e8ea;
+        .user_info_item {
+            background-color: #fff;
+            position: relative;
+            margin-bottom: pxrem(8);
+            padding: pxrem(20) pxrem(32);
+            .user_img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: pxrem(156);
+                height: pxrem(156);
+                margin-left: pxrem(-78);
+                margin-top: pxrem(-78);
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-color: #f1f1f1;
+            }
+        }
+        .user_info_item.item_img {
+            height: pxrem(236);
+            padding: 0;
+        }
+        .item-ios.item-block .item-inner {
+            border: none;
+        }
+        ion-item {
+            position: relative;
+        }
+        .input_errorMsg {
+            position: absolute;
+            right: pxrem(20);
+            line-height: pxrem(96);
+            top: pxrem(0);
+            font-size: pxrem(20);
+            color: #f2786b;
+        }
+        .item.item-input {
+            margin-bottom: pxrem(8);
+            padding:0 !important;
+            .label {
+                font-size: pxrem(24);
+                color: #a3a3a3;
+                margin: 0;
+            }
+            input {
+                font-size: pxrem(28);
+                color: #000;
+                line-height: pxrem(34);
+            }
+        }
+    }
+    .div_input_box {
+        position: relative;
+        padding: 0 pxrem(32);
+        margin-bottom: pxrem(8);
+        height: pxrem(105);
+        font-size: pxrem(24);
+        background: white;
+        display: block;
+        line-height: pxrem(105);
+        .div_input_type {
+            float: left;
+            font-size: pxrem(28);
+            color: #a3a3a3;
+            margin: 0;
+        }
+        .item-input {
+            padding-left: 0!important;
+        }
+        .div_input_value {
+            float: left;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            width: pxrem(400);
+            margin-left: pxrem(16);
+        }
+    }
+    ion-footer {
+        .toolbar-background {
+            pointer-events: none;
+            background: #838589 !important;
+        }
+        .active .toolbar-background {
+            pointer-events: auto;
+            background: $userPrimaryColor!important;
+        }
+        .toolbar-title {
+            color: #fff;
+        }
+    }
+}

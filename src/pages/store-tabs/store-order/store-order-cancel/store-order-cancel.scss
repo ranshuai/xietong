@@ -1,0 +1,54 @@
+page-store-order-cancel {
+  .scroll-content {
+    background-color: #f5f5f5;
+    .list-ios>.item-block:first-child {
+      border-top: none;
+    }
+    .pad15x {
+      padding: pxrem(30) pxrem(30);
+      .note {
+        margin-right: pxrem(20);
+      }
+      .flex5 {
+        flex: .5;
+      }
+      .item.activated {
+        background: #fff;
+      }
+      .list_wrap {
+        box-shadow: 0px pxrem(5) pxrem(3) 0px rgba(0, 0, 0, 0.03);
+      }
+      .distance-b15 {
+        margin-bottom: pxrem(30);
+        border-radius: pxrem(10);
+      }
+      .textarea_wrap {
+        padding: pxrem(10) pxrem(30);
+        font-size: pxrem(30);
+        background: #fff;
+        border-radius: pxrem(10);
+        box-shadow: 0px pxrem(5) pxrem(3) 0px rgba(0, 0, 0, 0.03);
+        .text-input {
+          margin: 0;
+          height: pxrem(202);
+        }
+        .textarea_counter {
+          color: #999;
+        }
+      }
+    }
+  }
+
+  ion-footer{
+    .button-ios{
+      height: pxrem(98);
+      font-size: pxrem(32);
+      background: #999;
+      pointer-events:none;
+    }
+    .button-ios.active{
+      background:  #f2786b;
+      pointer-events:auto;
+    }
+  }
+}

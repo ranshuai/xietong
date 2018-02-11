@@ -1,0 +1,65 @@
+page-user-shopping-cart-detail {
+  .shopping_cart_1{
+    .scroll-content{
+    margin-bottom: 0 !important;
+    }
+  }
+  .cart_info_no{
+    height: 100%;
+    background: #fff;
+    text-align: center;
+    padding-top: pxrem(220);
+    img{
+      width: pxrem(232);
+      height:pxrem(220)
+    }
+    p{
+      color:#575757;
+      font-size: pxrem(26);
+      padding-bottom: pxrem(80);
+      padding-top: pxrem(60)
+    }
+    button{
+      width: pxrem(240);
+      height:pxrem(80);
+      color: #F2786B !important;
+      border-radius: pxrem(8);
+      text-align: center;
+      line-height:pxrem(80);
+      border:1px solid #F2786B;
+      font-size: pxrem(28);
+    }
+  
+  }
+  
+  ion-navbar {
+    ion-buttons {
+      button {
+        &.active {
+          color: $userPrimaryColor;
+        }
+        font-size: pxrem(28);
+      }
+    }
+  }
+  ion-content.content {
+    background: #e6e8ea;
+    .scroll-content {
+      margin-bottom: pxrem(100);
+    }
+  }
+  ion-footer {
+    font-size: pxrem(30);
+    .all-btn {
+      float: left;
+      line-height: pxrem(100);
+      vertical-align: middle;
+      ion-checkbox {
+        margin-left: pxrem(24);
+        margin-right: pxrem(20);
+        line-height: pxrem(100);
+        vertical-align: middle;
+      }
+    }
+  }
+}

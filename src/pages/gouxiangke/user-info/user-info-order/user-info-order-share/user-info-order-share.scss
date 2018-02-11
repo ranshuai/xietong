@@ -1,0 +1,332 @@
+page-user-info-order-share {
+ .scroll-content {
+    background: #e6e8ea!important;
+  }
+   section {
+    //**分享发送按钮start*/ 
+    .submit_btn_share{
+        width: pxrem(180);
+        min-height: pxrem(68);
+        float: right;
+        line-height: inherit;
+        font-size: pxrem(28);
+        color: white;
+        position: relative;
+        display: inline-block;
+        margin: 0;
+        padding: 0 pxrem(24);
+        background: #cccccc;
+        border-radius: pxrem(8);
+        text-align: center;
+        text-overflow: ellipsis;
+        vertical-align: top;
+        line-height: pxrem(68);
+        margin-right: pxrem(24);
+        pointer-events: none;
+    }
+
+  .active_btn {
+    background-color:  #f2786b;
+     pointer-events: auto;
+} 
+    //**分享发送按钮end*/   
+
+    .confirm-box:after,
+    .only_buttom_border:after {
+      content: '';
+      background-color: #d9d9d9;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: pxrem(0);
+    }
+    .order_user_name {
+      margin-bottom: pxrem(10);
+      padding-right: pxrem(24);
+      span {
+        margin-right: pxrem(20);
+        color: rgb(51, 51, 51);
+        font-size: pxrem(28);
+      }
+    }
+    .order_user_address {
+      padding-right: pxrem(24);
+      span {
+        color: rgb(163, 163, 163);
+        font-size: pxrem(24);
+      }
+    }
+    .type {
+      font-size: pxrem(28);
+      margin-right: pxrem(20);
+      color: rgb(51, 51, 51);
+    }
+    .type_value {
+      font-size: pxrem(28);
+      color: rgb(51, 51, 51);
+    }
+    .confirm-box.margin-bottom-10 {
+      margin-bottom: pxrem(10);
+    }
+    .confirm-box.margin-bottom-10:after {
+      content: '';
+      height: 0;
+    }
+    .textarea_box {
+      position: relative;
+      padding: pxrem(24) 0;
+      textarea {
+        display: block;
+        padding-right: pxrem(24);
+        border: 0;
+        resize: none;
+        width: 100%;
+        height: pxrem(180);
+        color: inherit;
+        font-size: pxrem(24);
+        line-height: inherit;
+        outline: 0;
+      }
+      .error_msg {
+        position: absolute;
+        top: pxrem(20);
+        right: pxrem(40);
+        font-size: pxrem(20);
+        color: #f2786b;
+      }
+    }
+    .confirm-box {
+      position: relative;
+      padding: pxrem(30) 0 pxrem(28) 0;
+      overflow: hidden;
+      .confirm-content {
+        padding-right: 0;
+        display: -webkit-box;
+        .confirm-goods_img {
+          padding-right: pxrem(20);
+          float: left;
+          width: pxrem(150);
+          div {
+            width: pxrem(130);
+            height: pxrem(130);
+            position: relative;
+            background-color: #f1f1f1;
+            background-repeat: no-repeat;
+            background-size: cover;
+          }
+        }
+        .confirm-goods_content {
+          padding-right: pxrem(24);
+          display: flex;
+          display: -webkit-box;
+          display: -webkit-flex;
+          flex-direction: column;
+          justify-content: space-between;
+          width: auto;
+          -webkit-box-flex: 1;
+          .goods_title {
+            font-size: pxrem(28);
+            line-height: pxrem(32);
+            color: #232326;
+            position: relative;
+            padding-right: pxrem(60);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            .goods_count {
+              position: absolute;
+              right: 0;
+              font-size: pxrem(24);
+            }
+          }
+          .goods_property {
+            display: inline-flex;
+            .property_list {
+              font-size: pxrem(24);
+              color: #a3a3a3;
+            }
+            .property_price {
+              font-size: pxrem(24);
+              color: #333333;
+            }
+          }
+        }
+      }
+    }
+    .load_pic_box {
+      padding: pxrem(20) 0 pxrem(20) 0;
+      overflow: hidden;
+      .load_pic_item {
+        padding-right: pxrem(20);
+        padding-bottom: pxrem(20);
+        float: left;
+        position: relative;
+        -webkit-box-sizing: border-box;
+        width: 20%;
+        height: 20%;
+        list-style: outside none none;
+        .dashed_border {
+          position: relative;
+          border-radius: pxrem(10);
+          height: pxrem(126);
+          border: pxrem(2) dashed #d9d9d9;
+        }
+      }
+      .add_icon {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        display: block;
+        width: pxrem(28);
+        height: pxrem(28);
+        margin-left: pxrem(-14);
+        margin-top: pxrem(-14);
+        background: url('../assets/img/add_icon.png') no-repeat;
+        background-size: 100%;
+      }
+      p {
+        position: absolute;
+        left: 55%;
+        top: 17%;
+        margin-left: pxrem(-52);
+        margin-top: pxrem(30);
+        color: #a3a3a3;
+        text-align: center;
+        font-size: pxrem(20);
+      }
+      .load_pic {
+        position: relative;
+        border-radius: pxrem(10);
+        overflow: hidden;
+        width: pxrem(126);
+        height: pxrem(126);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+    }
+    .order_number_box {
+      padding: pxrem(12) 0 pxrem(12) pxrem(0);
+      .order_number {
+        font-size: pxrem(28);
+        overflow: hidden;
+        display: block;
+        .copy_btn {
+          font-size: pxrem(28);
+          margin-right: pxrem(24);
+          float: right;
+        }
+      }
+      .order_time {
+        font-size: pxrem(28);
+        color: #a3a3a3;
+        display: block;
+      }
+    }
+    .cart-confirm-box {
+      padding-left: pxrem(24);
+      background-color: white;
+      li {
+        margin-top: 0;
+        padding: pxrem(20) 0 pxrem(20);
+        font-size: pxrem(30);
+        overflow: hidden;
+      }
+      li:first-child {
+        padding: pxrem(20) 0 pxrem(0);
+      }
+    }
+    .oderform_list_btns {
+      background: white;
+      padding: pxrem(40) 0 pxrem(8) 0;
+      overflow: hidden;
+      display: flex;
+      display: -webkit-box;
+      display: -webkit-flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+      span {
+        font-size: pxrem(28);
+        padding: pxrem(10) pxrem(20);
+        border: pxrem(2) solid #333;
+        border-radius: pxrem(10);
+        margin-right: pxrem(32);
+        margin-bottom: pxrem(32);
+        text-align: center;
+        width: auto;
+      }
+      span.active {
+        color: #f2786b;
+        border: pxrem(2) solid #f2786b;
+      }
+    }
+    ul li {
+      padding-left: pxrem(24);
+      margin-top: pxrem(10);
+      background: white;
+      .order_shop_box {
+        padding: pxrem(24) pxrem(32) pxrem(24) 0;
+        overflow: hidden;
+        position: relative;
+        .shop {
+          float: left;
+          font-size: pxrem(28);
+        }
+        .shop_title {
+          padding-left: pxrem(20);
+          font-size: pxrem(28);
+          ion-icon {
+            color: #18b4ed!important;
+            font-size: pxrem(30);
+            margin-left: pxrem(10);
+            vertical-align: middle;
+          }
+        }
+        .shop_flag {
+          font-size: pxrem(24);
+          float: right;
+          color: #f2786b;
+        }
+      }
+      .order_shop_box:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: pxrem(2);
+        width: 200%;
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5);
+        background-color: #d9d9d9;
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+      }
+      .only_buttom_border {
+        padding: pxrem(24) pxrem(32) pxrem(24) 0;
+        overflow: hidden;
+        position: relative;
+        span {
+          font-size: pxrem(24);
+        }
+        .good_count {
+          margin-right: pxrem(20)
+        }
+      }
+      .only_buttom_border {
+        padding: pxrem(24) pxrem(32) pxrem(24) 0;
+        overflow: hidden;
+        position: relative;
+        span {
+          font-size: pxrem(24)
+        }
+        .type {
+          margin-right: pxrem(20);
+        }
+      }
+    }
+    .evaluate_ul {
+      border-bottom: pxrem(2) solid #e5e5e5;
+    }
+  }
+}

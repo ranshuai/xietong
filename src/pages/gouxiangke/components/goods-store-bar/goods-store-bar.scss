@@ -1,0 +1,59 @@
+goods-store-bar {
+  .wrap {
+    padding: pxrem(8) 0;
+    background-color: $greyBackground;
+    .inner {
+      overflow: hidden;
+      padding: 0 pxrem(24);
+      background-color: #ffffff;
+    }
+    .left {
+      float: left;
+      padding: pxrem(20) 0;
+      img {
+        width: pxrem(135);
+        height: pxrem(135);
+        border: 1px solid #f3f3f3;
+        border-radius: pxrem(10);
+      }
+    }
+    .right {
+      float: right;
+      a {
+        display: block;
+        width: pxrem(120);
+        height: pxrem(60);
+        margin-top: pxrem(60);
+        border: 1px solid $userPrimaryColor;
+        border-radius: pxrem(10);
+        line-height: pxrem(60);
+        text-align: center;
+        color: $userPrimaryColor;
+        font-size: pxrem(30);
+      }
+    }
+    .middle {
+      margin: 0 pxrem(120) 0 pxrem(155);
+      line-height: 1;
+      .title {
+        margin-top: pxrem(28);
+        font-size: pxrem(30);
+        color: #2f333b;
+      }
+      .number {
+        margin-top: pxrem(22);
+        font-size: pxrem(24);
+        color: #838589;
+      }
+      .evaluate {
+        margin-top: pxrem(25);
+        font-size: pxrem(24);
+        color: #838589;
+        ion-icon {
+          font-size: pxrem(24);
+          color: $userPrimaryColor;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,102 @@
+page-sex-modal {
+ .wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 11;
+  }
+  .wrap_content {
+    background: white;
+    position: absolute;
+    width: pxrem(630);
+    height: pxrem(378);
+    top: 50%;
+    left: 50%;
+    margin: pxrem(-139) 0 0 pxrem(-315);
+    border-radius: pxrem(10);
+  }
+  .prompt_message_box {
+    height: 100%;
+    padding: pxrem(135) pxrem(0);
+    font-size: pxrem(30);
+    span {
+      display: block;
+      text-align: center;
+      margin-top: pxrem(10);
+    }
+  }
+  .alert_confirm_box {
+    .alert_confirm_title {
+      position: relative;
+      font-size: pxrem(30);
+      display: block;
+      text-align: center;
+      height: pxrem(228);
+      .header{
+        height: pxrem(88);
+        line-height: pxrem(88);
+        font-size: pxrem(30);
+        table-layout: center;
+      }
+      .content{
+        padding:0 pxrem(150);
+        height: pxrem(148);
+        line-height: pxrem(128);
+
+         .sex_btn{
+           position: relative;
+           float: left;
+           width: pxrem(160);
+           padding-left: pxrem(84);
+           i{
+             width: pxrem(40);
+             height: pxrem(40);
+             top:pxrem(40);
+             left: pxrem(54);
+             right: 0;
+           }
+           
+         }
+      }
+    }
+    .alert_confirm_title:after {
+      content: '';
+      background-color: #d9d9d9;
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      left: 0;
+      bottom: pxrem(0);
+    }
+    .alert_confirm_box {
+       margin-top: pxrem(40);
+      overflow: hidden;
+      .alert_confirm_btn {
+        width: pxrem(180);
+        height: pxrem(68);
+        border: pxrem(2) solid #333333;
+        text-align: center;
+        font-size: pxrem(28);
+        line-height: pxrem(64);
+        border-radius: pxrem(10);
+      }
+      .cancel_btn {
+        float: left;
+        margin-left: pxrem(115);
+      }
+      .submit_btn {
+        float: right;
+        margin-right: pxrem(115);
+        background-color: #f2786b;
+        color: white;
+        border-color: #f2786b;
+      }
+    }
+  }
+}

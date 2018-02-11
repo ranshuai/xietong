@@ -1,0 +1,34 @@
+<!--
+  Generated template for the GoodsSpecSelectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="wrap" (click)="closeModal()">
+  <div class="specs-wrap" *ngIf="goodsInfo" (click)="stopProp($event)">
+    <div class="colse-btn">
+      <ion-icon class="ion-ios-icon-gxk-59" (click)="closeModal()"></ion-icon>
+    </div>
+    <div class="info">
+      <img class="img" src="{{goodsInfo.originalImg}}" />
+      <div class="goods-title">
+        <div class="title">{{ goodsInfo.goodsName }}</div>
+        <div class="price">{{ price | currency:'CNY':true }}</div>
+      </div>
+    </div>
+    <div class="specification_wrap">
+      <div class="specs-list" *ngFor="let specs of goodsInfo.tpSpecs">
+        <div class="item">
+          <div class="title">{{ specs.name }}</div>
+          <div class="btn-wrap">
+            <a href="javascript:;" *ngFor="let item of specs.items" [ngClass]="{ 'active': item.active }" (click)="changeSpecs(specs.items, item)">{{ item.item }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ion-footer *ngIf="goodsInfo">
+  <div class="footer-btn " (click) ="nowBuy()">确定</div>  
+</ion-footer>

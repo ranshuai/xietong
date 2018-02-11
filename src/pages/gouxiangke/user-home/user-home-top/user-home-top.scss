@@ -1,0 +1,12 @@
+user-home-top {
+  ion-slide {
+    color: #bfbfbf;
+    font-weight: 600;
+    &.active {
+      color: $userPrimaryColor;
+    }
+  }
+  span {
+    font-size: pxrem(32);
+  }
+}

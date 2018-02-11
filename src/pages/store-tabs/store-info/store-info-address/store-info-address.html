@@ -1,0 +1,30 @@
+<!--
+  Generated template for the StoreInfoAddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>店铺地址</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ul class="two_link_lists" *ngIf="storeInfoAddressData">
+    <li class="two_link_lists_border_b_1">
+      <span>
+          {{storeInfoAddressData.city}}
+      </span>
+    </li>
+    <li class="two_link_lists_border_b_1">
+        {{storeInfoAddressData.address}}
+    </li>
+    <li id="container" style="height:1100px">
+    </li>
+  </ul>
+
+</ion-content>

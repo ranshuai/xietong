@@ -1,0 +1,17 @@
+<!--
+  Generated template for the GoodsGiftDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="modal-wrap" (click)="closeModal()">
+  <div class="gift-list" *ngIf="giftList" (click)="stopProp($event)">
+    <div class="title">促销赠品</div>
+    <div class="list" *ngFor="let item of giftList">
+      <div class="item">
+        <span>【赠完为止】{{ item.goodsName }}</span>
+        <span class="number">x{{ item.giftNum }}</span>
+      </div>
+    </div>
+  </div>
+</div>

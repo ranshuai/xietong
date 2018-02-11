@@ -1,0 +1,36 @@
+page-code404 {
+  .view_loading_content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    .loading_content {
+        padding: pxrem(114);
+        position: relative;
+        margin-top: pxrem(-120);
+      .loading_content_img {
+        width: pxrem(280);
+        height: pxrem(280);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .img_error{
+        width: pxrem(200);
+        height: pxrem(200);
+        background-image: url('../assets/images/public/html_error.png');
+      }  
+      .loading_content_msg{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        font-size: pxrem(28);
+        position: absolute;
+        text-align: center;
+        top: pxrem(350);
+        left: 0;
+        color: #999;
+      }
+    }
+  }
+}

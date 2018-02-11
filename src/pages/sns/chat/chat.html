@@ -1,0 +1,139 @@
+<!--
+  Generated template for the Chat page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title><span class="friends-title">{{toUser.name}}</span></ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content >
+    <input type="file" id="imgUpdate" (change)="fileChange($event)" multiple style="display:none">
+
+    <ion-item *ngIf="extra" (click)="productDetail(extra)">
+    <ion-avatar item-left class="avatar">
+
+            <img *ngIf="extra&&extra.productInfo.originalImg" [src]="extra&&extra.productInfo.originalImg"
+                 class="portrait" alt="">
+        <img *ngIf="!extra||!extra.productInfo.originalImg" src="./assets/images/public/anonymity.png"
+                 class="portrait" alt="">
+        </ion-avatar>
+         <span class="username">{{extra.productInfo.goodsName}}</span>
+        <p class="msg-content">￥ {{extra.productInfo.marketPrice}}</p>
+    </ion-item>
+
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="loadMore($event)" pullMin="90" pullMax="150" *ngIf="pageData.clist">
+        <ion-refresher-content pullingText="下拉加载更多~"></ion-refresher-content>
+    </ion-refresher>
+
+    <div class="message-wrap" [ngClass]="{'top-content':extra!=null&&extra!=undefined}">
+        <!--[class.left]=" msg.userId != toUser.id "-->
+        <div *ngFor="let msg of  pageData.clist"
+             class="message"
+             [class.left]="!msg.me"
+             [class.right]="msg.me"><!-- 当前用户为发送者-->
+            <!--<p class="text-center">
+                &lt;!&ndash;{{msg.userName}}&nbsp;&nbsp;&nbsp;{{msg.time | relativeTime}}</p>&ndash;&gt;
+                {{msg?.timestamp }}</p> -->
+            <p class="text-center">
+                <!--<span class="msg-time" *ngIf="msg?.time|chatTime: msg?.timestamp">{{msg?.time|chatTime: msg?.timestamp}}</span>-->
+                <span class="msg-time" *ngIf="msg?.timestamp&&msg?.timestamp!=''" >{{msg?.timestamp}}</span>
+                <!--<span class="msg-time" *ngIf="msg?.time|chatTime: msg?.timestamp">{{msg?.time|chatTime: msg?.timestamp}}</span>-->
+                </p>
+            <img class="user-img" [src]="msg.headPic||'./assets/images/public/anonymity.png'" alt="" (click)="seeUserInfo(msg)" src="">
+            <ion-spinner name="dots" *ngIf="msg?.status === 'pending'"></ion-spinner>
+            <div class="msg-detail">
+                <div class="msg-info">
+
+                </div>
+                    <!--<span class="triangle"></span>-->
+                <!--<div appGoWild></div>-->
+                    <div class="msg-content" [ngClass]="{'bg-color':!msg.me}" #msContent>
+                        <span *ngIf="msg.msgStatus==false" class="error-tip">!</span>
+                        <p class="line-breaker " *ngIf="msg.messageType=='TextMessage'">{{msg.message}}</p>
+                        <!--<img  [src]="msg.message+'?x-oss-process=image/resize,w_150,h_0'" class="img-msg" alt=""   (click)="showBigImg(msg.message)">-->
+                             <img  *ngIf="msg.messageType=='ImageMessage'" [src]="msg.message&&msg.message+'?x-oss-process=image/resize,w_150,h_0'||'./assets/images/public/anonymity.png'" class="img-msg" alt=""   (click)="showBigImg(msg.message)">
+
+                        <!--<img *ngIf="msg.messageType=='ImageMessage'" src="http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq4RxLy4u9YOzkgrviaib5zqttxLAltnF963uic7ntD0ZzhYpsDwHRN1h8pEGicsRDV0Vebric9Rtc4FmA/0"
+                             imageViewer />-->
+                        <!--<img *ngIf="msg.messageType=='ImageMessage'" src="http://wx.qlogo.cn/mmopen/vi_32/DYAIOgq83eq4RxLy4u9YOzkgrviaib5zqttxLAltnF963uic7ntD0ZzhYpsDwHRN1h8pEGicsRDV0Vebric9Rtc4FmA/0"
+                             imageViewer />-->
+                        <!--<img *ngIf="msg.messageType=='ImageMessage'" [src]="msg.message" imageViewer style="width: 100px;height: 100px;" alt="">-->
+                        <!--<img *ngIf="msg.messageType=='ImageMessage'" [src]="msg.message" class="smallImg"  imageViewer="{{msg.message}}"-->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+</ion-content>
+
+
+<div no-border style="position: fixed;
+    bottom: 0px;
+    height: 53px;
+    width: 100%;
+    z-index: 1000;
+    background-color: white;" #footerContent [style.height]="showEmojiPicker ? '200px' : '53px'">
+    <!--<ion-footer no-border >-->
+    <ion-grid class="input-wrap">
+        <ion-row>
+
+            <ion-col col-9 class="input-text">
+                <!--(keyup.enter)="sendMsg()"-->
+
+                <ion-textarea #chat_input class="chat-input hide-on-keyboard-open"
+                              [(ngModel)]="editorMsg" (input)="inputChange($event)"
+                              (keyup.enter)="sendMessageToServer($event,'TextMessage')"
+                              (focus)="onFocus($event)">
+                </ion-textarea>
+            </ion-col>
+
+            <ion-col col-3>
+                <div class="right-button" >
+                    <button ion-button clear icon-only item-right class="button-clear-md select-emoji"
+                            (click)="switchEmojiPicker()">
+                        <ion-icon name="icon-gxk-30"></ion-icon>
+                    </button>
+                    <div class="user_detail_img upload-img" (click)="uploadImg();$event.stopPropagation();"
+                         *ngIf="!editorMsg">
+                        <input type="file" class="hide-input" id="userInfoHeader" accept="image/*"
+                               (change)="fileChange($event);$event.stopPropagation()" multiple>
+                        <button ion-button clear icon-only item-right class="button-clear-md">
+                            <ion-icon name="icon-gxk-141" class="select-img-icon"></ion-icon>
+                        </button>
+                    </div>
+
+                    <div *ngIf="editorMsg" class="btn-send">
+                        <button ion-button (click)="sendMessageToServer($event,'TextMessage','',true)">发送</button>
+                    </div>
+                </div>
+
+
+            </ion-col>
+            <!--<ion-col col-1>
+                <button ion-button clear icon-only item-right class="button-clear-md"
+                        (click)="sendMessageToServer($event,'TextMessage')">
+                    <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
+                </button>
+            </ion-col>-->
+        </ion-row>
+    </ion-grid>
+    <emoji-picker *ngIf="showEmojiPicker" [(ngModel)]="editorMsg" ></emoji-picker>
+</div>
+
+<!--
+<ion-footer class="bar-footer bar">
+    <form class="row" name="theform"><input class="col col-75" type="text"
+                                            placeholder="Type a message"  >
+        <button class="col button" >Send</button>
+
+    </form>
+
+</ion-footer>-->

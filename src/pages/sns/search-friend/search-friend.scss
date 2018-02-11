@@ -1,0 +1,119 @@
+page-search-friend {
+  ion-content{
+    background-color: #f4f4f4 !important;
+  }
+ /* ion-content {
+    background-color: #e6e8e9 !important;
+  }*/
+  .toolbar{
+    background-color: white !important;
+  }
+  .searchbar{
+    background-color: #E6E8E9 !important;
+  }
+  .searchbar-input{
+    background-color: white !important;
+  }
+
+
+  .searchItem{
+    padding:0 !important;
+    height:pxrem(92);
+    background:rgba(255,255,255,1);
+    margin: pxrem(21) 0 !important;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    ion-label.label{
+      width:100% !important;
+      max-width:100% !important;
+    }
+  }
+
+  .inputTip{
+    font-size:pxrem(30);
+    font-family:PingFang-SC-Medium;
+    color:rgba(204,204,204,1);
+  }
+  .username{
+    padding-left: 8px;
+    ion-icon{
+      font-size: 14px;
+      margin-right: 5px;
+    }
+  }
+  .userNameIcon{
+    margin: pxrem(30) pxrem(30) pxrem(30) pxrem(60);
+    font-size: pxrem(30);
+  }
+  .input-tip{
+    font-size: 14px;
+  }
+  .attention {
+    //width: pxrem(110);
+    height: pxrem(54);
+    background: none;
+    outline-color: rgba(242, 120, 107, 1);
+    border-radius: pxrem(4);
+    margin-right: 24.5px !important;
+    padding: 12.5px 14px !important;
+    .button-inner {
+      font-size: pxrem(24);
+      font-family: PingFang-SC-Medium;
+      color: rgba(242, 120, 107, 1);
+      margin-right: initial !important;
+    }
+  }
+  .has-attention {
+    margin-right: 24.5px !important;;
+    background: none;
+    .button-inner {
+      //width: pxrem(71);
+      height: pxrem(23);
+      font-size: pxrem(24);
+      font-family: PingFang-SC-Medium;
+      color: rgba(163, 163, 163, 1);
+      margin-right: initial !important;
+    }
+  }
+  .eachother-attention {
+    background: none;
+    margin-right: 24.5px !important;
+    .button-inner {
+      //width: pxrem(71);
+      height: pxrem(23);
+      font-size: pxrem(24);
+      font-family: PingFang-SC-Medium;
+      color: rgba(163, 163, 163, 1);
+      margin-right: initial !important;
+    }
+  }
+
+  .portrait {
+    width: pxrem(70);
+    height: pxrem(70);
+  }
+  .friend-nickname {
+
+    font-size: pxrem(28);
+    font-family: PingFang-SC-Medium;
+    color: rgba(51, 51, 51, 1);
+  }
+  .item-ios ion-avatar[item-left]{
+    margin: 8px 16px 8px 12px;
+  }
+
+
+  .item.item-block{
+    padding:0
+  }
+  .item {
+    height: pxrem(111.25);
+    margin-bottom: 0px !important;
+  }
+  .scroll-content {
+    padding: 0 !important;
+    ion-content {
+      background-color: #e6e8e9 !important;
+    }
+  }
+}

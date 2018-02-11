@@ -1,0 +1,36 @@
+<!-- Generated template for the GoodsListBlockComponent component -->
+<div class="wrap" style="width:100%" [ngClass]="{ 'three': colNum == 3, 'two': colNum == 2, 'one': colNum == 1, 'big': colNum == 11, 'special': colNum == 22 }">
+
+  <div class="list" *ngIf="data && data.length > 0">
+    <div class="item" *ngFor="let item of data; index as index" (click)="goToGoodsDetail(item)">
+      <div class="img-wrap"> 
+        <p class="self_nearby" *ngIf="item.goods_meter">距您{{filterKM(item.goods_meter)}}</p>
+        <img [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)">
+      </div>
+      <div class="name self_single">{{ item.goods_name || item.goodsName }}</div>
+      <div class="self_min_buy_num_warp">
+          <div class="name self_min_buy_num R_margin_top_36 " *ngIf="getTemplate == 2 &&commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1' && item.minBuyNum > 0 "> 起批数量：{{ item.minBuyNum}}</div>
+          <div class="name self_min_buy_num" *ngIf="getTemplate != 2 && commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1'&& item.minBuyNum > 0 "> 起批数量：{{ item.minBuyNum}}</div>
+      </div> 
+      
+      <div class="price self_price">
+        {{ item.shop_price || item.shopPrice || item.goodsPrice || item.price || item.marketPrice | currency:'CNY':true }}
+        <span class="coupon-icon" *ngIf="item.hasSale">券</span>
+        <span class="gift-icon" *ngIf="item.hasGifts">赠</span>
+      </div>
+      <div class="cart-btn" (click)="addCart($event, item)">
+        <ion-icon name="ios-cart"></ion-icon>
+      </div>
+      <!-- <div class="collect" [ngClass]="{ 'active': item.collectStatus }">
+         <ion-icon name="ios-star-outline" *ngIf="!item.collectStatus"></ion-icon>
+        <ion-icon name="ios-star" *ngIf="item.collectStatus"></ion-icon>
+      </div> -->
+    </div>
+  </div>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore" *ngIf="hasMore && !gxkNoMore">
+    <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="no-more-data" *ngIf="!hasMore || noMore">{{ noMoreText ? noMoreText : '没有更多了~' }}</div>
+
+</div>

@@ -1,0 +1,46 @@
+<!-- Generated template for the GoodsDetailFooterComponent component -->
+<div class="goods-footer">
+  <div class="goods-footer-left"  >
+    <div class="button" (click)="goToHomePage()">
+      <div>
+        <ion-icon name="ios-home"></ion-icon>
+      </div>
+      <div>
+        <span>主页</span>
+      </div>
+    </div>
+    <div class="button" (click)="servicePopup(data.storeId)">
+    <!--<div class="button" (click)="chat_web()">-->
+      <!-- <a href="tel:{{data.tbCompanyInfo.mobile}}">
+        <div>
+          <ion-icon name="ios-message-circle"></ion-icon>
+        </div>
+        <div>
+          <span>客服</span>
+        </div>
+      </a> -->
+      <div>
+        <ion-icon class="ion-ios-icon-gxk-84"></ion-icon>
+      </div>
+      <div>
+        <span>客服</span>
+      </div>
+    </div>
+    <div class="button" (click)="collect()">
+      <div>
+        <ion-icon name="ios-star" [ngClass]="{ 'active': data.collectStatus }"></ion-icon>
+      </div>
+      <div>
+        <span>{{ data.collectStatus ? '已收藏' : '收藏'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="goods-footer-right"  *ngIf="isModal">
+    <div class="add-cart" (click)="addCart()">加入购物车</div>
+    <div class="buy-btn" (click)="nowBuy()">立即购买</div>
+  </div>
+  <div class="goods-footer-right" *ngIf="!isModal">
+    <div class="add-cart" (click)="openModal()" [ngClass]="{'disabledBtn':!data.isOnSale}">加入购物车</div>
+    <div class="buy-btn" (click)="openModal()" [ngClass]="{'disabledBtn':!data.isOnSale}">立即购买</div>
+  </div>
+</div>

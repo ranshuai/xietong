@@ -1,0 +1,80 @@
+page-order-pay {
+  ion-content.content {
+    background-color: #e6e8ea;
+    .order-info {
+      margin-top: pxrem(8);
+      padding-left: pxrem(24);
+      border-bottom: 1px solid #c4c5c7;
+      background: #ffffff;
+      font-size: pxrem(28);
+      line-height: pxrem(115);
+      .tip {
+        padding: pxrem(40) 0;
+        line-height: 1;
+        color: #f2786b;
+        div:nth-child(1) {
+          margin-bottom: pxrem(20);
+        }
+      }
+      .order-num {
+        border-top: 1px solid #e5e5e5;
+      }
+      .price {
+        border-top: 1px solid #e5e5e5;
+      }
+    }
+    .pay-title {
+      padding-left: pxrem(24);
+      line-height: pxrem(60);
+      font-size: pxrem(24);
+      color: #646464;
+    }
+    .pay-list {
+      padding-left: pxrem(24);
+      border-bottom: 1px solid #c4c5c7;
+      background: #ffffff;
+      line-height: pxrem(105);
+      font-size: pxrem(28);
+      vertical-align: middle;
+      .pay-item {
+        overflow: hidden;
+        border-bottom: 1px solid #e5e5e5;
+        div:last-child {
+          border-bottom: none;
+        }
+        .pay-logo {
+          float: left;
+          img {
+            vertical-align: middle;
+          }
+        }
+        .pay-name {
+          float: left;
+          margin-left: pxrem(20);
+          line-height: pxrem(108);
+        }
+        .pay-check {
+          float: right;
+          padding-right: pxrem(24);
+          .check {
+            margin-right: pxrem(4);
+          }
+          img {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+  ion-toolbar {
+    .left {
+      float: left;
+      padding-left: pxrem(24);
+      line-height: pxrem(98);
+      font-size: pxrem(30);
+      span {
+        color: $userPrimaryColor;
+      }
+    }
+  }
+}

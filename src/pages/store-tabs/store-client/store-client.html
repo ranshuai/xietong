@@ -1,0 +1,91 @@
+<!--
+  Generated template for the StoreClientPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>我的客户</ion-title>
+  </ion-navbar>
+  <button (click)="goToPage()">客户薄</button>
+  <div class="store_client_search_wap">
+    <div class="store_client_search">
+      <input type="text" placeholder="搜索用户名" [(ngModel)] = "searchValue" (ngEnter)="search()">
+      <ion-icon name="ios-search" (click) = "search()"></ion-icon>
+    </div>
+  </div>
+  <ion-toolbar>
+      <ul class="tabLists">
+        <li (click)="activeNavIndex = 0" (click)="getDataList();" [ngClass]="{ac:activeNavIndex == 0}">
+          <span>私信</span>
+        </li>
+        <li (click)="activeNavIndex = 1" (click)="getDataList();" [ngClass]="{ac:activeNavIndex == 1}">
+          <span>通知</span>
+        </li>
+      </ul>
+  </ion-toolbar> 
+</ion-header>
+<!-- slides 模块 -->
+    <!-- item slide -->
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+  <!-- 内容 -->
+  <div class="store_client_con"> 
+      <ul *ngIf="activeNavIndex == 0 || activeNavIndex == 2">
+        <li *ngFor="let item of storeClientNavList[activeNavIndex].clist;">
+          <img src="{{item.toUserImg}}" alt="">
+          <div class="store_client_info">
+            <p>
+              <span class="fl">{{item.toUserName}}</span>
+              <span class="fr">{{item.modifyTime  | date:'MM-dd hh:mm' }}</span>
+            </p>
+            <p class="p_info"></p>
+          </div>
+        </li>
+      </ul>
+      <ul class="notice" *ngIf="activeNavIndex == 1">
+        <li *ngFor="let item of storeClientNavList[activeNavIndex].clist;">
+            <div class="notice_top_time">
+              <span>03-20 22:58</span>
+            </div>
+            <div class="notice_m_cont">
+              <p>
+                  <span>{{item.title}}</span>
+                  <span *ngIf="!item.have_read" class="red">(未读)</span> <span *ngIf="item.have_read">(已读)</span> <br>
+                  <span>{{item.time| date:'MM-dd' }} </span> 
+              </p>
+              <p class="p_t_20">
+                  {{ item.subtitle }}
+              </p>
+              <p class="font_s_24 p_t_20">
+                <span>订单号：  </span><span>2077985298437518</span>
+              </p>
+              <p class="font_s_24">
+                <span>支付时间：  </span><span>2077985298437518</span>
+              </p>
+              <p class="font_s_24">
+                <span>支付金额：  </span><span>2077985298437518</span>
+              </p>
+              <p class="font_s_24">
+                <span>商品名称：  </span><span>{{item.msg}}</span>
+              </p>
+              <div class="b_detail">
+                  <p class="font_s_24"> 点击查看详情</p>
+                </div>
+            </div>
+            
+        </li>
+      </ul>
+  </div>
+  <!-- S=上拉加载更多 -->
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="storeClientNavList[activeNavIndex].loadEnd">
+    <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <!-- E=上拉加载更多 -->
+  <!-- 没有数据显示 -->
+  <div class="no-more-data" *ngIf="storeClientNavList[activeNavIndex].loadEnd">{{ '没有更多了~' }}</div>
+</ion-content>
+

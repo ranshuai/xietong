@@ -1,0 +1,124 @@
+<!--
+  Generated template for the FriendListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title ><span class="friends-title">通讯录</span></ion-title>
+        <div>
+            <ion-icon name="arrow-back" (click)="goToBack()"  class="arrow-back"></ion-icon>
+           <!-- <span class="add-friend" (click)="addFriend()">
+
+	</span>-->
+            <ion-icon item-right name="icon-gxk-28" class="contact-icon" class="add-friend" (click)="addFriend()">
+            </ion-icon>
+        </div>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <!-- <ul  class="labelList">
+         <li (click)="labelClick(0)" [ngClass]="{'active':0==selectedIndex}">好友</li>
+         <li (click)="labelClick(1)" [ngClass]="{'active':1==selectedIndex}">粉丝</li>
+         <li (click)="labelClick(2)" [ngClass]="{'active':2==selectedIndex}">陌生人</li>
+     </ul>-->
+
+    <ul class="labelList">
+        <li (click)="changeNav('friends')" [ngClass]="{ 'active': activeType == 'friends'}">
+            <span class="menu-title">好友({{friendsCountInfo?.friends}})</span>
+        </li>
+        <li (click)="changeNav('fans')" [ngClass]="{ 'active': activeType == 'fans'}">
+            <span class="menu-title">粉丝({{friendsCountInfo?.fans}})</span>
+        </li>
+        <li (click)="changeNav('strangers')" [ngClass]="{ 'active': activeType == 'strangers'}">
+            <span class="menu-title">陌生人({{friendsCountInfo?.stranges}})</span>
+        </li>
+
+    </ul>
+<div>
+    <!--下拉刷新-->
+    <!--<ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150" *ngIf="contactList[activeType].clist">-->
+    <ion-refresher (ionRefresh)="refresh($event)" pullMin="0" pullMax="0" *ngIf="contactList[activeType].clist">
+        <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+    </ion-refresher>
+    <!--有好友数据-->
+<section *ngIf="contactList[activeType].formatContacts&&contactList[activeType].formatContacts.length>0">
+<!--<section *ngIf="false">-->
+    <div class="letter letter-list" >
+        <div class="letter-right letter-key">
+                <span *ngFor="let wordItem of contactList[activeType].formatContacts" class="right-key"
+                      (click)="letterScrollToTop(wordItem)">{{wordItem.key}}
+                </span>
+        </div>
+    </div>
+
+
+    <div>
+        <div style="width: 100%">
+            <!--useful start-->
+
+            <div class="contacts-list">
+                <ion-item-group *ngFor="let group of contactList[activeType].formatContacts,let letterPos=index">
+                    <!--<ion-item-divider color="light" id="{{letters[i]}}">{{letters[i]}}</ion-item-divider>-->
+                    <ion-item-divider color="light" id="contact-{{group.key}}" class="contacts-group">
+                        <span class="group-key">
+                        {{group.key}}
+                    </span>
+                    </ion-item-divider>
+                    <ion-item *ngFor="let item of group.value,let subItemIndex=index;"
+                    (click)="seeUserInfo(item.userId,item.nickName,item.headPic);$event.stopPropagation();" inset>
+
+                       <!-- <ion-thumbnail item-left>
+                            &lt;!&ndash;<img src="assets/img/th_imge.png">&ndash;&gt;
+                            &lt;!&ndash;<img src="assets/img/contact_potrait.jpg">&ndash;&gt;
+                            &lt;!&ndash;<ion-icon name="contact"></ion-icon>&ndash;&gt;
+                            <img src="../../../assets/images/sns/contact_potrait.jpg" style="    border-radius: 50%;">
+                        </ion-thumbnail>
+                        <h2>{{item.nickName}}</h2>-->
+
+                            <ion-avatar item-left>
+                                <img class="portrait" [src]="item.headPic&&item.headPic+'?x-oss-process=image/resize,w_70,h_0'||'./assets/images/public/anonymity.png'" alt="">
+                            </ion-avatar>
+                            <span class="friend-nickname">{{item.nickName}}</span>
+                        <!--黑名单不会出现在列表中-->
+                        <!--好友，只能是已关注(单项wayType=1)和相互关注(wayType=2)-->
+                        <!--粉丝，显示关注按钮(单项wayType=1)-->
+                        <!--陌生人 显示关注-->
+                            <button item-end ion-button outline *ngIf="activeType=='fans'&&item.wayType==1||activeType=='strangers'"
+                                    class="button button-outline button-positive attention"
+                                    (click)="attention(letterPos,subItemIndex,item.userId);$event.stopPropagation();">关注</button>
+
+                            <button item-end ion-button  *ngIf="activeType=='friends'&&item.wayType==1" class="has-attention" >已关注</button>
+                            <button item-end ion-button  *ngIf="activeType=='friends'&&item.wayType==2" class="eachother-attention" >互相关注</button>
+
+                    </ion-item>
+
+                </ion-item-group>
+            </div>
+
+        </div>
+    </div>
+<div ng-if="!isScrolling">
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!isScrolling&&!contactList[activeType].loadEnd">
+            <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+</div>
+
+</section>
+</div>
+<!--请求网络完毕,没有好友数据，展示提示-->
+    <section *ngIf="!contactList[activeType].isLoading&&(!contactList[activeType].formatContacts.length||contactList[activeType].formatContacts.length<=0)" class="tip-content">
+    <!--<section *ngIf="true" class="tip-content">-->
+        <div>
+            <span *ngIf="activeType =='friends'" class="tip-text">暂时没有好友哦!</span>
+            <span *ngIf="activeType == 'fans'" class="tip-text">暂时没有粉丝哦！</span>
+            <span *ngIf="activeType == 'strangers'" class="tip-text">暂时没有陌生人哦!</span>
+        </div>
+    </section>
+
+</ion-content>

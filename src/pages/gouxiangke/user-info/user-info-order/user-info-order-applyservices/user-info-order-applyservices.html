@@ -1,0 +1,97 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>申请售后</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <input type="file" id="applyservicesImg" accept="image/*" (change)="fileChange($event)" multiple style="display:none">
+    <section *ngIf="pageData">
+        <ul class="evaluate_ul">
+            <li class="margin-bottom-10">
+                <div class="order_shop_box">
+                    <span class="shop">店铺:</span>
+                    <span class="shop_title">{{pageData.storeName}}
+              <ion-icon name="ios-message-circle"></ion-icon>
+            </span>
+                </div>
+                <div class="confirm-box" *ngFor=" let item of pageData.orderGoodsSimpleVOS index as index">
+                    <div class="confirm-content ">
+                        <div class="confirm-goods_img">
+                            <div [ngBackImg]="{img:item.goodsImg,type:1}"></div>
+                        </div>
+                        <div class="confirm-goods_content">
+                            <div class="goods_title">{{item.goodsName}}
+                                <span class="goods_count">x{{item.goodsNum}}</span>
+                            </div>
+                            <div class="goods_property">
+                                <span class="property_list">规格:{{item.specKeyName}}</span>
+                            </div>
+                            <div class="goods_property">
+                                <span class="property_price" [moneyFormat]="item.goodsUnitPrice"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oderform_list_btns flex_left">
+                    <div class="btn_item" (click)="pageData.serviceType=0">
+                        <em class="cryptonym_btn">退货</em>
+                        <i class="chec_icon" [ngClass]="{'active':pageData.serviceType==0}"></i>
+                    </div>
+                    <div class="btn_item" (click)="pageData.serviceType=1">
+                        <em class="cryptonym_btn">换货</em>
+                        <i class="chec_icon" [ngClass]="{'active':pageData.serviceType==1}"></i>
+                    </div>
+                </div>
+                <div class="confirm-box margin-bottom-10">
+                    <span class="type">退/换货理由</span>
+                </div>
+
+                <div class="textarea_box">
+                    <textarea class="lzy_textarea ng-untouched ng-pristine ng-invalid" maxlength="100" placeholder="请输入您的评论（100字以内）" [(ngModel)]="pageData.content" required rows="4"></textarea>
+                </div>
+
+
+                <div class="load_pic_box">
+                    <div class="load_pic_item" *ngFor="let img of pageData.img;let _index = index">
+                        <div class="load_pic" [ngBackImg]="{img:img,type:1}" (click)="addImg(pageData,_index,true)"></div>
+                    </div>
+                    <div class="load_pic_item" *ngIf="pageData.img.length<5" (click)="addImg(pageData)">
+                        <div class="dashed_border">
+                            <span class="add_icon"></span>
+                            <p>
+                                上传凭证
+                                <br> (最多5张)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <form [formGroup]="applyservicesForm">
+                    <div class="my_form_box">
+                        <div class="confirm-box">
+                            <span class="type">快递单号 <span class="flag">必填</span></span>
+                        </div>
+                        <div class="from_inputItem showIcon">
+                            <div class="my_input">
+                                <input type="tel" placeholder="请填写快递单号" formControlName="logisticsCode" maxlength="18">
+                            </div>
+                            <div class="input_errorMsg" *ngIf="applyservicesMessages.logisticsCode.errorMsg">{{applyservicesMessages.logisticsCode.errorMsg}}</div>
+                        </div>
+                        <div class="confirm-box">
+                            <span class="type">物流名称<span class="flag">必填</span></span>
+                        </div>
+                        <div class="from_inputItem showIcon">
+                            <div class="my_input">
+                                <input type="text" placeholder="请填写物流名称" formControlName="logisticsName" maxlength="12">
+                            </div>
+                            <div class="input_errorMsg" *ngIf="applyservicesMessages.logisticsName.errorMsg">{{applyservicesMessages.logisticsName.errorMsg}}</div>
+                        </div>
+                        <div class="confirm-box none_border_after">
+                            <div class="confirmApplyServe_btn" [ngClass]="{'active':applyservicesForm.valid}" (click)="afterService_form_submit(pageData)">提交信息</div>
+                        </div>
+                    </div>
+                </form>
+            </li>
+        </ul>
+    </section>
+</ion-content>

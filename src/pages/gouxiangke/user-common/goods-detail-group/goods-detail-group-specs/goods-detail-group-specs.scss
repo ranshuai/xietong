@@ -1,0 +1,98 @@
+goods-detail-group-specs {
+  .wrap {
+    height: 100%;
+  }
+  .specs-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-left: pxrem(24);
+    padding-bottom: pxrem(145);
+    background: #ffffff;
+    .colse-btn {
+      position: absolute;
+      top: pxrem(-8);
+      right: 0;
+      width: pxrem(72);
+      height: pxrem(72);
+      ion-icon {
+        float: right;
+        margin-top: pxrem(24);
+        margin-right: pxrem(24);
+        font-size: pxrem(24);
+      }
+    }
+    .info {
+      overflow: hidden;
+      border-bottom: 1px solid #e5e5e5;
+      .img {
+        float: left;
+        width: pxrem(130);
+        height: pxrem(130);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+        margin-top:pxrem(20);
+      }
+      .goods-title {
+        margin-left: pxrem(130);
+        padding-left: pxrem(15);
+        line-height: 1;
+        .title {
+          margin-top: pxrem(70);
+          font-size: pxrem(28);
+          ;
+        }
+        .price {
+          margin-top: pxrem(20);
+          font-size: pxrem(26);
+          color: $userPrimaryColor;
+        }
+      }
+    }
+    .specs-list {
+      padding-bottom: pxrem(40);
+      border-bottom: 1px solid #e5e5e5;
+      .title {
+        font-size: pxrem(28);
+        line-height: pxrem(105);
+      }
+      .btn-wrap {
+        overflow: hidden;
+        a {
+          overflow: hidden;
+          display: block;
+          float: left;
+          max-width: pxrem(700);
+          height: pxrem(46);
+          margin-right: pxrem(20);
+          // margin-top: pxrem(20);
+          padding: 0 pxrem(24);
+          border: 1px solid #f2786b;
+          border-radius: pxrem(24);
+          font-size: pxrem(24);
+          line-height: pxrem(46);
+          color: #f2786b;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &.active {
+            background: #f2786b;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+  .specification_wrap{
+    height: pxrem(400);
+    overflow-y: scroll;
+  }
+  .footer-btn {
+    line-height: pxrem(98);
+    text-align: center;
+    font-size: pxrem(30);
+    color: #ffffff;
+    background: $userPrimaryColor;
+  }
+}

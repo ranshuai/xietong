@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <!--购享客图标库-->
+  <link href="./assets/apollo/style.css" rel="stylesheet">
+  <link href="build/main.css" rel="stylesheet">
+
+  <script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+  <!-- 授权过程开始 -->
+  <script>
+    //设置微信浏览器标题
+    document.setTitle = function (t) {
+      document.title = t;
+      var i = document.createElement('iframe');
+      i.src = '//m.baidu.com/favicon.ico';
+      i.style.display = 'none';
+      i.onload = function () {
+        setTimeout(function () {
+          i.remove();
+        }, 9)
+      }
+      document.body.appendChild(i);
+    }
+
+
+
+
+    window.localStorage.host = window.location.host; //全局的host字符串，用来
+    //获取url参数
+    function getQueryString(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+      var r = window.location.search.substr(1).match(reg);
+      if (r != null) return unescape(r[2]);
+      return null;
+    }
+    //自定义ajax
+    function ajax(args) {
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          args.success(xmlhttp.responseText, xmlhttp);
+        }
+      }
+      xmlhttp.open(args.type, args.url, false);
+      if (args.space) {
+        xmlhttp.setRequestHeader('space', args.space);
+      }
+      xmlhttp.send();
+    }
+
+    //停止页面加载
+    function windowstop() {
+      if (!!(window.attachEvent && !window.opera)) {
+        document.execCommand("stop");
+      } else {
+        window.stop();
+      }
+    }
+
+
+    //获取微信授权
+    function getAuthToken(data) {
+      //第一次通过URL进入，获取shareId，并存储
+      //  var shareId = getQueryString('shareId'); //分享的Id
+      // if (shareId) {
+      //   window.localStorage.setItem('shareId', shareId);
+      //   window.localStorage.setItem('storeUrl', window.location.hash);
+      // }
+
+      window.localStorage.setItem('appId', data.appid);
+      var openId = getQueryString('openId');
+      if (openId && openId != 'null') {
+        var isSelfOpenId = window.sessionStorage.getItem('isSelfOpenId');
+        if (isSelfOpenId == null) {
+          var isSelfOpenId = window.sessionStorage.setItem('isSelfOpenId', openId);
+          window.localStorage.setItem('hashUrl', window.location.hash)
+          windowstop();
+          window.location.href = data.url;
+        } else {
+          var isSelfOpenId = window.sessionStorage.removeItem('isSelfOpenId');
+          window.localStorage.setItem('openId', openId);
+
+
+          window.colink.space= window.localStorage.getItem('space');
+          window.localStorage.removeItem('space');
+
+          //如果clientType 连接上会跟店铺id  如果是申请开店页面  会强制设置配置信息为域的
+          var hashUrl=window.localStorage.getItem('hashUrl');
+          if(hashUrl.indexOf('#/open_store')>-1 || hashUrl.indexOf('#/store_claim')>-1){
+            window.colink.clientType='1';
+            window.colink.storeId=null;
+          }else{
+            window.colink.clientType=window.sessionStorage.getItem('clientType');
+          if(window.colink.clientType=='2'){
+            let storeId=getQueryString('storeId');
+            window.colink.storeId=storeId?storeId:null;
+          }
+          }
+        }
+      } else {
+        //如果没有openid,第一次授权的时候,将赋值,预防第二次授权
+        var isSelfOpenId = window.sessionStorage.setItem('isSelfOpenId', 'true');
+        window.localStorage.setItem('hashUrl', window.location.hash)
+        //去微信授权
+        windowstop();
+        window.location.href = data.url;
+      }
+    }
+
+    // 获取跳转url跟type
+    function getUrl(space) {
+      let url='https://t.o.snsall.com/v2/auth2/userAccessTokenBefore?type=1';
+      //店铺开店没有店铺ID
+      if(window.location.hash.indexOf('#/open_store')==-1 || window.location.hash.indexOf('#/store_claim')==-1){
+        if(window.sessionStorage.getItem('clientType')=='2'&&getQueryString('storeId')){
+        url=url+'&clientType='+window.sessionStorage.getItem('clientType')+'&storeId='+getQueryString('storeId')
+      }
+    }
+
+
+
+    
+      ajax({
+        type: 'GET',
+        space: space,
+        url:url,
+        success: function (data) {
+          data = JSON.parse(data);
+          if (data.success) {
+            getAuthToken(data.result);
+          }
+        }
+      });
+    }
+
+
+    //认证页面loading
+    function impowerLoading() {
+      var body = document.body;
+      var impower_loading = document.createElement("div");
+      impower_loading.setAttribute("class", "impower_loading");
+      impower_loading.innerHTML = "<div class='pic'></div>"
+      document.body.appendChild(impower_loading);
+      var app = document.getElementsByTagName('ion-app')[0];
+      app.style.display = "none";
+    }
+
+    //微信授权初始化 
+    function init() {
+      //获取space
+      ajax({
+        type: 'GET',
+        url: window.location.href,
+        success: function (data, xmlhttp) {
+          var space = xmlhttp.getResponseHeader('space'); //http://jsp.snsall.com
+          window.localStorage.setItem('space', space);
+          window.sessionStorage.setItem('clientType',xmlhttp.getResponseHeader('clientType'))
+          getUrl(space);
+        }
+      });
+    }
+
+    //是否是微信浏览器
+    function is_Wx() {
+      //购享客 DF4D69929FD7F405 独角鲸 92E21DE17C0CE872
+      window.colink={
+        space:'DF4D69929FD7F405',//域或店铺的appkey (!在微信中会根据域名获取 强制替换)
+        storeId:null,//如果是店铺 传店铺id    (!在微信中会根据域名获取 强制替换)
+        clientType:'1',//'1'是域 '2'是店铺   (!在微信中会根据域名获取 强制替换)
+        host:'test',//  'dev'  'test' 'prod'
+
+      }
+      var ua = window.navigator.userAgent.toLowerCase();
+      if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        init();
+      }else{
+        window.localStorage.setItem('hashUrl', window.location.hash)
+      }
+    }
+    
+    //微信项目初始化
+    is_Wx();
+     
+  </script>
+  <!-- 授权过程结束 -->
+
+
+
+  <!--字符串加密-->
+  <script src="./assets/lib/myjs.min.js"></script>
+  <!--图片预览 swiper http://www.swiper.com.cn/api/index.html-->
+  <link rel="stylesheet" href="./assets/lib/swiper/swiper-3.4.2.min.css">
+  <script src="./assets/lib/swiper/swiper-3.4.2.min.js"></script>
+  <!--图片裁剪 AlloyCrop https://github.com/AlloyTeam/AlloyCrop-->
+  <script src="./assets/lib/alloycrop/alloy-finger.js"></script>
+  <script src="./assets/lib/alloycrop/transform.js"></script>
+  <script src="./assets/lib/alloycrop/alloy-crop.js"></script>
+  <!--融云sdk-->
+  <script src="assets/lib/rongim_lib/RongIMLib-2.2.8.min.js"></script>
+  <script src="assets/lib/rongim_lib/protobuf-2.2.8.min.js"></script>
+  <!--<script src="assets/lib/rongim_lib/emoji.js"></script>-->
+  <script src="https://cdn.ronghub.com/RongEmoji-2.2.6.min.js"></script>
+  <!--<script src="https://cdn.ronghub.com/RongEmoji-2.2.6.js"></script>-->
+  <!--高德地图-->
+  <script src="http://webapi.amap.com/maps?v=1.3&key=27f94c4fcaced909e888f0e6bbc9880c"></script>
+  <!-- cordova.js required for cordova apps -->
+  <script src="cordova.js"></script>
+
+</head>
+
+<body>
+
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app></ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+</body>
+
+</html>

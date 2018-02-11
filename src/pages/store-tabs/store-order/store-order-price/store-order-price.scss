@@ -1,0 +1,153 @@
+page-store-order-price {
+  .wrap {
+    margin: pxrem(8) pxrem(24);
+    background: #ffffff;
+    border-radius: pxrem(10);
+    .line {
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #e5e5e5;
+      line-height: pxrem(95);
+      font-size: pxrem(30);
+      color: #7b7d81;
+      ion-icon {
+        float: left;
+        margin-left: pxrem(20);
+        color: #40b3e2;
+        font-size: pxrem(38);
+        line-height: pxrem(95);
+      }
+      .r {
+        margin-left: pxrem(70);
+      }
+      .number,
+      .person {
+        float: left;
+        width: 50%;
+      }
+      .price_box{
+        .number{
+          width: 100%;
+        }
+        span{
+          color: #575757;
+          width: 60%;
+          display: inline-block;
+        }
+      }
+
+
+
+      .price,
+      .mobile {
+        margin-left: 50%;
+      }
+      .r-l {
+        float: left;
+      }
+      .r-r {
+        margin-left: pxrem(150);
+        padding-right: pxrem(24);
+        &>div {
+          margin-bottom: pxrem(15);
+        }
+        em {
+          float: left;
+          width: pxrem(220);
+          font-style: normal;
+        }
+      }
+      span {
+        color: #f2786b;
+      }
+    }
+    .line-b {
+      .r {
+        padding: pxrem(35) 0;
+        line-height: 1;
+        &>div {
+          margin-bottom: pxrem(28);
+          overflow: hidden;
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+    .order-sign {
+      position: absolute;
+      top: pxrem(12);
+      right: pxrem(25);
+    }
+    .operate {
+      overflow: hidden;
+      padding: 0 pxrem(24) pxrem(15);
+      button {
+        display: block;
+        width: pxrem(650);
+        border-radius: pxrem(150);
+        background: #41b3e2;
+        color: #ffffff;
+        font-size: pxrem(30);
+        line-height: pxrem(85);
+      }
+      .l,
+      .r {
+        float: left;
+        width: pxrem(300);
+        border: 1px solid #41b3e2;
+      }
+      .l {
+        background: none;
+        color: #40b3e2;
+        &.red {
+          color: #f2786b;
+          border: 1px solid #f2786b;
+        }
+      }
+      .r {
+        margin-left: pxrem(54);
+      }
+      .return-reason {
+        margin: 0 pxrem(-24);
+        padding: pxrem(30) pxrem(21);
+        border-bottom: 1px solid #e5e5e5;
+        line-height: 1;
+        color: #7b7d81;
+        font-size: pxrem(30);
+        div {
+          margin-bottom: pxrem(8);
+        }
+      }
+      .reason-img {
+        overflow: hidden;
+        margin-bottom: pxrem(20);
+        color: #7b7d81;
+        font-size:pxrem(30);
+        line-height:pxrem(95);
+        img {
+          display: block;
+          float: left;
+          width: pxrem(124);
+          height: pxrem(124);
+          margin-right: pxrem(8);
+          margin-bottom: pxrem(8);
+          border-radius:pxrem(10);
+          &:nth-child(5n+1) {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
+
+  ion-footer{
+    .button-ios{
+      height: pxrem(98);
+      font-size: pxrem(32);
+      background:  #f2786b;
+      pointer-events:auto;
+    }
+  }
+
+}

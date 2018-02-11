@@ -1,0 +1,42 @@
+<!--
+  Generated template for the UserInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span class="friends-title">个人资料</span></ion-title>
+    <ion-buttons end  class="more" (click)="setInfo()">
+      <button ion-button >
+        <ion-icon name="icon-gxk-140"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+<ion-item class="headItem">
+  <ion-avatar item-left>
+    <img [src]="headPic||userInfo?.headPic||'./assets/images/public/anonymity.png'"  class="portrait" alt="">
+  </ion-avatar>
+  <span class="user-nickname">{{userInfo?.nickName}}</span>
+</ion-item>
+
+  <ion-item class="district-item">
+    <span  class="district">地区</span>
+    <span *ngIf="userInfo?.province"  class="province_city">{{userInfo?.province}}</span>
+    <span *ngIf="userInfo?.city"  class="province_city">{{userInfo?.city}}</span>
+  </ion-item>
+  <ion-item class="headItem">
+
+    <span class="circle">Ta的圈子</span>
+  </ion-item>
+  <div class="send-msg">
+    <button ion-button block class="send-img" *ngIf="!isSelf" (click)="sendMessage()">发消息</button>
+  </div>
+  <p  class="black-tip" *ngIf="userInfo?.state==2">已添加至黑名单,您将不再收到对方的消息<br>和朋友圈动态</p>
+</ion-content>

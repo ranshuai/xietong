@@ -1,0 +1,106 @@
+<!--
+  Generated template for the RecentMessagePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title><span class="friends-title">消息
+            <span *ngIf="totalUnreadCount&&totalUnreadCount>0" class="friends-title">({{totalUnreadCount}})</span></span></ion-title>
+        <div  class="back-arrow" (click)="goToBack()">
+
+            <button class="custome-back-button">
+            <ion-icon name="arrow-back" class="img-back-arrow"></ion-icon>
+            </button>
+        </div>
+        <!-- <ion-nav-back-button class="button-clear">
+             <i class="ion-arrow-left-c" item-left></i> 后退
+         </ion-nav-back-button>-->
+    </ion-navbar>
+
+
+</ion-header>
+
+
+<ion-content>
+    <!--下拉刷新-->
+    <ion-refresher (ionRefresh)="doRefresh($event)" pullMin="90" pullMax="150" pullText="下拉刷新~">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <!--加载中-->
+    <!--<page-loading [data]="pageData" (pageInit)="pageInit($event)"></page-loading>-->
+    <!--列表内容-->
+    <ion-list>
+        <!--可滑动删除的item-->
+        <!--<ion-item-sliding *ngFor="let item of pageData.recentChatList,let position=index;">
+            <ion-item (click)="chat(item.beUserId,item.userName,item.headPic)">
+                <ion-avatar item-left>
+                   <span *ngIf="item.unreadCount>0" class="unread-count">{{item.unreadCount}}</span>
+                    <img [src]="item.headPic"  class="portrait" alt="">
+                </ion-avatar>
+                <div><span>{{item.userName}}</span>
+                    <span class="receive-msg-time">{{item.updateTime}}</span></div>
+
+                <p>{{item.recentlyChat}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button color="danger" (click)="deleteItem(position)">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>-->
+
+        <ion-item (click)="chat(item.beUserId,item.userName,item.headPic)"
+                  *ngFor="let item of pageData.recentChatList,let position=index;" class="msg-item">
+            <ion-avatar item-left class="avatar">
+                <ion-badge item-end class="badge less-nine-nine" *ngIf="item?.unreadCount>0&&item.unreadCount<=99">
+                    {{item?.unreadCount}}</ion-badge>
+                <ion-badge item-end class="badge more-nine-nine" *ngIf="item?.unreadCount&&item.unreadCount>99">
+                    {{item?.unreadCount}}+</ion-badge>
+                <!--<span *ngIf="item.unreadCount>0" class="unread-count">{{item.unreadCount}}</span>-->
+                <img [src]="item.headPic&&item.headPic+'?x-oss-process=image/resize,w_70,h_0'||'./assets/images/public/anonymity.png'"  class="portrait" alt="">
+            </ion-avatar>
+            <div><span class="username">{{item.userName}}</span>
+                <span class="receive-msg-time">{{item.updateTime}}</span></div>
+
+            <p class="msg-content">{{item.recentlyChat}}</p>
+        </ion-item>
+<div class="empty"></div>
+        <!--融云字段-->
+        <!--<ion-item-sliding *ngFor="let item of pageData.recentChatList,let position=index;">
+            <ion-item (click)="chat(item.latestMessage.senderUserId,item.latestMessage.senderUserName)">
+                <ion-avatar item-left >
+                   <span style="display: inline-block;
+    width: 16px;
+    height: 16px;
+    float: right;
+    top: 0;
+    background-color: orangered;
+    border-radius: 50%;
+    text-align: center;
+    color: white;
+    font-size: 14px;">{{item.unreadMessageCount}}</span>
+
+                    &lt;!&ndash;<img [src]="item.headPic" style="width: 50px;height: 50px;border-radius:50%" alt="">&ndash;&gt;
+                    <img src="../../../assets/images/sns/contact_potrait.jpg" style="width: 50px;height: 50px;border-radius:50%" alt="">
+                </ion-avatar>
+                <div><span>{{item.latestMessage.senderUserName}}</span>
+                    <span style="float: right;    font-size: 14px;
+    color: darkgray;">{{item.latestMessage.sentTime}}</span></div>
+
+                <p>{{item.latestMessage.content.content}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button color="danger" (click)="deleteItem(position)">删除</button>
+            </ion-item-options>
+        </ion-item-sliding>-->
+
+    </ion-list>
+    <!--滚动加载-->
+    <div *ngIf="pageData&&pageData.data">
+        <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!doInfiniteConfig.loadEnd">
+            <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+    </div>
+</ion-content>

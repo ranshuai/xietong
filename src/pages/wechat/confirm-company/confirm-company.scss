@@ -1,0 +1,32 @@
+page-confirm-company {
+  .content{
+    p{
+      width: 70%;
+      margin: pxrem(80) 15%;
+      font-size: pxrem(28);
+      text-align: center
+    }
+  }
+  .backbtn{
+    background: #333;
+  }
+  .truebtn{
+    background: #fcd24a;
+  }
+  .backbtn{
+    position: absolute;
+    bottom: pxrem(20);
+  }
+  button{
+    width: 100%;
+    font-size: pxrem(30);
+    border-radius: 0 !important;
+    margin: 0 !important;
+    &.actived{
+      background: #000000;
+    }
+    span{
+      color: #fff;
+    }
+  }
+}

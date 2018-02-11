@@ -1,0 +1,250 @@
+contacts{
+.searchbar-has-focus {
+  width: 100% !important;
+}
+
+ion-content {
+  background-color: #e6e8e9 !important;
+}
+.toolbar{
+  background-color: white !important;
+}
+.searchbar{
+  background-color: #E6E8E9 !important;
+}
+.searchbar-input{
+  background-color: white !important;
+}
+
+.item-ios-light, .item-divider-ios-light{
+  background-color: #E6E8E9 !important;
+}
+
+
+.friends-title {
+  width: pxrem(106);
+  height: pxrem(33);
+  font-size: pxrem(36);
+  font-family: PingFangSC-Regular;
+  color: rgba(51, 51, 51, 1);
+  line-height: pxrem(70);
+}
+
+.letter {
+
+  display: flex;
+  //display: none;
+  width: 30px;
+  position: fixed;
+  right: 0;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  top: 60px;
+  z-index: 1000;
+  .letter-right {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    flex-flow: 1;
+    background: none;
+    border-top-left-radius: 6px;
+    align-items: center;
+    span {
+      display: block;
+      padding: 2px 3px;
+    }
+  }
+}
+
+.right-key {
+  font-size: pxrem(20);
+  color: #333333;
+}
+
+.letter:after {
+  display: block;
+  content: '';
+  clear: both;
+}
+
+.item-md {
+  padding-right: 40px
+}
+
+.contacts-list {
+  position: absolute;
+  //top: 50px;
+  width: 100%;
+}
+
+.letter-outer {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 120px; */
+  justify-content: center;
+}
+
+.letter-list {
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 120px; */
+  justify-content: center;
+}
+
+.contact-list {
+  border-width: 0px;
+  background-color: #fff;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  font-size: 16px;
+}
+
+.item.item-block {
+  padding: 0;
+}
+
+.item {
+  height: 55.625px;
+  margin-bottom: 0px !important;
+}
+
+ion-label.label{
+  line-height: initial !important;
+}
+
+
+.item-ios ion-avatar[item-left] {
+  margin: 8px 16px 8px 12px;
+}
+.item.item-block{
+  padding: 0 !important;}
+
+.contact-list div.label {
+  //padding: 8px 16px;
+  padding: 8px 16px;
+  background: #F5F5F5;
+}
+
+.contact-list-item {
+  border-color: #ddd;
+  background-color: #fff;
+  color: #444;
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: -1px;
+  padding: 16px;
+  border-width: 1px;
+  border-style: solid none;
+  font-size: 16px;
+}
+
+.contact-name {
+
+  padding-top: 26px;
+  padding-bottom: 0px;
+}
+
+.citybox-shortcuts {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  bottom: 0px;
+  width: 30px;
+  font-size: 11px;
+  z-index: 100;
+}
+
+.citybox-shortcuts p {
+
+  margin: 5px;
+}
+
+.citybox-shortcuts a {
+  text-align: center;
+  color: #A2A2A2;
+
+}
+
+.contacts-group ion-label {
+  margin: 0px;
+}
+
+.content-list {
+  width: 100%
+}
+
+.contacts-group .label-ios{
+  font-size:14px;
+  font-family:PingFang-SC-Medium;
+  color:rgba(163,163,163,1);
+}
+
+.attention {
+  //width: pxrem(110);
+  height: pxrem(54);
+  background: none;
+  outline-color: rgba(242, 120, 107, 1);
+  border-radius: pxrem(4);
+  margin-right: 24.5px !important;
+  padding: 12.5px 14px !important;
+  .button-inner {
+    font-size: pxrem(24);
+    font-family: PingFang-SC-Medium;
+    color: rgba(242, 120, 107, 1);
+  }
+}
+.has-attention {
+  background: none;
+  margin-right: 24.5px !important;
+  .button-inner {
+    font-size: 12px;
+    font-family: PingFang-SC-Medium;
+    color: rgba(163, 163, 163, 1);
+    margin-right: initial !important;
+  }
+}
+.eachother-attention {
+  background: none;
+  .button-inner {
+    //width: pxrem(71);
+    height: pxrem(23);
+    font-size: pxrem(24);
+    margin-right: 24.5px !important;
+    font-family: PingFang-SC-Medium;
+    color: rgba(163, 163, 163, 1);
+  }
+}
+
+.contacts-group {
+  height: pxrem(42);
+  background: rgba(230, 232, 233, 1);
+  .group-key {
+
+    font-size: pxrem(28);
+    font-family: PingFang-SC-Medium;
+    color: rgba(163, 163, 163, 1);
+  }
+}
+.contact-portrait {
+  border-radius: 50%;
+}
+
+.portrait {
+  width: pxrem(70);
+  height: pxrem(70);
+}
+.friend-nickname {
+
+  font-size: pxrem(28) !important;
+  font-family: PingFang-SC-Medium;
+  color: rgba(51, 51, 51, 1);
+}
+.contact-name{
+  font-size: 12px;
+}
+}

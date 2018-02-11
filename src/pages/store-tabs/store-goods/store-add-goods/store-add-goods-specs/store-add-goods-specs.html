@@ -1,0 +1,33 @@
+<!--
+  Generated template for the StoreAddGoodsSpecsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<div class="modal-wrap" (click)="closeModal()">
+  <div class="content-wrap" (click)="stopProp($event)">
+
+    <ion-header>
+      <ion-title>规格</ion-title>
+    </ion-header>
+
+    <ion-content>
+      <div class="list" *ngIf="specses">
+        <div class="item" *ngFor="let item of specses">
+          <div class="title">{{ item.specName }}</div>
+          <div class="con">
+            <a href="javascript:;" *ngFor="let specItem of item.specItemList" (click)="choice(item.specItemList, specItem)" [ngClass]="{ 'active': specItem.selected }">{{ specItem.itemName }}</a>
+          </div>
+        </div>
+      </div>
+    </ion-content>
+
+    <ion-footer>
+      <ion-toolbar>
+        <button ion-button class="submit" (click)="selected()" [ngClass]="{ 'active': canOver }" [disabled]="!canOver">选好了</button>
+      </ion-toolbar>
+    </ion-footer>
+
+  </div>
+</div>

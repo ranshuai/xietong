@@ -1,0 +1,66 @@
+goods-history-list {
+  .history_name{
+    padding: pxrem(25);
+  }
+  .title {
+    overflow: hidden;
+    padding: 0 pxrem(24);
+    border-bottom: 1px solid #c4c5c7;
+    line-height: pxrem(88);
+    color: #7f8185;
+    font-size: pxrem(30);
+    font-weight: 600;
+    .time {
+      float: left;
+    }
+    .edit-btn {
+      float: right;
+    }
+  }
+  .item {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #c4c5c7;
+    .img-wrap {
+      float: left;
+      width: pxrem(248);
+      height: pxrem(248);
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .name {
+      margin-left: pxrem(248);
+      // padding: pxrem(25);
+      font-size: pxrem(24);
+      line-height: pxrem(35);
+      color: #7b7d81;
+      text-align: left;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+    .price {
+      position: absolute;
+      left: pxrem(273);
+      bottom: pxrem(25);
+      font-size: pxrem(30);
+      color: $userPrimaryColor;
+    }
+    .buy-btn {
+      position: absolute;
+      bottom: pxrem(25);
+      right: pxrem(25);
+      width: pxrem(100);
+      height: pxrem(45);
+      border: 1px solid $userPrimaryColor;
+      border-radius: pxrem(5);
+      text-align: center;
+      line-height: pxrem(45);
+      font-size: pxrem(30);
+      color: $userPrimaryColor;
+    }
+  }
+}

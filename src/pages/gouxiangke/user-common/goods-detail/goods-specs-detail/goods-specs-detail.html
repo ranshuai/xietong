@@ -1,0 +1,55 @@
+<!--
+  Generated template for the GoodsSpecSelectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="wrap" (click)="closeModal()">
+  <div class="specs-wrap" *ngIf="goodsInfo" (click)="stopProp($event)">
+    <div class="colse-btn">
+      <ion-icon  class="ion-ios-icon-gxk-59" (click)="closeModal()"></ion-icon>
+    </div>
+    <div class="info">
+      <div class="img" [ngStyle]="{ 'background-image': goodsInfo.tpSpecGoodsPrice.image }"></div>
+      <div class="goods-title">
+        <div class="title">{{ goodsInfo.goodsName }}</div>
+        <div class="price">{{ goodsInfo.tpSpecGoodsPrice.price | currency }}</div>
+      </div>
+    </div>
+    <div class="specification_wrap">
+      <div class="specs-list" *ngFor="let specs of goodsInfo.tpSpecs">
+        <div class="item">
+          <div class="title">{{ specs.name }}</div>
+          <div class="btn-wrap">
+            <a href="javascript:;" *ngFor="let item of specs.items"
+               [ngClass]="{ 'active': item.active}"
+               (click)="changeSpecs(specs.items, item)">{{ item.item }}</a>
+          </div>
+        </div>
+      </div>
+      <div class="quantity">
+        <div class="title"> 
+          <div *ngIf="commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1'&& goodsInfo.tpSpecGoodsPrice.minBuyNum > 0 " class="goods_specs_self" >起批数量：{{goodsInfo.tpSpecGoodsPrice.minBuyNum}}</div>
+          <span>购买数量</span>
+          <span class="leave">库存{{ goodsInfo.tpSpecGoodsPrice.storeCount }}件</span>
+        </div>
+        <div class="num-wrap">
+          <ion-icon class="ion-ios-icon-gxk-69" (click)="delNum()"
+                    [ngClass]="{ 'can-click': goodsInfo.tpSpecGoodsPrice.buyCount > (goodsInfo.tpSpecGoodsPrice.minBuyNum || 1) }"></ion-icon>
+          <input text-center class="number" type="number" [(ngModel)]="goodsInfo.tpSpecGoodsPrice.buyCount" 
+          onkeyup="this.value=this.value.replace(/\D|^[0]/g,'')"/>
+          <ion-icon class="ion-ios-icon-gxk-70" (click)="addNum()"
+                    [ngClass]="{ 'can-click': goodsInfo.tpSpecGoodsPrice.storeCount - goodsInfo.tpSpecGoodsPrice.buyCount > 0 }"></ion-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ion-footer>
+  <div *ngIf="goodsInfo">
+    <goods-detail-footer *ngIf="view == 'goodsDetail'" [data]="goodsInfo" isModal="true" (addCartEmit)="addCart()"
+                         (nowBuyEmit)="nowBuy()"></goods-detail-footer>
+    <div *ngIf="view == 'shoppingCart'" class="footer-btn" (click)="submitModal()">确定</div>
+  </div>
+</ion-footer>

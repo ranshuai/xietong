@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" style=" width: 100%;
+    height: 100%;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=750, user-scalable=no">
+  <title>支付提示</title>
+  <script src="pingpp.js"></script>
+  <script src="jquery-3.2.1.min.js"></script>
+  <link rel="stylesheet" href="pay_tip.css">
+</head>
+<body class="fullscreen">
+<div id="payTip" class="hide">
+  <div class="J-weixin-tip weixin-tip">
+    <div class="weixin-tip-content">
+      请在菜单中选择在浏览器中打开,<br/>
+      以完成支付
+    </div>
+  </div>
+  <div class="J-weixin-tip-img weixin-tip-img"></div>
+
+  <div class="text-align">
+    <div class="weixin-tip-img-mine">
+    </div>
+    <p class="complete-tip">完成支付后，点击这里查看结果</p>
+
+  </div>
+</div>
+
+<div id="paySuccess" class="success-content">
+  <div class="success-top-content">
+    <img src="../assets/img/download-icon.png" class="success-img" alt="">
+
+  </div>
+  <p class="amount" id="success_money">0</p>
+  <p class="success-text">支付成功</p>
+  <p class="welcome-tip">欢迎您使用独角鲸！</p>
+  <!--<button padding ion-button block style="margin: 100px 20px 0;">查看订单状态</button>-->
+</div>
+
+<script>
+  /**
+   * 判断是否是微信浏览器
+   * @returns {boolean}
+   */
+  function isWeiXin() {
+    var ua = window.navigator.userAgent.toLowerCase();
+    console.log(ua);//mozilla/5.0 (iphone; cpu iphone os 9_1 like mac os x) applewebkit/601.1.46 (khtml, like gecko)version/9.0 mobile/13b143 safari/601.1
+    if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * 获取url参数
+   */
+
+  function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+  }
+
+  var host = "https://t.b.snsall.com/";
+  var countObj = {
+    queryCount: 1
+  }
+  //  ?page=pay-tip&orderSn=" + this.order.orderSn + "&all=" + true;
+  var openId = getQueryString("openId");
+//  var charge = getQueryString("charge");
+  var orderSn = getQueryString("orderSn");
+  var space = getQueryString("space");
+  var all = getQueryString("all");
+  var parent = getQueryString("parent");
+  console.log("传递过来的parent是：", parent);
+  var userId = getQueryString("userId");
+  var payAmount = getQueryString("payAmount");
+//  if(charge){
+//    charge=JSON.parse(charge);
+//  }
+
+  //var queryInterval=setInterval(queryPayStatus(),3000);
+  //   该页面只在微信中才开启定时查询
+  var reqUrl = 'https://t.b.snsall.com/order/queryOrderStatus' + "?orderSn=" + orderSn;
+  if (parent != undefined && parent != null && parent == 0) {
+    console.log("url即将拼接parent参数：", parent);
+    reqUrl = 'https://t.b.snsall.com/order/queryOrderStatus' + "?orderSn=" + orderSn + "&parent=" + parent;
+  }
+  //  console.log("reqUrl路径是：",reqUrl);
+  if (isWeiXin()) {
+    var queryInterval = setInterval(function () {
+      if (countObj.queryCount > 10) {
+//  查询超过10次，清除定时器
+        clearInterval(queryInterval);
+        return;
+      }
+      $.ajax({
+        url: reqUrl,
+        beforeSend: function (request) {
+//        request.setRequestHeader("userId", "2961");
+          request.setRequestHeader("userId", userId);
+//          request.setRequestHeader("space", "92E21DE17C0CE872");
+            request.setRequestHeader("space",space);
+          request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        },
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          countObj.queryCount++;
+          if (isWeiXin()) {
+            if (data.success) {
+              if (data.result.paySuccess) {
+//           清除定时器
+                clearInterval(queryInterval);
+                $("#payTip").css("display", "none");
+                $("#paySuccess").css("display", "block");
+              } else {
+                $("#payTip").css("display", "block");
+                $("#paySuccess").css("display", "none");
+              }
+            } else {
+              $("#payTip").css("display", "block");
+              $("#paySuccess").css("display", "none");
+            }
+          }
+
+        }, error: function (err) {
+          countObj.queryCount++;
+          console.log("支付失败");
+        }
+      })
+    }, 3000);
+  }
+  //  var host = "https://t.b.snsall.com/";
+  if (orderSn) {
+    $("#success_money").text("￥ " + payAmount);
+  }
+  if (isWeiXin()) {
+//    如果是微信中，展示提示界面
+    $("#payTip").css("display", "block");
+    $("#paySuccess").css("display", "none");
+    $("title").text("支付提示");
+  } else {
+    $("title").text("");
+    //   调用ping++支付
+//    pingppPay(host, orderSn, all, userId);
+
+
+    pingppPay(host, orderSn, all, userId);
+  }
+    /**轮询订单状态
+     * */
+    function queryPayStatus(orderSn) {
+      if (queryCount > 10) {
+//  查询超过10次，清除定时器
+        clearInterval(queryInterval);
+        return;
+      }
+      $.ajax({
+        url: reqUrl,
+        beforeSend: function (request) {
+//        request.setRequestHeader("userId", "2961");
+          request.setRequestHeader("userId", userId);
+//          request.setRequestHeader("space", "92E21DE17C0CE872");
+            request.setRequestHeader("space", space);
+          request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        },
+        type: "GET",
+        dataType: "json",
+        success: function (data) {
+          queryCount++;
+          if (data.success) {
+            if (data.paySuccess) {
+//           清除定时器
+              clearInterval(queryInterval);
+//            显示支付成功界面
+              $("#payTip").css("display", "none");
+              $("#paySuccess").css("display", "block");
+            } else {
+              $("#payTip").css("display", "block");
+              $("#paySuccess").css("display", "none");
+            }
+          } else {
+            $("#payTip").css("display", "block");
+            $("#paySuccess").css("display", "none");
+          }
+        }, error: function (err) {
+          queryCount++;
+          console.log("支付失败");
+        }
+      })
+
+    }
+
+    /**
+     * ping++支付 修改by mwh2018.1.30
+     * @param host
+     * @param orderSn
+     * @param all
+     * @param userId
+     */
+    function pay(charge) {
+      pingpp.createPayment(charge, function (result, err) {
+        console.log(result);
+        console.log(err.msg);
+        console.log(err.extra);
+        if (result == "success") {
+          alert("支付成功");
+          console.log("支付成功");
+          // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的支付结果都会跳转到 extra 中对应的 URL。
+        } else if (result == "fail") {
+          console.log("支付失败");
+          alert("支付失败");
+          // charge 不正确或者微信公众账号支付失败时会在此处返回
+        } else if (result == "cancel") {
+          console.log("支付取消");
+          alert("支付取消");
+          // 微信公众账号支付取消支付
+        }
+      });
+    }
+    function pingppPay(host, orderSn, all, userId) {
+      var url = host + 'payment/charge/alipay_wap/get';
+      var requestData = {
+        orderSn: orderSn,
+        all: all,
+      successUrl: "http://jsp.snsall.com/testPay/pay_success.html",
+//        successUrl: "http://wow.snsall.com/testPay/pay_success.html",
+        cancelUrl: ""
+      };
+      $.ajax({
+        type: "POST",
+        url: url,
+        beforeSend: function (request) {
+//        request.setRequestHeader("userId", "2961");
+          request.setRequestHeader("userId", userId);
+//          request.setRequestHeader("space", "92E21DE17C0CE872");
+            request.setRequestHeader("space", space);
+          request.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        },
+        data: JSON.stringify(requestData),
+        dataType: "json",
+        success: function (data) {
+//        alert("获取charge成功");
+          //   支付
+          pingpp.createPayment(data.result, function (result, err) {
+            console.log(result);
+            console.log(err.msg);
+            console.log(err.extra);
+            if (result == "success") {
+              alert("支付成功");
+              console.log("支付成功");
+              // 只有微信公众账号 wx_pub 支付成功的结果会在这里返回，其他的支付结果都会跳转到 extra 中对应的 URL。
+            } else if (result == "fail") {
+              console.log("支付失败");
+              alert("支付失败");
+              // charge 不正确或者微信公众账号支付失败时会在此处返回
+            } else if (result == "cancel") {
+              console.log("支付取消");
+              alert("支付取消");
+              // 微信公众账号支付取消支付
+            }
+          });
+        }
+      });
+    }
+</script>
+</body>
+</html>

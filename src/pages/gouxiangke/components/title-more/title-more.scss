@@ -1,0 +1,30 @@
+title-more {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+  }    
+  .wrap {
+    background: #ffffff;
+    overflow: hidden;
+    line-height: pxrem(110);
+    .left {
+      float: left;
+      margin-left: 42%;
+      font-size: pxrem(30);
+      color: #333;
+      font-size: pxrem(32);
+    }
+    .right {
+      float: right;
+      padding: 0 pxrem(30);
+      font-size: pxrem(24);
+      color: #A3A3A3;
+      vertical-align: middle;
+      ion-icon {
+        font-size: pxrem(24);
+        margin-top: pxrem(4);
+        border: 1px solid;
+        border-radius: 50%;
+      }
+    }
+  }
+}

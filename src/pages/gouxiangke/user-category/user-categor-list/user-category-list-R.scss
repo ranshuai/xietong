@@ -1,0 +1,106 @@
+user-category-list-R {
+.store_category_list{
+  li {
+        padding: pxrem(40) 0;
+        overflow: hidden;
+        border-bottom: 1px solid #e2e2e2;
+    }
+
+}
+.cart-btn .ios-cart{
+    font-size:pxrem(35); line-height:pxrem(60);
+}
+.min_buy_num_style{
+    padding-top: pxrem(35); font-size: pxrem(18);color: #a3a3a3;
+}
+
+
+    // 第一版的样式
+.aopollo-category-style-1 {
+    border: 0;
+    font-size: 0;
+    padding: pxrem(14) pxrem(2) 0 pxrem(2);
+    overflow: hidden;
+}
+.aopollo-category-style-1 li {
+    width: 32.8%;
+    float: left;
+    text-align: center;
+    margin-bottom: pxrem(10);
+}
+
+.aopollo-category-style-1 img {
+    width: pxrem(110);
+    height: pxrem(110);
+    border: 0;
+}
+.aopollo-category-style-1 span {
+    font-size: pxrem(24);
+    height: pxrem(68);
+    color: #686868;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: pxrem(68);
+}
+a {
+    display: inline-block;
+    text-decoration: none;
+    width: pxrem(110);
+}
+    height: 100%;
+    .scroll-content {
+        border: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    li {
+        // padding: pxrem(40) 0;
+        // overflow: hidden;
+        // border-bottom: 1px solid #e2e2e2;
+        .name {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        img {
+            float: left;
+            width: 34%;
+            height: pxrem(180);
+            border-radius: pxrem(10);
+        }
+        .cont {
+            height: pxrem(180);
+            width: 66%;
+            position: relative;
+            padding-left: pxrem(20);
+            float: left;
+            .price {
+                position: absolute;
+                bottom: pxrem(20);
+                left: pxrem(20);
+                font-size: pxrem(32);
+                color: #ff5050;
+            }
+            .cart-btn {
+                position: absolute;
+                right: pxrem(12);
+                bottom: pxrem(10);
+                background: #3191e1;
+                -webkit-box-shadow: 0 0 pxrem(20) 1px #3191e1;
+                box-shadow: 0 0 pxrem(20) 1px #3191e1;
+                overflow: hidden;
+                width: pxrem(60);
+                height: pxrem(60);
+                border-radius: pxrem(30);
+                text-align: center;
+                color: #fff;
+            }
+        }
+        span {
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}
+

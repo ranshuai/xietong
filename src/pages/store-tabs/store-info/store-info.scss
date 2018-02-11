@@ -1,0 +1,59 @@
+page-store-info {
+
+  .padding_20{padding: pxrem(20);}
+  .font_30{font-size: pxrem(30);}
+  .font_20{font-size: pxrem(20);}
+  .common_store_info_bg{
+    background: #fff;
+    img{
+      display: block;
+      width:100%;
+      height:pxrem(420);
+    }
+  }
+  .common_store_info{
+    position: relative;
+    .common_store_info_pic{
+      width: pxrem(134);
+      height: pxrem(134);
+      position: absolute;
+      left: 50%;
+      margin-left: pxrem(-67);
+      top:pxrem(-96);
+      img{
+        width: 100%;
+        height:100%;
+      }
+    }
+    padding: pxrem(40) pxrem(20) pxrem(20) pxrem(20);
+    font-size:pxrem(24);
+    line-height: pxrem(46);
+    text-align: center;
+    .common_store_info_money{
+      display: flex;
+      justify-content:center;
+      color:#41b3e2;
+      font-size: pxrem(30);
+      ._set_l{
+        width:50%;
+      }
+    }
+  }
+  .store_list_link{
+    li{
+      background: #fff;
+      margin-top:pxrem(10);
+      color:#444;
+      font-size: pxrem(28);
+      vertical-align: middle;
+    }
+    ion-icon{
+      vertical-align: middle;
+    }
+    span{
+      vertical-align: middle;
+      display: inline-block;
+      margin-left: pxrem(20);
+    }
+  }
+}

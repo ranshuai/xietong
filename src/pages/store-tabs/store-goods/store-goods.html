@@ -1,0 +1,54 @@
+<!--
+  Generated template for the StoreGoodsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-buttons start>
+      <button class="add-btn" (click)="goToAddPage()">添加商品</button>
+    </ion-buttons>
+
+    <ion-title>店铺商品</ion-title>
+
+    <ion-buttons end>
+      <button class="sort-btn" (click)="openSort();common.stopProp($event)" [ngClass]="{ 'active': sortOn }">排序</button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <ion-toolbar>
+
+    <div class="search-wrap">
+      <search-bar placeholder="输入关键词搜索" (searchEmit)="search($event)" right="true"></search-bar>
+    </div>
+
+  </ion-toolbar>
+
+
+    <ul class="nav-wrap">
+      <li [ngClass]="{ac:navIndex == 1}" (click) ="tabNav(1)">
+        出售中
+      </li>
+      <li [ngClass]="{ac:navIndex == 2}" (click) ="tabNav(2)">
+        已售罄
+      </li>
+      <li [ngClass]="{ac:navIndex == 3}" (click) ="tabNav(3)">
+        已下架
+      </li>
+    </ul>
+
+
+  <ul class="sort-wrap" *ngIf="sortOn">
+    <li (click)="clickSort('sales_sum');common.stopProp($event)">销量</li>
+    <li (click)="clickSort('comment_rank');common.stopProp($event)">好评</li>
+    <!-- <li (click)="clickSort('is_on_sale')">库存</li> -->
+    <li (click)="clickSort('store_count');common.stopProp($event)">上架</li>
+  </ul>
+
+</ion-header>
+<store-goods-list [orderBy]="orderBy"></store-goods-list>
+

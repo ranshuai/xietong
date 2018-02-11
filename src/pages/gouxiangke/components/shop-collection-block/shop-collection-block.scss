@@ -1,0 +1,60 @@
+page-shop-collection-block {
+ .collection_company .shop_list {
+    li {
+      overflow: hidden;
+      margin-bottom: pxrem(10);
+      background: white;
+      .shop-logo-box {
+        float: left;
+        width: pxrem(180);
+        height: pxrem(180);
+        .shop-logo{
+        width: pxrem(136);
+        height: pxrem(136);
+        margin: pxrem(20) auto 0;
+        border-radius: pxrem(10);  
+        background-repeat: no-repeat;
+        background-color: #ddd;
+        background-size: cover;
+        }
+      }
+      .shop-info{
+        float: left;
+        width: pxrem(400);
+        text-align: left;
+        .shop-name{
+          margin-top: pxrem(30);
+          font-size: pxrem(30);
+        }
+        .shop-data{
+          margin-top: pxrem(12);
+          font-size: pxrem(26);
+          color: #838589;
+          .sale-num{
+            margin-right: pxrem(30)  
+          }
+          .goods-count{
+            
+          }
+        }
+      }
+      .com-btn{
+        float: left;
+     width: pxrem(170);
+    text-align: center;
+    button{
+      width: pxrem(120);
+      height: pxrem(60);
+      margin-top: pxrem(60);
+      border: pxrem(2) solid $userPrimaryColor;
+      border-radius: pxrem(10);
+      background: white;
+      color: $userPrimaryColor;
+      line-height: normal;
+      font-size: pxrem(30);
+    }
+      }
+    }
+  }
+
+}

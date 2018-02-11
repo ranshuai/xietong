@@ -1,0 +1,34 @@
+emoji-picker {
+
+  .emoji-picker {
+    //height: 150px;
+    border-top: 1px solid #999;
+
+    .emoji-items {
+      padding: 0 10px;
+      width: 100%;
+      height: 100%;
+
+      .emoji-item {
+        display: block;
+        float: left;
+        width: 12.5%;
+        height: 42px;
+        font-size: 1.2em;
+        line-height: 42px;
+        text-align: center;
+        //margin-bottom: 10px;
+      }
+    }
+  }
+  ion-slides{
+    padding-left: 8px;
+  }
+  .swiper-slide{
+    padding-bottom: 20px;
+    display: inline-block !important;
+    text-align: left !important;
+  }
+
+
+}

@@ -1,0 +1,13 @@
+<!-- Generated template for the SelectAddressComponent component -->
+<div class="wrap" (click)="goToSelectAddress()">
+  <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+  <div *ngIf="!addressInfo" class="add-address">添加地址</div>
+  <div *ngIf="addressInfo" class="address-info">
+    <div class="person">
+      <span class="name">{{ addressInfo.consignee }}</span>
+      <span class="mobile">{{ addressInfo.mobile }}</span>
+      <span class="is-default" *ngIf="addressInfo.isDefault">默认地址</span>
+    </div>
+    <div class="address">{{addressInfo.provinceName}}{{addressInfo.districtName}}{{addressInfo.address}}</div>
+  </div>
+</div>

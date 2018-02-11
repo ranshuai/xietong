@@ -1,0 +1,122 @@
+[
+  {
+    "_objectInstance": {
+      "id": "115",
+      "rawId": null,
+      "displayName": "马文涛",
+      "name": {
+        "givenName": "马文涛",
+        "formatted": "马文涛"
+      },
+      "nickname": null,
+      "phoneNumbers": [
+        {
+          "id": "285",
+          "pref": false,
+          "value": "18234136558",
+          "type": "mobile"
+        }
+      ],
+      "emails": null,
+      "addresses": null,
+      "ims": null,
+      "organizations": null,
+      "birthday": null,
+      "note": null,
+      "photos": null,
+      "categories": null,
+      "urls": null
+    },
+    "rawId": "115"
+  },
+  {
+    "_objectInstance": {
+      "id": "115",
+      "rawId": null,
+      "displayName": "张丹娜",
+      "name": {
+        "givenName": "张丹娜",
+        "formatted": "张丹娜"
+      },
+      "nickname": null,
+      "phoneNumbers": [
+        {
+          "id": "285",
+          "pref": false,
+          "value": "15210719594",
+          "type": "mobile"
+        }
+      ],
+      "emails": null,
+      "addresses": null,
+      "ims": null,
+      "organizations": null,
+      "birthday": null,
+      "note": null,
+      "photos": null,
+      "categories": null,
+      "urls": null
+    },
+    "rawId": "115"
+  },
+  {
+    "_objectInstance": {
+      "id": "115",
+      "rawId": null,
+      "displayName": "刘鹏飞",
+      "name": {
+        "givenName": "刘鹏飞",
+        "formatted": "刘鹏飞"
+      },
+      "nickname": null,
+      "phoneNumbers": [
+        {
+          "id": "285",
+          "pref": false,
+          "value": "15652606177",
+          "type": "mobile"
+        }
+      ],
+      "emails": null,
+      "addresses": null,
+      "ims": null,
+      "organizations": null,
+      "birthday": null,
+      "note": null,
+      "photos": null,
+      "categories": null,
+      "urls": null
+    },
+    "rawId": "115"
+  },{
+  "_objectInstance": {
+    "id": "115",
+    "rawId": null,
+    "displayName": "韩非",
+    "name": {
+      "givenName": "韩非",
+      "formatted": "韩非"
+    },
+    "nickname": null,
+    "phoneNumbers": [
+      {
+        "id": "285",
+        "pref": false,
+        "value": "13436949772",
+        "type": "mobile"
+      }
+    ],
+    "emails": null,
+    "addresses": null,
+    "ims": null,
+    "organizations": null,
+    "birthday": null,
+    "note": null,
+    "photos": null,
+    "categories": null,
+    "urls": null
+  },
+  "rawId": "115"
+}
+
+]

@@ -1,0 +1,8 @@
+<!-- Generated template for the InputRadioGroupComponent component -->
+<div class="group-wrap">
+  <div class="input-radio" *ngFor="let item of data" (click)="checkRadio(item)">
+    <ion-icon class="ion-ios-icon-gxk-67" *ngIf="item.id == model"></ion-icon>
+    <ion-icon  class="ion-ios-icon-gxk-68" *ngIf="item.id != model"></ion-icon>
+    <span>{{ item.value }}</span>
+  </div>
+</div>

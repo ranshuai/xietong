@@ -1,0 +1,18 @@
+<!-- Generated template for the StoreOrderListComponent component -->
+<ion-content>
+
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="list">
+    <store-order-block *ngFor="let item of data" [data]="item" [view]="view" (refreshEmit)="refresh()"></store-order-block>
+
+  </div>
+  
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)" [enabled]="hasMore">
+    <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="no-more-data" *ngIf="!hasMore">没有更多了~</div>
+
+</ion-content>

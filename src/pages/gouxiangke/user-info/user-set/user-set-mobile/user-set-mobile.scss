@@ -1,0 +1,16 @@
+page-user-set-mobile {
+.toolbar-title {
+    color: $headerDefulColor;
+  }
+   .scroll-content{
+      background: #e6e8ea;
+    }
+    .prompt{
+      font-size: pxrem(24);
+      color: #666666;
+      padding: pxrem(30);
+    }
+    .item.item-block{
+      border-bottom: none !important;
+    }
+}

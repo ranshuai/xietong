@@ -1,0 +1,68 @@
+<!--
+  Generated template for the StoreDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-content> -->
+
+
+<ion-content>
+
+  <ion-header>
+
+    <ion-navbar>
+      <ion-title *ngIf="storeInfo">
+        <search-bar placeholder="搜索店内商品" (searchEmit)="search($event)"></search-bar>
+      </ion-title>
+
+      <ion-buttons right>
+        <button>
+          <ion-icon (click)="goToCategory()" class="ion-ios-icon-gxk-4" ></ion-icon>
+        </button>
+      </ion-buttons>
+    </ion-navbar>
+
+  </ion-header>
+
+  <div *ngIf="storeInfo">
+    <div class="store-info" id="store-info">
+      <div class="headpic">
+        <img *ngIf="!isLoading&&storeInfo.headPic" [src]="storeInfo.headPic">
+        <img *ngIf="!isLoading&&!storeInfo.headPic" src="./assets/img/shop-head-pic.png">
+      </div>
+      <div class="name">
+        <span>{{storeInfo.companyAlias || storeInfo.companyName }}</span>
+ 
+        <ion-icon class="ion-ios-icon-gxk-48 icon icon-ios" role="img"  *ngIf="httpConfig.clientType == '1'" (click)="chat_web()"></ion-icon>
+ 
+
+      </div>
+      <div class="intro">{{ storeInfo.unitIntroduction || '这家伙很懒，什么都没有留下！' }}</div>
+      <div class="address">
+        <ion-icon name="ios-address2"></ion-icon>
+        <span>{{ storeInfo.provinceName }}·{{ storeInfo.cityName }}</span>
+      </div>
+      <div class="collect">
+        <button ion-button outline>收藏者 {{ storeInfo.collectCounts }}</button>
+        <button ion-button outline *ngIf="!storeInfo.collectStatus" (click)="collect(1)">未收藏</button>
+        <button ion-button *ngIf="storeInfo.collectStatus" class="whiteBg" (click)="collect(0)">已收藏</button>
+      </div>
+    </div>
+
+    <div class="sub-nav">
+      <div class="left" [ngClass]="{ 'active': view == 'goods' }" (click)="view = 'goods'">商品</div>
+      <div class="right" [ngClass]="{ 'active': view == 'topic' }" (click)="view = 'topic'">专题</div>
+    </div>
+  </div>
+
+  <div *ngIf="storeInfo" class="list-wrap">
+    <div [ngShow]="view == 'goods'" style="width:100%">
+      <store-goods-list [storeId]="storeId"></store-goods-list>
+    </div>
+    <div [ngShow]="view == 'topic'" style="width:100%">
+      <store-topic-list [storeId]="storeId"></store-topic-list>
+    </div>
+  </div>
+
+</ion-content>

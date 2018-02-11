@@ -1,0 +1,20 @@
+user-category-list-L{
+  ul{
+    padding-left: 0;
+    li{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: pxrem(2);
+      margin-top: pxrem(2);
+      height: pxrem(116);
+      background: #e6e8ea;
+      text-align: center;
+    }
+    .ac{
+      color: #f27868;
+      background: white;
+    }
+  }
+
+}

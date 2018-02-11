@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "msg": "成功",
+  "status": 1,
+  "language": "zh_CN",
+  "result": [
+    {
+      "userId": 1,
+      "nickName": "张三",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "phoneNum":"13718549445",
+      "wayType": 0
+    },
+    {
+      "userId": 2,
+      "nickName": "张三疯",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "phoneNum":"13718549445",
+      "wayType": 1
+    },
+    {
+      "userId": 3,
+      "nickName": "张三疯了",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "phoneNum":"13718549445",
+      "wayType": 2
+    }
+  ],
+  "page": 0,
+  "pageNo": 0,
+  "totalPageCount": 0,
+  "totalCount": 0
+}

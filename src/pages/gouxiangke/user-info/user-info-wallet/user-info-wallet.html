@@ -1,0 +1,63 @@
+<!--
+  Generated template for the UserInfoWalletPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的钱包</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <div class="money_box">
+      <div class="big_money_box">
+        <span class="money_num" [moneyFormat]="nav.money"></span>
+        <span class="money_text">账户余额(元)</span>
+      </div>
+      <div class="user_money_box">
+        <div class="left_item">用户ID {{nav.userId}}</div>
+        <div class="right_item">
+          <div class="recharge" (click)="goToPageWallet(0)">充值</div>
+          <div class="withdraw_cash" (click)="goToPageWallet(1)">提现</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav_list">
+      <div class="nav_item" [ngClass]="{ 'active': nav.activeIndex==0 }" (click)="changeActive(0)">
+        收入/支出
+      </div>
+      <div class="nav_item" [ngClass]="{ 'active': nav.activeIndex==1 }" (click)="changeActive(1)">
+        充值/提现
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150" *ngIf="nav">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+  <section *ngIf="nav">
+    <div class="lzy_cell" *ngFor="let item of nav.list">
+      <div class="lzy_left_item">
+        <p class="item_type">{{item.description}}</p>
+        <p class="balance">余额：{{item.userBalance| currency}}</p>
+      </div>
+      <div class="lzy_right_item funin">
+        <p class="money" *ngIf="item.io == -1"> - {{item.money | currency}}</p>
+        <p class="money" *ngIf="item.io == 1"> + {{item.money | currency}}</p>
+        <p class="date_time">{{item.addTime | date:'yyyy-MM-dd HH:mm:ss'}}</p>
+      </div>
+    </div>
+  </section>
+  <div *ngIf="nav">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!nav.loadEnd">
+      <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+    <div class="no-more-data" *ngIf="nav.loadEnd">{{ '没有更多了~' }}</div>
+  </div>
+
+</ion-content>
+
+

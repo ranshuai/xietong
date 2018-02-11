@@ -1,0 +1,20 @@
+<div class="wrap" (click)="closeModal()">
+    <div class="wrap_content" (click)="$event.stopPropagation();">
+      <div class="alert_confirm_box">
+        <div class="alert_confirm_title" [class.alert_confirm_noMsg]="pageData.type=='noMsg'">
+          {{pageData.title}}
+        </div>
+        <!--<div *ngIf="pageData.type!='noMsg'" class="alert_confirm_msg" [class.alert_confirm_noMsg]="pageData.type=='noMsg'">-->
+        <div class="alert_confirm_msg" [class.hideStyle]="pageData.type=='noMsg'">
+          <ul>
+            <li class="flex_box flex-justify-center" >{{pageData.message}}</li>
+          </ul>
+        </div>
+  
+        <div class="alert_confirm_btnBox">
+            <div class="clear_btn flex_box flex-justify-center flex-aligin-center" (click)="closeModal()">{{pageData.cancel||'cancel'}}</div>
+            <div class="confirm_btn flex_box flex-justify-center flex-aligin-center" (click)="subMit()">{{pageData.submit||'submit'}}</div>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<!--
+  Generated template for the StoreGoodsSpecsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="wrap" (click)="closeModal()">
+  <div class="specs-wrap" *ngIf="goodsInfo" (click)="stopProp($event)">
+    <div class="colse-btn">
+      <ion-icon class="ion-ios-icon-gxk-59" (click)="closeModal()"></ion-icon>
+    </div>
+    <div class="info">
+      <div class="img" [ngStyle]="{ 'background-image': goodsInfo.tpSpecGoodsPrice.image }"></div>
+      <div class="goods-title">
+        <div class="title">{{ goodsInfo.goodsName }}</div>
+        <div class="price">{{ goodsInfo.tpSpecGoodsPrice.price | currency }}</div>
+      </div>
+    </div>
+    <div class="specs-list" *ngFor="let specs of goodsInfo.tpSpecs">
+      <div class="item">
+        <div class="title">{{ specs.name }}</div>
+        <div class="btn-wrap">
+          <a class="active" href="javascript:;" *ngFor="let item of specs.items">{{ item.item }}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

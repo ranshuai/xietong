@@ -1,0 +1,41 @@
+<!--
+  Generated template for the StoreAddGoods3Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>发布商品</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="grey-bg">
+
+  <div class="title">商品描述（必填）</div>
+
+  <ion-textarea placeholder="请输入..." [(ngModel)]="goodsRemark"></ion-textarea>
+
+  <!-- <div class="input-wrap">
+    <div class="input-item">
+      <div class="input-label">现在上架:</div>
+      <input-radio-group [(ngModel)]="isOnSale" [data]="isOnSaleList"></input-radio-group>
+    </div>
+  </div> -->
+
+  <div class="tip">
+    <div>注：</div>
+    <div>发布多属性的商品或完善商品信息，请您于PC端（电脑）浏览器登陆专业版商家后台，进行操作。</div>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+
+  <ion-toolbar>
+    <button ion-button class="submit" [disabled]="!goodsRemark" [ngClass]="{ 'active': goodsRemark }" (click)="submit()">提交</button>
+  </ion-toolbar>
+
+</ion-footer>

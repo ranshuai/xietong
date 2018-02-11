@@ -1,0 +1,84 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>订单改价</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div class="wrap" *ngIf="data">
+    <div class="line line-b order-goods">
+      <div class="goods-item" *ngFor="let goods of data.orderGoodsChangeVOS">
+        <ion-icon name="ios-goods-outline"></ion-icon>
+        <div class="r">
+          <div>商品名称：{{ goods.goodsName }}</div>
+          <div>属性：
+            <span>{{ goods.specName }}</span>
+          </div>
+          <div>
+            <div class="number">数量：
+              <span>{{ goods.goodsNum }}</span>
+            </div>
+            <div class="price">单价:
+              <span>{{ goods.originalPrice | currency }}</span>
+            </div>
+          </div>
+
+          <div class="price_box">
+              <div class="number">单品改价：
+                <span>
+                    <ion-input type="text" maxlength="10"
+                    [(ngModel)]="goods.editPrice" 
+                    (blur)="keyup($event,goods)"
+                    ></ion-input>
+                </span>
+              </div>
+          </div>
+
+          <div>
+              <div class="number">商品总价:
+                <span>{{ goods.editPrice*goods.goodsNum | currency }}</span>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="line line-b order-name">
+        <ion-icon name="ios-card"></ion-icon>
+        <div class="r">
+          <div class="r-l">费用总计：</div>
+          <div class="r-r">
+            <div>
+              <em>运费金额</em>{{ data.transportFee | currency }}
+            </div>
+            <div>
+                <em>优惠券金额</em>{{ data.couponPrice | currency }}
+            </div>
+            <div>
+                <em>订单优惠金额</em>{{ data.disCount | currency }}
+            </div>
+            <div>
+                <em>订单总金额</em>{{ data.totalAmount | currency }}
+            </div>
+            <div>
+              <em>实付金额</em>
+              <span>{{ data.goodsPrice | currency }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar no-padding>
+      <button  ion-button full  (click)="submit()">提交</button>
+  </ion-toolbar>
+</ion-footer>

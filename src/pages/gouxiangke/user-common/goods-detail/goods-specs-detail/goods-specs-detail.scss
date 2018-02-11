@@ -1,0 +1,142 @@
+page-goods-specs-detail {
+  .goods_specs_self{padding-bottom: pxrem(40);font-size: pxrem(18);color: #a3a3a3; }
+  .wrap {
+    height: 100%;
+  }
+  .specs-wrap {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-left: pxrem(24);
+    padding-bottom: pxrem(109);
+    background: #fff;
+    .colse-btn {
+      position: absolute;
+      top: pxrem(-8);
+      right: 0;
+      width: pxrem(72);
+      height: pxrem(72);
+      ion-icon {
+        float: right;
+        margin-top: pxrem(24);
+        margin-right: pxrem(24);
+        font-size: pxrem(24);
+      }
+    }
+    .info {
+      overflow: hidden;
+      border-bottom: 1px solid #e5e5e5;
+      .img {
+        float: left;
+        width: pxrem(130);
+        height: pxrem(130);
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 100%;
+        margin-top: pxrem(20);
+        border-radius: pxrem(5);
+        margin-bottom: pxrem(20);
+      }
+      .goods-title {
+        margin-left: pxrem(130);
+        padding-left: pxrem(15);
+        line-height: 1;
+        .title {
+          margin-top: pxrem(44);
+          font-size: pxrem(28);;
+        }
+        .min_Num{
+          margin-top: pxrem(20);
+          font-size: pxrem(20);
+        }
+        .price {
+          margin-top: pxrem(20);
+          font-size: pxrem(26);
+          color: $userPrimaryColor;
+        }
+      }
+    }
+    .specification_wrap{
+      height: pxrem(400);
+      overflow-y: scroll;
+      .specs-list {
+        padding-bottom: pxrem(20);
+        border-bottom: 1px solid #e5e5e5;
+        .title {
+          font-size: pxrem(28);
+          line-height: pxrem(105);
+        }
+        .btn-wrap {
+          overflow: hidden;
+          a {
+            overflow: hidden;
+            display: block;
+            float: left;
+            max-width: pxrem(700);
+            height: pxrem(46);
+            margin-right: pxrem(20);
+            // margin-top: pxrem(20);
+            padding: 0 pxrem(24);
+            border: 1px solid #f2786b;
+            border-radius: pxrem(24);
+            font-size: pxrem(24);
+            line-height: pxrem(46);
+            color: #f2786b;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &.active {
+              background: #f2786b;
+              color: #ffffff;
+            }
+            &.disabled {
+              border: 1px solid #c0c0c0;
+              background: #fff;
+              color: #C0C0C0;
+              pointer-events: none;
+            }
+          }
+        }
+      }
+      .quantity {
+        .title {
+          padding: pxrem(40) 0;
+          font-size: pxrem(28);
+          .leave {
+            margin-left: pxrem(20);
+            font-size: pxrem(22);
+            color: #838589;
+          }
+        }
+        .num-wrap {
+          ion-icon {
+            display: block;
+            float: left;
+            font-size: pxrem(48);
+            color: #939192;
+            &.can-click {
+              color: $userPrimaryColor;
+            }
+          }
+          .number {
+            display: block;
+            float: left;
+            max-width: pxrem(80);
+            color: $userPrimaryColor;
+            font-size: pxrem(30);
+          }
+          .text-input{
+            margin: pxrem(5) 0 0 0;
+          }
+        }
+      }
+    }
+  }
+  .footer-btn {
+    line-height: pxrem(98);
+    text-align: center;
+    font-size: pxrem(30);
+    color: #ffffff;
+    background: $userPrimaryColor;
+  }
+}

@@ -1,0 +1,54 @@
+<!-- Generated template for the StoreGoodsBlockComponent component -->
+<div class="store_goods_block">
+  <div class="goods-wrap">
+    <div class="check-btn" *ngIf="readyOtherEdit">
+      <ion-checkbox [(ngModel)]="data.ac" (ionChange)="updateStoreCacheInfo(data)"></ion-checkbox>
+    </div>
+    <div class="addbtn" (click)="addOther(data);commonProvider.stopProp($event)" *ngIf="other && readyOtherEdit != true">
+      <ion-icon class="ion-ios-icon-gxk-26"></ion-icon>
+    </div>
+    <div class="left">
+      <img [src]="data.originalImg">
+    </div>
+    <div class="right">
+      <div class="name-line">
+        <span class="proxy" *ngIf="data.proxyGoodid > 0 || other ">代售商品</span>{{ data.goodsName }}
+      </div>
+      <div class="extra">
+        <div class="l">好评：
+          <comment-rank [data]="data.commentRank || 0"></comment-rank>
+        </div>
+        <div class="r red">售价：
+          <span>{{ data.price | currency }}</span>
+        </div>
+      </div>
+      <div class="extra">
+        <div class="l">销量：{{ data.salesSum  || data.salesNum}}</div>
+        <div class="r blue" *ngIf="data.proxyGoodid > 0 || other">利润：
+          <span>¥{{data.proxyMission * data.price / 100 }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="lose-efficacy"></div>
+  </div>
+  <div class="goods-button R_clearfix" *ngIf="!other">
+
+      <button class="R_fr" *ngIf="data.proxyGoodid != 0 " (click)="$event.stopPropagation();cancelOther(data)">
+          取消代售
+        </button>
+
+    <button class="R_fr" *ngIf="(navIndex==1 || navIndex==2) && data.proxyGoodid == 0" (click)="$event.stopPropagation();downSale()">
+      下架
+    </button>
+    <button class="R_fr" *ngIf="(navIndex==3 || navIndex==2) && data.proxyGoodid == 0" (click)="$event.stopPropagation();upSale()">
+        上架
+      </button>
+    <button class="R_fr" (click)="$event.stopPropagation();clickSpread(data)">
+      推广
+    </button>
+    
+  </div>
+</div>
+
+
+

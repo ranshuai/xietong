@@ -1,0 +1,68 @@
+page-user-info-bank {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+  } 
+  .scroll-content {
+    background: #e6e8ea!important;
+  }
+  ion-footer {
+    .toolbar-background {
+      background: #f2786b!important;
+    }
+    ion-title .toolbar-title {
+        color: white!important;
+      }
+  }
+  .address_list {
+    .address_item {
+      padding: pxrem(32) pxrem(24);
+      overflow: hidden;
+      position: relative;
+      margin-bottom: pxrem(10);
+      background: white;
+      .left_content {
+        width: 92%;
+        float: left;
+        .user_box {
+          .user_box_name {
+            font-size: pxrem(28);
+          }
+          .user_box_phone {
+            font-size: pxrem(28);
+            margin-left: pxrem(30);
+          }
+          .address_badge {
+            display: inline-block;
+            width: auto!important;
+            padding: pxrem(2) pxrem(12);
+            margin-left: pxrem(22);
+            font-size: pxrem(22);
+            color: #f27868!important;
+            border:pxrem(2) solid #f27868;
+            border-radius: pxrem(20);
+          }
+        }
+        .address_box {
+          p {
+            margin: 0;
+            font-size: pxrem(24);
+            color: #a3a3a3;
+          }
+          margin-top: pxrem(8);
+        }
+      }
+      .right_content {
+        float: right;
+        position: absolute;
+        right: 3%;
+        top: 36%;
+        width:pxrem(72);
+        height: pxrem(72);
+        text-align: right;
+        ion-icon {
+          font-size: pxrem(36);
+        }
+      }
+    }
+  }
+}

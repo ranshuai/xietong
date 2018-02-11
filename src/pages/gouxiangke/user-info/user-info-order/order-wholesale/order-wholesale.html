@@ -1,0 +1,192 @@
+<!--
+  Generated template for the OrderWholesalePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>拼团详情</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content *ngIf="wholesale">
+  <section >
+    <div class="wholesale_header_box margin-bottom-10">
+      <div class="header_msg">
+        {{wholesale.orderGoodsSimpleVOS.remainQty == 0?'拼团成功！商家火速打包中~': '仅差'+wholesale.orderGoodsSimpleVOS.remainQty+'人,快邀请好友参团吧～'}}
+      </div>
+    </div>
+    <div class="confirm-box">
+      <span class="type">{{wholesale.orderGoodsSimpleVOS.qtyGroupOrder}}人团</span>
+    </div>
+    <div class="confirm-box margin-bottom-10">
+      <div class="confirm-content">
+        <div class="confirm-goods_img">
+          <div [ngBackImg]="{img:wholesale.orderGoodsSimpleVOS.goodsImg,type:1}"></div>
+        </div>
+        <div class="confirm-goods_content">
+          <div class="goods_title">{{wholesale.orderGoodsSimpleVOS.goodsName}}
+            <span class="goods_count">x{{wholesale.orderGoodsSimpleVOS.goodsNum}}</span>
+          </div>
+          <div class="goods_property">
+            <span class="property_list">{{wholesale.orderGoodsSimpleVOS.specKeyName}}</span>
+          </div>
+          <div class="goods_property">
+            <span class="property_price" [moneyFormat]="wholesale.orderGoodsSimpleVOS.goodsUnitPrice"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wholesale_user_box_warp">
+        <div class="group_complete" *ngIf="wholesale.groupUser.length==wholesale.groupUser.isEnd">
+          </div>
+    <div class="confirm-box">
+      <span class="type">成功参团</span>
+
+    </div>
+    <div class="wholesale_user_box" [ngClass]="{
+      'overflow_box_inherit':wholesale.groupUser.isEnd
+    }">
+     
+
+      <span class="wholesale_user_item" *ngFor="let item of wholesale.groupUser " [ngBackImg]="{img:item.userImg,type:1}" (click)="queryUser()"></span>
+    </div>
+  </div>
+    <div class="confirm-box">
+      <span class="type">成功参团</span>
+    </div>
+    <div class="wholesale_woring_box margin-bottom-10">
+      <ul>
+        <li>邀请好友参团</li>
+        <li>拼团成功分别发货</li>
+        <li>时间到，人未满拼团不成功</li>
+        <li>拼团不成功，款项退回账户</li>
+      </ul>
+    </div>
+    <div class="confirm-box">
+      <span class="type">更多拼团</span>
+    </div>
+     <div class="goods_list_box">
+      <div class="goods_list">
+        <div class="goods_item" (click)="goToGoodsDetail(item)"  *ngFor="let item of wholesale.groupsBuyGoods.goods" >
+          <div class="item_img" [ngBackImg]="{img:item.original_img,type:1}"></div>
+          <div class="name">{{item.goods_name}}</div>
+          <div class="price" [moneyFormat]="item.shop_price"></div>
+        </div>
+      </div>
+    </div> 
+  </section>
+</ion-content>
+<ion-footer *ngIf="wholesale">
+  <ion-toolbar>
+    <div class="footer_box">
+   <div class="endtime"> 
+       截止时间 {{ wholesale.orderGoodsSimpleVOS.groupEndTime | date : 'yyyy-MM-dd HH:mm:ss' }} 
+    </div>
+     <div class="footer_btn" (click)="clickShare()" [ngClass]="{
+      'active':wholesale&&!wholesale.isEnd
+    }"> 
+      召集小伙伴
+    </div>
+
+      <div *ngIf="wholesale&&wholesale.isEnd" class="footer_btn active" (click)="goTopage()"> 
+      查看订单
+    </div>
+    </div>
+ 
+  </ion-toolbar>
+</ion-footer>
+
+<ion-content *ngIf="userGroupInfo">
+  <section >
+    <div class="wholesale_header_box margin-bottom-10" [ngClass]="{'fail':userGroupInfo.state == 3}">
+      <div class="header_msg">
+        {{userGroupInfo.state == 2?'拼团成功！商家火速打包中~': '仅差'+(userGroupInfo.num - userGroupInfo.hasNum)+'人,快邀请好友参团吧～'}}
+      </div>
+    </div>
+    <div class="confirm-box">
+      <span class="type">{{userGroupInfo.num}}人团</span>
+    </div>
+    <div class="confirm-box margin-bottom-10">
+      <div class="confirm-content">
+        <div class="confirm-goods_img">
+          <div [ngBackImg]="{img:userGroupInfo.originalImg,type:1}"></div>
+        </div>
+        <div class="confirm-goods_content">
+          <div class="goods_title">{{userGroupInfo.goodsName}}
+            <span class="goods_count">x{{1}}</span>
+          </div>
+          <div class="goods_property">
+            <span class="property_list">{{userGroupInfo.specKeyName}}</span>
+          </div>
+          <div class="goods_property">
+            <span class="property_price" [moneyFormat]="userGroupInfo.promisonPrice"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wholesale_user_box_warp">
+        <div class="group_complete" *ngIf="userGroupInfo.state == 2">
+          </div>
+      <div class="confirm-box">
+        <span class="type">成功参团</span>
+
+      </div>
+      <div class="wholesale_user_box" [ngClass]="{
+        'overflow_box_inherit':''
+      }">
+        <span class="wholesale_user_item" *ngFor="let item of userGroupInfo.headPicList " [ngBackImg]="{img:item,type:1}"></span>
+      </div>
+    </div>
+    <div class="confirm-box">
+      <span class="type">成功参团</span>
+    </div>
+    <div class="wholesale_woring_box margin-bottom-10">
+      <ul>
+        <li>邀请好友参团</li>
+        <li>拼团成功分别发货</li>
+        <li>时间到，人未满拼团不成功</li>
+        <li>拼团不成功，款项退回账户</li>
+      </ul>
+    </div>
+    <div class="confirm-box">
+      <span class="type">更多拼团 </span>
+    </div>
+     <div class="goods_list_box">
+      <div class="goods_list">
+        <div class="goods_item" (click)="goToGoodsDetail(item)"  *ngFor="let item of (userGroupInfo.groupsBuyGoods && userGroupInfo.groupsBuyGoods.goods)" >
+          <div class="item_img" [ngBackImg]="{img:item.original_img,type:1}"></div>
+          <div class="name">{{item.goods_name}}</div>
+          <div class="price" [moneyFormat]="item.shop_price"></div>
+        </div>
+      </div>
+    </div> 
+  </section>
+</ion-content>
+<ion-footer *ngIf="userGroupInfo">
+    <ion-toolbar>
+      <div class="footer_box">
+     <div class="endtime" *ngIf="userGroupInfo.state == 1"> 
+         <!-- 截止时间 {{ userGroupInfo.timeLeft | date : 'yyyy-MM-dd HH:mm:ss' }}  -->
+         截止时间 {{ userGroupInfo.endTime}} 
+      </div>
+       <div class="footer_btn" (click)="clickShare()" [ngClass]="{
+        'active':userGroupInfo.state==1
+      }"> 
+        召集小伙伴
+      </div>
+  
+        <div *ngIf="wholesale&&wholesale.isEnd" class="footer_btn active" (click)="goTopage()"> 
+        查看订单
+      </div>
+      </div>
+   
+    </ion-toolbar>
+  </ion-footer>
+
+
+
+
+

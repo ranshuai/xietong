@@ -1,0 +1,45 @@
+<!--
+  Generated template for the SearchPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-toolbar>
+
+    <div class="input-wrap">
+      <ion-icon name="ios-search" (click)="search()"></ion-icon>
+      <form action=''>
+        <input id="search" type="text" autofocus placeholder="输入搜索商品名的关键词" [(ngModel)]="_searchValue" [ngModelOptions]="{standalone: true}" (input)="keyup($event)" (ngEnter)="search()">
+      </form>
+    </div>
+
+    <!-- <div class="cancel-btn" (click)="cancelSearch()">取消</div> -->
+    <div class="cancel-btn" (click)="search()">搜索</div>
+
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content>
+
+  <div class="search-keyword" *ngIf="!searchValue">
+    <div class="title">历史记录</div>
+    <div class="clear-history" (click)="clearHistory()" *ngIf="searchHistory.length > 0">清除记录</div>
+    <div class="keyword-wrap">
+      <div class="keyword-inner">
+        <div class="keyword" *ngFor="let item of searchHistory" (click)="selectKeyword(item)">{{ item }}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="keyword-wrap hot">
+    <div class="title">热搜关键词</div>
+    <div class="keyword"></div>
+  </div> -->
+  <goods-list-block [ngShow]="httpComplete && !isDataNull && searchValue" [loadParams]="searchParams" [noMoreText]="false" (complete)="onComplete($event)"></goods-list-block>
+
+  <div class="data-null" *ngIf="httpComplete && isDataNull && searchValue"></div>
+
+</ion-content>

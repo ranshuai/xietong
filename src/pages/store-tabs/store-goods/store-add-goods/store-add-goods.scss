@@ -1,0 +1,26 @@
+page-store-add-goods {
+  .grey-bg {
+    background: #e6e8e9;
+  }
+  .submit {
+    &.activated,
+    &.active {
+      background: #41b3e2;
+    }
+  }
+  .ion-ios-checkmark-circled:before{
+    content: "\e996" 
+  }
+  .ion-ios-circle:before{
+    content: "\e948" 
+  }
+
+  form .item.item-input{
+    padding:0 16px;
+  }
+  .button-inner{
+    color: #fff;
+  }
+
+  
+}

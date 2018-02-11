@@ -1,0 +1,42 @@
+page-add-store-goods {
+  text-align: center;
+  section{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: pxrem(386);
+    background-color: #fff;
+  }
+  .R_clearfix{
+    overflow: hidden;
+    padding: pxrem(74) 0;
+    font-size: pxrem(28);
+    color: #333;
+    div{
+      width: 50%;
+      float: left;
+      ion-icon{
+        width: pxrem(60);
+        height: pxrem(60);
+        line-height: pxrem(60);
+        background: #41B3E2;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: pxrem(40);
+      }
+    }
+  }
+  .add_store_goods_footer{
+    height:pxrem(98);
+    color: #fff;
+    background: #41B3E2;
+    line-height: pxrem(98);
+    font-size: pxrem(28);
+  }
+  ion-content{
+    background-color: transparent !important;
+    background-color: #41B3E2;
+  }
+  
+}

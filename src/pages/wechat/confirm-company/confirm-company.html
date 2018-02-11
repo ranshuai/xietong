@@ -1,0 +1,31 @@
+<!--
+  Generated template for the ConfirmCompanyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>资料审核中~</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="content">
+    <p>
+      您好！【{{company_name}}】欢迎您的加入，点击【确定】按钮，提交申请，点击【返回】回到商城首页！
+    </p>
+  </div>
+  <div class="confirm-btn">
+    <button ion-button class="backbtn" (click)="return()">返回</button>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <button ion-button class="truebtn" (click)="submit()">确定</button>
+  </ion-toolbar>
+</ion-footer>

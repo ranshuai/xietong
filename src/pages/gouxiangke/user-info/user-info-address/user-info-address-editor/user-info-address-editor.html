@@ -1,0 +1,47 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>地址管理</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="editorAddressForm" (ngSubmit)="onSubmit()">
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder="姓名" type="text" maxlength="6" formControlName="name"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="editorAddressMessages.name.errorMsg">{{editorAddressMessages.name.errorMsg}}</div>
+        </div>
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder="输入手机号" type="tel" maxlength="11" formControlName="phone"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="editorAddressMessages.phone.errorMsg">{{editorAddressMessages.phone.errorMsg}}</div>
+        </div>
+        <div class="from_inputItem showIcon" (click)="openAddressModal()">
+            <div class="city_item" [ngClass]="{'city_item_show':city}">{{!city?"省份、城市、区县是必填的":city}}</div>
+            <!-- <ion-item>
+           <ion-input placeholder="省份、城市、区县是必填的" type="text"   formControlName="city"
+           readonly="true"
+           ></ion-input>
+         </ion-item> -->
+        </div>
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder=" 详细地址，如街道、门牌号等…" type="text" maxlength="40" formControlName="address"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="editorAddressMessages.address.errorMsg">{{editorAddressMessages.address.errorMsg}}</div>
+        </div>
+        <div class="form_item   payType margin-bottom-10" (click)="setDefault()">
+            <span class="paytype_content">设置为默认地址</span>
+            <i class="check_icon" [ngClass]="{ 'active': isDefault}"></i>
+        </div>
+        <div class="form_item" (click)="deleateAddress()">
+            <span class="delete_address">删除信息</span>
+        </div>
+        <div class="from_subBtn" (click)="saveAddree()" [ngClass]="{'disabledBtn':!editorAddressForm.valid&&city}">保存</div>
+    </form>
+</ion-content>

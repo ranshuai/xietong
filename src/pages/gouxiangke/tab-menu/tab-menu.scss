@@ -1,0 +1,194 @@
+@import '../css/gxb_base';
+page-tab-menu {
+  .color1 {
+    .show-tabbar{
+      .tab-button[aria-selected=true] {
+        ion-icon {
+          color: #ff5050 !important;
+        }
+        span {
+          color: #ff5050 !important;
+        }
+      }
+    }
+  }
+  .color2 {
+    .show-tabbar{
+      .tab-button[aria-selected=true] {
+        ion-icon {
+          color: #3191e1 !important;
+        }
+        span {
+          color: #3191e1 !important;
+        }
+      }
+    }
+  }
+  .tabMenu {
+    max-width: pxrem(240);
+    min-height: pxrem(49);
+    font-size: pxrem(10);
+    color: #8c8c8c;
+    padding: 0 pxrem(2);
+    margin: 0;
+    text-align: center;
+    border-radius: 0;
+    position: relative;
+    z-index: 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: 0;
+    text-decoration: none;
+    background: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background: #f8f8f8;
+    z-index: 100;
+  }
+  .tabs-ios .tab-button{
+    float:left;
+  }
+  .showMenu{
+    visibility: visible !important;
+  }
+  .hideMenu{
+    visibility: hidden !important;
+  }
+  .tabs-ios .tab-button {
+    max-width: pxrem(240);
+    min-height: pxrem(49);
+    font-size: pxrem(10);
+    color: #8c8c8c !important;
+    padding: 0 pxrem(2);
+  }
+  .tabs-ios .tab-button-icon{
+    color: #8c8c8c !important;
+  }
+  .tabs-ios .tab-button[aria-selected=true] .tab-button-icon {
+    color: #f2786b !important;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+  }
+  //解决图标显示不全 by mwh
+  .tabs-ios .tab-button[aria-selected=true] {
+    color: #f2786b !important;
+  }
+  ion-tabs .tabbar .tab-button-icon{
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .toolbar-ios ion-title{
+    padding: 0 pxrem(90) 1px;
+  }
+  // 
+  .number-mark {
+    position: absolute;
+    top: pxrem(20);
+    right: pxrem(12);
+    width: pxrem(32);
+    height: pxrem(22);
+    border-radius: pxrem(11);
+    background: $userPrimaryColor;
+    color: #ffffff;
+    line-height: pxrem(20);
+    text-align: center;
+    font-size: pxrem(18);
+  }
+  // 消息菜单样式 by mwh
+  .hideMsgTab{
+    visibility: hidden !important;
+  }
+  .customeMsgTab{
+    height: 49px;
+    min-width:50px;
+    max-width: 120px;
+    position: fixed;
+    bottom: 0;
+    flex-direction: column;
+    display: inline-flex;
+    z-index: 1000;
+    align-items: center;
+  }
+  .msgTabContent{
+    margin-top: 4px;
+    height: 30px;
+    font-size: 25px;
+    color: #8c8c8c;
+    position: relative;
+  }
+  .msgTabContent:after{
+    position: absolute;
+    content: ' ';
+    top:0px;
+    height: 6px;
+    width: 6px;
+    right:-6px;
+    border-radius: 3px;
+    background-color: red;
+  }
+
+
+  .msg-badge{
+    width: 7px !important;
+    height: 7px !important;
+    border-radius: 50%;
+    line-height: 7px !important;
+    color: #f2786b;
+    font-size: 7px;
+    min-width: 6px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+ .point{
+    position: absolute;
+    content: ' ';
+    top:0px;
+    height: 6px;
+    width: 6px;
+    right:-6px;
+    border-radius: 3px;
+    background-color: red;
+  }
+  .hide{
+    display: none;
+  }
+  .show{
+    display: inline-block;
+  }
+  .msgText{
+    color: #8c8c8c !important;
+    font-size: 10px;padding: 0;
+    margin-top: -2px;
+  }
+  ion-searchbar .button-ios{
+    background-color: white;
+  }
+}

@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-navbar hideBackButton>
+    <!-- 变身按钮 -->
+    <ion-buttons left>
+      <change-role-btn></change-role-btn>
+    </ion-buttons>
+
+    <!-- <ion-title> -->
+
+      <!-- home页面顶部nav -->
+      <!-- <ion-slides (ionSlideDidChange)="changedNav()" slidesPerView="2.3" centeredSlides> -->
+      <!-- <ion-slides slidesPerView="2.3" centeredSlides>
+        <ion-slide (click)="changeNav(0)" [class.active]="activeIndex == 0">
+          <span>商城首页</span>
+        </ion-slide> -->
+        <!-- <ion-slide (click)="changeNav(1)" [class.active]="activeIndex == 1">
+          <span>拼团优惠</span>
+        </ion-slide> -->
+        <!-- <ion-slide (click)="changeNav(2)" [class.active]="activeIndex == 2">
+          <span>附近好货</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(3)" [class.active]="activeIndex == 3">
+          <span>浏览历史</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(4)" [class.active]="activeIndex == 4" *ngIf="getKnowledgeTab">
+          <span>知识共享</span>
+        </ion-slide>
+      </ion-slides> -->
+
+    <!-- </ion-title> -->
+    <!-- 搜索框 -->
+    <search-bar-fake placeholder="输入关键字、关键词"></search-bar-fake>
+    <!-- 搜索按钮 -->
+    <ion-buttons right>
+      <home-qrcode></home-qrcode>
+    </ion-buttons>
+    
+  </ion-navbar>
+</ion-header>
+
+<!-- swiper形式的页面主体 -->
+<!-- <ion-slides class="page-slides" (ionSlideDidChange)="changedPage()"> -->
+<!-- home页 -->
+<!-- <ion-slide class="page-slide">
+    <ion-nav [root]="userHomeHomePage"></ion-nav>
+  </ion-slide> -->
+<!-- 拼团优惠 -->
+<!-- <ion-slide class="page-slide"> 
+     <ion-nav [root]="userHomeGroupPage"></ion-nav>  
+  </ion-slide> -->
+<!-- 附近好货 -->
+<!-- <ion-slide class="page-slide">
+    <ion-nav [root]="userHomeNearbyPage"></ion-nav> 
+  </ion-slide> -->
+<!-- 浏览历史 -->
+<!-- <ion-slide class="page-slide">
+    <ion-nav [root]="userHomeHistoryPage"></ion-nav>
+  </ion-slide>
+</ion-slides> -->
+<ion-content class="grey-bg">
+
+  <!-- <ion-refresher (ionRefresh)="init($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher> -->
+
+  <!-- <div [ngShow]="view == 'home'"> -->
+  <div *ngIf="view == 'home'">
+    <page-user-home-home></page-user-home-home>
+  </div>
+
+  <!-- <div [ngShow]="view == 'group'"> -->
+  <!-- <div *ngIf="view == 'group'">
+    <page-user-home-group></page-user-home-group>
+  </div> -->
+
+  <!-- <div [ngShow]="view == 'nearby'"> -->
+  <!-- <div *ngIf="view == 'nearby'">
+    <page-user-home-nearby></page-user-home-nearby>
+  </div> -->
+
+  <!-- <div [ngShow]="view == 'history'"> -->
+  <!-- <div *ngIf="view == 'history'">
+    <page-user-home-history></page-user-home-history>
+  </div> -->
+
+  <!-- <div [ngShow]="view == 'share'"> -->
+    <!-- <div *ngIf="view == 'share'">
+      <page-user-home-share></page-user-home-share>
+    </div> -->
+
+</ion-content>

@@ -1,0 +1,75 @@
+page-store-goods {
+  ion-header {
+    ion-navbar.toolbar {
+      background:#fff;
+      ion-buttons {
+        .add-btn {
+          width: auto;
+          margin-left: pxrem(24);
+          font-size: pxrem(28);
+          color: #41b3e2;
+        }
+        .sort-btn {
+          width: auto;
+          margin-right: pxrem(24);
+          padding-right: pxrem(25);
+          font-size: pxrem(28);
+          background: url('../assets/img/right-arrow.png') no-repeat right center;
+          background-size: pxrem(12) pxrem(20);
+          &.active {
+            background: url('../assets/img/down-arrow.png') no-repeat right center;
+            background-size: pxrem(20) pxrem(12);
+          }
+        }
+      }
+    }
+    .search-wrap {
+      overflow: hidden;
+      padding: pxrem(15) pxrem(24);
+      border-top: 1px solid #c3c3c3;
+    }
+    .sort-wrap {
+      position: absolute;
+      top: pxrem(89);
+      right: pxrem(24);
+      z-index: 11;
+      width: pxrem(120);
+      border: 1px solid #e5e5e5;
+      border-bottom-left-radius: pxrem(10);
+      border-bottom-right-radius: pxrem(10);
+      background: #ffffff;
+      li {
+        font-size: pxrem(30);
+        line-height: pxrem(110);
+        text-align: center;
+        color: #7b7d81;
+        border-bottom: 1px solid #e5e5e5;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+  .nav-wrap{
+    overflow-y: hidden;
+    background: #fff;
+    li{
+      width:33%;
+      font-size: pxrem(26);
+      color: #575757 ;
+      height: pxrem(88);
+      float: left;
+      line-height: pxrem(88);
+      text-align: center;
+    }
+    .ac{
+      color:#41B3E2;
+      border-bottom: 1px solid #41B3E2;
+    }
+  }
+}
+.com-selling-mode{
+  text-align: left;
+  font-weight: 400;
+  font-size: pxrem(30);
+}

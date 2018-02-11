@@ -1,0 +1,312 @@
+<!--
+  Generated template for the UserInfoOrderPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>我的订单</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ul class="navlist">
+      <li (click)="changeNav('all')" [ngClass]="{ 'active': activeType == 'all'}">
+        <span>全部</span>
+      </li>
+      <li (click)="changeNav('obligation')" [ngClass]="{ 'active': activeType == 'obligation'}">
+        <span>待付款</span>
+      </li>
+      <li (click)="changeNav('toSendGoods')" [ngClass]="{ 'active': activeType == 'toSendGoods'}">
+        <span>待发货</span>
+      </li>
+      <li (click)="changeNav('waitReceived')" [ngClass]="{ 'active': activeType == 'waitReceived'}">
+        <span>待收货</span>
+      </li>
+      <li (click)="changeNav('evaluated')" [ngClass]="{ 'active': activeType == 'evaluated'}">
+        <span>待评价</span>
+      </li>
+    </ul>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150" *ngIf="orderList[activeType].clist">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+  <section *ngIf="activeType == 'all'">
+    <ul>
+      <li *ngFor="let item of orderList[activeType].clist">
+        <div class="order_shop_box">
+            <span class="shop">店铺:</span>
+          <span class="shop_title" >{{item.companyAlias|| item.storeName}}
+            <span class="span" (click)="servicePopup(item.storeId)">
+              <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
+            </span> 
+          </span>
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="shop_flag">待付款</span>
+          <span *ngIf="[0,1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">待发货</span>
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="shop_flag">待收货</span>
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==4" class="shop_flag">已完成</span>
+          <span *ngIf="item.aftersale == 0&&item.orderStatus==3 " class="shop_flag">已取消</span>
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" class="shop_flag">待评价</span>
+          <span *ngIf="item.payStatus == 1 && item.shippingStatus >= 1 && item.aftersale == -1" class="shop_flag">售后中</span>
+          <span *ngIf="item.payStatus == 1 && item.shippingStatus >= 1&& item.aftersale == 2" class="shop_flag">售后完成</span>
+          <span *ngIf="item.orderStatus == 5" class="shop_flag">已作废</span>
+        </div>
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x{{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="only_buttom_border">
+          <span class="good_count">
+            共{{item.qty}}件商品
+          </span>
+          <span>
+            合计:￥{{item.goodsPrice}}
+          </span>
+        </div>
+        <!-- 全部 -->
+        <div class="oderform_list_btns">
+          <!-- 代付款 -->
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="active" (click)="goToPage('订单确认',item)">去付款</span>
+          <!-- 待发货 -->
+          <span *ngIf="[0,1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
+
+          <!-- 代收货   -->
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" (click)="openChangeModal(item)">查看物流</span>
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="active" (click)="confirm_receiptPopup(item)">确认收货</span>
+
+          <!-- 待评价 -->
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('申请售后',item)">申请售后</span>
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('评价',item)">我要评价</span>
+
+          <!-- 已完成    -->
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==4" (click)="deleteOrderPop(item)">删除订单</span>
+
+          <!-- 已取消 -->
+          <span *ngIf="item.aftersale == 0&&item.orderStatus==3" (click)="deleteOrderPop(item)">删除订单</span>
+
+          <span *ngIf="item.groupOrder &&!(item.aftersale == 0&&item.orderStatus==3) " (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
+
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'obligation'">
+    <ul>
+      <li *ngFor="let item of orderList[activeType].clist">
+
+        <div class="order_shop_box">
+            <span class="shop">店铺:</span>
+            <span class="shop_title" >{{item.companyAlias|| item.storeName}}
+              <span class="span" (click)="servicePopup(item.storeId)">
+                <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
+              </span> 
+            </span>
+          <span class="shop_flag">待付款</span>
+
+        </div>
+
+
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x{{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="only_buttom_border">
+          <span class="good_count">
+            共{{item.qty}}件商品
+          </span>
+          <span>
+            合计:￥{{item.goodsPrice}}
+          </span>
+        </div>
+        <div class="oderform_list_btns">
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="active" (click)="goToPage('订单确认',item)">去付款</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'toSendGoods'">
+    <ul>
+      <li *ngFor="let item of orderList[activeType].clist">
+        <div class="order_shop_box">
+            <span class="shop">店铺:</span>
+            <span class="shop_title" >{{item.companyAlias|| item.storeName}}
+              <span class="span" (click)="servicePopup(item.storeId)">
+                <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
+              </span> 
+            </span>
+          <span class="shop_flag">待发货</span>
+
+        </div>
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x{{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="only_buttom_border">
+          <span class="good_count">
+            共{{item.qty}}件商品
+          </span>
+          <span>
+            合计:￥{{item.goodsPrice}}
+          </span>
+        </div>
+        <!-- 全部 -->
+        <div class="oderform_list_btns">
+          <span *ngIf="[0,1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
+          <span *ngIf="item.groupOrder" (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'waitReceived'">
+    <ul>
+      <li *ngFor="let item of orderList[activeType].clist">
+        <div class="order_shop_box">
+            <span class="shop">店铺:</span>
+            <span class="shop_title" >{{item.companyAlias|| item.storeName}}
+              <span class="span" (click)="servicePopup(item.storeId)">
+                <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
+              </span> 
+            </span>
+          <span class="shop_flag">待收货</span>
+
+        </div>
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x{{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="only_buttom_border">
+          <span class="good_count">
+            共{{item.qty}}件商品
+          </span>
+          <span>
+            合计:￥{{item.goodsPrice}}
+          </span>
+        </div>
+        <!-- 全部 -->
+        <div class="oderform_list_btns">
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" (click)="openChangeModal(item)">查看物流</span>
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="active" (click)="confirm_receiptPopup(item)">确认收货</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'evaluated'">
+    <ul>
+      <li *ngFor="let item of orderList[activeType].clist">
+        <div class="order_shop_box">
+            <span class="shop">店铺:</span>
+            <span class="shop_title" >{{item.companyAlias|| item.storeName}}
+              <span class="span" (click)="servicePopup(item.storeId)">
+                <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
+              </span> 
+            </span>
+          <span class="shop_flag">待评价</span>
+
+        </div>
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+          <div class="confirm-content">
+            <div class="confirm-goods_img">
+              <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>
+            </div>
+            <div class="confirm-goods_content">
+              <div class="goods_title">{{goods.goodsName}}
+                <span class="goods_count">x{{goods.goodsNum}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_list">{{goods.specKeyName}}</span>
+              </div>
+              <div class="goods_property">
+                <span class="property_price">￥{{goods.goodsUnitPrice}}</span>
+                <span class="property_msg">{{goods.returnStatus==0?'':(goods.returnStatus==1?'退货':'换货')}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="only_buttom_border">
+          <span class="good_count">
+            共{{item.qty}}件商品
+          </span>
+          <span>
+            合计:￥{{item.goodsPrice}}
+          </span>
+        </div>
+        <!-- 全部 -->
+        <div class="oderform_list_btns">
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('申请售后',item)">申请售后</span>
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('评价',item)">我要评价</span>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <div *ngIf="!isSrooll">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!orderList[activeType].loadEnd">
+      <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div class="no-more-data" *ngIf="orderList[activeType].loadEnd">{{orderList[activeType].clist.length>0?'没有更多了~':'您暂时还没有相关订单' }}</div>
+
+</ion-content>

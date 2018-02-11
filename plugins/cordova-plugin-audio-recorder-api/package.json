@@ -1,0 +1,98 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "https://github.com/emj365/cordova-plugin-audio-recorder-api",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "https://github.com/emj365/cordova-plugin-audio-recorder-api",
+        "spec": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:emj365/cordova-plugin-audio-recorder-api.git",
+          "sshUrl": "git+ssh://git@github.com/emj365/cordova-plugin-audio-recorder-api.git",
+          "httpsUrl": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+          "gitUrl": "git://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+          "shortcut": "github:emj365/cordova-plugin-audio-recorder-api",
+          "directUrl": "https://raw.githubusercontent.com/emj365/cordova-plugin-audio-recorder-api/master/package.json"
+        }
+      },
+      "/Users/lixiaofei/Desktop/Ionic2_InitTemplate/node_modules"
+    ]
+  ],
+  "_from": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+  "_id": "cordova-plugin-audio-recorder-api@0.0.6",
+  "_inCache": true,
+  "_location": "/cordova-plugin-audio-recorder-api",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "https://github.com/emj365/cordova-plugin-audio-recorder-api",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "https://github.com/emj365/cordova-plugin-audio-recorder-api",
+    "spec": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:emj365/cordova-plugin-audio-recorder-api.git",
+      "sshUrl": "git+ssh://git@github.com/emj365/cordova-plugin-audio-recorder-api.git",
+      "httpsUrl": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+      "gitUrl": "git://github.com/emj365/cordova-plugin-audio-recorder-api.git",
+      "shortcut": "github:emj365/cordova-plugin-audio-recorder-api",
+      "directUrl": "https://raw.githubusercontent.com/emj365/cordova-plugin-audio-recorder-api/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git#c4c95d0c28b21b5c97111fba54c9e525848a49a4",
+  "_shasum": "0e085f0ed36b17abf2c91310b6c9ad317db99ccb",
+  "_shrinkwrap": null,
+  "_spec": "https://github.com/emj365/cordova-plugin-audio-recorder-api",
+  "_where": "/Users/lixiaofei/Desktop/Ionic2_InitTemplate/node_modules",
+  "author": {
+    "name": "emj365"
+  },
+  "bugs": {
+    "url": "https://github.com/emj365/cordova-plugin-audio-recorder-api/issues"
+  },
+  "cordova": {
+    "id": "cordova-plugin-audio-recorder-api",
+    "platforms": [
+      "android"
+    ]
+  },
+  "cordova_name": "AudioRecorderAPI",
+  "dependencies": {},
+  "description": "This plugin is a Cordova audio recorder plugin which works as API.",
+  "devDependencies": {},
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.0.0"
+    }
+  ],
+  "gitHead": "c4c95d0c28b21b5c97111fba54c9e525848a49a4",
+  "homepage": "https://github.com/emj365/cordova-plugin-audio-recorder-api#readme",
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-plugin-audio-recorder-api",
+  "optionalDependencies": {},
+  "platforms": [
+    "android"
+  ],
+  "readme": "Cordova Audio Recorder API Plugin\n==============================\n\n[![Join the chat at https://gitter.im/emj365/cordova-plugin-audio-recorder-api](https://badges.gitter.im/emj365/cordova-plugin-audio-recorder-api.svg)](https://gitter.im/emj365/cordova-plugin-audio-recorder-api?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)\n\nIntroduction:\n--------------\n\nThis plugin is a Cordova audio recorder plugin that works as API.\n\nDifferent than http://plugins.cordova.io/#/package/org.apache.cordova.media-capture this plugin does not request the native recorder app (system default recorder) and active recording manually.\n\nSupports platforms:\n--------------------\n\n- iOS\n- Android\n\nInstall:\n---------\n\n```bash\n$ cordova plugin add cordova-plugin-audio-recorder-api\n```\n\nHow to use:\n------------\n\n```javascript\nvar recorder = new Object;\nrecorder.stop = function() {\n  window.plugins.audioRecorderAPI.stop(function(msg) {\n    // success\n    alert('ok: ' + msg);\n  }, function(msg) {\n    // failed\n    alert('ko: ' + msg);\n  });\n}\nrecorder.record = function() {\n  window.plugins.audioRecorderAPI.record(function(msg) {\n    // complete\n    alert('ok: ' + msg);\n  }, function(msg) {\n    // failed\n    alert('ko: ' + msg);\n  }, 30); // record 30 seconds\n}\nrecorder.playback = function() {\n  window.plugins.audioRecorderAPI.playback(function(msg) {\n    // complete\n    alert('ok: ' + msg);\n  }, function(msg) {\n    // failed\n    alert('ko: ' + msg);\n  });\n}\n```\n\nWhere are files save?\n---------------------\n\niOS: `/var/mobile/Applications/<UUID>/Library/NoCloud/<file-id>.m4a`\nAndroid: `/data/data/<app-id>/files/<file-id>.m4a`\n\nCopy File to Another Place\n----------------------------\n\nExample with file plugin: http://ngcordova.com/docs/plugins/file/\n\niOS: `/var/mobile/Applications/<UUID>/Documents/new_file.m4a`\nAndroid: `<sdcard>/new_file.m4a`\n\n```javascript\nwindow.plugins.audioRecorderAPI.record(function(savedFilePath) {\n  var fileName = savedFilePath.split('/')[savedFilePath.split('/').length - 1];\n  var directory;\n  if (cordova.file.documentsDirectory) {\n    directory = cordova.file.documentsDirectory; // for iOS\n  } else {\n    directory = cordova.file.externalRootDirectory; // for Android\n  }\n  $cordovaFile.copyFile(\n    cordova.file.dataDirectory, fileName,\n    directory, \"new_file.m4a\"\n  )\n    .then(function (success) {\n      alert(JSON.stringify(success));\n    }, function (error) {\n      alert(JSON.stringify(error));\n    });\n}, function(msg) {\n  alert('ko: ' + msg);\n}, 3);\n```\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emj365/cordova-plugin-audio-recorder-api.git"
+  },
+  "version": "0.0.6"
+}

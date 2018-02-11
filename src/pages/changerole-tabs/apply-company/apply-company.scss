@@ -1,0 +1,85 @@
+page-apply-company {
+    ion-header ion-navbar ion-buttons {
+        line-height: pxrem(80);
+    }
+    .gray-bg {
+        background: $greyBackground;
+    }
+    .input-title {
+        width: 100%;
+        padding: pxrem(14) 0 pxrem(14) pxrem(30);
+        font-size: pxrem(26);
+    }
+    .input-wrap {
+        position: relative;
+        margin-bottom: pxrem(8);
+        .message {
+            position: absolute;
+            top: 0;
+            right: pxrem(24);
+            font-size: pxrem(28);
+            color: #f2786b;
+            line-height: pxrem(100);
+        }
+        .input-cover {
+            display: none;
+        }
+        .label {
+            width: pxrem(250);
+        }
+    }
+    .img-input {
+        margin-bottom: pxrem(8);
+        background: #ffffff;
+        .title {
+            padding-left: pxrem(24);
+            border-bottom: pxrem(1) solid #e5e5e5;
+            line-height: pxrem(105);
+            font-size: pxrem(28);
+        }
+        .tip {
+            padding-left: pxrem(24);
+            line-height: pxrem(105);
+            color: #a3a3a3;
+            font-size: pxrem(24);
+        }
+        .img-wrap {
+            padding: 0 pxrem(24);
+            overflow: hidden;
+            .left {
+                float: left;
+                width: 50%;
+            }
+            .right {
+                float: left;
+                width: 50%;
+                .img {
+                    border: pxrem(1) dotted #a3a3a3;
+                }
+            }
+            .img {
+                width: pxrem(331);
+                height: pxrem(204);
+            }
+            .name {
+                font-size: pxrem(24);
+                color: #a3a3a3;
+                line-height: pxrem(100);
+                text-align: center;
+            }
+        }
+    }
+    .toolbar-content {
+        height: 100%;
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: pxrem(30);
+            background: #a3a3a3;
+            color: #ffffff;
+            &.active {
+                background: #242d3c;
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+<!--融云接收消息组件-->
+
+<rongim-message  *ngIf="httpConfig.clientType == '1'"></rongim-message>
+
+<div id="geolocationMap" *ngIf="mainCtrl.httpService.config.platform=='web'"></div>
+
+<!-- 加载中start -->
+<div class="impower_loading" *ngIf="!commonModel.APP_INIT_LOADING">
+    <div class="pic"></div>
+</div>
+<!-- 加载中end -->
+<!-- 加载报错start -->
+<div class="impower_loading" *ngIf="commonModel.APP_INIT_ERROR" (click)="appInit()">
+    <div class="error_box">
+            <div class="error_img"></div>
+            <div class="error_msg">点击屏幕重试</div>
+    </div>
+</div>
+<!-- 加载报错end -->
+
+<ion-nav #myNav [root]="rootPage" swipeBackEnabled="false"></ion-nav>

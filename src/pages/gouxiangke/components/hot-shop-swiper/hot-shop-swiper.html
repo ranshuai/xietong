@@ -1,0 +1,22 @@
+<!-- Generated template for the HotShopSwiperComponent component -->
+<title-more class="title" title="热 · 门 · 店 · 铺" transparent="true" noMore="true"></title-more>
+<div class="hot-showp-wrap">
+  <ion-slides slidesPerView="1.43" centeredSlides spaceBetween="10" *ngIf="data">
+    <ion-slide *ngFor="let item of data">
+      <div class="info-wrap">
+        <div class="head-wrap" id="head-wrap">
+        </div>
+        <div class="head-pic">
+            <img *ngIf="item.headPic" [src]="mainCtrl.imgFilter(item.headPic,imgSpace)">
+        </div>
+        <div class="name">{{ item.companyAlias || item.storeName }}</div>
+        <!-- <div class="introduce">{{ item.unitIntroduction  || '店家很懒,什么也没有留下' }}</div> -->
+        <div class="img-wrap">
+          <img [src]="mainCtrl.imgFilter(img.original_img,imgSpace) || mainCtrl.imgFilter(img.originalImg,imgSpace)" *ngFor="let img of item.goods">
+        </div>
+        <a href="javascript:;" class="enter-button" (click)="enterStore(item)">进店选购</a>
+      </div>
+    </ion-slide>
+  </ion-slides>
+
+</div>

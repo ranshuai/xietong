@@ -1,0 +1,15 @@
+<!-- Generated template for the GoodsSaleInfoComponent component -->
+<div class="sale-wrap" *ngIf="data">
+  <div class="left">促销:</div>
+  <div class="right">
+    <div class="line" *ngFor="let item of data" [ngClass]="{ 'right-arrow': item.activityType == 2 }" (click)="openGiftDetail(item)">
+      <span class="sign">{{ item.activityType == 1 ? '优惠券' : '买赠' }}</span>
+      <span class="con">{{ item.useCondition }}</span>
+      <!-- <ion-icon  class="ion-ios-icon-gxk-51"></ion-icon> -->
+    </div>
+  </div>
+  <div *ngIf="data.length > 1">
+    <div class="left">限制:</div>
+    <div class="right tip">不可同时使用</div>
+  </div>
+</div>

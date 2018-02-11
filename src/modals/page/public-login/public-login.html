@@ -1,0 +1,78 @@
+<!--
+  Generated template for the PublicLoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <!-- <ion-buttons left>
+            <button ion-button icon-only>
+                <ion-icon class="_setback" name="ios-back" md="md-arrow-back" style=""></ion-icon>
+            </button>
+        </ion-buttons> -->
+        <ion-title>登录
+            <span class="register_btn" (click)="navCtrl.push('PublicRegisterPage')">注册</span>
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content>
+    <ul class="navlist">
+        <li [ngClass]="{'active':loginType=='phone'}" (click)="changeLogin('phone')">手机号登录</li>
+        <li [ngClass]="{'active':loginType=='password'}" (click)="changeLogin('password')">密码登录</li>
+    </ul>
+    <section class="form_info_box">
+        <div class="form_item">
+            <ion-input type="tel" placeholder="请输入手机号" maxlength="11" [(ngModel)]="pageData.mobile"></ion-input>
+        </div>
+        <div class="form_item" *ngIf="loginType=='phone'">
+            <ion-input maxlength="4" placeholder="请输入图形验证码" (ionChange)="checkImgCode()" [(ngModel)]="pageData.imageCode"></ion-input>
+            <div class="imgcode" [ngImgCode]="{img:imgCode.img}" (click)="getImgCode()" *ngIf="!imgCode.error"></div>
+            <div class="imgcode" (click)="getImgCode()" *ngIf="imgCode.error">
+                <img src="assets/img/img_code.png">
+            </div>
+
+        </div>
+        <div class="form_item" *ngIf="loginType=='phone' ">
+            <ion-input maxlength="4" [(ngModel)]="pageData.msgCode " placeholder="请输入短信验证码 "></ion-input>
+            <div class="phonecode" *ngIf="mainCtrl.commonModel.interva.login==60 " (click)="getPhoneCode() ">获取验证码</div>
+            <div class="phonecode_btn " *ngIf="mainCtrl.commonModel.interva.login!=60 ">{{mainCtrl.commonModel.interva.login}}S</div>
+        </div>
+        <div class="form_item " *ngIf="loginType=='password' ">
+            <ion-input name="Password" [(ngModel)]="pageData.password" type="{{showPassword}}" maxlength="10" minlength="6" placeholder="请输入密码"
+                clearOnEdit="false">
+            </ion-input>
+            <input type="password" name="Password" style="display:none">
+            <ion-icon class="password_icon icon ion-ios-icon-gxk-75" [showPassicon] (click)="showPassWord()"></ion-icon>
+        </div>
+        <div class="forgetPaw" *ngIf="loginType=='password'" (click)="navCtrl.push('PublicResetPasswordPage')">
+            <p>忘记密码?</p>
+        </div>
+        <div class="form_subBtn" (click)="login()" [ngClass]="{ 'active':(loginType=='phone' &&pageData.imageCode&&pageData.mobile&&pageData.msgCode)||(loginType=='password' &&pageData.password)} ">
+            登录
+        </div>
+
+        <div class="other_box " *ngIf="Platform =='android' && httpConfig.clientType == 1 ">
+            <div class="other_title ">其他方式</div>
+            <ul class="m-imgicon ">
+                <li class="icon_item ">
+                    <div class="linkImgIcon ">
+                        <span class="c-imgicon " (click)="thirdPartyLogin('weixin')"></span>
+                    </div>
+                </li>
+                <li class="icon_item ">
+                    <div class="linkImgIcon ">
+                        <span class="c-imgicon qq" (click)="thirdPartyLogin('qq')"></span>
+                    </div>
+                </li>
+                <li class="icon_item ">
+                    <div class="linkImgIcon " (click)="thirdPartyLogin('weibo')">
+                        <span class="c-imgicon weibo"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </section>
+
+</ion-content>

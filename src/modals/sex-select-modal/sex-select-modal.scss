@@ -1,0 +1,34 @@
+sex-select-modal {
+    .modal-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        margin: 0 auto;
+        .action-sheet-container {
+            padding: 20px;
+            .action-sheet-group {
+                border-radius: pxrem(20);
+                margin-bottom: 0px;
+                overflow: hidden;
+                background: #fff;
+                .item-button,
+                .sheet-cancel {
+                    margin: 0;
+                    // padding: 36px;
+                    min-height:pxrem(120);
+                    line-height: pxrem(120);
+                    border-bottom: 1 solid #d6d6da;
+                    color: #007aff;
+                    font-size: pxrem(30);
+                    text-align: center;
+                }
+            }
+        }
+    }
+}

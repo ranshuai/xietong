@@ -1,0 +1,11 @@
+<ion-content>
+  <ion-slides (ionSlideDidChange)="slideChanged()" pager="true">
+    <ion-slide *ngFor="let item of imgList">
+      <div class="guideImage"  [ngBackImg]="{
+        img:item
+      }">
+
+      </div>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

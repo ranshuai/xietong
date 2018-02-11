@@ -1,0 +1,37 @@
+<!--
+  Generated template for the StoreClientBenPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>客户薄</ion-title>
+  </ion-navbar>
+  <div class="store_client_search_wap">
+    <div class="store_client_search">
+      <input type="text" placeholder="搜索用户名">
+      <ion-icon name="ios-search"></ion-icon>
+    </div>
+  </div>
+</ion-header>
+
+<ion-content>
+  <ul class="store_client_ben">
+    <li *ngFor="let key of letterList">
+        <div>
+            <h3>{{key}}</h3>
+            <div class="item_content" *ngFor="let item of getStoreClinentData[key];">
+                <img src={{item.userHeadPic}} alt="">
+                <span>
+                    {{item.userName}}
+                </span>
+            </div>
+        </div>
+    </li>
+  </ul>
+  <ul class="client_sort_letter">
+    <li *ngFor="let item of letterList">{{item}}</li>
+  </ul>
+</ion-content>

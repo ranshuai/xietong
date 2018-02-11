@@ -1,0 +1,98 @@
+page-add-friend {
+  ion-content{
+    background-color: #f4f4f4 !important;
+  }
+  .friends-title {
+    width: pxrem(106);
+    height: pxrem(33);
+    font-size: pxrem(36);
+    font-family: PingFangSC-Regular;
+    color: rgba(51, 51, 51, 1);
+    line-height: pxrem(70);
+  }
+  .item.item-block{
+    border-bottom:.5px solid #cccccc !important;
+  }
+.contactItem{
+  height:pxrem(120);
+  background:rgba(255,255,255,1);
+  border-top: 1px solid #CCCCCC;
+  border-bottom: 1px solid #CCCCCC;
+
+padding: 0 !important;
+
+
+  .label-ios{
+    margin: 3px 8px 11px 0;
+    line-height:initial !important;
+  }
+}
+  .pageContent{
+    background-color:rgba(230,232,233,1);
+
+  }
+  .searchItem{
+    padding:0 !important;
+    height:pxrem(92);
+    background:rgba(255,255,255,1);
+    margin: pxrem(21) 0 !important;
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    ion-label.label{
+      width:100% !important;
+      max-width:100% !important;
+    }
+  }
+  .userNameLabel{
+    padding:0 !important;
+    font-size:pxrem(30);
+    font-family:PingFang-SC-Medium;
+    color:rgba(204,204,204,1);
+  }
+  .userNameIcon{
+    margin: pxrem(30) pxrem(30) pxrem(30) pxrem(60);
+    font-size: pxrem(30);
+  }
+  .inputTip{
+    font-size:pxrem(30);
+    font-family:PingFang-SC-Medium;
+    color:rgba(204,204,204,1);
+  }
+  .avatar{
+    padding:0 !important;
+    margin: pxrem(24) pxrem(27) pxrem(24) pxrem(30) !important;
+    width:pxrem(72);
+    height:pxrem(72);
+
+    background: #1aad19;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    ion-icon{
+      font-size: pxrem(44);
+    }
+  }
+  .phone{
+    font-size:pxrem(32);
+    font-family:PingFang-SC-Medium;
+    color:rgba(51,51,51,1);
+  }
+.contact{
+  font-size:pxrem(26);
+  font-family:PingFang-SC-Medium;
+  color:rgba(204,204,204,1);
+}
+  .icon-phone{
+    color:white;
+  }
+.custome-right-arrow{
+  width: pxrem(16) !important;
+  height: pxrem(28) !important;
+  color: #CCCCCC;
+  max-height: pxrem(28);
+  min-height: initial;
+  font-size: initial;
+
+}
+}

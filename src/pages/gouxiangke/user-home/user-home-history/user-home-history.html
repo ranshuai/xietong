@@ -1,0 +1,17 @@
+<!--
+  Generated template for the UserHomeHistoryPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-content> -->
+
+  <!-- <ion-refresher (ionRefresh)="init($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher> -->
+
+  <goods-history-list [data]="historyList"></goods-history-list>
+
+  <load-more (doInfiniteEmit)="loadMore($event)" noMoreText="没有更多了~"></load-more>
+
+<!-- </ion-content> -->

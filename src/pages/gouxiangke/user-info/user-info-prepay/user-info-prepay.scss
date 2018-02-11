@@ -1,0 +1,75 @@
+page-user-info-prepay {
+
+  .money_box {
+    background-color: white;
+    .big_money_box {
+      padding: pxrem(66) pxrem(24);
+      text-align: center;
+      .money_num {
+        display: block;
+        font-size: pxrem(78);
+        font-family: '苹方 粗体';
+        color: $userPrimaryColor;
+      }
+      .money_text {
+        display: block;
+        color: #5b5b5b;
+        font-size: pxrem(24);
+        margin-top: pxrem(28);
+      }
+    }
+  }
+
+  .money_msg{
+    height: pxrem(72);
+    line-height: pxrem(72);
+    font-size: pxrem(22);
+    background:rgba(245,245,245,1);
+    color:rgba(100,100,100,1);
+    padding: 0 pxrem(24);
+
+  }
+ 
+  .lzy_cell {
+    padding: pxrem(38) pxrem(24);
+    border-bottom: 2px solid #e5e5e5;
+    background: white;
+    overflow: hidden;
+    .lzy_left_item {
+      width: pxrem(433);
+      float: left;
+      color: #333;
+      .item_type {
+        font-size: pxrem(28);
+        margin: 0;
+      }
+      .balance {
+        font-size: pxrem(24);
+        margin: pxrem(16) 0 0 0;
+      }
+    }
+    .lzy_right_item {
+      width: pxrem(238);
+      float: right;
+      .date_time {
+        line-height: pxrem(89);
+        font-size: pxrem(24);
+        color: #a3a3a3;
+        margin: 0;
+      }
+    }
+    .lzy_right_item.funin {
+      .money {
+        font-size: pxrem(28);
+        //color: #f2786b;
+        text-align: right;
+        margin: 0;
+      }
+      .date_time {
+      padding-top: pxrem(16);
+      line-height: normal;
+      }
+    }
+  }
+  
+}

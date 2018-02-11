@@ -1,0 +1,7 @@
+<!-- Generated template for the SubNavComponent component -->
+<div class="wrap">
+  <div class="sub-nav">
+    <div class="left" [ngClass]="{ 'active': data.view == 'left' }" (click)="changeNav('left')">{{ data.title[0] }}</div>
+    <div class="right" [ngClass]="{ 'active': data.view == 'right' }" (click)="changeNav('right')">{{ data.title[1] }}</div>
+  </div>
+</div>

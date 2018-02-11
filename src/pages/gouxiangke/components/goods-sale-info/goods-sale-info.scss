@@ -1,0 +1,61 @@
+goods-sale-info {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+  } 
+  .sale-wrap {
+    padding-left: pxrem(24);
+    border-bottom: 1px solid #e5e5e5;
+    line-height: pxrem(105);
+    .left {
+      float: left;
+      width: pxrem(95);
+      font-size: pxrem(28);
+      text-indent: pxrem(24);
+      &::before {
+        display: block;
+        clear: both;
+        content: '';
+      }
+    }
+    .right {
+      margin-left: pxrem(95);
+      &.tip {
+        font-size: pxrem(30);
+      }
+      &:last-child .line {
+        border-bottom: none;
+      }
+      .line {
+        border-bottom: 1px solid #e5e5e5;
+        &.right-arrow {
+          ion-icon {
+            display: block;
+            position: absolute;
+            right: pxrem(24);
+            top: pxrem(40);
+          }
+        }
+        ion-icon {
+          display: none;
+        }
+        .sign {
+          display: inline-block;
+          width: pxrem(80);
+          margin-right: pxrem(10);
+          border-radius: pxrem(5);
+          background: $userPrimaryColor;
+          line-height: pxrem(26);
+          color: #ffffff;
+          font-size: pxrem(20);
+          text-align: center;
+          vertical-align: middle;
+        }
+        .con {
+          vertical-align: middle;
+          font-size: pxrem(26);
+          color: $userPrimaryColor;
+        }
+      }
+    }
+  }
+}

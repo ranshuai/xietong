@@ -1,0 +1,122 @@
+page-user-info-evaluate {
+  .scroll-content {
+    background: #e6e8ea!important;
+  }
+  .navlist {
+    width: 100%;
+    height: pxrem(88);
+    border-top: pxrem(2) solid #ddd;
+    li {
+      position: relative;
+      width: 50%;
+      text-align: center;
+      float: left;
+    }
+    li>span {
+      display: block;
+      font-size: pxrem(28);
+      color: rgb(51, 51, 51);
+      position: relative;
+      line-height: pxrem(88);
+      height: pxrem(88);
+    }
+    li.active>span {
+      font-size: pxrem(28);
+      color: #f2786b;
+      position: relative;
+    }
+    li.active>span:after {
+      content: '';
+      background-color: #f2786b;
+      position: absolute;
+      width: 100%;
+      height: pxrem(4);
+      left: 0;
+      bottom: pxrem(-2);
+    }
+  }
+  .rates_content_list li {
+    padding-bottom: pxrem(10);
+    border-bottom: pxrem(2) solid #e7e7e7;
+    background: white;
+    margin-bottom: pxrem(10);
+    .lib-rates-header {
+      padding: pxrem(10) pxrem(24);
+      .rates_header_img {
+        width: pxrem(74);
+        height: pxrem(74);
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: #e7e7e7;
+      }
+      .rates_header_nick {
+        margin-left: pxrem(10);
+      }
+    }
+    .lib-rates-header>div {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: pxrem(24);
+    }
+    .lib-rates-feedbackDate {
+      padding: 0 pxrem(24);
+      font-size: pxrem(24);
+      color: #999;
+    }
+    .lib-rates-content {
+      padding: pxrem(10) pxrem(24);
+      font-size: pxrem(24);
+    }
+    .lib-rates-feexPic {
+      padding: pxrem(10) pxrem(24);
+      span {
+        display: inline-block;
+        width: pxrem(125);
+        height: pxrem(125);
+        overflow: hidden;
+        margin-right: pxrem(15);
+        border-radius: pxrem(10);
+      }
+      span:last-child {
+        margin-right: 0;
+      }
+    }
+    .lib-rates-good {
+      padding: 0 pxrem(24);
+      .good_item {
+        display: -webkit-box;
+        box-sizing: border-box;
+        background: #f5f5f5;
+        .good-img {
+          -webkit-box-pack: center;
+          -webkit-box-align: center;
+          display: -webkit-box;
+          background: #fff;
+          overflow: hidden;
+          width: pxrem(120);
+          height: pxrem(120);
+          margin-right: pxrem(20);
+        }
+        .goods_info {
+          -webkit-box-flex: 1;
+          position: relative;
+          .title {
+            overflow: hidden;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            display: -webkit-box;;
+            word-break: break-all;
+            font-size: pxrem(24);
+            font-weight: 300;
+          }
+          .good_money {
+            position: absolute;
+            left: pxrem(0);
+            bottom: pxrem(0);
+            font-size: pxrem(24);
+          }
+        }
+      }
+    }
+  }
+}

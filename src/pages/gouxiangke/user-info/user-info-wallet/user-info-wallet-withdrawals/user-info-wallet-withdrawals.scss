@@ -1,0 +1,42 @@
+page-user-info-wallet-withdrawals {
+    .scroll-content {
+        background: #e6e8ea!important;
+        margin-bottom: pxrem(90);
+    }
+    .item.item-block {
+        input {
+            height: pxrem(30);
+            line-height: pxrem(30)
+        }
+    }
+    form {
+        .from_inputItem.code_item:after {
+            content: ' ';
+            display: block;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            min-height: pxrem(0);
+            height: pxrem(0);
+            background: #ddd;
+        }
+        .from_inputItem.showIcon.alipay_input {
+            padding-right: pxrem(360);
+        }
+    }
+    .from_subBtn {
+        position: absolute;
+        height: pxrem(98);
+        color: #fff;
+        font-size: pxrem(32);
+        text-align: center;
+        line-height: pxrem(99);
+        bottom: pxrem(0);
+        width: 100%;
+        background-color: #f2786b;
+    }
+    .disabledBtn {
+        pointer-events: none;
+        background: #838589 !important;
+    }
+}

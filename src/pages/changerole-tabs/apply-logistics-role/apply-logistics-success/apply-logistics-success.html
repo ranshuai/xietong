@@ -1,0 +1,29 @@
+<!--
+  Generated template for the ApplyLogisticsSuccessPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>资料审核中~</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <div class="success">
+        <div>您的资料正在审核中~</div>
+        <div>请您耐心等待~</div>
+    </div>
+    <div *ngIf="Staff">
+        <button class="undobtn" ion-button (click)="undo()">撤销申请</button>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <button ion-button (click)="go()">确定</button>
+    </ion-toolbar>
+</ion-footer>

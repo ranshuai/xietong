@@ -1,0 +1,14 @@
+<!-- Generated template for the RongimMessageComponent component -->
+<div class="msgNotifyBar" #notifyBar [ngStyle]="{'display':showNotifyBar?'block':'none'}" ><!--(click)="notifyClick($event)"-->
+  <ion-item (click)="goTochat(item.senderUserId,item.userName,item.headPic)" class="notifyItem">
+
+    <ion-avatar item-left>
+      <img [src]="item.headPic" class="notifyPortrait" alt="">
+    </ion-avatar>
+    <div><span>{{item.userName}}</span>
+      <span class="notifyTime">{{item.updateTime}}</span></div>
+
+    <p>{{item.recentlyChat}}</p>
+  </ion-item>
+</div>
+<audio src="./assets/raw/sns/notice.mp3" #notice_msg></audio>

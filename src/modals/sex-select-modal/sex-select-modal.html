@@ -1,0 +1,13 @@
+<div class="modal-container" (click)="closeModal()">
+  <div class="wrapper"  (click)="$event.stopPropagation();">
+    <div class="action-sheet-container">
+      <div class="action-sheet-group" >
+        <div class="item-button" (click)="selected(item,index)" *ngFor="let item of pageData index as index">{{item}}</div>
+      </div>
+      <div class="action-sheet-group">
+        <div class="sheet-cancel" (click)="closeModal()">取消</div>
+      </div>
+    </div>
+  </div>
+</div>
+

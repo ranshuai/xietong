@@ -1,0 +1,35 @@
+<!--
+  Generated template for the UserInfoSetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>资料设置</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <div *ngIf="!isSelf">
+  <ion-item  [ngClass]="{'noborder':!isOpen}">
+    <ion-label class="add-blacklist">加入黑名单</ion-label>
+    <ion-toggle [(ngModel)]="isOpen" (ionChange)="blackListSwitch()" toogle-toogleStyle></ion-toggle>
+
+  </ion-item>
+
+  <div padding="0 15px;">
+    <button *ngIf="isShowDelete" ion-button block class="btn-delete" (click)="showDeleteDialog()">删除</button>
+  </div>
+  </div>
+
+  <ion-item *ngIf="isSelf" (click)="setBlackList()">
+   <ion-label>通讯录黑名单</ion-label>
+    <ion-icon item-end name="arrow-forward"></ion-icon>
+  </ion-item>
+
+</ion-content>

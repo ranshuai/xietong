@@ -1,0 +1,42 @@
+page-store-add-goods3 {
+  .button-inner{
+    color: #fff;
+}
+  .grey-bg {
+    background: #e6e8e9;
+  }
+  .title {
+    padding-left: pxrem(24);
+    border-bottom: 1px solid #e6e8e9;
+    background: #ffffff;
+    color: #a3a3a3;
+    line-height: pxrem(105);
+    font-size: pxrem(28);
+  }
+  ion-textarea {
+    margin-bottom: pxrem(8);
+    border-bottom: 1px solid #e6e8e9;
+    background: #ffffff;
+    textarea.text-input {
+      width: pxrem(702);
+      height: pxrem(740);
+      margin: 0 auto;
+      padding-top: pxrem(40);
+      font-size: pxrem(28);
+    }
+  }
+  .tip {
+    margin: pxrem(30) 0;
+    padding: 0 pxrem(24);
+    font-size: pxrem(24);
+    line-height: pxrem(38);
+  }
+  .submit {
+    &.active {
+      background: #41b3e2;
+    }
+    &.activated {
+      background: #41b3e2;
+    }
+  }
+}

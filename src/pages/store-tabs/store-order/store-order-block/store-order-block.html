@@ -1,0 +1,150 @@
+<!-- Generated template for the StoreOrderBlockComponent component -->
+<div class="wrap" *ngIf="data">
+
+  <div class="line order-sn">
+    <ion-icon class="ion-ios-icon-gxk-94"></ion-icon>
+    <div class="r">订单编号：{{ data.orderSn }}</div>
+    <!-- <img src="assets/img/order-cancel.png" class="order-sign" *ngIf="view == 'notPay'"> -->
+    <img src="assets/img/order-finish.png" class="order-sign" *ngIf="view == 'finish'">
+    <img src="assets/img/order-cancel.png" class="order-sign" *ngIf="view == 'cancel'">
+  </div>
+
+  <div class="line line-b order-goods">
+    <div class="goods-item" *ngFor="let goods of data.orderGoods">
+      <ion-icon class="ion-ios-icon-gxk-100"></ion-icon>
+      <div class="r">
+        <div>商品名称：{{ goods.goodsName }}</div>
+        <div>属性：
+          <span>{{ goods.specKeyName }}</span>
+        </div>
+        <div>
+          <div class="number">数量：
+            <span>{{ goods.goodsNum }}</span>
+          </div>
+          <div class="price">单价:
+            <span>{{ goods.goodsPrice | currency }}</span>
+          </div>
+        </div>
+        <div *ngFor="let item of goods.giftVOS" style="color:#f2786b">
+          <p style="line-height: 40px;">赠品: {{item.goodsName}}</p>
+          <p style="line-height: 40px;"> 属性: {{item.specKeyName}}</p>
+          <p style="line-height: 40px;">数量: {{item.goodsNum}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="line order-name">
+    <ion-icon  class="ion-ios-icon-gxk-92"></ion-icon>
+    <div class="r">下单时间：{{ data.addTime | date: 'yyyy-MM-dd HH:mm:ss' }}</div>
+  </div>
+
+  <div class="line order-name">
+    <ion-icon class="ion-ios-icon-gxk-95"></ion-icon>
+    <div class="r">支付方式：{{ data.payName }}</div>
+  </div>
+
+  <div class="line order-name">
+    <ion-icon class="ion-ios-icon-gxk-83"></ion-icon>
+    <div class="r">
+      <div class="person">收货人：
+        <span>{{ data.consignee }}</span>
+      </div>
+      <div class="mobile">电话：
+        <span>{{ data.mobile }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="line line-b order-name">
+    <ion-icon class="ion-ios-icon-gxk-82"></ion-icon>
+    <div class="r">
+      <div class="r-l">
+        收货地址：
+      </div>
+      <div class="r-r">
+        <span>{{ data.provinceName + data.cityName + data.districtName + data.address }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="line line-b order-name">
+    <ion-icon class="ion-ios-icon-gxk-80"></ion-icon>
+    <div class="r">
+      <div class="r-l">
+        顾客留言：
+      </div>
+      <div class="r-r">
+        <span>{{ data.userNote }}</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="line line-b order-name">
+    <ion-icon class="ion-ios-icon-gxk-96"></ion-icon>
+    <div class="r">
+      <div class="r-l">费用总计：</div>
+      <div class="r-r">
+        <div class="R_clearfix">
+          <em>运费</em>{{ data.shippingPrice | currency }}
+        </div>
+        <div class="R_clearfix">
+          <em>积分</em>{{ data.integral | currency }}
+        </div>
+        <div class="R_clearfix"> 
+          <em>余额抵扣</em>{{ data.userMoney | currency }}
+        </div>
+        <div class="R_clearfix">
+          <em>优惠劵金额</em>{{ data.couponPrice | currency }}
+        </div>
+        <div class="R_clearfix">
+          <em>订单优惠金额</em>{{ data.discount | currency }}
+        </div>
+        <div class="R_clearfix">
+          <em>实付金额</em>
+          <span>{{ data.goodsPrice | currency }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- 待付款底部 -->
+ <div class="operate" *ngIf="view == 'notPay'" >
+    <button ion-button (click)="goOderPricePage(data)">订单改价</button>
+  </div>
+  <!-- 去发货的底部信息 -->
+  <div class="operate block-buttons" *ngIf="view == 'toSendGoods'" ng-if="!data.proxy">
+    <button ion-button (click)="takeOrder()" *ngIf="data.orderStatus == 0">接单</button>
+    <button ion-button (click)="sendOrder()" *ngIf="data.orderStatus != 0">去发货</button>
+    <button ion-button (click)="goOderPricePage(data)" *ngIf="data.orderStatus == 0&&(data.payStatus==0||data.payCode=='cash_on_delivery')">订单改价</button>
+    <button ion-button (click)="goOderPricePageCancel(data)">取消订单</button>
+
+
+  </div>
+
+  <!-- 配送中的底部信息 -->
+  <div class="operate " *ngIf="view == 'delivering'" [ngClass]="{'row_c2':commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'}" >
+    <!-- <button class="l" ion-button>修改单号</button> -->
+    <!-- <button class="r" ion-button>查看物流</button> -->
+    <button ion-button (click)="viewSign()"  *ngIf="commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'">确认签收</button>
+    <button ion-button (click)="viewLogistics()">查看物流</button>
+  </div>
+
+  <!-- 售后的底部信息 -->
+  <div class="operate" *ngIf="view == 'aftersale'">
+    <div class="return-reason">
+      <div>退货退款理由：</div>
+      <div>{{ data.returnReason }}</div>
+    </div>
+    <div class="reason-img" *ngIf="data.reasonImgs">
+      <div>照片凭证：</div>
+      <img [src]="img" *ngFor="let img of data.reasonImgs">
+    </div>
+    <div>
+      <!-- <button class="l red" ion-button>平台仲裁</button> -->
+      <!-- <button class="r" ion-button>退款退货</button> -->
+      <button ion-button (click)="returnMoney()">退款退货</button>
+    </div>
+  </div>
+
+</div>

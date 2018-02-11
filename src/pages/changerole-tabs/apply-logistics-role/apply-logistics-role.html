@@ -1,0 +1,56 @@
+<!--
+  Generated template for the ApplyLogisticsRolePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+        <ion-title>变身{{ applyRoleConfig[cardType]|| '配送员'}}-填写资料</ion-title>
+    </ion-navbar>
+</ion-header>
+<!-- <input type="file" id="fileInput" accept="image/*" (change)="fileChange($event)" style="display: none;"> -->
+<ion-content class="gray-bg">
+    <!-- 表单信息=S -->
+    <form [formGroup]="applyForm" onsubmit="return false;">
+        <ion-list>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>
+                        同意
+                        <a  href="javascript:;" (click)="viewProtocol(cardType)">《 {{ applyRoleConfig[cardType]|| '配送员'}}注册协议书》</a>
+                    </ion-label>
+                    <ion-checkbox formControlName="checked" [(ngModel)]="applyFormData.checked"></ion-checkbox>
+                    <!-- <ion-checkbox ng-checked='true'></ion-checkbox> -->
+                </ion-item>
+            </div>
+            <div class="input-wrap" *ngIf="cardType == 1">
+                <ion-item>
+                    <ion-label style="max-width: initial"> 上级招商人手机号(选填)</ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="11" formControlName="investMobile"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.idCard.errorMsg">{{ applyFormMsg.idCard.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>真实姓名 </ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="10" formControlName="person"></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.person.errorMsg">{{ applyFormMsg.person.errorMsg }}</div>
+            </div>
+            <div class="input-wrap">
+                <ion-item>
+                    <ion-label>身份证号 </ion-label>
+                    <ion-input type="text" placeholder="请输入..." maxlength="18" formControlName="idCard" required></ion-input>
+                </ion-item>
+                <div class="message" *ngIf="applyFormMsg.idCard.errorMsg">{{ applyFormMsg.idCard.errorMsg }}</div>
+            </div>
+        </ion-list>
+    </form>
+    <!-- 表单信息=E -->
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <button ion-button (click)="submit()" [disabled]="!applyForm.valid" [ngClass]="{ 'active': applyForm.valid }">下一步</button>
+    </ion-toolbar>
+</ion-footer>

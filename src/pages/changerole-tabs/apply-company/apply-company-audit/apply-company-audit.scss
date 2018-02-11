@@ -1,0 +1,23 @@
+page-apply-company-audit {
+    .success {
+        padding-top: pxrem(200);
+        font-size: pxrem(36);
+        line-height: pxrem(48);
+        text-align: center;
+    }
+    .toolbar-content {
+        height: 100%;
+        button {
+            width: 100%;
+            height: 100%;
+            font-size: pxrem(30);
+            background: #242d3c;
+            &.activated {
+                background: #242d3c;
+            }
+            span {
+                color: #ffffff;
+            }
+        }
+    }
+}

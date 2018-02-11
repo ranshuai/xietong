@@ -1,0 +1,47 @@
+<!-- Generated template for the GoodsDetailCommentComponent component -->
+<div class="wrap">
+
+  <div class="nav-bar">
+    <div class="left" [ngClass]="{ 'active': view == 'detail'}" (click)="switchPage('detail')">
+      <div class="title">详情</div>
+      <div class="short-line"></div>
+    </div>
+    <div class="middle-line"></div>
+    <div class="right" [ngClass]="{ 'active': view == 'comment'}" (click)="switchPage('comment')">
+      <div class="title">评价</div>
+      <div class="short-line"></div>
+    </div>
+  </div>
+
+  <div *ngIf="view == 'detail'">
+    <div class="goods-detail" *ngIf="data.goodsContent" [safeHtml]="data.goodsContent"></div>
+    <div class="tip" *ngIf="!data.goodsContent">还没有详情~</div>
+  </div>
+
+  <div class="comment" *ngIf="view == 'comment'">
+    <div class="tip" *ngIf="data.comments.length == 0">快来成为第一个评价的人~</div>
+    <div class="list" *ngIf="data.comments.length > 0">
+      <div class="item" *ngFor="let item of data.comments">
+        <div class="title">
+          <div class="img">
+            <img [src]="item.headPic" *ngIf="!item.anonymity">
+            <img src="assets/img/anonymity.png" *ngIf="item.anonymity" >
+          </div>
+          <div class="middle">
+            <div class="name">{{ item.anonymityName || item.username }}</div>
+            <div class="star">
+              <public-comment-rank [data]="item.goodsRank"></public-comment-rank>
+            </div>
+          </div>
+          <div class="time">{{ item.addTime | date:'yyyy-MM-dd HH:mm' }}</div>
+        </div>
+        <div class="content">{{ item.content }}</div>
+        <div class="imgs" *ngIf="item.imgArr && item.imgArr.length > 0">
+          <img [src]="img" *ngFor="let img of item.imgArr" >
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="separate"></div>
+</div>

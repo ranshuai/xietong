@@ -1,0 +1,79 @@
+page-user-info-wallet-recharge {
+    .scroll-content {
+        background: #e6e8ea!important;
+    }
+    .item.item-block {
+        input {
+            height: pxrem(30);
+            line-height: pxrem(30)
+        }
+    }
+    form{
+        .from_inputItem.code_item:after {
+            content: ' ';
+            display: block;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            min-height: pxrem(0);
+            height: pxrem(0);
+            background: #ddd;
+        }
+        .from_inputItem.showIcon {
+            padding-right: pxrem(200);
+            border-bottom: pxrem(2) solid #ddd;
+        }
+        .input_lable{
+            color: #444;
+            font-size: pxrem(32);
+        }
+    }
+    .m-box-items{
+        padding-left:pxrem(20);
+        padding-right: pxrem(20);
+        display: block;
+        background: white;
+        padding-bottom: pxrem(20);
+        .items-money{
+          margin-left: pxrem(-20);  
+          display: block;
+        
+          .money_list{
+            letter-spacing:pxrem(-4);
+            list-style: none;
+            .money_list_item{
+                display: inline-block;
+                width: 48.9%;
+                padding-left: pxrem(20);
+                .money_li_item{
+                    width: 100%;
+                    border: pxrem(2) solid #f1f1f1;
+                    text-align: center;
+                    line-height: pxrem(100);
+                    font-size: pxrem(32);
+                    letter-spacing: 0;
+                    margin-top: pxrem(20);
+                }
+
+            }
+        }
+        }
+    }
+   
+
+    .from_subBtn {
+        position: absolute;
+        height: pxrem(98);
+        color: #fff;
+        font-size: pxrem(32);
+        text-align: center;
+        line-height: pxrem(99);
+        bottom: pxrem(0);
+        width: 100%;
+        background-color: #f2786b;
+    }
+    .disabledBtn {
+        pointer-events: none;
+        background: #838589 !important;
+    }
+}

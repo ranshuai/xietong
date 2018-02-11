@@ -1,0 +1,63 @@
+page-apply-logistics-role {
+    ion-header ion-navbar ion-buttons {
+        line-height: pxrem(80);
+    }
+    .gray-bg {
+        background: $greyBackground;
+    }
+    .input-wrap {
+        position: relative;
+        margin-bottom: pxrem(8);
+        .message {
+            position: absolute;
+            top: 0;
+            right: pxrem(24);
+            font-size: pxrem(28);
+            color: #f2786b;
+            line-height: pxrem(100);
+        }
+        .input-cover {
+            display: none;
+        }
+        .item {
+            display: flex;
+            padding: pxrem(20) pxrem(30);
+            font-size: pxrem(28);
+            color: #333333;
+        }
+        .checkbox-ios {
+            position: absolute !important;
+            right: pxrem(24);
+            margin-top: pxrem(2) !important;
+            .checkbox-checked {
+                border-color: #5ac8ae;
+                background-color: #5ac8ae;
+            }
+        }
+        a {
+            color: #333333;
+            text-decoration: underline;
+        }
+        .label {
+            max-width: pxrem(500) !important;
+        }
+    }
+    .toolbar-content {
+        height: 100%;
+        button {
+            width: 100%; // height: 100%;
+            font-size: pxrem(30);
+            background: #a3a3a3;
+            color: #ffffff;
+            &.active {
+                background: $userPrimaryColor;
+            }
+        }
+    }
+    .toolbar-content button.active {
+        background-color: #5ac8ae;
+    }
+    .item-block {
+        padding: 0 0 0 pxrem(24) !important;
+    }
+}

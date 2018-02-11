@@ -1,0 +1,100 @@
+page-public-user-set-mobile {
+    .toolbar-title {
+        color: $headerDefulColor;
+      }
+       .scroll-content{
+          background: #e6e8ea;
+        }
+        
+        .img_code{
+          position:absolute;
+          top: pxrem(10);
+          right: pxrem(30);
+          width: pxrem(192);
+          height: pxrem(80);
+        }
+      .img_code {
+        position: absolute;
+        right: pxrem(30);
+        top: pxrem(10);
+        width: pxrem(192);
+        height: pxrem(80);
+        background-color: #ddd;
+        background-repeat: no-repeat;
+        background-size: contain;
+        text-align: center;
+        font-size: pxrem(24);
+        line-height: pxrem(80);
+      }
+      .msg_code{
+        position: absolute;
+        right: pxrem(10);
+        line-height: pxrem(48);
+        top: pxrem(30);
+        font-size: pxrem(10);
+        color: #333;
+      }
+      .msg_code{
+        position: absolute;
+        right: pxrem(30);
+        top: pxrem(20);
+        width: pxrem(180);
+        height: pxrem(64);
+        border: 1px solid #333;
+        border-radius: pxrem(4);
+        font-size: pxrem(24);
+        text-align: center;
+        line-height: pxrem(56);
+      }
+      .from_subBtn {
+        position: absolute;
+        height: pxrem(90);
+        color: #fff;
+        font-size: pxrem(32);
+        text-align: center;
+        line-height: pxrem(90);
+        bottom: 0px;
+        width: 100%;
+        z-index: 9;
+        background-color: #f2786b;
+      }
+      .disabledBtn{
+        background-color: #c4c5c6;
+      }
+      .input_errorMsg {
+        position: absolute;
+        right: pxrem(220);
+        line-height: pxrem(96);
+        top: pxrem(108);
+        font-size: pxrem(20);
+        color: #f2786b;
+      }
+      .input_errorMsg{
+        position: absolute;
+        right: pxrem(230);
+        top: 0;
+        color: #f2786b;
+      }
+      .from_inputItem {
+        position: relative;
+        background: white;
+    }
+    .password_icon {
+        position: absolute;
+        right: pxrem(24);
+        top: pxrem(20);
+        height: pxrem(72);
+        line-height: pxrem(72);
+        padding: 0 pxrem(24);
+        font-size: pxrem(32);
+    }
+    .prompt{
+        font-size: pxrem(24);
+        color: #666666;
+        padding: pxrem(30);
+    }
+
+    .item.item-block {
+        border-bottom: none !important;
+    }
+}

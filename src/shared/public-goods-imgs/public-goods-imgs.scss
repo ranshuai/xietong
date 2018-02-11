@@ -1,0 +1,34 @@
+public-goods-imgs {
+  .self_goods_imgs{
+    height:pxrem(750) !important;
+    // width:pxrem(750) !important;
+  }
+  .slide-zoom{
+    text-align: center;
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  .slide-zoom img{
+    width: 100%;
+    height: 100%;
+  }
+  .wrap {
+    position: relative;
+    height: pxrem(665);
+    img {
+      min-width: 100%;
+    }
+    .swiper-pagination {
+      width: pxrem(70);
+      height: pxrem(30);
+      left: auto;
+      right: pxrem(24);
+      bottom: pxrem(40);
+      border: pxrem(1) solid #ebedee;
+      border-radius: pxrem(15);
+      font-size: pxrem(26);
+      background: #ffffff;
+    }
+  }
+}

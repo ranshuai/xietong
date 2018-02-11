@@ -1,0 +1,45 @@
+<!-- Generated template for the StoreGoodsDetailFooterComponent component -->
+<div class="goods-footer" *ngIf="view == 1">
+    <div class="four">
+        <!-- <div class="button black" (click)="edit()">编辑</div> -->
+    </div>
+    <!-- <div class="four">
+    <div class="button black" (click)="delete()">删除</div>
+  </div> -->
+    <div class="four" style="width: 66.66%;" *ngIf="proxyGoodid == 0">
+        <div class="button black" (click)="offSale()">{{ data.isOnSale ? '下架' : '上架' }}</div>
+    </div>
+    <div class="four" style="width: 66.66%;" *ngIf="proxyGoodid != 0">
+        <div class="button black" (click)="cancelOther(data)">取消代售</div>
+    </div>
+    <div class="four">
+        <div class="button red" (click)="goToShare(data)">去推广</div>
+    </div>
+</div>
+
+<div class="goods-footer" *ngIf="view == 2">
+    <div class="three">
+        <div class="button" (click)="chat()">
+            <ion-icon name="ios-message-circle"></ion-icon>
+            <span>客服</span>
+        </div>
+    </div>
+    <div class="three">
+        <div class="button pink">取消代售</div>
+    </div>
+    <div class="three red">
+        <div class="button">去推广</div>
+    </div>
+</div>
+
+<div class="goods-footer" *ngIf="view == 3">
+    <div class="two">
+        <div class="button message" (click)="chat()">
+            <ion-icon name="ios-message-circle"></ion-icon>
+            <span>客服</span>
+        </div>
+    </div>
+    <div class="two">
+        <div class="button red" (click)="addCart()">添加代售</div>
+    </div>
+</div>

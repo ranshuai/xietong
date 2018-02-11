@@ -1,0 +1,24 @@
+<div class="wrap" (click)="common.closeModal()">
+
+  <div class="wrap_content"  (click)="common.stopProp($event)" *ngIf="commonData.user_info_order.wholesaleUser">
+    <div class="modal_header_box">
+      <div class="img_header" [ngBackImg]="{img:commonData.user_info_order.wholesaleUser[0].userImg,type:1}"></div>
+      <div class="header_name">{{commonData.user_info_order.wholesaleUser[0].userName}}</div>
+      <div class="header_time">{{ commonData.user_info_order.wholesaleUser[0].addTime | date : 'yyyy-MM-dd HH:mm:ss' }}开团</div>
+      <ion-icon class="ion-ios-icon-gxk-59" (click)="common.closeModal()"></ion-icon>
+    </div>
+    <div class="ioncontentbox">
+      <ion-content>
+        <div class="user_box" *ngFor="let item of commonData.user_info_order.wholesaleUser">
+          <div class="user_img" [ngBackImg]="{img:item.userImg,type:1}">
+          </div>
+          <div class="user_content">
+            <span class="item_title">{{item.userName}}</span>
+            <span class="item_time">{{item.addTime | date : 'yyyy-MM-dd HH:mm:ss' }}开团</span>
+          </div>
+        </div>
+
+      </ion-content>
+    </div>
+    <div>
+    </div>

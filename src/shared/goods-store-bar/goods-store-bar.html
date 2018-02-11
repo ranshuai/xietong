@@ -1,0 +1,26 @@
+<!-- Generated template for the GoodsStoreBarComponent component -->
+<div class="wrap" *ngIf="data">
+  <!-- <div class="inner" (click)="goToStoreDetailPage()"> -->
+  <div class="inner">
+    <div class="left">
+      <img [src]="data.tbCompanyInfo.headPic || 'assets/img/shop-head-pic.png'">
+    </div>
+    <!-- 进入店铺 -->
+    <div class="right" *ngIf="!noGoTo">
+      <a href="javascript:;" (click) = "goToStoreDetailPage()">进店</a>
+    </div>
+    <!-- 加入店铺 -->
+    <div class="right" *ngIf="Join">
+      <a href="javascript:;" (click) = "joinCompany()">加入</a>
+    </div>
+    <div class="middle">
+      <div class="title">单位名称: {{ data.tbCompanyInfo.companyAlias || data.tbCompanyInfo.companyName }}</div>
+      <div class="title" *ngIf="Address">单位地址: {{ data.tbCompanyInfo.address }}</div>
+      <!-- <div class="number">销量{{ data.totalSalesSum }}&emsp;商品共{{ data.storeGoodsNum }} </div>
+      <div class="evaluate">
+        <span>好评率&nbsp;</span>
+        <comment-rank [data]="data.buyRank"></comment-rank>
+      </div> -->
+    </div>
+  </div>
+</div>

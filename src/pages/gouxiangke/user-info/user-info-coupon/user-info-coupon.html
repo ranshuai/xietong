@@ -1,0 +1,128 @@
+<!--
+  Generated template for the UserInfoCouponPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的优惠券</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ul class="navlist">
+      <li (click)="changeNav('UNUSED')" [ngClass]="{ 'active': activeType == 'UNUSED'}">
+        <span>未使用</span>
+      </li>
+      <li (click)="changeNav('USED')" [ngClass]="{ 'active': activeType == 'USED'}">
+        <span>已使用</span>
+      </li>
+      <li (click)="changeNav('EXPIRED')" [ngClass]="{ 'active': activeType == 'EXPIRED'}">
+        <span>已过期</span>
+      </li>
+    </ul>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+  <section *ngIf="activeType == 'UNUSED'">
+    <ul class="coupon_box">
+      <li *ngFor=" let item of pageDataList[activeType].clist">
+        <div class="coupon_left">
+        </div>
+        <div class="coupon_right">
+          <div class="coupon_money">
+            <div class="big_money_box">
+              <span>￥</span>
+              <span>{{item.worth}}</span>
+            </div>
+            <div class="big_money_condition">
+              满{{item.useCondition}}可用
+            </div>
+          </div>
+
+          <div class="pro-content">
+            <div class="coupon_btn_1"  (click)="goGoodsList(item)">
+              立即使用
+            </div>
+            <div class="pro-content_item">
+              <span class="pro-info">{{item.couponName}}</span>
+            </div>
+            <div class="pro-content-bottom">
+              <span class="coupon_shop">{{item.companyAlias || item.companyName}}</span>
+              <span class="coupon_endtime">{{item.startTime| date:'yyyy-MM-dd'}}-{{item.endTime| date:'yyyy-MM-dd'}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'USED'">
+    <ul class="coupon_box ">
+      <li class="disabled_coupon" *ngFor=" let item of pageDataList[activeType].clist">
+        <div class="coupon_left">
+        </div>
+        <div class="coupon_right">
+          <div class="coupon_money">
+            <div class="big_money_box">
+              <span>￥</span>
+              <span>{{item.worth}}</span>
+            </div>
+            <div class="big_money_condition">
+              满{{item.useCondition}}可用
+            </div>
+          </div>
+
+          <div class="pro-content">
+            <div class="coupon_btn_stateBG stateBG_used"></div>
+            <div class="pro-content_item">
+              <span class="pro-info">{{item.couponName}}</span>
+            </div>
+            <div class="pro-content-bottom">
+              <span class="coupon_shop">{{item.companyAlias||item.companyName}}</span>
+              <span class="coupon_endtime">{{item.startTime| date:'yyyy-MM-dd'}}-{{item.endTime| date:'yyyy-MM-dd'}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'EXPIRED'">
+    <ul class="coupon_box">
+      <li class="disabled_coupon" *ngFor=" let item of pageDataList[activeType].clist">
+        <div class="coupon_left">
+        </div>
+        <div class="coupon_right">
+          <div class="coupon_money">
+            <div class="big_money_box">
+              <span>￥</span>
+              <span>{{item.worth}}</span>
+            </div>
+            <div class="big_money_condition">
+              满{{item.useCondition}}可用
+            </div>
+          </div>
+          <div class="pro-content">
+            <div class="coupon_btn_stateBG stateBG_end"></div>
+            <div class="pro-content_item">
+              <span class="pro-info">{{item.couponName}}</span>
+            </div>
+            <div class="pro-content-bottom">
+              <span class="coupon_shop">{{item.companyAlias || item.companyName}}</span>
+              <span class="coupon_endtime">{{item.startTime| date:'yyyy-MM-dd'}}-{{item.endTime| date:'yyyy-MM-dd'}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div *ngIf="!isSrooll">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!pageDataList[activeType].loadEnd">
+      <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+  <div class="no-more-data" *ngIf="pageDataList[activeType].loadEnd">{{pageDataList[activeType].clist.length>0?'没有更多了~':'暂无相关优惠券～' }}</div>
+</ion-content>

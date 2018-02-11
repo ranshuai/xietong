@@ -1,0 +1,18 @@
+goods-specs-select-bar {
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+  } 
+  .wrap {
+    height: pxrem(105);
+    padding: 0 pxrem(24);
+    font-size: pxrem(24);
+    span {
+      float: left;
+      line-height: pxrem(105);
+    }
+    ion-icon {
+      float: right;
+      line-height: pxrem(105);
+    }
+  }
+}

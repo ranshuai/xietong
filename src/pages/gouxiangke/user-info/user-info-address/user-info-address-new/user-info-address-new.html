@@ -1,0 +1,44 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>地址管理</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+    <form [formGroup]="newAddressForm">
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder="姓名" type="text" maxlength="6" formControlName="name" (ngEnter)="saveAddree()"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="newAddressMessages.name.errorMsg">{{newAddressMessages.name.errorMsg}}</div>
+        </div>
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder="输入手机号" type="tel" maxlength="11" formControlName="phone" (ngEnter)="saveAddree()"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="newAddressMessages.phone.errorMsg">{{newAddressMessages.phone.errorMsg}}</div>
+        </div>
+        <div class="from_inputItem showIcon" (click)="openAddressModal()">
+            <div class="city_item" [ngClass]="{'city_item_show':city}">{{!city?"省份、城市、区县是必填的":city}}</div>
+            <!-- <ion-item>
+        <ion-input placeholder="省份、城市、区县是必填的" type="text"   formControlName="city"
+        readonly="true"
+        ></ion-input>
+      </ion-item> -->
+        </div>
+        <div class="from_inputItem showIcon">
+            <ion-item>
+                <ion-input class="input" placeholder=" 详细地址，如街道、门牌号等…" type="text" maxlength="40" formControlName="address" (ngEnter)="saveAddree()"></ion-input>
+            </ion-item>
+            <div class="input_errorMsg" *ngIf="newAddressMessages.address.errorMsg">{{newAddressMessages.address.errorMsg}}</div>
+        </div>
+        <div class="form_item   payType" (click)="setDefault()">
+            <span class="paytype_content">设置为默认地址</span>
+            <i class="check_icon" [ngClass]="{ 'active': isDefault}"></i>
+        </div>
+        <div class="from_subBtn" (click)="saveAddree()" [ngClass]="{'disabledBtn':!newAddressForm.valid}">保存</div>
+    </form>
+</ion-content>

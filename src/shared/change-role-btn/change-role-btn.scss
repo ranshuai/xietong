@@ -1,0 +1,17 @@
+change-role-btn {
+  // button{
+  //   background-color: transparent;
+  // }
+  .chage{
+    text-align: center;
+    margin-top: pxrem(12);
+    [class*=" ion-ios-icon-"]{
+      font-size: pxrem(32);
+    }
+  }
+  .dsc{
+    font-size: pxrem(16);
+    color: #A3A3A3;
+    text-align: center;
+  }
+}

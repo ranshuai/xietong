@@ -1,0 +1,17 @@
+page-incestperson-extension-modal {
+  .wrap {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 11;
+    visibility: visible;
+    background-color: rgba(0, 0, 0, .25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image:  url('../assets/images/investperson/share.png');
+    background-repeat: no-repeat;
+    background-position-x: pxrem(332);
+    background-size: pxrem(400);
+  }
+}

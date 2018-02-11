@@ -1,0 +1,159 @@
+<!--
+  Generated template for the UserInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content>
+
+  <div class="userinfo_header">
+    <div class="user_detail" [ngBackImg]="{img:commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.headPic,type:1}">
+    </div>
+    <div class="mask">
+        <div class="user_detail_img" (click)="uploadImg()">
+          <input type="file" id="userInfoHeader" accept="image/*" (change)="fileChange($event)" multiple style="display:none">
+          <img [src]="commonModel.TAB_INIT_USERINFO?commonModel.TAB_INIT_USERINFO.headPic:''">
+        </div>
+        <span class="user_detail_name">{{commonModel.TAB_INIT_USERINFO?commonModel.TAB_INIT_USERINFO.nickname:''}}</span>
+        <ul class="user_detail_list">
+          <li>
+            <span [moneyFormat]="commonModel.TAB_INIT_USERINFO?commonModel.TAB_INIT_USERINFO.userMoney:0"></span>
+            <span>余额</span>
+          </li>
+          <li>
+            <span>{{commonModel.TAB_INIT_USERINFO?commonModel.TAB_INIT_USERINFO.collecters:0}}</span>
+            <span>关注</span>
+          </li>
+          <li>
+            <span>{{commonModel.TAB_INIT_USERINFO?commonModel.TAB_INIT_USERINFO.fans:0}}</span>
+            <span>粉丝</span>
+          </li>
+        </ul>
+
+
+      </div>
+      <div class="user_detail_header">
+        <ion-icon name=""></ion-icon>
+        <ion-icon class="ion-ios-icon-gxk-66" (click)="goTouUserSet()"></ion-icon>
+      </div>
+
+  </div>
+
+
+  <section>
+    <div class="user_module_item border_bottom" (click)="goToPageUserInfoOrder('all')">
+      <div class="item_module_left">
+        <ion-icon class="ion-ios-icon-gxk-31"></ion-icon>
+        <span>我的订单</span>
+      </div>
+      <div class="item_module_right">
+        <span>查看全部订单</span>
+        <ion-icon  class="ion-ios-icon-gxk-51"></ion-icon>
+      </div>
+    </div>
+    <div class="order_status">
+      <ul>
+        <li (click)="goToPageUserInfoOrder('obligation')">
+          <ion-icon class="order_icon ion-ios-icon-gxk-33"></ion-icon>
+          <span class="order_title">待付款</span>
+          <i class="order-num" *ngIf="commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.waitPaymentNum">{{ commonModel.TAB_INIT_USERINFO.waitPaymentNum }}</i>
+        </li>
+        <li (click)="goToPageUserInfoOrder('toSendGoods')">
+          <ion-icon class="order_icon ion-ios-icon-gxk-32"></ion-icon>
+          <span class="order_title">待发货</span>
+          <i class="order-num" *ngIf="commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.waitSendNum">{{ commonModel.TAB_INIT_USERINFO.waitSendNum }}</i>
+        </li>
+        <li (click)="goToPageUserInfoOrder('waitReceived')">
+          <ion-icon class="order_icon ion-ios-icon-gxk-35"></ion-icon>
+          <span class="order_title">待收货</span>
+          <i class="order-num" *ngIf="commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.waitTakeOverNum">{{ commonModel.TAB_INIT_USERINFO.waitTakeOverNum }}</i>
+        </li>
+        <li (click)="goToPageUserInfoOrder('evaluated')">
+          <ion-icon class="order_icon ion-ios-icon-gxk-34" ></ion-icon>
+          <span class="order_title">待评价</span>
+          <i class="order-num" *ngIf="commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.waitEvaluateNum">{{ commonModel.TAB_INIT_USERINFO.waitEvaluateNum }}</i>
+        </li>
+        <li (click)="goToUserInfoOrderServicesPage()">
+          <ion-icon class="order_icon ion-ios-icon-gxk-36" ></ion-icon>
+          <span class="order_title">售后</span>
+          <i class="order-num" *ngIf="commonModel.TAB_INIT_USERINFO&&commonModel.TAB_INIT_USERINFO.afterSaleNum">{{ commonModel.TAB_INIT_USERINFO.afterSaleNum }}</i>
+        </li>
+      </ul>
+    </div>
+  </section>
+  <section>
+    <div class="user_module_item" (click)="goToPageUserInfoWalletPage()">
+      <div class="item_module_left">
+        <ion-icon class="ion-ios-icon-gxk-45
+        "></ion-icon>
+        <span>我的钱包</span>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="(config.PLATFORM == 'STOREAPP' || config.PLATFORM == 'STOREAPPWX') && commonModel.APP_INIT&&commonModel.APP_INIT['getAppconfig'].data.is_prepay==1" >
+    <div class="user_module_item" (click)="goToUserInfoPrepayPage()">
+      <div class="item_module_left">
+        <ion-icon class="ion-ios-icon-gxk-45
+        "></ion-icon>
+        <span>预付款余额</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="user_module_item" (click)="goToPageUserInfoCollection()">
+      <div class="item_module_left">
+        <ion-icon  class="ion-ios-icon-gxk-57"></ion-icon>
+        <span>我的收藏</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="user_module_item" (click)="goToUserInfoBankPage()" *ngIf="config.PLATFORM == 'APP' || this.config.PLATFORM == 'WX'">
+      <div class="item_module_left">
+          <ion-icon class="order_icon ion-ios-icon-gxk-33" ></ion-icon>
+        <span>银行账号信息</span>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="user_module_item" (click)="goToUserInfoAddressPage()">
+      <div class="item_module_left">
+        <ion-icon class="ion-ios-icon-gxk-103"></ion-icon>
+        <span>地址管理</span>
+      </div>
+    </div>
+  </section>
+  <!-- <section>
+    <div class="user_module_item" (click)="goToUserInfoGroupPage()" *ngIf="config.PLATFORM == 'APP' || this.config.PLATFORM == 'WX'">
+      <div class="item_module_left">
+        <ion-icon class="ion-ios-icon-gxk-88"></ion-icon>
+        <span>我的拼团</span>
+      </div>
+    </div>
+  </section> -->
+
+  <section>
+    <div class="user_module_item" (click)="goToUserInfoCouponPage()">
+      <div class="item_module_left">
+        <i class="you_icon"></i>
+        <span>优惠券</span>
+      </div>
+    </div>
+    </section>
+    <section>
+      <div class="user_module_item" (click)="goToApplyDriver()" *ngIf="config.PLATFORM == 'STOREAPP' || this.config.PLATFORM == 'STOREAPPWX'">
+        <div class="item_module_left">
+          <ion-icon  class="ion-ios-icon-gxk-103"></ion-icon>
+          <span>申请司机</span>
+        </div>
+      </div>
+    </section>
+    <section>
+    <div class="user_module_item" *ngIf="1!=1" (click)="goToUserInfoEvaluatePage()">
+      <div class="item_module_left">
+        <ion-icon name="ios-address2"></ion-icon>
+        <span>我的评价</span>
+      </div>
+    </div>
+  </section>
+</ion-content>

@@ -1,0 +1,33 @@
+page-store-order {
+  .button-inner{
+    color: #fff;
+  }
+  ion-navbar{
+    background: #fff;
+  }
+  .search-wrap {
+    overflow: hidden;
+    padding: pxrem(15) pxrem(24);
+    border-top: 1px solid #e5e5e5;
+  }
+  ion-slides {
+    overflow: hidden;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    background: #ffffff;
+    line-height: pxrem(85);
+    text-align: center;
+    font-size: pxrem(30);
+    ion-slide {
+      div {
+        color: #7b7d81;
+        border-bottom: pxrem(4) solid transparent;
+        font-size: pxrem(28);
+        &.active {
+          color: #40b3e2;
+          border-bottom: pxrem(4) solid #40b3e2;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+<!-- Generated template for the GoodsDetailFooterComponent component -->
+<div class="goods-footer">
+  <div class="goods-footer-left">
+    <div class="button" (click)="goToHomePage()">
+      <div>
+        <ion-icon name="ios-home"></ion-icon>
+      </div>
+      <div>
+        <span>主页</span>
+      </div>
+    </div>
+    <div class="button" (click)="servicePopup(data.storeId)">
+      <!-- <a href="tel:{{data.tbCompanyInfo.mobile}}">
+        <div>
+          <ion-icon name="ios-message-circle"></ion-icon>
+        </div>
+        <div>
+          <span>客服</span>
+        </div>
+      </a> -->
+      <div>
+        <ion-icon  class="ion-ios-icon-gxk-84"></ion-icon>
+      </div>
+      <div>
+        <span>客服</span>
+      </div>
+    </div>
+    <div class="button" (click)="collect()" [ngClass]="{ 'active': data.collectStatus }">
+      <div>
+        <ion-icon name="ios-star"></ion-icon>
+      </div>
+      <div>
+        <span>{{ data.collectStatus ? '已收藏' : '未收藏' }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="goods-footer-right">
+    <div class="buy-btn" (click)="toView()">我要参团</div>
+  </div>
+</div>

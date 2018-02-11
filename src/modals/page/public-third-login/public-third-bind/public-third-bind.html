@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PublicThirdBindPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>第三方登录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="login-head">
+    <div class="linkImgIcon" *ngIf="source == 'weixin'" >
+      <span class="c-imgicon"></span>
+    </div>
+    <div class="linkImgIcon" *ngIf="source == 'qq'">
+      <span class="c-imgicon qq"></span>
+    </div>
+    <div class="linkImgIcon" *ngIf="source == 'weibo'">
+      <span class="c-imgicon weibo"></span>
+    </div>
+    <!-- <img src="../assets/images/public/version.png"> -->
+  </div>
+  <div class="form_subBtn" ion-button (click)="binding(1)">
+    已有手机号去绑定
+  </div>
+  <div class="form_subBtn" ion-button (click)="binding(2)">
+    第一次使用去创建手机账号
+  </div>
+
+  
+</ion-content>

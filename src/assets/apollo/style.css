@@ -1,0 +1,696 @@
+@font-face {
+  font-family: 'apollo';
+  src:  url('fonts/apollo.eot?97fx3g');
+  src:  url('fonts/apollo.eot?97fx3g#iefix') format('embedded-opentype'),
+    url('fonts/apollo.ttf?97fx3g') format('truetype'),
+    url('fonts/apollo.woff?97fx3g') format('woff'),
+    url('fonts/apollo.svg?97fx3g#apollo') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="ion-ios-icon-"], [class*=" ion-ios-icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'apollo' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ion-ios-icon-gxk-1:before {
+  content: "\e900";
+}
+.ion-ios-icon-gxk-3-outline:before {
+  content: "\e901";
+}
+.ion-ios-icon-gxk-3:before {
+  content: "\e902";
+}
+.ion-ios-icon-gxk-5-outline:before {
+  content: "\e903";
+}
+.ion-ios-icon-gxk-5:before {
+  content: "\e904";
+}
+.ion-ios-icon-gxk-7-outline:before {
+  content: "\e905";
+}
+.ion-ios-icon-gxk-7:before {
+  content: "\e906";
+}
+.ion-ios-icon-gxk-9-outline:before {
+  content: "\e907";
+}
+.ion-ios-icon-gxk-9:before {
+  content: "\e908";
+}
+.ion-ios-icon-gxk-11-outline:before {
+  content: "\e909";
+}
+.ion-ios-icon-gxk-11:before {
+  content: "\e90a";
+}
+.ion-ios-icon-gxk-13-outline:before {
+  content: "\e90b";
+}
+.ion-ios-icon-gxk-13:before {
+  content: "\e90c";
+}
+.ion-ios-icon-gxk-14:before {
+  content: "\e90d";
+}
+.ion-ios-icon-gxk-15:before {
+  content: "\e90e";
+  color: #646464;
+}
+.ion-ios-icon-gxk-16:before {
+  content: "\e90f";
+}
+.ion-ios-icon-gxk-17:before {
+  content: "\e910";
+}
+.ion-ios-icon-gxk-18:before {
+  content: "\e911";
+}
+.ion-ios-icon-gxk-19:before {
+  content: "\e912";
+}
+.ion-ios-icon-gxk-20-outline:before {
+  content: "\e913";
+}
+.ion-ios-icon-gxk-20:before {
+  content: "\e914";
+}
+.ion-ios-icon-gxk-22-outline:before {
+  content: "\e915";
+}
+.ion-ios-icon-gxk-22:before {
+  content: "\e916";
+}
+.ion-ios-icon-gxk-24:before {
+  content: "\e917";
+}
+.ion-ios-icon-gxk-25:before {
+  content: "\e918";
+}
+.ion-ios-icon-gxk-26:before {
+  content: "\e919";
+}
+.ion-ios-icon-gxk-27:before {
+  content: "\e91a";
+}
+.ion-ios-icon-gxk-28:before {
+  content: "\e91b";
+}
+.ion-ios-icon-gxk-29:before {
+  content: "\e91c";
+}
+.ion-ios-icon-gxk-30:before {
+  content: "\e91d";
+}
+.ion-ios-icon-gxk-31:before {
+  content: "\e91e";
+}
+.ion-ios-icon-gxk-32:before {
+  content: "\e91f";
+}
+.ion-ios-icon-gxk-33:before {
+  content: "\e920";
+}
+.ion-ios-icon-gxk-34:before {
+  content: "\e921";
+}
+.ion-ios-icon-gxk-35:before {
+  content: "\e922";
+}
+.ion-ios-icon-gxk-36:before {
+  content: "\e923";
+}
+.ion-ios-icon-gxk-37:before {
+  content: "\e924";
+}
+.ion-ios-icon-gxk-38:before {
+  content: "\e925";
+}
+.ion-ios-icon-gxk-39:before {
+  content: "\e926";
+}
+.ion-ios-icon-gxk-40:before {
+  content: "\e927";
+}
+.ion-ios-icon-gxk-41:before {
+  content: "\e928";
+}
+.ion-ios-icon-gxk-42:before {
+  content: "\e929";
+}
+.ion-ios-icon-gxk-43:before {
+  content: "\e92a";
+}
+.ion-ios-icon-gxk-44:before {
+  content: "\e92b";
+}
+.ion-ios-icon-gxk-45:before {
+  content: "\e92c";
+}
+.ion-ios-icon-gxk-46:before {
+  content: "\e92d";
+}
+.ion-ios-icon-gxk-47:before {
+  content: "\e92e";
+}
+.ion-ios-icon-gxk-48:before {
+  content: "\e92f";
+}
+.ion-ios-icon-gxk-49:before {
+  content: "\e930";
+}
+.ion-ios-icon-gxk-50:before {
+  content: "\e931";
+}
+.ion-ios-icon-gxk-51:before {
+  content: "\e932";
+  color: #646464;
+}
+.ion-ios-icon-gxk-52:before {
+  content: "\e933";
+}
+.ion-ios-icon-gxk-53:before {
+  content: "\e934";
+}
+.ion-ios-icon-gxk-54:before {
+  content: "\e935";
+}
+.ion-ios-icon-gxk-55:before {
+  content: "\e936";
+}
+.ion-ios-icon-gxk-56:before {
+  content: "\e937";
+}
+.ion-ios-icon-gxk-57:before {
+  content: "\e938";
+}
+.ion-ios-icon-gxk-58:before {
+  content: "\e939";
+}
+.ion-ios-icon-gxk-59:before {
+  content: "\e93a";
+}
+.ion-ios-icon-gxk-60:before {
+  content: "\e93b";
+}
+.ion-ios-icon-gxk-61:before {
+  content: "\e93c";
+  color: #f2786b;
+}
+.ion-ios-icon-gxk-62 .path1:before {
+  content: "\e93d";
+  color: rgb(223, 51, 51);
+}
+.ion-ios-icon-gxk-62 .path2:before {
+  content: "\e93e";
+  margin-left: -1em;
+  color: rgb(0, 71, 136);
+}
+.ion-ios-icon-gxk-62 .path3:before {
+  content: "\e93f";
+  margin-left: -1em;
+  color: rgb(0, 71, 136);
+}
+.ion-ios-icon-gxk-62 .path4:before {
+  content: "\e940";
+  margin-left: -1em;
+  color: rgb(0, 128, 136);
+}
+.ion-ios-icon-gxk-62 .path5:before {
+  content: "\e941";
+  margin-left: -1em;
+  color: rgb(0, 128, 136);
+}
+.ion-ios-icon-gxk-62 .path6:before {
+  content: "\e942";
+  margin-left: -1em;
+  color: rgb(0, 128, 136);
+}
+.ion-ios-icon-gxk-63:before {
+  content: "\e943";
+  color: #599bf8;
+}
+.ion-ios-icon-gxk-64:before {
+  content: "\e944";
+  color: #58b64b;
+}
+.ion-ios-icon-gxk-65:before {
+  content: "\e945";
+  color: #f2786b;
+}
+.ion-ios-icon-gxk-66:before {
+  content: "\e946";
+}
+.ion-ios-icon-gxk-67:before {
+  content: "\e947";
+}
+.ion-ios-icon-gxk-68:before {
+  content: "\e948";
+}
+.ion-ios-icon-gxk-69:before {
+  content: "\e949";
+}
+.ion-ios-icon-gxk-70:before {
+  content: "\e94a";
+}
+.ion-ios-icon-gxk-71:before {
+  content: "\e94b";
+  color: #4acb61;
+}
+.ion-ios-icon-gxk-72:before {
+  content: "\e94c";
+  color: #1295db;
+}
+.ion-ios-icon-gxk-73:before {
+  content: "\e94d";
+  color: #db251c;
+}
+.ion-ios-icon-gxk-74:before {
+  content: "\e94e";
+}
+.ion-ios-icon-gxk-75:before {
+  content: "\e94f";
+}
+.ion-ios-icon-gxk-76:before {
+  content: "\e950";
+}
+.ion-ios-icon-gxk-77:before {
+  content: "\e951";
+}
+.ion-ios-icon-gxk-78:before {
+  content: "\e952";
+}
+.ion-ios-icon-gxk-79:before {
+  content: "\e953";
+  color: #e67468;
+}
+.ion-ios-icon-gxk-80:before {
+  content: "\e954";
+}
+.ion-ios-icon-gxk-81:before {
+  content: "\e955";
+}
+.ion-ios-icon-gxk-82:before {
+  content: "\e956";
+}
+.ion-ios-icon-gxk-83:before {
+  content: "\e957";
+}
+.ion-ios-icon-gxk-84:before {
+  content: "\e958";
+}
+.ion-ios-icon-gxk-85-outline:before {
+  content: "\e959";
+}
+.ion-ios-icon-gxk-85:before {
+  content: "\e95a";
+}
+.ion-ios-icon-gxk-87-outline:before {
+  content: "\e95b";
+}
+.ion-ios-icon-gxk-87:before {
+  content: "\e95c";
+}
+.ion-ios-icon-gxk-89:before {
+  content: "\e95d";
+}
+.ion-ios-icon-gxk-90:before {
+  content: "\e95e";
+}
+.ion-ios-icon-gxk-91:before {
+  content: "\e95f";
+}
+.ion-ios-icon-gxk-92:before {
+  content: "\e960";
+}
+.ion-ios-icon-gxk-93:before {
+  content: "\e961";
+}
+.ion-ios-icon-gxk-94:before {
+  content: "\e962";
+}
+.ion-ios-icon-gxk-95:before {
+  content: "\e963";
+}
+.ion-ios-icon-gxk-96:before {
+  content: "\e964";
+}
+.ion-ios-icon-gxk-97:before {
+  content: "\e965";
+}
+.ion-ios-icon-gxk-99-outline:before {
+  content: "\e966";
+}
+.ion-ios-icon-gxk-99:before {
+  content: "\e967";
+}
+.ion-ios-icon-gxk-101-outline:before {
+  content: "\e968";
+}
+.ion-ios-icon-gxk-101:before {
+  content: "\e969";
+}
+.ion-ios-icon-gxk-102:before {
+  content: "\e96a";
+}
+.ion-ios-icon-gxk-103:before {
+  content: "\e96b";
+}
+.ion-ios-icon-gxk-104:before {
+  content: "\e96c";
+}
+.ion-ios-icon-gxk-105:before {
+  content: "\e96d";
+}
+.ion-ios-icon-gxk-106:before {
+  content: "\e96e";
+}
+.ion-ios-icon-gxk-107-outline:before {
+  content: "\e96f";
+}
+.ion-ios-icon-gxk-107:before {
+  content: "\e970";
+}
+.ion-ios-icon-gxk-109:before {
+  content: "\e971";
+}
+.ion-ios-icon-gxk-110:before {
+  content: "\e972";
+}
+.ion-ios-icon-gxk-111:before {
+  content: "\e973";
+}
+.ion-ios-icon-gxk-112:before {
+  content: "\e974";
+}
+.ion-ios-icon-gxk-113:before {
+  content: "\e975";
+}
+.ion-ios-icon-gxk-114:before {
+  content: "\e976";
+}
+.ion-ios-icon-gxk-115:before {
+  content: "\e977";
+}
+.ion-ios-icon-gxk-116:before {
+  content: "\e978";
+}
+.ion-ios-icon-gxk-117:before {
+  content: "\e979";
+}
+.ion-ios-icon-gxk-118:before {
+  content: "\e97a";
+}
+.ion-ios-icon-gxk-120-outline:before {
+  content: "\e97b";
+}
+.ion-ios-icon-gxk-120 .path1:before {
+  content: "\e97c";
+  color: rgb(51, 51, 51);
+}
+.ion-ios-icon-gxk-120 .path2:before {
+  content: "\e97d";
+  margin-left: -1em;
+  color: rgb(0, 0, 0);
+}
+.ion-ios-icon-gxk-121:before {
+  content: "\e97e";
+}
+.ion-ios-icon-gxk-122 .path1:before {
+  content: "\e97f";
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-122 .path2:before {
+  content: "\e980";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+  opacity: 0.5;
+}
+.ion-ios-icon-gxk-122 .path3:before {
+  content: "\e981";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path1:before {
+  content: "\e982";
+  color: rgb(252, 210, 74);
+  opacity: 0.5;
+}
+.ion-ios-icon-gxk-123 .path2:before {
+  content: "\e983";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path3:before {
+  content: "\e984";
+  margin-left: -1em;
+  color: rgb(255, 255, 255);
+}
+.ion-ios-icon-gxk-123 .path4:before {
+  content: "\e985";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path5:before {
+  content: "\e986";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path6:before {
+  content: "\e987";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path7:before {
+  content: "\e988";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path8:before {
+  content: "\e989";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path9:before {
+  content: "\e98a";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-123 .path10:before {
+  content: "\e98b";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path1:before {
+  content: "\e98c";
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path2:before {
+  content: "\e98d";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+  opacity: 0.5;
+}
+.ion-ios-icon-gxk-124 .path3:before {
+  content: "\e98e";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path4:before {
+  content: "\e98f";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path5:before {
+  content: "\e990";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path6:before {
+  content: "\e991";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-124 .path7:before {
+  content: "\e992";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-125 .path1:before {
+  content: "\e993";
+  color: rgb(252, 210, 74);
+  opacity: 0.5;
+}
+.ion-ios-icon-gxk-125 .path2:before {
+  content: "\e994";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-125 .path3:before {
+  content: "\e995";
+  margin-left: -1em;
+  color: rgb(252, 210, 74);
+}
+.ion-ios-icon-gxk-126:before {
+  content: "\e996";
+}
+.ion-ios-icon-gxk-127:before {
+  content: "\e997";
+}
+.ion-ios-icon-gxk-128:before {
+  content: "\e998";
+  color: #3586c4;
+}
+.ion-ios-icon-gxk-129:before {
+  content: "\e999";
+  color: #3586c4;
+}
+.ion-ios-icon-gxk-130:before {
+  content: "\e99a";
+  color: #3586c4;
+}
+.ion-ios-icon-gxk-131:before {
+  content: "\e99b";
+}
+.ion-ios-icon-gxk-132:before {
+  content: "\e99c";
+}
+.ion-ios-icon-gxk-133:before {
+  content: "\e99d";
+}
+.ion-ios-icon-gxk-134:before {
+  content: "\e99e";
+}
+.ion-ios-icon-gxk-135:before {
+  content: "\e99f";
+}
+.ion-ios-icon-gxk-136:before {
+  content: "\e9a0";
+}
+.ion-ios-icon-gxk-140:before {
+  content: "\e9a1";
+}
+.ion-ios-icon-gxk-141:before {
+  content: "\e9a2";
+}
+.ion-ios-icon-gxk-142-outline:before {
+  content: "\e9a3";
+}
+.ion-ios-icon-gxk-142:before {
+  content: "\e9a4";
+}
+.ion-ios-icon-gxk-144-outline:before {
+  content: "\e9a5";
+  color: #b3b3b3;
+}
+.ion-ios-icon-gxk-144:before {
+  content: "\e9a6";
+  color: #ff0a0a;
+}
+.ion-ios-icon-gxk-146-outline:before {
+  content: "\e9a7";
+  color: #b3b3b3;
+}
+.ion-ios-icon-gxk-146:before {
+  content: "\e9a8";
+  color: #ff0a0a;
+}
+.ion-ios-icon-gxk-148-outline:before {
+  content: "\e9a9";
+  color: #b3b3b3;
+}
+.ion-ios-icon-gxk-148:before {
+  content: "\e9aa";
+  color: #ff0a0a;
+}
+.ion-ios-icon-gxk-150-outline:before {
+  content: "\e9ab";
+  color: #b3b3b3;
+}
+.ion-ios-icon-gxk-150:before {
+  content: "\e9ac";
+  color: #ff0a0a;
+}
+.ion-ios-icon-gxk-152-outline:before {
+  content: "\e9ad";
+  color: #b3b3b3;
+}
+.ion-ios-icon-gxk-152:before {
+  content: "\e9ae";
+  color: #ff0a0a;
+}
+.ion-ios-icon-gxk-154:before {
+  content: "\e9af";
+  color: #a3a3a3;
+}
+.ion-ios-icon-gxk-155:before {
+  content: "\e9b0";
+  color: #a3a3a3;
+}
+.ion-ios-icon-gxk-156:before {
+  content: "\e9b1";
+}
+.ion-ios-icon-gxk-157:before {
+  content: "\e9b2";
+}
+.ion-ios-icon-gxk-158:before {
+  content: "\e9b3";
+}
+.ion-ios-icon-gxk-159:before {
+  content: "\e9b4";
+}
+.ion-ios-icon-gxk-160:before {
+  content: "\e9b5";
+}
+.ion-ios-icon-gxk-161:before {
+  content: "\e9b6";
+}
+.ion-ios-icon-gxk-162:before {
+  content: "\e9b7";
+}
+.ion-ios-icon-gxk-164-outline:before {
+  content: "\e9b8";
+}
+.ion-ios-icon-gxk-164:before {
+  content: "\e9b9";
+}
+.ion-ios-icon-gxk-165:before {
+  content: "\e9ba";
+}
+.ion-ios-icon-gxk-166 .path1:before {
+  content: "\e9bb";
+  color: rgb(65, 179, 226);
+}
+.ion-ios-icon-gxk-166 .path2:before {
+  content: "\e9bc";
+  margin-left: -1em;
+  color: rgb(163, 163, 163);
+}
+.ion-ios-icon-gxk-167:before {
+  content: "\e9bd";
+}
+.ion-ios-icon-gxk-168:before {
+  content: "\e9be";
+}
+.ion-ios-icon-gxk-169:before {
+  content: "\e9bf";
+}
+.ion-ios-icon-gxk-170:before {
+  content: "\e9c0";
+}
+.ion-ios-icon-bookmark:before {
+  content: "\e9d2";
+}

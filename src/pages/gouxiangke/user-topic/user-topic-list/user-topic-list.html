@@ -1,0 +1,10 @@
+<section>
+  <ul class="topic_list" *ngIf="data && data.length > 0">
+    <li *ngFor="let item of data" (click)="goTopic(item.topicId)" [ngBackImg]="{img:item.topicImage,type:1}" >
+      <div class="title" > 
+        <span>{{item.topicTitle}}</span>
+        <i class="icon icon-ios"></i>
+      </div>
+    </li>
+  </ul>
+</section>

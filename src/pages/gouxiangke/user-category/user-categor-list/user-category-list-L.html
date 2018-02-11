@@ -1,0 +1,9 @@
+  <!--S=分类列表-->
+  <div>
+    <ul>
+      <li *ngFor="let item of data;let i = index;" [ngClass]="{ac: i == _index}" (click)=" idToParent(item.id,i)">
+        {{item.mobileName}}
+      </li>
+    </ul>
+  </div>
+  <!--E=分类列表-->

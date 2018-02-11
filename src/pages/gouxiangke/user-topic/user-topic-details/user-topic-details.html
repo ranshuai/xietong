@@ -1,0 +1,56 @@
+<!--
+  Generated template for the UserTopicDetailsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>专题详情</ion-title>
+     <!-- <search-button></search-button>  -->
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <section *ngIf="topicDetail">
+   <div class="topic_thumb" [ngBackImg]="{img:topicDetail.topicImage || topicDetail.topic.topicImage,type:1}">
+   </div>
+   <div class="topic_title">
+    <h4>{{topicDetail.description || topicDetail.topic.topicTitle}}</h4>
+   </div>
+  <div class="topic_abstract" [innerHTML]="topicDetail.topicContent || topicDetail.topic.topicContent"></div>
+  </section> 
+  <title-more title="推荐商品" class="center_topic" *ngIf="topicDetail && !topicDetail.storeVOList" [noMore]= true ></title-more>
+  <goods-list-block *ngIf="version != 2" [loadParams]="loadRecomendListParams" [ngShow]="topicDetail" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block> 
+
+  <goods-list-block *ngIf="version == 2 && topicDetail " [noMore]= true [hasMore] = false [data] = 'topicDetail.goodsVOList'  [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block> 
+  <title-more class="center_topic" title="推荐店铺" *ngIf="version == 2 && topicDetail &&topicDetail.storeVOList " [noMore]= true ></title-more>
+  <div  *ngIf="version == 2 && topicDetail">
+    <div class="store_vOList_warp" *ngFor="let item of topicDetail.storeVOList">
+        <div class="store_vOList_warp_top">
+            <img src="{{item.headPic || './assets/img/shop-head-pic.png'}}" alt="图片" class="R_fl">
+            <p class="R_fl">
+              {{item.storeName}}
+            </p>
+            <button class="R_fr" (click)="goToStore(item)">
+                进店
+            </button>
+        </div>
+        <div class="store_vOList_warp_mid">
+          <!-- <p class="p_title">
+            <span>销量：123</span>
+            <span>商品：123</span>
+            <span>好评：123</span>
+          </p>   -->
+          <p class="p_con">
+              {{item.description}}
+          </p>
+        </div>
+        <ul class="store_vOList_warp_bot">
+            <li>
+              <img (click)="goToDetail(_item)" src="{{_item.originalImg}}" alt="" class="R_fl" *ngFor="let _item of item.tpGoodss">
+            </li>
+        </ul>
+    </div>
+  </div> 
+</ion-content>

@@ -1,0 +1,38 @@
+<div class="wrap" (click)="closeModal()">
+  <div class="wrap_content" *ngIf="shopsearchSchDetail">
+    <div class="weui_media_appmsg">
+      <div class="defu_img"></div>
+      <div class="defu_info">
+        <div class="weui_media_title font12 logistics_status" *ngIf="shopsearchSchDetail.state">物流状态：{{shopsearchSchDetail.state | orderStatus:'logistics'}}</div>
+        <div class="weui_media_title logistics_company" *ngIf="shopsearchSchDetail.shipperName">
+          <span class="font12">物流公司：</span>
+          <span class="font12">{{ shopsearchSchDetail.shipperName }}</span>
+        </div>
+        <div class="weui_media_title waybill_num" *ngIf="shopsearchSchDetail.logisticCode">
+          <span class="font12">运单号码：</span>
+          <span class="font12">{{ shopsearchSchDetail.logisticCode }}</span>
+        </div>
+        <div class="weui_media_title service_phone" *ngIf="shopsearchSchDetail.logisticCode">
+          <span class="font12">客服电话：</span>
+          <span class="phone_num font12">{{ shopsearchSchDetail.phone }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="ioncontentbox">
+      <ion-content>
+        <div class="timeline">
+          <ul>
+            <li class="timeline-item" *ngFor="let item of shopsearchSchDetail.traces">
+              <div class="timeline-item-head"></div>
+              <div class="timeline-item-tail"></div>
+              <div class="timeline-item-content">
+                <h4 class="font12 ">{{item.acceptStation}}</h4>
+                <p class="font12 ">{{item.acceptTime }}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </ion-content>
+    </div>
+  </div>
+</div>

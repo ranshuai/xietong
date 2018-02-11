@@ -1,0 +1,22 @@
+input-radio-group {
+  .group-wrap {
+    .input-radio {
+      float: left;
+      min-width: pxrem(185);
+      padding-left: pxrem(25);
+      line-height: pxrem(56);
+      ion-icon {
+        margin-right: pxrem(20);
+        font-size: pxrem(32);
+        vertical-align: middle;
+        &[name=ios-checkmark-circled] {
+          color: #f2786b;
+        }
+      }
+      span {
+        vertical-align: middle;
+        font-size: pxrem(28);
+      }
+    }
+  }
+}

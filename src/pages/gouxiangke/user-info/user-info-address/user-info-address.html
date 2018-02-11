@@ -1,0 +1,39 @@
+<!--
+  Generated template for the UserInfoAddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>地址管理</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+
+<section class="address_list" *ngIf="addressList">
+  <div class="address_item" *ngFor="let item of addressList"  (click)="goToPageEditorAddressPage(item)">
+    <div class="left_content">
+      <div class="user_box">
+        <span class="user_box_name">{{item.consignee}}</span>
+        <strong class="user_box_phone">{{common.phoneFilter(item.mobile)}}</strong>
+      <div class="address_badge" *ngIf="item.isDefault">默认地址</div>
+      </div>
+      <div class="address_box">
+        <p>
+         {{item.provinceName + item.districtName + item.address}}
+        </p>
+      </div>
+    </div>
+    <div class="right_content">
+      <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+    </div>
+  </div>
+</section>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title (click)="goToPageAddressNewPage()">添加新的地址</ion-title>
+  </ion-toolbar>
+</ion-footer>

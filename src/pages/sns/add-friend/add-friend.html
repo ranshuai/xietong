@@ -1,0 +1,40 @@
+<!--
+  Generated template for the AddFriendPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title><span class="friends-title">加好友</span></ion-title>
+<!--<ion-buttons end>
+    <button ion-button ><ion-icon item-right name="icon-gxk-28">
+    </ion-icon></button>
+</ion-buttons>-->
+   <!-- <span style="float: right;" (click)="addFriend()">
+		<ion-icon item-right name="icon-gxk-28">
+		</ion-icon>
+	</span>-->
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content  class="pageContent">
+    <ion-item class="searchItem" (click)="addFriend('search')">
+    <!--<label for="userName" class="userNameLabel">
+
+    </label>-->
+        <ion-icon name="icon-gxk-25" class="userNameIcon"></ion-icon>
+    <input class="inputTip" id="userName" type="text" placeholder="用户名 / 手机号">
+    </ion-item>
+    <ion-item class="contactItem" (click)="addFriend('contact')" *ngIf="httpConfig.platform == 'android'||httpConfig.platform == 'ios'">
+        <ion-avatar item-left  class="avatar">
+            <ion-icon name="icon-gxk-20" class="icon-phone"></ion-icon>
+        </ion-avatar>
+        <span class="phone">手机联系人</span>
+        <p  class="contact">添加通讯录中的朋友</p>
+        <ion-icon item-end name="arrow-forward" class="custome-right-arrow"></ion-icon>
+    </ion-item>
+</ion-content>

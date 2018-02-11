@@ -1,0 +1,84 @@
+page-user-info-address-editor {
+    .scroll-content {
+        background: #e6e8ea!important;
+    }
+    .item.item-block {
+        border-bottom: none !important;
+        input {
+            height: pxrem(50);
+            line-height: pxrem(50)
+        }
+    }
+    form .from_inputItem.showIcon {
+        padding-right: pxrem(300);
+        .input_errorMsg {
+            right: pxrem(30);
+        }
+    }
+    .from_inputItem{
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+        position: relative;
+    }
+    .payType .paytype_content {
+        margin: 0 pxrem(64);
+        margin-left: 0;
+    }
+    form .city_item {
+        padding: pxrem(28) pxrem(32);
+        font-size: pxrem(28);
+        color: #9b9b9b;
+    }
+    .check_icon.active {
+        background-image: url(../assets/img/pay-checked.png);
+        background-size: 100% 100%;
+    }
+    .check_icon{
+        background-image: url(../assets/img/pay-check.png);
+        background-size: 100% 100%;
+    }
+    .payType i {
+        position: absolute;
+        width: pxrem(40);
+        height: pxrem(40);
+        background-repeat: no-repeat;
+        background-position: center;
+        top: pxrem(36.5);
+        right: pxrem(24);
+    }
+    form .form_item {
+        border-color: #ddd;
+        background-color: #fff;
+        color: #444;
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin: -2px;
+        padding: pxrem(32);
+        border-width: 2px;
+        border-style: solid;
+        font-size: pxrem(32);
+    }
+    form .form_item .delete_address {
+        color: #f2786b;
+    }
+    .disabledBtn {
+        pointer-events: none;
+        background: #838589 !important;
+    }
+    form .from_subBtn {
+        position: absolute;
+        height: pxrem(90);
+        color: #fff;
+        font-size: pxrem(32);
+        text-align: center;
+        line-height: pxrem(90);
+        bottom: 0px;
+        width: 100%;
+        z-index: 9;
+        background-color: #f2786b;
+    }
+    .item-inner{
+        border-bottom: none !important;
+    }
+}

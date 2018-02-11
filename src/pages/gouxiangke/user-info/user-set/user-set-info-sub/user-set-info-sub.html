@@ -1,0 +1,49 @@
+<!--
+  Generated template for the UserSetInfoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>个人信息</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+    <section *ngIf="pageData">
+        <form [formGroup]="userInfoSubForm">
+            <input type="file" id="userHeader" accept="image/*" (change)="fileChange($event)" multiple style="display:none">
+            <div class="user_info_item item_img" (click)="uploadImg()">
+                <div class="user_img" [ngBackImg]="{img:pageData&&pageData.headPic,type:1}"></div>
+            </div>
+
+            <div class="div_input_box">
+                <ion-item style="border: 0 !important;">
+                    <ion-label>昵称:</ion-label>
+                    <ion-input class="input div_input_self" formControlName="nickname" type="text" placeholder="请输入昵称" maxlength="30" required></ion-input>
+                </ion-item>
+                <div class="input_errorMsg" *ngIf="userInfoSubMessages.nickname.errorMsg">{{userInfoSubMessages.nickname.errorMsg}}</div>
+            </div>
+            <div class="div_input_box" (click)="seletSexModal()">
+                <div class="div_input_type">性别:</div>
+                <div class="div_input_value">{{common.sexFilter(pageData.sex)}}</div>
+            </div>
+            <div class="div_input_box" (click)="select()">
+                <div class="div_input_type">出生日期:</div>
+                <div class="div_input_value" *ngIf="pageData.birthday != 0">{{birthday.value}}</div>
+                <div class="div_input_value" *ngIf="pageData.birthday == 0">未设置</div>
+            </div>
+        </form>
+    </section>
+
+</ion-content>
+<ion-footer>
+    <ion-toolbar [ngClass]="{'active':userInfoSubFormIsDisabled}" (click)="subUserInfo()">
+        <ion-title>提交</ion-title>
+    </ion-toolbar>
+</ion-footer>

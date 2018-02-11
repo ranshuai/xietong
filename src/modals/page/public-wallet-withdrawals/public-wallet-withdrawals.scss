@@ -1,0 +1,108 @@
+page-public-wallet-withdrawals {
+  .scroll-content {
+    background: #e6e8ea!important;
+    margin-bottom: pxrem(90);
+}
+.item.item-block {
+    padding: 0 pxrem(30) !important;
+    input {
+        height: pxrem(50);
+        line-height: pxrem(30)
+    }
+}
+form {
+    .from_inputItem.code_item:after {
+        content: ' ';
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        min-height: pxrem(0);
+        height: pxrem(0);
+        background: #ddd;
+    }
+    .from_inputItem.showIcon.alipay_input {
+        padding-right: pxrem(360);
+    }
+    .form_item {
+        border-color: #ddd;
+        background-color: #fff;
+        color: #444;
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin: -2px;
+        padding: pxrem(32);
+        border-width: 2px;
+        border-style: solid;
+        font-size: pxrem(32);
+    }
+}
+.from_subBtn {
+    position: absolute;
+    height: pxrem(98);
+    color: #fff;
+    font-size: pxrem(32);
+    text-align: center;
+    line-height: pxrem(99);
+    bottom: pxrem(0);
+    width: 100%;
+    background-color: #f2786b;
+}
+.disabledBtn {
+    pointer-events: none;
+    background: #838589 !important;
+}
+form .form_item.margin-bottom-10 {
+    margin-bottom: pxrem(10);
+}
+form .form_item .sign.money {
+    margin: 0;
+    display: inherit;
+    font-size: pxrem(28);
+    color: #f2786b;
+}
+.item.item-input {
+    // padding: pxrem(20) pxrem(32);
+    margin-bottom: pxrem(8);
+}
+.from_inputItem.code_item .msg_code {
+    position: absolute;
+    right: pxrem(26);
+    top: pxrem(26);
+    width: pxrem(180);
+    height: pxrem(44);
+    border: 2px solid #333;
+    border-radius: pxrem(4);
+    font-size: pxrem(24);
+    text-align: center;
+    line-height: pxrem(40);
+}
+.from_inputItem.code_item .img_code {
+    position: absolute;
+    right: pxrem(20);
+    top: pxrem(8);
+    width: pxrem(192);
+    height: pxrem(80);
+    background-color: #ddd;
+    background-repeat: no-repeat;
+    background-size: contain;
+    text-align: center;
+    font-size: pxrem(24);
+    line-height: pxrem(80);
+}
+.toolbar-ios{
+    padding: 0 !important;
+}
+.item-inner{
+    border-bottom: none !important;
+}
+.from_inputItem .input_errorMsg {
+    position: absolute;
+    right: pxrem(200);
+    line-height: pxrem(96);
+    top: 0px;
+    font-size: pxrem(20);
+    color: #f2786b;
+}
+}

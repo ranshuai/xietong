@@ -1,0 +1,45 @@
+<!--
+  Generated template for the UserInfoPrepayPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>预付款余额</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <div class="money_box">
+      <div class="big_money_box">
+        <span class="money_num" [moneyFormat]="pageData['money']"></span>
+        <span class="money_text">预付款余额(元)</span>
+      </div>
+    </div>
+    <div class="money_msg">收入/支出明细</div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150" *ngIf="pageData.list">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+
+  <section *ngIf="pageData.list">
+    <div class="lzy_cell" *ngFor="let item of pageData.list">
+      <div class="lzy_left_item">
+        <p class="item_type">{{item.opTypeDescribe}}</p>
+        <p class="balance">余额：{{item.opedMoney| currency}}</p>
+      </div>
+      <div class="lzy_right_item funin">
+        <p class="money" *ngIf="item.io == '-1'"> - {{item.opMoney | currency}}</p>
+        <p class="money" *ngIf="item.io == '1'"> + {{item.opMoney | currency}}</p>
+        <p class="date_time">{{item.createTimeStr}}</p>
+      </div>
+    </div>
+  </section>
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!pageData.loadEnd">
+    <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="no-more-data" *ngIf="pageData.loadEnd">{{pageData.list.length>0?'没有更多了~':'您暂时还没有相关数据' }}</div>
+
+</ion-content>

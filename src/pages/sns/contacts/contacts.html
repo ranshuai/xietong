@@ -1,0 +1,74 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title><span class="friends-title">通讯录朋友</span></ion-title>
+
+        <!-- <ion-nav-back-button class="button-clear">
+             <i class="ion-arrow-left-c" item-left></i> 后退
+         </ion-nav-back-button>-->
+    </ion-navbar>
+
+    <ion-toolbar>
+        <ion-searchbar (ionInput)="getItems($event)"  autocomplete="on" placeholder="搜索"
+                       mode='ios' color='orange' showCancelButton='false'
+                       cancelButtonText="取消" (ionCancel)="onCancelSearch($event)">
+
+        </ion-searchbar>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content>
+    <div class="letter letter-list"  *ngIf="!isSearching">
+        <div class="letter-right letter-key">
+            <span *ngFor="let wordItem of formatContacts" class="right-key" (click)="scrollToTop(wordItem)">{{wordItem.key}}</span>
+        </div>
+    </div>
+    <div>
+
+        <div class="content-list">
+            <!--useful start-->
+
+            <div *ngIf="!isSearching" class="contacts-list">
+                <ion-item-group *ngFor="let group of formatContacts,let letterPos=index">
+                    <!--<ion-item-divider color="light" id="{{letters[i]}}">{{letters[i]}}</ion-item-divider>-->
+                    <ion-item-divider color="light" id="contact-{{group.key}}" class="contacts-group">{{group.key}}
+                    </ion-item-divider>
+                    <ion-item *ngFor="let item of group.value,let subItemIndex=index; "
+                              (click)="seeUserInfo(item.userId,item.nickName,item.headPic);$event.stopPropagation();">
+
+                        <ion-avatar item-left>
+                            <img [src]="item.headPic&&item.headPic+'?x-oss-process=image/resize,w_70,h_0'||'./assets/images/public/anonymity.png'"  class="portrait"  alt="">
+                        </ion-avatar>
+
+                        <h2 class="friend-nickname">{{item.contactName}}</h2>
+                        <span class="contact-name" *ngIf="item.nickName">{{item.nickName}}</span>
+                        <button item-end ion-button outline *ngIf="item.wayType==0&&item.userId!=userId"  class="attention" (click)="attention(letterPos,subItemIndex,item.userId);$event.stopPropagation();">关注
+                        </button>
+                        <button   item-end ion-button *ngIf="item.wayType==1&&item.userId!=userId" class="has-attention">已关注</button>
+                        <button   item-end ion-button *ngIf="item.wayType==-1&&item.userId!=userId" class="has-attention">已拉黑</button>
+                        <button   item-end ion-button *ngIf="item.userId==userId" class="has-attention">自己</button>
+                        <button   item-end ion-button *ngIf="item.userId!=userId&&item.wayType==-2" class="has-attention">未注册</button>
+                        <button   item-end ion-button *ngIf="item.wayType==2&&item.userId!=userId" class="eachother-attention">互相关注</button>
+
+                    </ion-item>
+
+                </ion-item-group>
+            </div>
+            <!--useful end-->
+
+            <ion-list *ngIf="isSearching" class="contacts-list">
+                <ion-item *ngFor="let item of searchingItems" (click)="seeUserInfo(item.userId,item.nickName,item.headPic);$event.stopPropagation();" >
+                    <ion-thumbnail item-left>
+                        <!--<img src="assets/img/th_imge.png">-->
+                        <!--<ion-icon name="contact"></ion-icon>-->
+                        <!--<img src="assets/images/sns/contact_potrait.jpg">-->
+                        <!--<img src="../../../assets/images/sns/contact_potrait.jpg" class="contact-portrait">-->
+                        <img [src]="item.headPic&&item.headPic+'?x-oss-process=image/resize,w_70,h_0'||'./assets/images/public/anonymity.png'" alt="" class="contact-portrait">
+                    </ion-thumbnail>
+                    <!--<p>{{item.crudeMobile}}</p>-->
+                    <h2 class="friend-nickname">{{item.contactName}}</h2>
+                    <!--<span class="contact-name">{{item.nickName||'用户未注册'}}</span>-->
+                </ion-item>
+            </ion-list>
+        </div>
+    </div>
+</ion-content>

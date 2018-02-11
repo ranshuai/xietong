@@ -1,0 +1,49 @@
+{
+  "success": true,
+  "code": 200,
+  "msg": "成功",
+  "status": 1,
+  "language": "zh_CN",
+  "result": [
+    {
+      "userId": 77563,
+      "nickName": "刘鹏飞",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 0
+    },
+    {
+      "userId": 77564,
+      "nickName": "嗯哼",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 1
+    },
+    {
+      "userId": 77565,
+      "nickName": "张三",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 1
+    },
+    {
+      "userId": 77566,
+      "nickName": "张三疯",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 2
+    },
+    {
+      "userId": 77567,
+      "nickName": "张三疯了",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 0
+    },
+    {
+      "userId": 77568,
+      "nickName": "外卖先生",
+      "headPic": "../../assets/images/sns/contact_potrait.jpg",
+      "wayType": 1
+    }
+  ],
+  "page": 0,
+  "pageNo": 1,
+  "totalPageCount": 10,
+  "totalCount": 2
+}

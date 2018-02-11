@@ -1,0 +1,12 @@
+page-all-protocol {
+  .scroll-content{
+    padding: pxrem(20);
+    .content{
+      p:first-child{
+        text-align: center;
+        font-size: pxrem(28);
+      }
+    }
+  }
+
+}

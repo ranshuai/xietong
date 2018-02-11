@@ -1,0 +1,144 @@
+page-user-info-collection {
+  .toolbar-title {
+    color: $headerDefulColor;
+  }
+ .scroll-content{
+      background: #e6e8ea!important;
+ }
+  ion-toolbar.toolbar {
+    height: pxrem(88);
+    padding: 0;
+  }
+  .nav_item {
+    width: 50%;
+    float: left;
+    text-align: center;
+    font-size: pxrem(30);
+    box-sizing: border-box;
+    height: pxrem(88);
+    border-top: pxrem(2) solid #ddd;
+    line-height: pxrem(86);
+  }
+  .nav_item.active {
+    color: #f2786b;
+    border-bottom: pxrem(4) solid #f2786b;
+  }
+  .slide-zoom {
+    height: 100%;
+  }
+  .wrap {
+    overflow: hidden;
+    padding: 0 pxrem(24);
+    background: #ffffff;
+    .list::after {
+      display: block;
+      clear: both;
+      content: ' ';
+    }
+    .item {
+      float: left;
+      width: 48.9%;
+      margin: pxrem(10) 0;
+      padding-bottom: pxrem(10);
+      border-radius: pxrem(10);
+      box-shadow: 0 0 pxrem(20) pxrem(5) $greyShadow;
+      .img-wrap {
+        height: pxrem(338);
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: pxrem(10);
+        }
+      }
+      .name {
+        overflow: hidden;
+        margin-top: pxrem(10);
+        text-indent: pxrem(15);
+        text-align: left;
+        font-size: pxrem(24);
+        color: $greyLight;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .price {
+        margin-top: pxrem(5);
+        text-indent: pxrem(15);
+        text-align: left;
+        font-size: pxrem(24);
+        color: #f2786b;
+      }
+    }
+    .clear {
+      margin-right:2.1%;
+      &::before {
+        display: block;
+        clear: both;
+        content: ' ';
+      }
+    }
+  }
+  .collection_company .shop_list {
+    li {
+      overflow: hidden;
+      margin-bottom: pxrem(10);
+      background: white;
+      .shop-logo-box {
+        float: left;
+        width: 24%;
+        height: pxrem(180);
+        .shop-logo{
+        height: pxrem(136);
+        margin: pxrem(20);
+        border-radius: pxrem(10);  
+        background-repeat: no-repeat;
+        background-color: #ddd;
+        background-size: cover;
+        }
+      }
+      .shop-info{
+        float: left;
+        width: 54%;
+        text-align: left;
+        .shop-name{
+          margin-top: pxrem(30);
+          font-size: pxrem(30);
+        }
+        .shop-data{
+          margin-top: pxrem(12);
+          font-size: pxrem(26);
+          color: #838589;
+          .sale-num{
+            margin-right: pxrem(30)  
+          }
+          .goods-count{
+            
+          }
+        }
+      }
+      .com-btn{
+        float: left;
+     width: 22%;
+    text-align: center;
+    button{
+      width: pxrem(120);
+      height: pxrem(60);
+      margin-top: pxrem(60);
+      border: pxrem(2) solid $userPrimaryColor;
+      border-radius: pxrem(10);
+      background: white;
+      color: $userPrimaryColor !important;
+      line-height: normal;
+      font-size: pxrem(30);
+    }
+      }
+    }
+  }
+  ion-slides{
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin-top: pxrem(192);
+  }
+}

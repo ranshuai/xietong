@@ -1,0 +1,33 @@
+protocol {
+
+  .protocol{
+    padding: 0 pxrem(30);
+    .protocol_title{
+      font-size: pxrem(34);
+      font-family: "PingFang SC";
+      color: rgb(51, 51, 51);
+      text-align: center;
+      padding: pxrem(40) 0;
+    }
+    .protocol_title_h1{
+      display: block;
+      font-size: pxrem(34);
+      color: rgb(51, 51, 51);
+      font-family: "PingFang SC";
+    }
+    .text-indent-2{
+      text-indent:2em;
+    }
+    p{
+      margin: 0;
+      font-size: pxrem(30);
+      font-family: "PingFang SC";
+      color: rgb(102, 102, 102);
+      margin-bottom: pxrem(30);
+    }
+    
+    
+    
+  }
+  
+}

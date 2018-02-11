@@ -1,0 +1,35 @@
+<!-- Generated template for the UserHomeTopComponent component -->
+<ion-header>
+  <ion-navbar hideBackButton>
+    <!-- 变身按钮 -->
+    <ion-buttons left>
+      <change-roles-btn></change-roles-btn>
+    </ion-buttons>
+
+    <ion-title>
+      
+      <!-- home页面顶部nav -->
+      <!-- <ion-slides (ionSlideDidChange)="changedNav()" slidesPerView="2.3" centeredSlides> -->
+      <ion-slides slidesPerView="2.3" centeredSlides>
+        <ion-slide (click)="changeNav(0)" [class.active]="activeIndex == 0">
+          <span>商城首页</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(1)" [class.active]="activeIndex == 1">
+          <span>拼团优惠</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(2)" [class.active]="activeIndex == 2">
+          <span>附近好货</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(3)" [class.active]="activeIndex == 3">
+          <span>浏览历史</span>
+        </ion-slide>
+        <ion-slide (click)="changeNav(4)" [class.active]="activeIndex >= 4" *ngIf="getKnowledgeTab">
+          <span>知识共享</span>
+        </ion-slide>
+      </ion-slides>
+
+    </ion-title>
+    <!-- 搜索按钮 -->
+    <search-button shadowLeft="true"></search-button>
+  </ion-navbar>
+</ion-header>

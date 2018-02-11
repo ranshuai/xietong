@@ -1,0 +1,35 @@
+<!--
+  Generated template for the StoreInfoBasePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>基本信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #e5e5e5;">
+  <ul>
+    <li [ngClass]="{'margin_0': _index == 0}" class="padding_20 margin_t_10" *ngFor="let item of getBaseDataList;let _index=index">
+      <p *ngIf="item.show">
+        <span class="gray">{{item.name}}: </span>
+        <span>{{item.value}}</span>
+      </p>
+      <!-- <p *ngIf="!item.show && item.name == '营业时间'">
+        <span style="display:block" class="gray">{{item.name}}: </span>
+        <span style="font-size:28px;line-height:50px">{{item.value.startTime}}</span><br/>
+        <span style="font-size:28px;line-height:50px">{{item.value.endTime}}</span>
+      </p> -->
+      <!-- <p *ngIf="!item.show && item.name == '店铺简介'">
+        <span style="display:block" class="gray">{{item.name}}: </span>
+        <span style="margin-top: 14px;
+        display: inline-block;">{{item.value}}</span>
+      </p> -->
+    </li>
+  </ul>
+</ion-content>

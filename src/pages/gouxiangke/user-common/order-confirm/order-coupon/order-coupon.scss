@@ -1,0 +1,162 @@
+page-order-coupon {
+  button {
+    vertical-align: middle;
+    ion-icon[name=ios-arrow-back] {
+      width: pxrem(58);
+      font-size: pxrem(60);
+      color: #272727;
+    }
+  }
+  .content {
+    background: #e6e8e9;
+  }
+  .coupon_box {
+    li {
+      margin-top: pxrem(20);
+      position: relative;
+      height: pxrem(182);
+    }
+    li.disabled_coupon {
+      .coupon_left,
+      .coupon_right .coupon_money {
+        background: #a3a3a3;
+      }
+      .pro-content .pro-content_item .pro-info {
+        color: #a3a3a3
+      }
+    }
+    .coupon_left {
+      width: 3.2%;
+      height: pxrem(182);
+      background: #f2786b;
+      border-right: pxrem(2) dashed white;
+      border-top-right-radius: pxrem(20);
+      border-bottom-right-radius: pxrem(20);
+      float: left;
+    }
+    .coupon_right {
+      width: 96.8%;
+      background: white;
+      height: pxrem(182);
+      border-top-left-radius: pxrem(20);
+      border-bottom-left-radius: pxrem(20);
+      float: left;
+      overflow: hidden;
+      .coupon_money {
+        width:31.6%;
+        background: #f2786b;
+        height: 100%;
+        padding-top: pxrem(34);
+        text-align: center;
+        float: left;
+        .big_money_box {
+          span {
+            color: white;
+          }
+          span:first-child {
+            font-size: pxrem(40);
+          }
+          span:last-child {
+            font-size: pxrem(60);
+          }
+        }
+        .big_money_condition {
+          text-align: center;
+          font-size: pxrem(20);
+          color: white;
+        }
+      }
+      .pro-content {
+        float: left;
+        width: 68.3%;
+        height: 100%;
+        padding-left: pxrem(24);
+        box-flex: 1;
+        -webkit-box-flex: 1;
+        -moz-box-flex: 1;
+        -ms-box-flex: 1;
+        -o-box-flex: 1;
+        .coupon_btn_1 {
+          width: pxrem(150);
+          height: pxrem(50);
+          position: absolute;
+          border: pxrem(2) solid #f2786b;
+          font-size: pxrem(24);
+          color: #f2786b;
+          line-height: pxrem(46);
+          right: pxrem(24);
+          top: pxrem(48);
+          border-radius: pxrem(20);
+          text-align: center;
+          &.active {
+            color: #ffffff;
+            background: $userPrimaryColor;
+          }
+        }
+        .coupon_btn_stateBG {
+          width: pxrem(174);
+          height: pxrem(130);
+          position: absolute;
+          right: pxrem(24);
+          top: pxrem(7);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        .stateBG_used {
+          background-image: url('../assets/img/coupon_used.png')
+        }
+        .stateBG_end {
+          background-image: url('../assets/img/coupon_end.png')
+        }
+        .pro-content_item {
+          position: relative;
+          width: pxrem(300);
+          height: pxrem(144);
+          display: -webkit-box;
+          display: flex;
+          align-items: center;
+          .pro-info {
+            display: -webkit-box;
+            overflow: hidden;
+            width: pxrem(284);
+            word-break: break-all;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            text-overflow: ellipsis;
+            font-size: pxrem(24);
+            color: #f2786b;
+          }
+        }
+        .pro-content-bottom {
+          padding-right: pxrem(24);
+          height: pxrem(38);
+          font-size: pxrem(18);
+          line-height: pxrem(38);
+          color: #a3a3a3;
+          .coupon_shop {
+            float: left;
+          }
+          .coupon_endtime {
+            float: right;
+          }
+        }
+      }
+    }
+  }
+  .no-coupon {
+    overflow: hidden;
+    height: 100%;
+    .no-coupons_icon{
+      width: pxrem(102);
+      height: pxrem(102);
+      margin: pxrem(460) auto 0;
+    }
+    span {
+      display: block;
+      margin-top: pxrem(10);
+      text-align: center;
+      font-size: pxrem(28);
+    }
+  }
+}

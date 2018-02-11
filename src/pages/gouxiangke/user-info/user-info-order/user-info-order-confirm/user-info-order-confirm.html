@@ -1,0 +1,124 @@
+<!--
+  Generated template for the UserInfoOrderConfirmPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>订单确认</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+    <section *ngIf="orderDetail">
+        <ul class="user_address_box">
+            <li>
+                <div class="confirm-box">
+                    <div class="order_user_name">
+                        <span>{{orderDetail.consignee}}</span>
+                        <span>{{common.phoneFilter(orderDetail.mobile)}}</span>
+                    </div>
+                    <div class="order_user_address">
+                        <span>{{orderDetail.provinceName}}{{orderDetail.districtName}}{{orderDetail.address}}</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="confirm-box" *ngFor="let goods of orderDetail.orderGoodsSimpleVOS || orderDetail.goods">
+                    <div class="confirm-content ">
+                        <div class="confirm-goods_img">
+                            <div [ngBackImg]="{img:goods.goodsImg,type:1}"></div>
+                        </div>
+                        <div class="confirm-goods_content">
+                            <div class="goods_title">{{goods.goodsName}}
+                                <span class="goods_count">x{{goods.goodsNum}}</span>
+                            </div>
+                            <div class="goods_property">
+                                <span class="property_list">{{goods.specKeyName}}</span>
+                            </div>
+                            <div class="goods_property">
+                                <span class="property_price" [moneyFormat]="goods.goodsUnitPrice"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="only_buttom_border">
+                    <span class="type">备注:</span>
+                    <span>{{orderDetail.userNote}}</span>
+                </div>
+            </li>
+            <li>
+                    <div class="confirm-box" *ngIf="orderDetail.payName">
+                            <span class="type">商品总价:</span>
+                            <span class="type_value">￥ {{orderDetail.totalAmount}}</span>
+                          </div>
+                          <div class="confirm-box">
+                            <span class="type">配送运费:</span>
+                            <span class="type_value">{{orderDetail.shippingPrice | currency}}</span>
+                          </div>
+                          <div class="confirm-box">
+                            <span class="type">优惠券:</span>
+                            <span class="type_value">{{orderDetail.activityPrice | currency}}</span>
+                          </div>
+                          <div class="confirm-box active ">
+                            <span class="type">订单金额:</span>
+                            <span class="type_value">{{orderDetail.goodsPrice | currency}}</span>
+                          </div>
+
+                <div class="only_buttom_border">
+                    <span class="type">商品合计</span>
+                    <span class="orer_money" [moneyFormat]="orderDetail.orderAmount"></span>
+                </div>
+            </li>
+        </ul>
+    </section>
+    <div class="form_item_small">
+        <span>请选择支付方式</span>
+    </div>
+    <div  class="form_item   payType" (click)="payTypeChange('wx')">
+        <i class="wx"></i>
+        <span class="paytype_content">微信支付</span>
+        <i class="check_icon " [ngClass]="{'active':payType=='wx'}"></i>
+    </div>
+    <div class="form_item payType"  (click)="payTypeChange('alipay')" >
+      <i class="ali"></i>
+      <span class="paytype_content">支付宝支付</span>
+      <i class="check_icon"  [ngClass]="{'active':payType=='alipay'}"></i>
+    </div>
+    <div *ngIf="config.PLATFORM == 'APP' && config.PLATFORMTYPE !='IOS'" class="form_item   payType" (click)="payTypeChange('upacp')">
+        <i class="yl"></i>
+        <span class="paytype_content">银联支付</span>
+        <i class="check_icon" [ngClass]="{'active':payType=='upacp'}"></i>
+    </div>
+    <div class="form_item   payType" (click)="payTypeChange('money')">
+        <i class="money"></i>
+        <span class="paytype_content">余额支付</span>
+        <i class="check_icon" [ngClass]="{'active':payType=='money'}"></i>
+    </div>
+    
+    <div class="form_item   payType" (click)="payTypeChange('hd')">
+        <i class="hd"></i>
+        <span class="paytype_content">货到付款</span>
+        <i class="check_icon" [ngClass]="{'active':payType=='hd'}"></i>
+    </div>
+
+    <div class="form_item   payType"
+    *ngIf="commonModel.APP_INIT['getAppconfig'] && commonModel.APP_INIT['getAppconfig'].data.is_prepay==1"
+    (click)="payTypeChange('prepay')">
+        <i class="hd"></i>
+        <span class="paytype_content">预付款支付</span>
+        <i class="check_icon" [ngClass]="{'active':payType=='prepay'}"></i>
+    </div>
+</ion-content>
+<ion-footer>
+    <ion-toolbar *ngIf="orderDetail">
+        <div class="left">
+            应付金额：
+            <span [moneyFormat]="orderDetail.goodsPrice"></span>
+        </div>
+        <div class="operate-btn active" (click)="goPay()">确认并付款</div>
+    </ion-toolbar>
+</ion-footer>

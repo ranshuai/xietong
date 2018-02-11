@@ -1,0 +1,49 @@
+page-public-third-bind {
+  .login-head{
+    width: 100%;
+    padding: pxrem(160) pxrem(316);
+    text-align: center;
+    img{
+      width: pxrem(120);
+      height: pxrem(120);
+    }
+    
+  }
+  .form_subBtn {
+    display: block;
+    width: 70%;
+    height: pxrem(80);
+    line-height: pxrem(80);
+    text-align: center;
+    font-size: pxrem(30);
+    font-family: "PingFang SC";
+    background-color: #ffffff;
+    color: #f2786b;
+    border-radius: pxrem(10);
+    pointer-events:auto !important;
+    border:1px solid #f2786b;
+    margin-bottom: pxrem(80);
+    margin-left: 15%;
+    z-index: 999;
+  }
+
+  .linkImgIcon {
+    width: pxrem(90);
+    height: pxrem(90);
+    margin: 0 auto;
+    .c-imgicon {
+      display: inline-block;
+      width: 100%;
+      padding-top: 110%;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-image: url(../assets/img/wx_login.png);
+    }
+    .qq {
+      background-image: url(../assets/img/qq.png);
+    }
+    .weibo {
+      background-image: url(../assets/img/weibo.png);
+    }
+  }
+}

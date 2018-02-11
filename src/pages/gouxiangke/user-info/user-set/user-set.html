@@ -1,0 +1,81 @@
+<!--
+  Generated template for the UserSetPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>系统设置</ion-title>
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+    <section>
+        <div class="user_module_item border_bottom" (click)="goToUserSetInfo()">
+            <div class="item_module_left">
+                <ion-icon  class="ion-ios-icon-gxk-47"></ion-icon>
+                <span>个人信息</span>
+            </div>
+            <div class="item_module_right">
+                <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+            </div>
+        </div>
+        <!-- <div class="user_module_item border_bottom" (click)="goToPageUserSetCeal()">
+      <div class="item_module_left">
+        <ion-icon name="ios-personal-info"></ion-icon>
+        <span>实名认证</span>
+      </div>
+      <div class="item_module_right">
+        <span>{{commonData.user_info_certification_real?'已完成':'未完成'}}</span>
+
+        <ion-icon name="ios-forward"></ion-icon>
+      </div>
+    </div> -->
+        <div class="user_module_item border_bottom" (click)="goToPageUserSetPassWord()">
+            <div class="item_module_left">
+                <ion-icon class="ion-ios-icon-gxk-44"></ion-icon>
+                <span>修改密码</span>
+            </div>
+            <div class="item_module_right">
+                <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+            </div>
+        </div>
+        <div class="user_module_item border_bottom" (click)="goToPageuSetMobilePage()">
+            <div class="item_module_left">
+                <ion-icon class="ion-ios-icon-gxk-41"></ion-icon>
+                <span>当前手机{{this.mobile}}</span>
+            </div>
+            <div class="item_module_right">换绑
+                <ion-icon class="ion-ios-icon-gxk-51"></ion-icon>
+            </div>
+        </div>
+
+        <div>
+            <div class="user_module_item border_bottom" *ngIf="nativeService.isMobile()" (click)="checkVersion()">
+                <div class="item_module_left">
+                  <ion-icon class="ion-ios-icon-gxk-41"></ion-icon>
+                  <span>检查版本{{versionCode}}</span>
+                </div>
+                <!-- <div class="item_module_right">
+                  <ion-icon name="ios-forward"></ion-icon>
+                </div> -->
+              </div>
+        </div>
+        
+
+    <div class="user_module_item border_bottom" (click)="clearLogin()" *ngIf="config.PLATFORM == 'APP' || config.PLATFORM == 'STOREAPP'">
+      <div class="item_module_left">
+        <ion-icon  class="ion-ios-icon-gxk-59"></ion-icon>
+        <span>退出</span>
+      </div>
+      <!-- <div class="item_module_right">
+        <ion-icon name="ios-forward"></ion-icon>
+      </div> -->
+    </div>
+
+  </section>
+
+</ion-content>

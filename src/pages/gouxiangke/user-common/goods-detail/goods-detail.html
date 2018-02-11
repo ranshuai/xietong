@@ -1,0 +1,42 @@
+<!--
+  Generated template for the GoodsDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>商品详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content>
+  
+  <div *ngIf="goodsInfo">
+    <goods-imgs [data]="goodsInfo.goodsImgs"></goods-imgs>
+
+    <goods-info-bar [data]="goodsInfo"></goods-info-bar>
+
+    <goods-sale-info [data]="goodsInfo.activityVOList" [selfStoreId]= 'goodsInfo.tbCompanyInfo.companyInfoId'></goods-sale-info>
+
+    <goods-specs-select-bar (click)="openSpecsModal()"></goods-specs-select-bar>
+    <!-- 店铺信息 -->
+    <goods-store-bar [data]="goodsInfo" ></goods-store-bar>
+
+    <goods-detail-comment [data]="goodsInfo"></goods-detail-comment>
+
+  </div>
+
+  <user-shopping-cart></user-shopping-cart>
+
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+
+    <goods-detail-footer *ngIf="goodsInfo" [data]="goodsInfo" (openSpecsModalEmit)="openSpecsModal()"></goods-detail-footer>
+
+  </ion-toolbar>
+</ion-footer>

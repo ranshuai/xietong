@@ -1,0 +1,42 @@
+page-store-add-goods2 {
+    .button-inner{
+        color: #fff;
+    }
+    .grey-bg {
+        background: #e6e8e9;
+    }
+    .title {
+        padding-left: pxrem(24);
+        background: #ffffff;
+        color: #a3a3a3;
+        line-height: pxrem(105);
+        font-size: pxrem(28);
+    }
+    .img-upload-wrap {
+        padding: pxrem(20) pxrem(24) pxrem(40);
+        background: #ffffff;
+        .row {
+            .clear {
+                clear: both;
+            }
+            .block {
+                width: 31%;
+                height: pxrem(220);
+                margin-top: pxrem(20);
+                float: left;
+                border: 1px dotted #a3a3a3;
+                &:nth-child(3n-1) {
+                    margin: pxrem(20) pxrem(21) 0;
+                }
+            }
+        }
+    }
+    .submit {
+        &.activated {
+            background: #41b3e2;
+        }
+        &.active {
+            background: #41b3e2;
+        }
+    }
+}

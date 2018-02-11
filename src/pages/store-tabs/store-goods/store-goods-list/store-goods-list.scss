@@ -1,0 +1,14 @@
+store-goods-list {
+  .content {
+    margin-top: pxrem(266);
+    background: #e6e8e9;
+    .scroll-content {
+      margin-bottom: pxrem(278) !important;
+    }
+  }
+  .margin_top_8{
+    .goods-wrap{
+      margin-top: pxrem(8);
+    }
+  }
+}

@@ -1,0 +1,7 @@
+<!-- Generated template for the SearchBarComponent component -->
+<div class="wrap" [ngClass]="{ 'right': right }">
+  <!-- <ion-icon name="ios-search" (click)="search()" [ngShow]="iconShow"></ion-icon> -->
+  <ion-icon name="ios-search" (click)="search()" class="glass"></ion-icon>
+  <input type="text" [placeholder]="placeholder" [(ngModel)]="searchValue" (ngEnter)="search()" (focus)="focus()" (blur)="blur()">
+  <ion-icon class="ion-ios-icon-gxk-59" (click)="clearAc()" class="clear" *ngIf="clear && searchValue"></ion-icon>
+</div>

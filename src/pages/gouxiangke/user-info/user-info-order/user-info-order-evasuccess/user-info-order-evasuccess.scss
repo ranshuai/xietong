@@ -1,0 +1,75 @@
+page-user-info-order-evasuccess {
+  .con_top {
+    height: pxrem(712);
+    padding-top: pxrem(180);
+    background: #f2786b;
+  }
+  .success_icon {
+    display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    justify-content: center;
+    align-items: center;
+    width: pxrem(144);
+    height: pxrem(144);
+    margin: 0 auto;
+    ion-icon {
+      font-size: pxrem(100);
+      color: #fff;
+    }
+  }
+  .success_text {
+    text-align: center;
+    font-size: pxrem(26);
+    font-family: '苹方 粗体';
+  }
+  .prompt {
+    text-align: center;
+    font-size: pxrem(28);
+    font-family: '苹方 中等';
+  }
+  .margin-top-60{
+    margin-top: pxrem(60);
+  }
+  .white {
+    color: #fff!important;
+  }
+  .success_btn_box{
+        padding: 0 pxrem(76);
+    margin-top: pxrem(80);
+  }
+
+  .btn_full{
+    border-color: transparent;
+    background-color: white;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0 pxrem(24);
+    min-width: pxrem(104);
+    min-height: pxrem(94);
+    border-width: pxrem(2);
+    border-style: solid;
+    border-radius: pxrem(8);
+    -webkit-border-radius: pxrem(8);
+    -moz-border-radius: pxrem(8);
+    -ms-border-radius: pxrem(8);
+    vertical-align: top;
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: pxrem(30);
+    line-height: pxrem(84);
+    cursor: pointer;
+    margin-top: pxrem(10);
+    margin-bottom: pxrem(10);;
+    width: 100%
+  }
+    .R_red_bg {
+    background-color:  #f2786b;
+}
+  .redborder {
+    border: pxrem(2) solid #f2786b;
+    color: #f2786b!important;
+}
+}

@@ -1,0 +1,177 @@
+page-public-login {
+  ._setback {
+    color: #1b1b1b;
+    padding: pxrem(10) pxrem(20) !important;
+    font-size: pxrem(30) !important;
+    text-shadow: 2px 2px 2px #1b1b1b;
+  }
+
+.bar-button-default-ios:hover:not(.disable-hover) {
+    color: #1b1b1b;
+}
+.scroll-content {
+    background: white;
+    padding-top: pxrem(110);
+    .navlist {
+        display: block;
+        letter-spacing: pxrem(-4);
+        li {
+            position: relative;
+            width: 49%;
+            padding: pxrem(39);
+            font-size: pxrem(30);
+            text-align: center;
+            display: inline-block;
+            letter-spacing: 0;
+        }
+        li:after {
+            content: '';
+            background-color: #f5f5f5;
+            position: absolute;
+            width: 100%;
+            height: pxrem(4);
+            left: 0;
+            bottom: 0;
+        }
+        li.active {
+            color: #f2786b;
+        }
+        li.active:after {
+            content: '';
+            background-color: #f2786b;
+            position: absolute;
+            width: 100%;
+            height: pxrem(4);
+            left: 0;
+            bottom: 0;
+        }
+    }
+    .form_info_box {
+        .form_item {
+            .text-input {
+                margin: 0 0 0 pxrem(40);
+                padding: pxrem(20) 0;
+            }
+        }
+        .forgetPaw {
+            width: 100%;
+            font-size: pxrem(28);
+            color: #f2786b;
+            text-align: right;
+            position: relative;
+            right: pxrem(40);
+            p {
+                margin: pxrem(20) 0;
+            }
+        }
+        .form_subBtn {
+            margin: pxrem(60) pxrem(40) 0 pxrem(40);
+        }
+        .other_box {
+            margin-top: pxrem(166);
+            .other_title {
+                margin: pxrem(30) 0;
+            }
+            .m-imgicon li {
+                width: 32.5%;
+            }
+        }
+    }
+}
+.register_btn {
+    font-size: pxrem(28);
+    padding: pxrem(20);
+    color: #333;
+    position: absolute;
+    right: pxrem(16);
+    bottom: 0px;
+}
+}
+
+
+/**表单相关*/
+
+.form_item {
+    position: relative;
+    padding: pxrem(43) 0 0px 0;
+    .text-input {
+        width: 50%;
+        font-size: pxrem(28);
+        display: block;
+        outline:none;
+    }
+    .imgcode {
+        position: absolute;
+        width: pxrem(120);
+        height: pxrem(50);
+        right: pxrem(40);
+        background-color: #f5f5f5;
+        top: pxrem(49);
+        text-align: center;
+    }
+    .phonecode {
+        position: absolute;
+        right: pxrem(40);
+        top: pxrem(43);
+        width: pxrem(132);
+        height: pxrem(72);
+        line-height: pxrem(72);
+        font-size: pxrem(24);
+        font-family: "PingFang SC";
+        color: rgb(242, 120, 107);
+        text-align: center;
+    }
+    .phonecode_btn {
+        position: absolute;
+        right: pxrem(40);
+        top: pxrem(43);
+        width: pxrem(132);
+        height: pxrem(72);
+        line-height: pxrem(72);
+        font-size: pxrem(24);
+        font-family: "PingFang SC";
+        text-align: center;
+        border-radius: pxrem(5);
+        color: white;
+        background: #E3E1E1;
+    }
+    .password_icon {
+        position: absolute;
+        right: pxrem(24);
+        top: pxrem(43);
+        height: pxrem(72);
+        line-height: pxrem(72);
+        padding: 0 pxrem(24);
+        font-size: pxrem(32);
+    }
+}
+
+.form_item:after {
+    content: '';
+    background-color: #f5f5f5;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    }
+
+.form_subBtn {
+    display: block;
+    height: pxrem(80);
+    line-height: pxrem(80);
+    text-align: center;
+    font-size: pxrem(30);
+    font-family: "PingFang SC";
+    background-color: #f5f5f5;
+    color: white;
+    pointer-events: none;
+    border-radius: pxrem(10);
+}
+
+.form_subBtn.active {
+background-color: #f2786b;
+pointer-events: auto;
+}
+
+

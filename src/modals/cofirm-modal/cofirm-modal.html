@@ -1,0 +1,20 @@
+<div class="wrap" (click)="closeModal()">
+    <div class="wrap_content" (click)="$event.stopPropagation();">
+        <div class="alert_confirm_box">
+            <div class="alert_confirm_title">
+                欢迎致电会计智囊客服热线
+            </div>
+            <div class="alert_confirm_msg ">
+                <ul>
+                    <li class="flex_box flex-justify-center">400-0608-168</li>
+                    <li class="flex_box flex-justify-center call_num">（服务时间：7X24小时）</li>
+                </ul>
+            </div>
+
+            <div class="alert_confirm_btnBox">
+                <div class="clear_btn flex_box flex-justify-center flex-aligin-center" (click)="closeModal()">取消</div>
+                <div class="confirm_btn flex_box flex-justify-center flex-aligin-center" (click)="callPhone('400-0608-168')">立即拨打</div>
+            </div>
+        </div>
+    </div>
+</div>

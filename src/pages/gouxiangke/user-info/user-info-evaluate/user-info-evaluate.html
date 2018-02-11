@@ -1,0 +1,91 @@
+<!--
+  Generated template for the UserInfoEvaluatePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的评价</ion-title>
+  </ion-navbar>
+  <ion-toolbar>
+    <ul class="navlist">
+      <li  (click)="changeNav('all')"  [ngClass]="{ 'active': activeType == 'all'}">
+        <span>全部</span>
+      </li>
+      <li (click)="changeNav('img')"  [ngClass]="{ 'active': activeType == 'img'}">
+        <span>有图</span>
+      </li>
+    </ul>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150">
+    <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
+  </ion-refresher>
+  <section *ngIf="activeType == 'all'">
+    <ul class="rates_content_list" *ngIf="evaluateList[activeType].clist">
+      <li *ngFor="let item of evaluateList[activeType].clist">
+        <div class="lib-rates-header">
+          <div class="rates_header_img"  [ngBackImg]="{img:item.headPic,type:1}">
+          </div>
+          <div class="rates_header_nick">{{item.nickname}}</div>
+        </div>
+        <div class="lib-rates-feedbackDate">{{item.evaluateTime+' '+item.good.goodType}}</div>
+        <div class="lib-rates-content">{{item.evaluateContent}}</div>
+
+        <div class="lib-rates-feexPic" *ngIf="item.evaluateImgs.length>0">
+          <span *ngFor="let img of item.evaluateImgs" [ngBackImg]="{img:img,type:1}">
+            <!-- <img src="//img.alicdn.com/imgextra/i4/0/TB20xrLXc5fF1Jjy0FlXXbtcXXa_!!0-rate.jpg" class="rates_pic"> -->
+          </span>
+        </div>
+        <div class="lib-rates-good">
+          <div class="good_item">
+            <div class="good-img" [ngBackImg]="{img:item.good.goodsImg,type:1}"></div>
+            <div class="goods_info">
+              <h3 class="title">{{item.good.goodsName}}</h3>
+              <span class="good_money">{{item.good.shopPrice|currency}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section *ngIf="activeType == 'img'">
+    <ul class="rates_content_list" *ngIf="evaluateList[activeType].clist">
+      <li *ngFor="let item of evaluateList[activeType].clist">
+        <div class="lib-rates-header">
+          <div class="rates_header_img"  [ngBackImg]="{img:item.headPic,type:1}">
+          </div>
+          <div class="rates_header_nick">{{item.nickname}}</div>
+        </div>
+        <div class="lib-rates-feedbackDate">{{item.evaluateTime+' '+item.good.goodType}}</div>
+        <div class="lib-rates-content">{{item.evaluateContent}}</div>
+
+        <div class="lib-rates-feexPic" *ngIf="item.evaluateImgs.length>0">
+          <span *ngFor="let img of item.evaluateImgs" [ngBackImg]="{img:img,type:1}">
+            <!-- <img src="//img.alicdn.com/imgextra/i4/0/TB20xrLXc5fF1Jjy0FlXXbtcXXa_!!0-rate.jpg" class="rates_pic"> -->
+          </span>
+        </div>
+        <div class="lib-rates-good">
+          <div class="good_item">
+            <div class="good-img" [ngBackImg]="{img:item.good.goodsImg,type:1}"></div>
+            <div class="goods_info">
+              <h3 class="title">{{item.good.goodsName}}</h3>
+              <span class="good_money">{{item.good.shopPrice|currency}}</span>
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <div *ngIf="!isSrooll">
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="!evaluateList[activeType].loadEnd">
+      <ion-infinite-scroll-content loadingText="加载更多~"></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,22 @@
+<!--
+  Generated template for the GoodsHistoryListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="title" *ngIf="false">
+  <div class="time">今天</div>
+  <div class="edit-btn">编辑</div>
+</div>
+<div class="list">
+  <div class="item" *ngFor="let item of data">
+    <div class="img-wrap">
+      <img [src]="item.original_img || item.originalImg">
+    </div>
+    <div class="history_name">
+      <div class="name">{{ item.goodsName }}</div>
+    </div>
+    <div class="price">{{ item.goodsPrice | currency:'CNY':true }}</div>
+    <div class="buy-btn" (click)="goToGoodsDetailPage(item)">购买</div>
+  </div>
+</div>

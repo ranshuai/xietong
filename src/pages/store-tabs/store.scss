@@ -1,0 +1,22 @@
+page-store {
+  .tabs {
+    .tab-button[aria-selected=true] {
+      .tab-button-icon {
+        color: #40b3e2;
+      }
+      .tab-button-text {
+        color: #40b3e2;
+      }
+    }
+  }
+
+  .tabs{
+    .tab-button-text{
+      color:#8c8c8c;
+    }
+    .tab-button-icon{
+      color:#8c8c8c;
+    }
+  } 
+  
+}

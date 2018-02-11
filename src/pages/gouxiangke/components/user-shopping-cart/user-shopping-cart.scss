@@ -1,0 +1,22 @@
+user-shopping-cart {
+  position: fixed;
+  bottom: pxrem(140);
+  right: pxrem(25);
+  .shopping-cart {
+    position: relative;
+    width: pxrem(88);
+    height: pxrem(88);
+    border: 1px solid #e7e9eb;
+    border-radius: pxrem(44);
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 0 pxrem(10) pxrem(2) $greyShadow;
+    ion-icon {
+      font-size: pxrem(50);
+      line-height: pxrem(88);
+      span {
+        @extend .number-mark;
+      }
+    }
+  }
+}

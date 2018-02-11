@@ -1,0 +1,52 @@
+store-goods-detail-footer {
+    .goods-footer {
+        overflow: hidden;
+        height: pxrem(98);
+        background: #ffffff;
+        border-top: 1px solid #cfd0d1;
+        .two {
+            float: left;
+            width: 50%;
+        }
+        .three {
+            float: left;
+            width: 33.33%;
+        }
+        .four {
+            float: left;
+            width: 33.33%;
+        }
+        .button {
+            display: block;
+            width: 100%;
+            height: pxrem(98);
+            text-align: center;
+            line-height: pxrem(98);
+            color: #939192;
+            font-size: pxrem(30);
+            ion-icon {
+                display: block;
+                margin-top: pxrem(15);
+                font-size: pxrem(46);
+                line-height: 1;
+            }
+            span {
+                display: block;
+                margin-top: pxrem(10);
+                font-size: pxrem(22);
+                line-height: 1;
+            }
+        }
+        .red {
+            background: #f59389;
+            color: #ffffff;
+        }
+        .pink {
+            background: #f59389;
+            color: #ffffff;
+        }
+        .black {
+            color: #333333;
+        }
+    }
+}
