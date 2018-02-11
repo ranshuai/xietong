@@ -1,6 +1,6 @@
 <!-- Generated template for the HotGoodsSwiperComponent component -->
 <div class="wrap">
-  <ion-slides [slidesPerView]="slidesPerView || 2.35" [spaceBetween]="spaceBetween || 10" speed="100" *ngIf="data">
+  <ion-slides [slidesPerView]="slidesPerView || 2.35" [spaceBetween]="spaceBetween || 24" speed="100" *ngIf="data">
     <ion-slide *ngFor="let item of data" (click)="goToGoodsDetailPage(item)">
       <div class="img-wrap">
         <img [src]=" mainCtrl.imgFilter(item.original_img,imgSpace)

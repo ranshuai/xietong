@@ -5,18 +5,18 @@
       <change-role-btn></change-role-btn>
     </ion-buttons>
 
-    <!-- <ion-title> -->
+    <ion-title>
 
       <!-- home页面顶部nav -->
       <!-- <ion-slides (ionSlideDidChange)="changedNav()" slidesPerView="2.3" centeredSlides> -->
-      <!-- <ion-slides slidesPerView="2.3" centeredSlides>
+      <ion-slides slidesPerView="2.3" centeredSlides>
         <ion-slide (click)="changeNav(0)" [class.active]="activeIndex == 0">
           <span>商城首页</span>
-        </ion-slide> -->
+        </ion-slide>
         <!-- <ion-slide (click)="changeNav(1)" [class.active]="activeIndex == 1">
           <span>拼团优惠</span>
         </ion-slide> -->
-        <!-- <ion-slide (click)="changeNav(2)" [class.active]="activeIndex == 2">
+        <ion-slide (click)="changeNav(2)" [class.active]="activeIndex == 2">
           <span>附近好货</span>
         </ion-slide>
         <ion-slide (click)="changeNav(3)" [class.active]="activeIndex == 3">
@@ -25,16 +25,11 @@
         <ion-slide (click)="changeNav(4)" [class.active]="activeIndex == 4" *ngIf="getKnowledgeTab">
           <span>知识共享</span>
         </ion-slide>
-      </ion-slides> -->
+      </ion-slides>
 
-    <!-- </ion-title> -->
-    <!-- 搜索框 -->
-    <search-bar-fake placeholder="输入关键字、关键词"></search-bar-fake>
+    </ion-title>
     <!-- 搜索按钮 -->
-    <ion-buttons right>
-      <home-qrcode></home-qrcode>
-    </ion-buttons>
-    
+    <search-button shadowLeft="true"></search-button>
   </ion-navbar>
 </ion-header>
 
@@ -69,23 +64,23 @@
   </div>
 
   <!-- <div [ngShow]="view == 'group'"> -->
-  <!-- <div *ngIf="view == 'group'">
+  <div *ngIf="view == 'group'">
     <page-user-home-group></page-user-home-group>
-  </div> -->
+  </div>
 
   <!-- <div [ngShow]="view == 'nearby'"> -->
-  <!-- <div *ngIf="view == 'nearby'">
+  <div *ngIf="view == 'nearby'">
     <page-user-home-nearby></page-user-home-nearby>
-  </div> -->
+  </div>
 
   <!-- <div [ngShow]="view == 'history'"> -->
-  <!-- <div *ngIf="view == 'history'">
+  <div *ngIf="view == 'history'">
     <page-user-home-history></page-user-home-history>
-  </div> -->
+  </div>
 
   <!-- <div [ngShow]="view == 'share'"> -->
-    <!-- <div *ngIf="view == 'share'">
+    <div *ngIf="view == 'share'">
       <page-user-home-share></page-user-home-share>
-    </div> -->
+    </div>
 
 </ion-content>

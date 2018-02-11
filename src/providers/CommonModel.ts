@@ -5,7 +5,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CommonModel {
-  public shoppingCartHide: any; //购物车是否隐藏
   public cacheOtherGoodsListLength: number = 0; //店铺管理 准备代售商品的数量
   public isPayPwd: any;
   shopCarNum: any; //店铺购物车显示数量的角标；

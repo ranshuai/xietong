@@ -45,7 +45,6 @@ export class ChangeRoleBtnShared {
         data => {
           if (data) {
             this.navCtrl.push(data.page, data.data);
- 
           }
         }
       );

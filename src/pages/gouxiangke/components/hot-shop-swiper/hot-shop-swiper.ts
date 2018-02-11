@@ -1,7 +1,6 @@
 import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component, Input } from '@angular/core';
 import { CommonProvider } from "../../providers/common/common";
-import { StoreProvider } from "../../providers/store/store";
 
 /**
  * Generated class for the HotShopSwiperComponent component.
@@ -17,14 +16,8 @@ export class HotShopSwiperComponent {
 
   @Input() data: any;
   @Input() imgSpace: any;
-  storeInfo: any;
-  storeId: any;
-  constructor(private common: CommonProvider, public mainCtrl: MainCtrl, private store: StoreProvider, ) {
-    console.log(this.data)
-    // this.data.forEach(store => {
-    //   this.storeId = store.storeId || store.company_id;
-    // });
-   }
+
+  constructor(private common: CommonProvider,public mainCtrl:MainCtrl) { }
 
   enterStore(item) {
     this.common.goToPage('StoreDetailPage', { store_id: item.company_id || item.storeId});
@@ -34,20 +27,5 @@ export class HotShopSwiperComponent {
     let leng = str.length;
     _str = leng > 34 ? str.substring(0, 34) + '...' : str;
     return _str
-  }
-  getStoreInfo(storeId) {
-    this.store.getStoreInfo(storeId).subscribe(data => {
-      if (data.success) {
-        data.result = data.result ? data.result : {}
-        this.storeInfo = data.result.storeIndexVO;
-      }
-    });
-  }
-  ionViewDidEnter() {
-    setTimeout(() => { 
-      if (this.storeInfo && this.storeInfo.unitBackground) { 
-        document.getElementById('head-wrap').style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
-      }
-    }, 500)
   }
 }

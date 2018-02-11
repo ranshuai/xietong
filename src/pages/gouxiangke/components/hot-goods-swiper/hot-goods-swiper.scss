@@ -1,43 +1,45 @@
 hot-goods-swiper {
   .wrap {
     width: 100%;
+    margin-bottom: pxrem(10);
+    padding-bottom: pxrem(20);
+    border-bottom: 1px solid $greyBorder;
     background: #ffffff;
-    padding-bottom: pxrem(40);
     .swiper-container {
-      padding:0 pxrem(24) pxrem(24);
+      padding: pxrem(24);
       overflow: visible;
       ion-slide {
         width: pxrem(285);
         height: pxrem(375);
-        margin-right: pxrem(20);
-        // border-radius: pxrem(10);
+        margin-right: pxrem(24);
+        border-radius: pxrem(10);
         align-items: flex-start;
-        // box-shadow: 0 0 pxrem(20) pxrem(5) $greyShadow;
+        box-shadow: 0 0 pxrem(20) pxrem(5) $greyShadow;
         .img-wrap {
           height: pxrem(285);
           img {
             width: 100%;
             height: 100%;
-            // border-radius: pxrem(10);
+            border-radius: pxrem(10);
           }
         }
         .name {
           display: -webkit-box;
           -webkit-box-orient: vertical;
-          -webkit-line-clamp: 2;
+          -webkit-line-clamp: 1;
           overflow: hidden;
           margin-top: pxrem(10);
-          // padding: 0 pxrem(10);
+          padding: 0 pxrem(10);
           text-align: left;
           font-size: pxrem(24);
           color: #333333;
         }
         .price {
+          margin-top: pxrem(5);
+          padding: 0 pxrem(10);
           text-align: left;
           font-size: pxrem(24);
-          color: #FF0A0A;
-          position: absolute;
-          bottom: pxrem(-30);
+          color: #333333;
         }
       }
     }

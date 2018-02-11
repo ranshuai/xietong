@@ -149,9 +149,6 @@ export class UserSetPage {
 
   clearLogin() { 
     this.commonProvider.storeConfirm('确认退出吗').subscribe(data => { 
-
-      //用户退出清空购物车
-      this.commonModel.shopCarNum = '';
       window.localStorage.removeItem('storeId')
       window.localStorage.removeItem('_TAB_INIT_USERINFO')
       this.commonModel.TAB_INIT_USERINFO = null;

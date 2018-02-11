@@ -1,9 +1,2 @@
-<div class="wrap">
-  <div class="chage" *ngIf="mainCtrl.httpService.config.clientType=='1'" (click)="openChangeModal()">
-    <i class="icon ion-ios-icon-gxk-154"></i>
-    <p class="dsc">变身</p>
-  </div>
-  <!-- <button class="shadow-right icon ion-ios-icon-gxk-154"   >
-    </button>
-    <p>变身</p> -->
-</div>
+<button class="shadow-right icon ion-ios-icon-gxk-1" *ngIf="mainCtrl.httpService.config.clientType=='1'" (click)="openChangeModal()" >
+</button>

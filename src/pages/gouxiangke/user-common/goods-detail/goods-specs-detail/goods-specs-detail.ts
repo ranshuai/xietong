@@ -89,8 +89,7 @@ export class GoodsSpecsDetailPage {
       let count;
       for (var i = 0; i < items.length; i++) {
         var element = items[i];
-        // if (element.active || (goods.specKey && goods.specKey.split('_').pop() == element.id)) {
-          if (element.flag) {
+        if (element.active || (goods.specKey && goods.specKey.split('_').pop() == element.id)) {
           //判断如果已经有选中的规格，直接跳出
           element.active = true;
           element.storeCount = count;

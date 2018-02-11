@@ -62,12 +62,11 @@ export class TabMenuPage {
     
       //根据 PLATFORM: any = 'APP'; 判断是什么应用；
       if (this.config.PLATFORM == 'APP' || this.config.PLATFORM == 'WX') {
-          this.userHomePage = "UserHomePage" //主页  UserHomePage ApplyRolePage
+          this.userHomePage = "UserHomePage" //主页
           this.userTopicPage = "UserTopicPage" //专题
           this.userCategoryPage = "UserCategoryPage" //分类
           this.userInfoPage = "UserInfoPage" //个人
           this.snsUserInfoPage = "SnsUserInfoPage" //消息
-          this.userCartPage = "UserShoppingCartDetailPage" //购物车
       } else { 
           this.userHomePage = "UserStoreHomePage" //店铺主页
           this.userCartPage = 'UserShoppingCartDetailPage'; //购物车
@@ -91,7 +90,6 @@ export class TabMenuPage {
       console.log("即将离开底部菜单TabMenu");
   }
     ionViewDidLoad() {
-
         let messageMenu=this.tabs.getNativeElement();
         // let customeMsgEle=this.customeMsgTab.nativeElement;
 
@@ -104,53 +102,51 @@ export class TabMenuPage {
         this.getTotalUnreadCount();
 
         //微信只能的得到userId 通过userId获取用户信息
-            if (this.httpConfig.clientType == '2') {
-                this.api.get(this.api.config.host.org + 'user/userinfo').subscribe(data => {
-                    if (data.success) {
-                        data.result.headPic = data.result.headPic ? data.result.headPic : '../assets/img/deful_headerPic.jpg';
-                        this.commonModel.TAB_INIT_USERINFO = data.result;
-                    }
-                });
-
-            }
-
-
-            /**
-             * 提示用户 切换卡片的功能
-             * 1.在localstore中查找是否有 toGuide 这个字段
-             */
-            if (this.httpConfig.clientType != '2') {
-                if (window.localStorage.getItem('toGuide') != 'ture') {
-                    window.localStorage.setItem('toGuide', 'ture');
-                    let toGuideModal = this.modalCtrl.create(
-                        'ToGuidePage',
-                        {},
-                        {cssClass: 'to_guide'}
-                    );
-                    toGuideModal.present();
-                }
-            }
-
-            //从缓存中获取是否有新消息
-            this.isShowPoint = window.localStorage.getItem("hasUnread");
-            //获取配置信息
-            /**
-             * is_allow 是否确认收货
-             * is_allow_wholesale 是否批发
-             * is_allow_groupon 是否拼团
-             * is_allow_proxy 是否代售
-             * is_allow_minbuynum 是否最小起批量
-             */
-            this.api.get(this.api.config.host.bl + '/platformset/selectConfigInfo', {
-                nameStr: 'is_allow,is_allow_proxy,is_allow_groupon,is_allow_wholesale,is_allow_minbuynum'
-            }).subscribe(data => {
+        if (this.httpConfig.clientType == '2') { 
+            this.api.get(this.api.config.host.org + 'user/userinfo').subscribe(data => {
                 if (data.success) {
-                    data.result ? data.result : {};
-                    this.globalDataProvider.platformsetSelectConfigInfo = data.result;
-                }
-            })
+                  data.result.headPic = data.result.headPic ? data.result.headPic : '../assets/img/deful_headerPic.jpg';
+                  this.commonModel.TAB_INIT_USERINFO = data.result;
+                } 
+            });
+        }
 
+        /**
+         * 提示用户 切换卡片的功能
+         * 1.在localstore中查找是否有 toGuide 这个字段
+        */
+        if (this.httpConfig.clientType != '2') {
+            if (window.localStorage.getItem('toGuide') != 'ture') {
+                window.localStorage.setItem('toGuide', 'ture');
+                let toGuideModal = this.modalCtrl.create(
+                    'ToGuidePage',
+                    {},
+                    { cssClass: 'to_guide'}
+                  );
+                toGuideModal.present();
+             }
+         }
 
+         //从缓存中获取是否有新消息
+        this.isShowPoint=window.localStorage.getItem("hasUnread");
+         //获取配置信息
+      /**
+       * is_allow 是否确认收货
+       * is_allow_wholesale 是否批发
+       * is_allow_groupon 是否拼团
+       * is_allow_proxy 是否代售
+       * is_allow_minbuynum 是否最小起批量
+       */
+      this.api.get(this.api.config.host.bl + '/platformset/selectConfigInfo', {
+        nameStr:'is_allow,is_allow_proxy,is_allow_groupon,is_allow_wholesale,is_allow_minbuynum'
+      }).subscribe(data => {
+        if (data.success) { 
+            data.result ? data.result : {};
+            this.globalDataProvider.platformsetSelectConfigInfo = data.result;
+        }
+      })  
+
+ 
   }
   msgMenuClick(){
       this.msgEle.addEventListener("click",()=>{
@@ -158,16 +154,6 @@ export class TabMenuPage {
           this.events.publish('enterSnsPage');
       });
   }
-  
-   //监听tabs的change事件
-    changeTabs() {
-    //进入购物车tab 隐藏购物车图标
-        if (this.tabs.getSelected().tabTitle =='购物车') {
-            this.commonModel.shoppingCartHide = true;
-        } else { 
-            this.commonModel.shoppingCartHide = false;
-        }
-    }  
 
     ngAfterViewInit() {
 
@@ -181,15 +167,32 @@ export class TabMenuPage {
 
     ionViewWillEnter(){
         window.localStorage.setItem("currentPage","tabMenu");
+
         //查询是否有新消息
         this.getTotalUnreadCount();
+
+
         if (this.tabs.getSelected()) { 
-            if (this.tabs.getSelected().tabTitle == '个人') {
-                if (this.commonModel.TAB_INIT_USERINFO) { 
-                }else { 
-                    this.tabs.select(0);
+            if (this.httpConfig.clientType == '2') {
+                if (this.tabs.getSelected().index == 3) {
+                    if (this.commonModel.TAB_INIT_USERINFO) {
+                    } else { 
+                        this.tabs.select(0)
+                    }
+                }
+                if (this.tabs.getSelected().index == 2) {
+                    this.tabs.select(0)
                 }
             }
+            if (this.httpConfig.clientType == '1') {
+                if (this.tabs.getSelected().index == 3) {
+                    if (this.commonModel.TAB_INIT_USERINFO) {
+                    } else { 
+                        this.tabs.select(0)
+                    }
+                }
+            }
+          
         }
     }
 
@@ -239,5 +242,35 @@ export class TabMenuPage {
         }
 
     }
-    
+    ionViewCanEnter(): boolean{
+      // here we can either return true or false
+      // depending on if we want to leave this view
+        if (this.tabs.getSelected()) { 
+
+            if (this.httpConfig.clientType == '2') { 
+                if (this.tabs.getSelected().index == 3) {
+                    if (this.commonModel.TAB_INIT_USERINFO) {
+                        return true;
+                    } else { 
+                        this.tabs.select(0)
+                        return true;
+                    }
+                } else { 
+                    return true;
+                }
+            }
+            if (this.httpConfig.clientType == '1') { 
+                if (this.tabs.getSelected().index == 3) {
+                    if (this.commonModel.TAB_INIT_USERINFO) {
+                        return true;
+                    } else { 
+                        this.tabs.select(0)
+                        return true;
+                    }
+                } else { 
+                    return true;
+                }
+            }
+        }
+    }
 }

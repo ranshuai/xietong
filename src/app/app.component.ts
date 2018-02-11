@@ -48,14 +48,7 @@ export class MyApp {
             //设置公用信息平台信息配置
             this.mainCtrl.setPlatfrom();
             //获取平台启动必须项
-            if ((this.mainCtrl.httpService.config.clientType == '2' && this.mainCtrl.httpService.config.storeId == null) ||
-            (this.mainCtrl.httpService.config.clientType == '1' && this.mainCtrl.httpService.config.storeId != null)
-        ) {
-                this.rootPage = Code404Page;
-                this.commonModel.APP_INIT_LOADING = true;
-            } else { 
             this.appInit();
-            }
             // this.nativeService.statusBarStyle();
             this.nativeService.splashScreenHide();
             //显示状态栏 by mwh

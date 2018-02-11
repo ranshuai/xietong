@@ -118,11 +118,11 @@ export class StoreDetailPage {
   }
 
   ionViewDidEnter() {
-    setTimeout(() => {
+    setTimeout(() => { 
       if (this.storeInfo && this.storeInfo.unitBackground) { 
         document.getElementById('store-info').style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
       }
-    }, 200)
+    }, 500)
   }
 
   goToCategory() { 

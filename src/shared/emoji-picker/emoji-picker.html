@@ -7,7 +7,7 @@
         <span class="emoji-item" *ngFor="let item of items,let pos=index;" (click)="setValue(item)">
           <!--<span>{{item}}</span>-->
             <span *ngIf="pos==0||(pos+1)%24!=0">{{item}}</span>
-            <span *ngIf="(pos>0&&(pos+1)%24==0)||pos==items.length-1" (click)="delete()"><ion-icon name="icon-gxk-20"></ion-icon></span>
+            <span  *ngIf="(pos>0&&(pos+1)%24==0)||pos==items.length-1" (click)="delete()"><ion-icon name="icon-gxk-165" class="delete-emoji"></ion-icon></span>
 
         </span>
                 <!--(click)="setValue($event)"-->
