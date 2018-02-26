@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { CommonProvider } from '../../../providers/common/common';
-import { UserInfoOrderServicesPage } from '../../user-info-order/user-info-order-services/user-info-order-services';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../providers/api/Validators";
 import {ThirdPartyApiProvider } from "../../../providers/third-party-api/third-party-api";
@@ -14,7 +13,7 @@ import {ThirdPartyApiProvider } from "../../../providers/third-party-api/third-p
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-order-applyservices',
   templateUrl: 'user-info-order-applyservices.html',
@@ -24,7 +23,7 @@ export class UserInfoOrderApplyservicesPage {
   selfApplyservicesImgUpdate : boolean;//是否更新图片
   searchValue;
   pageData;
-  userInfoOrderServicesPage = UserInfoOrderServicesPage;
+  userInfoOrderServicesPage = 'UserInfoOrderServicesPage';
 
  applyservicesForm: any;
   //设置密码输入框对象
@@ -124,7 +123,7 @@ export class UserInfoOrderApplyservicesPage {
     this.api.post(this.api.config.host.bl + 'order/apply/afterservice', json).subscribe(data => {
       if (data.success) {
         this.common.tostMsg({ msg: data.msg });
-        this.common.goToPage(this.userInfoOrderServicesPage)
+        this.navCtrl.push(this.userInfoOrderServicesPage)
         this.navCtrl.removeView(this.navCtrl.getViews()[this.navCtrl.getViews().length-1])
       } else {
         this.common.tostMsg({ msg: data.msg });

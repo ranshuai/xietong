@@ -1,10 +1,8 @@
 import { GoodsSpecsDetailPage } from './../../user-common/goods-detail/goods-specs-detail/goods-specs-detail';
-import { UserSetMobilePage } from './../../user-info/user-set/user-set-mobile/user-set-mobile';
 import { CommonModel } from './../../../../providers/CommonModel';
 import { GlobalDataProvider } from './../../providers/global-data/global-data.model';
-import { GoodsDetailPage } from './../../user-common/goods-detail/goods-detail';
 import { Component, Input,ViewChild } from '@angular/core';
-import { LoadingController,Content,ModalController } from "ionic-angular";
+import { LoadingController,Content,ModalController,NavController } from "ionic-angular";
 import { CommonProvider } from "../../providers/common/common";
 import { RequestOptions, Headers } from '@angular/http';
 import { Api } from '../../providers/api/api';
@@ -31,8 +29,8 @@ export class UserCategoryListRComponent {
     row: 10
   } 
   @ViewChild(Content) content: Content;
-  userSetMobilePage = UserSetMobilePage;
-  constructor(public common: CommonProvider, public api: Api, public loadingCtrl: LoadingController, private shoppingCart: ShoppingCart,public configProviders:Config,public globalDataProvider:GlobalDataProvider,public commonModel:CommonModel,public modalController:ModalController) { 
+  userSetMobilePage = 'UserSetMobilePage';
+  constructor(public common: CommonProvider, public api: Api, public loadingCtrl: LoadingController, private shoppingCart: ShoppingCart,public configProviders:Config,public globalDataProvider:GlobalDataProvider,public commonModel:CommonModel,public modalController:ModalController,public navCtrl:NavController) { 
   }
   ngOnChanges() {
     this.config.pageNo = 1;
@@ -46,7 +44,6 @@ export class UserCategoryListRComponent {
       this.loadEnd = true;
     }
   }
-  goodsDetailPage = GoodsDetailPage;
   goodsSpecsDetailPage = GoodsSpecsDetailPage
   getList(json, refresher?) { 
     this.api.post(this.api.config.host.bl + 'v2/goods/queryGoodsList', json).subscribe(data => {
@@ -67,8 +64,8 @@ export class UserCategoryListRComponent {
   }
 
   goToGoodsListPage(id){
-  	console.log(id);
-    this.common.goToPage('GoodsListPage', { catId:id});
+    console.log(id);
+    this.navCtrl.push('GoodsListPage', { catId:id})
   }
 
   refresh(refresher) { 
@@ -84,7 +81,7 @@ export class UserCategoryListRComponent {
   goToGoodsDetailPage(item) {
     let goodsId = item.goods_id || item.goodsId;
     console.log(goodsId);
-    this.common.goToPage(this.goodsDetailPage, { goods_id:goodsId });
+    this.navCtrl.push('GoodsDetailPage', { goods_id:goodsId })
   }
 
   //添加购物车
@@ -92,15 +89,15 @@ export class UserCategoryListRComponent {
     if (this.configProviders.PLATFORM == 'STOREAPPWX') {
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
-        this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage,{type:1})
         })
         return 
       }
     }
     if (this.configProviders.PLATFORM == 'STOREAPP') {
       if (!this.commonModel.userId) {
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage');
       }
     }
       //需求变动

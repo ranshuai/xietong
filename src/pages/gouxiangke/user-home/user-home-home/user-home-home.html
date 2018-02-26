@@ -11,122 +11,57 @@
 <!-- 轮播图=E -->
 <!-- 默认模板  gxk基础版=S--> 
 <div *ngIf="template === 0">
+<!-- 首页导航 -->
+  <div class="homeNav">
+    <div class="home nav" (click)="navCtrl.push('UserGroupPage')">
+      <div class="icons">
+        <ion-icon class="icon ion-ios-icon-gxk-156"></ion-icon>
+      </div>
+      <p>拼团优惠</p>
+    </div>
+    <div class="homeNear nav" (click)="navCtrl.push('UserNearPage')">
+        <div class="icons"><ion-icon class="icon ion-ios-icon-gxk-157"></ion-icon></div>
+        <p>附近好货</p>
+    </div>
+    <div class="homeHost nav" (click)="navCtrl.push('UserTopicPage')">
+        <div class="icons"><ion-icon class="icon ion-ios-icon-gxk-158"></ion-icon></div>
+        <p>热门专题</p>
+    </div>
+    <div class="homeHistory nav" (click)="navCtrl.push('UserHistoryPage')">
+        <div class="icons">
+          <ion-icon class="icon ion-ios-icon-gxk-159"></ion-icon></div>
+        <p>浏览历史</p>
+    </div>
+  </div>
+<!-- 平台快报 -->
+  <!-- <home-platform></home-platform> -->
+<!-- 广告位一 -->
+<div *ngIf="homeHomeDataAdvsShow" >
+  <home-advertisement [data]="homeHomeData.adv1"></home-advertisement>
+</div>
 <!-- 热销商品 -->
   <div *ngIf="homeHomeDataHotGoodsShow">
-    <title-more title="热销商品" (click)="goToGoodsListPage('is_hot')"></title-more>
+    <title-more class="titles" title="热 · 销 · 商 · 品" (click)="goToGoodsListPage('is_hot')"></title-more>
     <hot-goods-swiper [data]="homeHomeData.hot_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80'"></hot-goods-swiper>
+  </div>
+<!-- 广告位二 -->
+  <div *ngIf="homeHomeDataAdvsShow" >
+    <home-advertisement [data]="homeHomeData.adv2"></home-advertisement>
   </div>
 <!-- 热门店铺 -->
   <div *ngIf="homeHomeDataShopsShow">
     <hot-shop-swiper [data]="homeHomeData.shops" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></hot-shop-swiper>
   </div>
+<!-- 广告位三 -->
+<div *ngIf="homeHomeDataAdvsShow" >
+  <home-advertisement [data]="homeHomeData.adv3"></home-advertisement>
+</div>
 <!-- 推荐商品 -->
   <div *ngIf="homeHomeDataGoodsListShow"> 
-    <title-more title="推荐商品" (click)="goToGoodsListPage('is_recommend')"></title-more>
-    <goods-list-block [loadParams]="goodsListParams" [noMore]='true'  [data]="homeHomeData.bright_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168/quality,q_80'"></goods-list-block>
+    <title-more [noMore]=true class="title" title="推 · 荐 · 商 · 品" (click)="goToGoodsListPage('is_recommend')"></title-more>
+    <goods-list-block class="goods" [loadParams]="goodsListParams" [noMore]='true'  [data]="homeHomeData.bright_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168/quality,q_80'"></goods-list-block>
   </div>
 </div>
+<user-shopping-cart></user-shopping-cart>
+
 <!-- 默认模板  gxk基础版=E--> 
-
-<!-- 模板一 -->
-<div class="template1" *ngIf="template == 1">
-
-  <!-- <search-bar placeholder="输入搜索商品的关键词" (searchEmit)="search($event)"></search-bar> -->
-  <search-bar-fake placeholder="输入搜索商品的关键词" (click)="goToSearchPage()"></search-bar-fake>
-
-  <div class="shortcut clear">
-    <div class="left" (click)="goToCollectPage()"></div>
-    <div class="right">
-      <div class="order" (click)="goToHistoryOrderPage()"></div>
-      <div class="coupon" (click)="goToCouponPage()"></div>
-    </div>
-  </div>
-
-  <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
-
-  <div [ngShow]="navData.view == 'left'">
-    <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="3" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-  <div [ngShow]="navData.view == 'right'">
-    <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="3" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-</div>
-
-<!-- 模板二 -->
-<div class="template2" *ngIf="template == 2">
-
-  <search-bar-fake placeholder="输入搜索商品的关键词" (click)="goToSearchPage()"></search-bar-fake>
-
-  <div class="shortcut clear">
-    <div class="category" (click)="goToCategoryPage()">全部分类</div>
-    <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
-    <div class="collect" (click)="goToCollectPage()">我的收藏</div>
-    <div class="user" (click)="goToUserInfoPage()">个人中心</div>
-  </div>
-
-  <div class="ad-wrap">
-    <img src="assets/img/ad.png">
-    <span>广告</span>
-  </div>
-
-  <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
-
-  <div [ngShow]="navData.view == 'left'">
-    <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="1" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-  <div [ngShow]="navData.view == 'right'">
-    <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="1" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-</div>
-
-<!-- 模板三 -->
-<div class="template3" *ngIf="template == 3">
-
-  <search-bar-fake placeholder="输入搜索商品的关键词" (click)="goToSearchPage()"></search-bar-fake>
-
-  <div class="shortcut clear">
-    <div class="collect" (click)="goToCollectPage()">我的收藏</div>
-    <div class="coupon" (click)="goToCouponPage()">优惠券</div>
-    <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
-  </div>
-
-  <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
-
-  <div [ngShow]="navData.view == 'left'">
-    <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="11" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-  <div [ngShow]="navData.view == 'right'">
-    <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="11" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-  </div>
-
-</div>
-
-<!-- 模板四 -->
-<div class="template4" *ngIf="template == 4">
-
-  <search-bar-fake placeholder="输入搜索商品的关键词" (click)="goToSearchPage()"></search-bar-fake>
-
-  <div class="shortcut clear">
-    <div class="coupon" (click)="goToCouponPage()">优惠券</div>
-    <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
-    <div class="collect" (click)="goToCollectPage()">我的收藏</div>
-    <div class="user" (click)="goToUserInfoPage()">个人中心</div>
-  </div>
-
-  <title-more title="促销活动" (click)="goToGoodsListPage('is_hot')"></title-more>
-  <hot-goods-swiper [data]="homeHomeData.hot_goods" slidesPerView="3.64" spaceBetween="40" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80'"></hot-goods-swiper>
-
-  <div class="ad-wrap">
-    <img src="assets/img/ad.png">
-    <span>广告</span>
-  </div>
-
-  <title-more title="商品列表" (click)="goToGoodsListPage('is_recommend')"></title-more>
-  <goods-list-block [noMore]="true" [loadParams]="goodsListParams" [colNum]="22" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block>
-
-</div>

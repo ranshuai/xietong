@@ -2,6 +2,9 @@ page-user-home-home {
   .grey-bg {
     background: $greyBackground;
   }
+  .scroll-content{
+    background-color: #f5f5f5 !important;
+  }
   .template1 {
     search-bar-fake {
       .wrap {
@@ -210,6 +213,94 @@ page-user-home-home {
       text-align: center;
       font-size: pxrem(18);
       color: #ffffff;
+    }
+  }
+  .homeNav{
+    display: flex;
+    justify-content: space-between;
+    margin: pxrem(20) 0;
+    .nav{
+      width: 25%;
+      text-align: center;
+      .icons{
+        width: pxrem(84);
+        height: pxrem(84);
+        // background-color: #ff5050;
+        border-radius: 50%;
+        color: #fff;
+        line-height: pxrem(104);
+        [class*=" ion-ios-icon-"]{
+        font-size: pxrem(44);
+        }
+      }
+      p{
+        font-size: pxrem(20);
+        color: #575757;
+        margin-top: pxrem(10);
+      }
+    }
+    .home .icons{
+      background: linear-gradient(to bottom,#E6187C,#FA6E91);
+    }
+    .homeNear .icons{
+      background: linear-gradient(to bottom,#FF060A,#FF6F6D);
+    }
+    .homeHost .icons{
+      background: linear-gradient(to bottom,#FE9B10,#FFD03E);
+    }
+    .homeHistory .icons{
+      background: linear-gradient(to bottom,#8F00F8,#E017FF);
+    }
+  }
+  .goods{
+    .two{
+      padding: 0;
+    }
+    .wrap{
+      background-color: transparent;
+      .list{
+        .item{
+          background-color: #fff;
+          box-shadow: initial;
+          border-radius: 0;
+          img{
+            border-radius: 0;
+          }
+          .name{
+            margin-top: pxrem(24);
+          }
+          .price{
+            text-indent:pxrem(11);
+            margin-top: pxrem(16);
+          }
+          .cart-btn{
+            display: none;
+          }
+          .self_min_buy_num_warp{
+            display: none;
+          }
+          .img-wrap{
+            height: pxrem(364);
+            border-bottom: 1px solid #D8D8D8;
+          }
+        }
+      }
+    }
+  }
+  .title{
+    .wrap{
+      background-color: #f5f5f5;
+      .left{
+        margin-left: 36%;
+      }
+    }
+  }
+  .titles{
+    .wrap{
+      background-color: #fff;
+      .left{
+        margin-left: 36%;
+      }
     }
   }
 }

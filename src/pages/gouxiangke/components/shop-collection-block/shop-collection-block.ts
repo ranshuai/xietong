@@ -23,7 +23,7 @@ export class ShopCollectionBlockComponent {
 
   goTopageCompanyDetail(json) { 
     // this.common.tostMsg({ msg: '还没有店铺详情页面跳转' });
-    this.common.goToPage('StoreDetailPage', { store_id:json.companyInfoId});
+    this.navCtrl.push('StoreDetailPage', { store_id:json.companyInfoId})
   }
 
 }

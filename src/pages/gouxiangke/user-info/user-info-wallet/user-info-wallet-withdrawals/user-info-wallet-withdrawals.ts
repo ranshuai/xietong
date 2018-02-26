@@ -1,13 +1,12 @@
 import { CommonModel } from './../../../../../providers/CommonModel';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonProvider } from '../../../providers/common/common';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from "../../../providers/api/Validators";
 import { IntervaConfig } from '../../../providers/user/intervaConfig';
-import { UserInfoWalletPage } from '../user-info-wallet';
 
 /**
  * Generated class for the UserInfoWalletWithdrawalsPage page.
@@ -15,13 +14,13 @@ import { UserInfoWalletPage } from '../user-info-wallet';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-wallet-withdrawals',
   templateUrl: 'user-info-wallet-withdrawals.html',
 })
 export class UserInfoWalletWithdrawalsPage {
-  userInfoWalletPage = UserInfoWalletPage;
+  userInfoWalletPage = 'UserInfoWalletPage';
   //模拟线程锁
   isend: boolean = false;
   //图片验证码是否正确
@@ -194,7 +193,7 @@ export class UserInfoWalletWithdrawalsPage {
         if (data.success) {
           if (data.result.status == 200) {
             this.common.tostMsg({ msg: data.msg });
-            this.common.goToPage(this.userInfoWalletPage, {})
+            this.navCtrl.push(this.userInfoWalletPage, {});
           } else {
             this.common.tostMsg({ msg: data.msg });
           }

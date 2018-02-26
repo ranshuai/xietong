@@ -18,7 +18,7 @@
    <div class="topic_title">
     <h4>{{topicDetail.description || topicDetail.topic.topicTitle}}</h4>
    </div>
-  <div class="topic_abstract" [innerHTML]="topicDetail.topicContent || topicDetail.topic.topicContent"></div>
+  <div class="topic_abstract" [safeHtml]="topicDetail.topicContent || topicDetail.topic.topicContent"></div>
   </section> 
   <title-more title="推荐商品" class="center_topic" *ngIf="topicDetail && !topicDetail.storeVOList" [noMore]= true ></title-more>
   <goods-list-block *ngIf="version != 2" [loadParams]="loadRecomendListParams" [ngShow]="topicDetail" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block> 

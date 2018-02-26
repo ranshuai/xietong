@@ -1,4 +1,7 @@
 goods-history-list {
+  .history_name{
+    padding: pxrem(25);
+  }
   .title {
     overflow: hidden;
     padding: 0 pxrem(24);
@@ -29,11 +32,15 @@ goods-history-list {
     }
     .name {
       margin-left: pxrem(248);
-      padding: pxrem(25);
+      // padding: pxrem(25);
       font-size: pxrem(24);
       line-height: pxrem(35);
       color: #7b7d81;
       text-align: left;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
     }
     .price {
       position: absolute;

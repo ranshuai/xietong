@@ -39,6 +39,31 @@ user-shopping-cart-list {
                         margin-right: pxrem(20);
                         vertical-align: middle;
                     }
+                    .img-warp{
+                        display: inline-block;
+                        .img-warp_bg1{
+                            width: 100%;
+                            line-height: 26px;
+                            bottom: pxrem(36);
+                            left:0;
+                            text-align: center;
+                            background: rgba(0,0,0,0.5);
+                            color: #fff;
+                            border-bottom-right-radius: pxrem(10);
+                            border-bottom-left-radius: pxrem(10);
+                        }
+                        .img-warp_bg2{
+                            width: pxrem(124);
+                            height: pxrem(124);
+                            line-height:pxrem(124);
+                            bottom: pxrem(36);
+                            left:0;
+                            text-align: center;
+                            background: rgba(0,0,0,0.5);
+                            color: #fff;
+                            border-radius: pxrem(10);
+                        }
+                    }
                     img {
                         width: pxrem(124);
                         height: pxrem(124);

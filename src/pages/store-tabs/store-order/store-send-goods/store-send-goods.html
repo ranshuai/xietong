@@ -31,7 +31,7 @@
           <ion-label>配送方式:</ion-label>
           <ion-input type="text"formControlName="shippingType" required readonly></ion-input>
         </ion-item>
-        <ion-icon class="ion-ios-icon-gxk-51 self_rotate"></ion-icon>
+        <ion-icon class="ion-ios-icon-gxk-51 self_rotate" *ngIf="sendGoodsData.shippingType != '到店自提'" ></ion-icon>
       </div>
 
       <div *ngIf="sendGoodsData.shippingType == '众包配送' || sendGoodsData.shippingType == '众包+外包配送'">
@@ -130,7 +130,7 @@
 <ion-footer>
   <ion-toolbar>
 
-    <button ion-button (click)="submit()" [disabled]="!sendGoodsForm.valid" [ngClass]="{ 'active': sendGoodsForm.valid }">提交</button>
+    <button ion-button (click)="submit()" [disabled]="!sendGoodsForm.valid" [ngClass]="{ 'active': sendGoodsForm.valid }">{{sendGoodsData.shippingType == "到店自提"?"打包完成":"提交"}}</button>
 
   </ion-toolbar>
 </ion-footer>

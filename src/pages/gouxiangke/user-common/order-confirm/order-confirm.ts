@@ -1,7 +1,7 @@
+import { CommonModel } from './../../../../providers/CommonModel';
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
 import { ShoppingCart } from "../../providers/user/shopping-cart";
-import { OrderPayPage } from "./order-pay/order-pay";
 import { OrderCouponPage } from "./order-coupon/order-coupon";
 import { GlobalDataProvider } from "../../providers/global-data/global-data.model";
 import { OrderNowBuyProvider } from "../../providers/user/order-now-buy";
@@ -11,7 +11,6 @@ import { CommonProvider } from "../../providers/common/common";
 import { OrderCouponProvider } from "../../providers/user/order-coupon";
 import { SelectAddressBarComponent } from "./select-address-bar/select-address-bar";
 import { OrderAddressProvider } from "../../providers/user/order-address";
-
 /**
  * Generated class for the OrderConfirmPage page.
  *
@@ -27,7 +26,7 @@ export class OrderConfirmPage {
 
   @ViewChild(SelectAddressBarComponent) selectAddressBar: SelectAddressBarComponent;
 
-  orderPayPage = OrderPayPage;
+  orderPayPage = 'OrderPayOldPage';
   orderCouponPage = OrderCouponPage;
   stores: any; //店铺包含有商品的列表
   total: any; //总价格
@@ -37,6 +36,9 @@ export class OrderConfirmPage {
   acitivityType: any;
   couponIds: Array<number>; //在此页面重新进入的时候，需要重置orderCouopn的couponIds，所以此处需要存一下couponIds
   selectedCoupon: any = null;
+
+  //店铺的长度
+  dataLength;
 
   constructor(
     public navCtrl: NavController,
@@ -49,23 +51,45 @@ export class OrderConfirmPage {
     private common: CommonProvider,
     private orderCoupon: OrderCouponProvider,
     private orderAddress: OrderAddressProvider,
+    public commonModel: CommonModel,
+    public events:Events
   ) {
+    this.commonModel.freightOrderGoods = 0; // 进入订单确认页面把运费设置为 0；
+    console.log('进入订单确认页面');
     if (globalData.isNowBuy) { //立即购买，从参数获取订单
       this.stores = orderNowBuy.getData();
       let goods = this.stores[0].goods[0];
       this.total = goods.goodsNum * goods.goodsPrice;
     } else if (globalData.isGroupBuy) {//是否是拼团商品
+      debugger;
       this.stores = orderGroupBuy.getData();
       let goods = this.stores[0].goods[0];
-      this.total = goods.goodsPrice;
+      this.total = Number(goods.goodsPrice)
     } else { //购物车下单，从参数获取
       let data = this.navParams.get('data');
       if (data) {
         this.stores = data.stores;
-        this.total = data.total;
+        this.total = Number(data.total);
       }
     }
     globalData.lockOrderBtn = false; //重置下单按钮的锁定
+     //订阅事件
+     this.events.subscribe('defaultSelectTxt:OrderGoodsListComponent', (json) => { 
+      (this.stores[this.commonModel.pageOrderConfirm.selfIndex] as any).defaultSelectTxt = json.txt;
+      if (globalData.isNowBuy) { //立即购买
+        if (json.defaultNearbySelf && json.defaultNearbySelf.id) {
+          this.commonModel.pageOrderConfirmSelfInfo = json;
+        } else { 
+          this.commonModel.pageOrderConfirmSelfInfo = {};
+        }
+      } else {  //购物车
+        if (json.defaultNearbySelf && json.defaultNearbySelf.id) {
+          (this.commonModel.pageOrderConfirmpick as any)[this.commonModel.pageOrderConfirm.selfkey + ''] = json.defaultNearbySelf;
+        } else { 
+          (this.commonModel.pageOrderConfirmpick as any)[this.commonModel.pageOrderConfirm.selfkey + ''] = {};
+        }
+      }
+    })
   }
 
   getTotal() {
@@ -84,12 +108,15 @@ export class OrderConfirmPage {
   }
 
   ionViewDidEnter() {
+    this.selectAddressBar.getAddress();
+    
     //判断如果是从地址选择页面过来的，就从缓存获取地址数据
-    if (this.common.lastPageIs('UserInfoAddressPage')) {
-      this.selectAddressBar.addressInfo = this.orderAddress.data;
-    } else {
-      this.selectAddressBar.getAddress();
-    }
+    // if (this.common.lastPageIs('UserInfoAddressPage')) {
+    //   this.selectAddressBar.addressInfo = this.orderAddress.data;
+    // } else {
+    //   this.selectAddressBar.getAddress();
+    // }
+    this.test();
   }
 
   //订单确认初始化信息
@@ -181,9 +208,11 @@ export class OrderConfirmPage {
       }
       data.leaveMessage[this.stores[0].storeId] = this.stores[0].leaveMessage;
       this.shoppingCart.nowBuy(data).subscribe(data => {
-        setTimeout(()=>{
-          this.navCtrl.push(this.orderPayPage, { order: data });
-        },1000)
+        // setTimeout(() => {
+        //   console.log(data)
+        //   this.navCtrl.push(this.orderPayPage, { order: data });
+        // }, 1000)
+        this.navCtrl.push(this.orderPayPage, { order: data });
       });
     } else if (this.globalData.isGroupBuy) {
       //拼团购买
@@ -296,6 +325,71 @@ export class OrderConfirmPage {
         this.total = this.getTotal();
       }
     });
+  }
+
+  //
+  test() { 
+
+    debugger;
+    if (!this.commonModel.userDefaultAndSetAddres.province) { //北京市市辖区石景山区cehsi1 
+      this.api.get(this.api.config.host.bl + 'address/all').subscribe(data => {
+        if (data.success && data.result.length > 0) {
+          let list = data.result;
+          for (var i = 0; i < list.length; i++) {
+            var item = list[i];
+            if (item.isDefault) {
+              this.commonModel.userDefaultAndSetAddres = item;
+              break;
+            }
+          }
+          this.dataLength = this.stores.length;
+
+          for (var i = 0; i < this.dataLength; i++) { 
+             //获取运费
+            let _i = i;
+            this.api.post(this.api.config.host.bl + 'order/fare', {
+              provinceId:this.commonModel.userDefaultAndSetAddres.province,
+              goodsFreightList:this.stores[i].goods
+            }).subscribe(data => { 
+              if (data.success) {
+                //保存运费  Nu
+                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
+                console.log(this.commonModel.freightOrderGoods);
+                // 对象里添加运费的字段
+                this.stores[_i].freight = data.result;
+                if (!this.stores[_i].defaultSelectTxt) {
+                  this.stores[_i].defaultSelectTxt = '物流配送 - 送货上门';
+                 }
+                console.log(this.stores);
+              }
+            })
+          }
+        }
+      });
+    } else {
+      this.dataLength = this.stores.length;
+          for (var i = 0; i < this.dataLength; i++) { 
+             //获取运费
+            let _i = i;
+            this.api.post(this.api.config.host.bl + 'order/fare', {
+              provinceId:this.commonModel.userDefaultAndSetAddres.province,
+              goodsFreightList:this.stores[i].goods
+            }).subscribe(data => { 
+              if (data.success) {
+                //保存运费  Nu
+                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
+                console.log(this.commonModel.freightOrderGoods);
+                // 对象里添加运费的字段
+                this.stores[_i].freight = data.result;
+                if (!this.stores[_i].defaultSelectTxt) {
+                  this.stores[_i].defaultSelectTxt = '物流配送 - 送货上门';
+                 }
+                console.log(this.stores);
+              }
+            })
+      }
+    }
+  
   }
 
 }

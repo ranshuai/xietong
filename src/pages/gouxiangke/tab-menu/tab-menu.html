@@ -1,24 +1,18 @@
 <!--<div style="border: 1px solid black;position: fixed;bottom: 0"><div style="width: 20%;height: 60px;border:1px solid red;position: absolute;left: 60%;bottom: 0"></div>-->
 
-<ion-tabs #tabMenus [ngClass]="{'color1': globalDataProvider.tabColor == 1, 'color2': globalDataProvider.tabColor == 2 }">
+<ion-tabs #tabMenus  (ionChange)="changeTabs()"  [ngClass]="{'color1': globalDataProvider.tabColor == 1, 'color2': globalDataProvider.tabColor == 2 }">
 
-  <ion-tab  [root]="userHomePage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="首页" tabIcon="icon-gxk-2"></ion-tab>
-  <ion-tab  [root]=""  class="msg-tab" tabTitle="消息" tabIcon="icon-gxk-13" *ngIf="httpConfig.clientType == '1'" tabBadge="0">  </ion-tab>
-  <ion-tab  [root]="userTopicPage" *ngIf="httpConfig.clientType != 2" tabTitle="专题" tabIcon="icon-gxk-11"></ion-tab>
-  <ion-tab  [root]="userCategoryPage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="分类" tabIcon="icon-gxk-5"></ion-tab>
-  <!--  <ion-tab  tabTitle="" class="hideMsgTab" *ngIf="httpConfig.clientType != 2"></ion-tab>
- <div  class="customeMsgTab" 
-    #customeMsgTab
-    (click)="onMessageMenuClick()" 
-    [ngClass]="{'showMenu':isShowMenu,'hideMenu':!isShowMenu}"
-    *ngIf="httpConfig.clientType != 2">
-    <span class="ion-ios-icon-gxk-12 msgTabContent">
-    </span>
-    <span class="msgText">消息</span>
-  </div> -->
-  <ion-tab  [root]="userCartPage"*ngIf="httpConfig.clientType == 2"  tabTitle="购物车" tabIcon="icon-gxk-142" tabBadge="{{commonModel.shopCarNum}}"></ion-tab> 
-  <ion-tab  [root]="userInfoPage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="个人" tabIcon="icon-gxk-7"></ion-tab>
+  <ion-tab  [root]="userHomePage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="首页" tabIcon="icon-gxk-144"></ion-tab>
 
-</ion-tabs>
-<user-shopping-cart></user-shopping-cart>
+  <ion-tab  [root]=""  class="msg-tab" tabTitle="消息" tabIcon="icon-gxk-148" *ngIf="httpConfig.clientType == '1'" tabBadge="0">  </ion-tab>
+
+
+  <ion-tab  [root]="userCategoryPage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="分类" tabIcon="icon-gxk-146"></ion-tab>
+  <ion-tab  [root]="userCartPage"*ngIf="httpConfig.clientType == 2"  tabTitle="购物车" tabIcon="icon-gxk-142" tabBadge="{{commonModel.shopCarNum}}"></ion-tab>
+  <ion-tab  [root]="userCartPage"*ngIf="httpConfig.clientType == 1"  tabTitle="购物车" tabIcon="icon-gxk-150" tabBadge="{{commonModel.shopCarNum}}"></ion-tab>
+
+  <ion-tab  [root]="userInfoPage" *ngIf="httpConfig.clientType == 2 || httpConfig.clientType == 1" tabTitle="个人" tabIcon="icon-gxk-152"></ion-tab>
+
+
 <!--</div>-->
+</ion-tabs>

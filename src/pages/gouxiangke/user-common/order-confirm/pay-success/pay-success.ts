@@ -1,7 +1,7 @@
+import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { Component } from '@angular/core';
-import { NavController, NavParams,App } from 'ionic-angular';
+import { NavController, NavParams,App,IonicPage } from 'ionic-angular';
 import { CommonProvider } from "../../../providers/common/common";
-import { UserInfoOrderPage } from "../../../user-info/user-info-order/user-info-order";
 
 /**
  * Generated class for the PaySuccessPage page.
@@ -9,16 +9,16 @@ import { UserInfoOrderPage } from "../../../user-info/user-info-order/user-info-
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-pay-success',
   templateUrl: 'pay-success.html',
 })
 export class PaySuccessPage {
 
-  userInfoOrderPage = UserInfoOrderPage;
+  userInfoOrderPage = 'UserInfoOrderPage';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private common: CommonProvider,private appCtrl:App) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private common: CommonProvider,private appCtrl:App,public mainCtrl:MainCtrl) {
   }
 
   ionViewDidLoad() {
@@ -26,11 +26,12 @@ export class PaySuccessPage {
   }
 
   goToUserPage() {
-    this.appCtrl.getRootNav().popTo(this.appCtrl.getRootNav().getViews()[0]);
+    this.mainCtrl.setRootPage('TabMenuPage');
+    // this.appCtrl.getRootNav().popTo(this.appCtrl.getRootNav().getViews()[0]);
   }
 
   goToOrderPage() {
-    this.common.goToPage(this.userInfoOrderPage, { type: 'all' });
+    this.navCtrl.push(this.userInfoOrderPage, { type: 'all' })
   }
 
 }

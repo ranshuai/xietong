@@ -1,6 +1,14 @@
 <!-- Generated template for the HomeAdvertisementComponent component -->
 <div class="wrap">
-  <div class="advert">
-    <img src="assets/img/banner1.jpg">
+  <div class="advert" *ngFor="let item of data" >
+    <div (click)="goToDetail(item.adLink)">
+      <img *ngIf="item.pid==4"  [src]="item.adCode">
+    </div>
+    <div (click)="goToDetail(item.adLink)">
+      <img *ngIf="item.pid==5"  [src]="item.adCode">
+    </div>
+    <div (click)="goToDetail(item.adLink)">
+      <img *ngIf="item.pid==6"  [src]="item.adCode">
+    </div>
   </div>
 </div>

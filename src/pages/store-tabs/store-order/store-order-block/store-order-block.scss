@@ -85,7 +85,7 @@ store-order-block {
       .m-l{margin-left: pxrem(10); border-radius:0 pxrem(10) pxrem(10) 0;width: pxrem(310);display: inline-block;}
       .m-r{margin-right: pxrem(10); border-radius: pxrem(10) 0 0 pxrem(10);width: pxrem(310);display: inline-block}
       button {
-        display: block;
+        display: inline-block;
         width: 100%;
         border-radius: pxrem(10);
         background: #41b3e2;
@@ -93,6 +93,14 @@ store-order-block {
         font-size: pxrem(30);
         line-height: pxrem(85);
       }
+
+      .buttons-box{
+        width: 100%;
+        .full-button{
+          width: 100%!important;
+        }
+      }
+
       &.block-buttons{
         // margin-top: pxrem(15);
         button{
@@ -148,5 +156,7 @@ store-order-block {
         }
       }
     }
+
+
   }
 }

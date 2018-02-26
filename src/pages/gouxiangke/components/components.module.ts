@@ -29,6 +29,9 @@ import { ChangeRolesBtnComponent } from './change-roles-btn/change-roles-btn';
 import { HomeAdvertisementComponent } from './home-advertisement/home-advertisement';
 import { HomePlatformComponent } from './home-platform/home-platform';
 import { HomeQrcodeComponent } from './home-qrcode/home-qrcode';
+import { UserHomeGroupPage } from '../user-home/user-home-group/user-home-group';
+import { UserHomeHistoryPage } from '../user-home/user-home-history/user-home-history';
+import { UserHomeNearbyPage } from '../user-home/user-home-nearby/user-home-nearby';
 @NgModule({
   declarations: [
     GoodsHistoryListComponent,
@@ -56,7 +59,10 @@ import { HomeQrcodeComponent } from './home-qrcode/home-qrcode';
     ChangeRolesBtnComponent,
     HomeAdvertisementComponent,
     HomePlatformComponent,
-    HomeQrcodeComponent
+    HomeQrcodeComponent,
+    UserHomeGroupPage,
+    UserHomeHistoryPage,
+    UserHomeNearbyPage
   ],
   imports: [
     IonicPageModule,
@@ -89,7 +95,10 @@ import { HomeQrcodeComponent } from './home-qrcode/home-qrcode';
     ChangeRolesBtnComponent,
     HomeAdvertisementComponent,
     HomePlatformComponent,
-    HomeQrcodeComponent
+    HomeQrcodeComponent,
+    UserHomeGroupPage,
+    UserHomeHistoryPage,
+    UserHomeNearbyPage
   ]
 })
 export class ComponentsModule { }

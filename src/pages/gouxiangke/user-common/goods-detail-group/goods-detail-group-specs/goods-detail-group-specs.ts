@@ -124,7 +124,7 @@ import { OrderGroupBuyProvider } from "../../../providers/user/order-group-buy";
 
          this.orderGroupBuyProvider.setData(stores);
          this.viewCtrl.dismiss();
-         this.common.goToPage('OrderConfirmPage');
+         this.navCtrl.push('OrderConfirmPage')
        }else{
          this.common.tostMsg({msg:data.msg})
        }

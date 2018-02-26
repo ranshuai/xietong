@@ -46,7 +46,7 @@ export class ChangeroleTabsPage {
 
   //变身店铺
   goToChangeStorePage(event) {
-    // this.mainCtrl.httpService.config.platform = 'android';
+    // this.mainCtrl.httpService.config.platform = 'android'; 
     if (this.mainCtrl.httpService.config.platform == 'wx') {
       event.stopPropagation();
       let loading = this.loadingCtrl.create({

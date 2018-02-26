@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Content } from 'ionic-angular';
+import { NavController, NavParams, Content,IonicPage } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
 import { CommonData } from '../../providers/user/commonData.model';
@@ -10,7 +10,7 @@ import { CommonData } from '../../providers/user/commonData.model';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-evaluate',
   templateUrl: 'user-info-evaluate.html',

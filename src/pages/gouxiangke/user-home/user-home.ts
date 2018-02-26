@@ -6,7 +6,7 @@ import { Component, ViewChild } from '@angular/core';
 import {Events, IonicPage, NavController, NavParams, Slides} from 'ionic-angular';
 // import { UserHomeTopComponent } from './user-home-top/user-home-top';
 import { UserHomeHomePage } from './user-home-home/user-home-home';
-import { UserHomeGroupPage } from './user-home-group/user-home-group';
+// import { UserHomeGroupPage } from './user-home-group/user-home-group';
 import { UserHomeNearbyPage } from './user-home-nearby/user-home-nearby';
 import { UserHomeHistoryPage } from './user-home-history/user-home-history';
 import { UserHomeSharePage } from './user-home-share/user-home-share'
@@ -27,7 +27,7 @@ export class UserHomePage {
   //商城首页
   userHomeHomePage = UserHomeHomePage;
   //商城拼团优惠
-  userHomeGroupPage = UserHomeGroupPage;
+  // userHomeGroupPage = UserHomeGroupPage;
   //商城附近好货
   userHomeNearbyPage = UserHomeNearbyPage;
   //商城浏览历史
@@ -45,6 +45,10 @@ export class UserHomePage {
     public globalDataProvider: GlobalDataProvider,
     public userCommon:UserCommon,public events:Events
   ) {
+    this.events.subscribe('events:homePageRefresh', () => { 
+      console.log('进入userHome');
+      this.userhomePage.getHomeHomeData();
+    })
 
           //清除店铺Id
           window.localStorage.removeItem('storeId');
@@ -121,7 +125,8 @@ ionViewWillEnter(){
   }
 
   ionViewDidEnter() {
-    this.userhomePage.getHomeHomeData();
+    // console.log('进入userHome');
+    // this.userhomePage.getHomeHomeData();
     //获取当前域的名称
     this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
       if (data.success) {

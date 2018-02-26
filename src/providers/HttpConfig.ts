@@ -41,8 +41,8 @@ export class HttpConfig {
 
   //测试环境,会根据headers中的数据，来切换
   host:any;
-    // baseUrl="http://jsp.snsall.com";
-    baseUrl="http://wow.snsall.com";//独角鲸微信需要用到
+    baseUrl="http://jsp.snsall.com";
+    // baseUrl="http://wow.snsall.com";//独角鲸微信需要用到
 
   /********接口名称 调用方法最好和此明明一样 方便后期搜索******/
   version = '/';
@@ -93,6 +93,10 @@ export class HttpConfig {
             root: ' ',
             key: ['recruitUserId']
         },
+        "store_claim": {
+            isRoot: true,
+            ionicPage: 'StoreClaimPage',
+        }
     }  
   
   //购物车的角标是否显示

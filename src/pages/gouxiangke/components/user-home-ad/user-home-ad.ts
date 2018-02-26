@@ -1,7 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
-import { Slides } from "ionic-angular";
+import { Slides,NavController } from "ionic-angular";
 import { CommonProvider } from "../../providers/common/common";
-import { UserTopicDetailsPage } from "../../user-topic/user-topic-details/user-topic-details"
+// import { UserTopicDetailsPage } from "../../user-topic/user-topic-details/user-topic-details"
 
 /**
  * Generated class for the UserHomeAdComponent component.
@@ -15,13 +15,14 @@ import { UserTopicDetailsPage } from "../../user-topic/user-topic-details/user-t
 })
 export class UserHomeAdComponent {
 
-  userTopicDetailsPage = UserTopicDetailsPage;
+  userTopicDetailsPage = 'UserTopicDetailsPage';
 
   @Input() data: any;
   @ViewChild('ionSlides') slide: Slides;
 
   constructor(
     private common: CommonProvider,
+    private navController:NavController
   ) {
   }
 
@@ -34,7 +35,7 @@ export class UserHomeAdComponent {
     }
     let adLink = this.data[index].adLink;
     if (adLink&&adLink != 0) {
-      this.common.goToPage(this.userTopicDetailsPage, { id: adLink });
+      this.navController.push(this.userTopicDetailsPage, { id: adLink });
     }
   }
   goToDetailV2(event) {
@@ -46,7 +47,7 @@ export class UserHomeAdComponent {
     }
     let adLink = this.data[index].adLink;
     if (adLink&&adLink != 0) {
-      this.common.goToPage(this.userTopicDetailsPage, { id: adLink , version:2});
+      this.navController.push(this.userTopicDetailsPage, { id: adLink , version:2});
     }
   }
   //用户操作swiper之后，默认是禁止autoplay，需要手动开启 方法有问题（有时页面报错没有 hasAttrbuite）

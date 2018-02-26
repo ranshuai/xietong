@@ -1,10 +1,9 @@
 import { LoadingController } from 'ionic-angular';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { Api } from '../../../providers/api/api';
 import { CommonProvider } from '../../../providers/common/common';
-import { UserInfoOrderEvasuccessPage } from '../user-info-order-evasuccess/user-info-order-evasuccess';
 import {ThirdPartyApiProvider } from "../../../providers/third-party-api/third-party-api";
 /**
 *
@@ -13,7 +12,7 @@ import {ThirdPartyApiProvider } from "../../../providers/third-party-api/third-p
 * See http://ionicframework.com/docs/components/#navigation for more info
 * on Ionic pages and navigation.
 */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-order-evaluate',
   templateUrl: 'user-info-order-evaluate.html',
@@ -23,7 +22,7 @@ export class UserInfoOrderEvaluatePage {
   selfApplyservicesImgUpdate: boolean;//是否更新图片
   selfApplyservicesImgUpdate_index: number;
   orderDetail: any;
-  userInfoOrderEvasuccessPage = UserInfoOrderEvasuccessPage;
+  userInfoOrderEvasuccessPage = 'UserInfoOrderEvasuccessPage';
   goodsIndex = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams, public commonData: CommonData, public api: Api, public common: CommonProvider,public thirdPartyApi:ThirdPartyApiProvider,public loadingCtrl: LoadingController) {
     //获取缓存文件中的数据
@@ -123,7 +122,7 @@ export class UserInfoOrderEvaluatePage {
     }).subscribe(data => {
       loading.dismiss();
       if (data.success) {
-        this.common.goToPage(this.userInfoOrderEvasuccessPage)
+        this.navCtrl.push(this.userInfoOrderEvasuccessPage);
       } else {
         this.common.tostMsg({msg:data.msg})
       }

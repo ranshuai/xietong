@@ -31,8 +31,8 @@
   <ion-toolbar *ngIf="total || total === 0">
     <div class="left">
       应付金额：
-      <span>{{ total | currency:'CNY':true }}</span>
+      <span>{{ (total + commonModel.freightOrderGoods) | currency:'CNY':true }}</span>
     </div>
-    <div class="operate-btn" (click)="order()" [ngClass]="{ 'active': !globalData.lockOrderBtn }">确认并付款</div>
+    <div class="operate-btn" (click)="order()" [ngClass]="{ 'active': !globalData.lockOrderBtn }">确认并付款 </div>
   </ion-toolbar>
 </ion-footer>

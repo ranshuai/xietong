@@ -5,7 +5,6 @@ import { RequestOptions, Headers } from '@angular/http';
 import { Api } from "../../../gouxiangke/providers/api/api";
 import { CommonProvider } from "../../../gouxiangke/providers/common/common";
 import { StoreSendGoodsPage } from "../store-send-goods/store-send-goods";
-import { OrderLogisticsInfoPage } from '../../../gouxiangke/user-info/user-info-order/order-logistics-info/order-logistics-info';
 import { StoreOrderPricePage } from "../store-order-price/store-order-price";
 import { StoreOrderCancelPage } from '../store-order-cancel/store-order-cancel';
 
@@ -22,7 +21,7 @@ import { StoreOrderCancelPage } from '../store-order-cancel/store-order-cancel';
 export class StoreOrderBlockComponent {
 
   storeSendGoodsPage = StoreSendGoodsPage;
-  orderLogisticsInfoPage = OrderLogisticsInfoPage;
+  orderLogisticsInfoPage = 'OrderLogisticsInfoPage';
   storeOrderPricePage = StoreOrderPricePage;
   storeOrderCancelPage=StoreOrderCancelPage
   @Input() data;
@@ -54,6 +53,7 @@ export class StoreOrderBlockComponent {
   }
 
   sendOrder() {
+    // this.data.shippingType = "到店自提";
     let modal = this.modalCtrl.create(this.storeSendGoodsPage, { order: this.data });
     modal.present({ animate: false });
     modal.onDidDismiss(data => {

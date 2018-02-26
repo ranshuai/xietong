@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ViewController,IonicPage } from 'ionic-angular';
 import { FormBuilder } from '@angular/forms';
 import { Config } from '../../../providers/api/config.model';
 import { Api } from '../../../providers/api/api';
@@ -13,7 +13,7 @@ import {CommonData } from "../../../providers/user/commonData.model";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-set-certification',
   templateUrl: 'user-set-certification.html',

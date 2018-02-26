@@ -5,9 +5,6 @@ import { Api } from '../../providers/api/api';
 import { GoodsListBlockComponent } from '../../components/goods-list-block/goods-list-block';
 import { CommonProvider } from "../../providers/common/common";
 import { UserHomeTemplateProvider } from "../../providers/user/user-home-template";
-import { UserInfoOrderPage } from "../../user-info/user-info-order/user-info-order";
-import { UserInfoCollectionPage } from "../../user-info/user-info-collection/user-info-collection";
-import { UserInfoCouponPage } from "../../user-info/user-info-coupon/user-info-coupon";
 
 @Component({
   selector: 'page-user-home-home',
@@ -20,9 +17,6 @@ export class UserHomeHomePage {
 
   template: number;
   homeHomeData: any = {};
-  userInfoCollection = UserInfoCollectionPage;
-  userInfoCouponPage = UserInfoCouponPage;
-  userInfoOrderPage = UserInfoOrderPage;
   advImgs = [];
   navImgs = [];
   adImg;
@@ -34,6 +28,8 @@ export class UserHomeHomePage {
   homeHomeDataShopsShow = false;
   //推荐商品
   homeHomeDataGoodsListShow = false;
+  // 广告位是否显示
+  homeHomeDataAdvsShow = false;
   navData = {
     view: 'left',
     title: ['商品列表', '促销活动']
@@ -77,6 +73,27 @@ export class UserHomeHomePage {
       }
     })
 
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 4 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv1 = data.result;
+        this.homeHomeData.adv1.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 5 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv2 = data.result;
+        this.homeHomeData.adv2.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 6 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv3 = data.result;
+        this.homeHomeData.adv3.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+
     this.api.get( this.api.config.host.bl+ 'v2/homePage/homeHotGoodsList').subscribe((data: any) => { 
       if (data.success) { 
         this.homeHomeData.hot_goods = data.result || [];
@@ -115,31 +132,7 @@ export class UserHomeHomePage {
 
   goToGoodsListPage(type) {
     console.log(type);
-    this.common.goToPage('GoodsListPage', { type: type });
-  }
-
-  goToSearchPage(value) {
-    this.common.goToPage('SearchPage');
-  }
-
-  goToCategoryPage() {
-    this.common.goToPage('UserCategoryPage');
-  }
-
-  goToHistoryOrderPage() {
-    this.common.goToPage(this.userInfoOrderPage, { type: 'all' });
-  }
-
-  goToCollectPage() {
-    this.common.goToPage(this.userInfoCollection);
-  }
-
-  goToUserInfoPage() {
-    this.common.goToPage('UserInfoPage');
-  }
-
-  goToCouponPage() {
-    this.common.goToPage(this.userInfoCouponPage);
+    this.navCtrl.push('GoodsListPage', { type: type })
   }
 
 }

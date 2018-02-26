@@ -58,12 +58,12 @@ export class StoreDetailPage {
   }
 
   chat_web(){
-    if(this.httpConfig.clientType == '1'){
-      this.common.goToPage('ChatPage',{
-          "toUserId": this.storeInfo.directorId,
-          "toUserName": this.storeInfo.companyAlias||"",
-          "headPic":  this.storeInfo.headPic||'./assets/images/public/anonymity.png'
-      });
+    if (this.httpConfig.clientType == '1') {
+      this.navCtrl.push('ChatPage',{
+        "toUserId": this.storeInfo.directorId,
+        "toUserName": this.storeInfo.companyAlias||"",
+        "headPic":  this.storeInfo.headPic||'./assets/images/public/anonymity.png'
+    })
     }
   }
   getStoreInfo(storeId) {
@@ -83,12 +83,12 @@ export class StoreDetailPage {
   }
 
   search(searchValue) {
-    this.common.goToPage('SearchPage', { searchValue: searchValue, storeId:this.storeId});
+    this.navCtrl.push('SearchPage', { searchValue: searchValue, storeId:this.storeId})
   }
 
   collect(status) {
     if (!this.commonModel.userId) {
-      this.common.goToPage('PublicLoginPage');
+      this.navCtrl.push('PublicLoginPage');
       return;
      }
     this.storeInfo.collectStatus = status;
@@ -118,11 +118,11 @@ export class StoreDetailPage {
   }
 
   ionViewDidEnter() {
-    setTimeout(() => { 
+    setTimeout(() => {
       if (this.storeInfo && this.storeInfo.unitBackground) { 
         document.getElementById('store-info').style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
       }
-    }, 500)
+    }, 200)
   }
 
   goToCategory() { 

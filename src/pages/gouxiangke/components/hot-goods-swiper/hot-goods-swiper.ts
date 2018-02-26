@@ -1,7 +1,6 @@
 import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component, Input } from '@angular/core';
-import { App, ViewController } from 'ionic-angular';
-import { GoodsDetailPage } from "../../user-common/goods-detail/goods-detail";
+import { App, ViewController,NavController } from 'ionic-angular';
 import { CommonProvider } from "../../providers/common/common";
 
 /**
@@ -21,20 +20,19 @@ export class HotGoodsSwiperComponent {
   @Input() spaceBetween: number;
   @Input() imgSpace: any;
 
-  goodsDetailPage = GoodsDetailPage;
-
   constructor(
     public viewCtrl: ViewController,
     public appCtrl: App,
     private common: CommonProvider,
-    public mainCtrl:MainCtrl
+    public mainCtrl: MainCtrl,
+    public navCtrl:NavController
   ) { 
     console.log(this.imgSpace);
   }
 
   goToGoodsDetailPage(item) {
     let goodsId = item.goods_id || item.goodsId;
-    this.common.goToPage(this.goodsDetailPage, { goods_id: goodsId });
+    this.navCtrl.push('GoodsDetailPage',{ goods_id: goodsId })
   }
 
 }

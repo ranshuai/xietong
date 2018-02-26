@@ -43,10 +43,10 @@ export class UserInfoBankPage {
   }
 
   userInfoAddBank() {
-    this.common.goToPage('UserInfoBankNewPage');
+    this.navCtrl.push('UserInfoBankNewPage')
   }
   goToBankDetail(_item) {
-    this.common.goToPage('UserInfoBankDetailPage',{accountId:_item.accountId});
+    this.navCtrl.push('UserInfoBankDetailPage',{accountId:_item.accountId})
   }
 
   ionViewDidEnter(){

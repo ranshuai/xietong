@@ -2,18 +2,11 @@ import { MainCtrl } from './../../../../providers/MainCtrl';
 import { UserCommon } from './../../providers/user/user-common';
 import { Component, ViewChild } from '@angular/core';
 
-import { NavController, NavParams, IonicPage, Content, AlertController,App,ModalController } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, Content, AlertController,App,ModalController,Events } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
 import { CommonData } from '../../providers/user/commonData.model';
 import { LoadingController } from "ionic-angular";
-import { UserInfoOrderApplyservicesPage } from './user-info-order-applyservices/user-info-order-applyservices';
-import { UserInfoOrderDetailPage } from './user-info-order-detail/user-info-order-detail';
-import { UserInfoOrderEvaluatePage } from './user-info-order-evaluate/user-info-order-evaluate';
-import { UserInfoOrderServicesPage } from './user-info-order-services/user-info-order-services';
-import { UserInfoOrderSharePage } from './user-info-order-share/user-info-order-share';
-import { UserInfoOrderConfirmPage } from './user-info-order-confirm/user-info-order-confirm';
-import { OrderLogisticsInfoPage } from './order-logistics-info/order-logistics-info';
 import { OrderAlertModalPage } from './user-info-order-modal/order-alert-modal/order-alert-modal';
 import { OrderWholesalePage } from './order-wholesale/order-wholesale';
 import {ThirdPartyApiProvider} from "../../providers/third-party-api/third-party-api";
@@ -26,20 +19,21 @@ import { Storage } from '@ionic/storage';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+@IonicPage()
 @Component({
   selector: 'page-user-info-order',
   templateUrl: 'user-info-order.html',
 })
 export class UserInfoOrderPage {
-  userInfoOrderApplyservicesPage = UserInfoOrderApplyservicesPage;
-  userInfoOrderDetailPage = UserInfoOrderDetailPage;
-  userInfoOrderEvaluatePage = UserInfoOrderEvaluatePage;
-  userInfoOrderServicesPage = UserInfoOrderServicesPage;
-  userInfoOrderSharePage = UserInfoOrderSharePage;
-  userInfoOrderConfirmPage = UserInfoOrderConfirmPage;
-  orderLogisticsInfoPage = OrderLogisticsInfoPage;
-  orderAlertModalPage = OrderAlertModalPage;
-  orderWholesalePage = OrderWholesalePage;
+  userInfoOrderApplyservicesPage = 'UserInfoOrderApplyservicesPage'; // 申请售后
+  userInfoOrderDetailPage = 'UserInfoOrderDetailPage';//详情
+  userInfoOrderEvaluatePage = 'UserInfoOrderEvaluatePage';// 评价
+  userInfoOrderServicesPage = 'UserInfoOrderServicesPage';//售后
+  userInfoOrderSharePage = 'UserInfoOrderSharePage';// 圈子
+  userInfoOrderConfirmPage = 'UserInfoOrderConfirmPage';// 订单确认
+  orderLogisticsInfoPage = 'OrderLogisticsInfoPage';//物流订单
+  orderAlertModalPage = OrderAlertModalPage;//
+  orderWholesalePage = OrderWholesalePage;//
   @ViewChild(Content) content: Content;
   //默认选中
   activeType = 'all';
@@ -93,7 +87,7 @@ export class UserInfoOrderPage {
               public commondata: CommonData,public storage:Storage,
               public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config, public userCommon: UserCommon, public modalCtrl: ModalController,
-    public mainCtrl:MainCtrl
+    public mainCtrl: MainCtrl,public events:Events
               
 
     ) {
@@ -150,7 +144,7 @@ export class UserInfoOrderPage {
         });
       }
       else {
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage')        
       }
     });
   }
@@ -324,7 +318,7 @@ export class UserInfoOrderPage {
     } else if (_url == '召集小伙伴') {
       url = this.orderWholesalePage;
     }
-    this.common.goToPage(url,{all:all});
+    this.navCtrl.push(url,{all:all})
   }
 
   //查看物流
@@ -344,6 +338,8 @@ export class UserInfoOrderPage {
     if (this.alertData) {
       this.alertData.dismiss();
     }
+     //页面离开的时候触发
+     this.events.publish('GetServiceModalPage:events')
   }
 
 }

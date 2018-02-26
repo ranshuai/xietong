@@ -1,6 +1,6 @@
 import { CommonModel } from './../../../../../../providers/CommonModel';
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams,IonicPage} from 'ionic-angular';
 import {Api} from '../../../../providers/api/api';
 import {CommonProvider} from '../../../../providers/common/common';
 import {FormBuilder} from '@angular/forms';
@@ -13,7 +13,7 @@ import { CommonData } from "../../../../providers/user/commonData.model";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-set-password-pay',
   templateUrl: 'user-set-password-pay.html',

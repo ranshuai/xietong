@@ -1,4 +1,3 @@
-import { UserSetMobilePage } from './user-set/user-set-mobile/user-set-mobile';
 import { MainCtrl } from './../../../providers/MainCtrl';
 import { CommonModel } from './../../../providers/CommonModel';
 import { GlobalDataProvider } from './../providers/global-data/global-data.model';
@@ -7,17 +6,9 @@ import { Component, Input, forwardRef, Inject } from '@angular/core';
 import { IonicPage, NavController, ViewController,LoadingController } from 'ionic-angular';
 import { CommonProvider } from "../providers/common/common";
 import { Config } from '../providers/api/config.model';
-import { UserSetPage } from './user-set/user-set';
-import { UserInfoOrderPage } from './user-info-order/user-info-order';
-import { UserInfoCollectionPage } from './user-info-collection/user-info-collection';
-import { UserInfoWalletPage } from './user-info-wallet/user-info-wallet';
-import { UserInfoAddressPage } from './user-info-address/user-info-address';
-import { UserInfoOrderServicesPage } from './user-info-order/user-info-order-services/user-info-order-services';
+// import { UserInfoAddressPage } from './user-info-address/user-info-address';
 import { Api } from '../providers/api/api';
-import { UserInfoCouponPage } from './user-info-coupon/user-info-coupon';
-import { UserInfoEvaluatePage } from '../user-info/user-info-evaluate/user-info-evaluate';
 import { ThirdPartyApiProvider } from "../providers/third-party-api/third-party-api";
-import { UserInfoPrepayPage } from "./user-info-prepay/user-info-prepay";
 
 import { Storage } from '@ionic/storage';
 
@@ -34,22 +25,22 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'user-info.html',
 })
 export class UserInfoPage {
-  userSetPage = UserSetPage;
-  userInfoOrderPage = UserInfoOrderPage;
-  userInfoCollectionPage = UserInfoCollectionPage;
-  userInfoWalletPage = UserInfoWalletPage;
-  userInfoAddressPage = UserInfoAddressPage;
-  userInfoOrderServicesPage = UserInfoOrderServicesPage;
-  userInfoCouponPage = UserInfoCouponPage;
+  userSetPage = 'UserSetPage'; //个人中心=》设置
+  userInfoOrderPage = 'UserInfoOrderPage'; // 个人中心=》订单
+  userInfoCollectionPage = 'UserInfoCollectionPage'; //个人中心=》我的收藏
+  userInfoWalletPage = 'UserInfoWalletPage'; //我的钱包
+  userInfoAddressPage = 'UserInfoAddressPage'; //地址
+  userInfoOrderServicesPage = 'UserInfoOrderServicesPage';//
+  userInfoCouponPage = 'UserInfoCouponPage';// 售后
   userInfo: any;
-  userInfoEvaluatePage = UserInfoEvaluatePage;
-  userInfoPrepayPage = UserInfoPrepayPage;
-  userSetMobilePage = UserSetMobilePage;
+  userInfoEvaluatePage = 'UserInfoEvaluatePage';// 评价
+  userInfoPrepayPage = 'UserInfoPrepayPage';// 预付款
+  userSetMobilePage = 'UserSetMobilePage';// 绑定手机号
   constructor(
     public common: CommonProvider,
     public config: Config,
     public api: Api,
-    public nav: NavController,
+    public navCtrl: NavController,
     public viewCtrl: ViewController,
     public thirdPartyApi: ThirdPartyApiProvider,
     private user: User,
@@ -74,45 +65,45 @@ export class UserInfoPage {
   }
 
   goTouUserSet() {
-    this.common.goToPage(this.userSetPage)
+    this.navCtrl.push(this.userSetPage)
   }
 
   goToPageUserInfoOrder(_type) {
-    this.common.goToPage(this.userInfoOrderPage, { type: _type })
+    this.navCtrl.push(this.userInfoOrderPage, { type: _type });
   }
   goToPageUserInfoCollection() {
-    this.common.goToPage(this.userInfoCollectionPage, {})
+    this.navCtrl.push(this.userInfoCollectionPage, {})
   }
 
   goToPageUserInfoWalletPage() {
-    this.common.goToPage(this.userInfoWalletPage, {})
+    this.navCtrl.push(this.userInfoWalletPage, {})
   }
 
   goToUserInfoAddressPage() {
     this.api.config.isEditor = false;
-    this.common.goToPage(this.userInfoAddressPage)
+    this.navCtrl.push(this.userInfoAddressPage)
   }
 
   goToUserInfoOrderServicesPage() {
-    this.common.goToPage(this.userInfoOrderServicesPage)
+    this.navCtrl.push(this.userInfoOrderServicesPage)
 
   }
 
   goToUserInfoCouponPage() {
-    this.common.goToPage(this.userInfoCouponPage)
+    this.navCtrl.push(this.userInfoCouponPage)
   }
 
   goToUserInfoEvaluatePage() {
-    this.common.goToPage(this.userInfoEvaluatePage)
+    this.navCtrl.push(this.userInfoEvaluatePage)
   }
   goToUserInfoBankPage() {
-    this.common.goToPage('UserInfoBankPage')
+    this.navCtrl.push('UserInfoBankPage')
   }
   goToUserInfoGroupPage() {
-    this.common.goToPage('UserInfoGroupPage');
+    this.navCtrl.push('UserInfoGroupPage');
   }
   goToUserInfoPrepayPage() { 
-    this.common.goToPage(this.userInfoPrepayPage)
+    this.navCtrl.push(this.userInfoPrepayPage)
   }
 
 
@@ -152,7 +143,7 @@ export class UserInfoPage {
       if (!this.commonModel.TAB_INIT_USERINFO.mobile) {
         this.common.count = true;
         this.common.openMobileModal().subscribe(() => {
-          this.common.goToPage(this.userSetMobilePage, { type: 1 });
+          this.navCtrl.push(this.userSetMobilePage, { type: 1 });
         })
       } else {
         this.getUserInfo();
@@ -187,7 +178,7 @@ export class UserInfoPage {
       if (data.result && data.result.status == 10112) {
         this.common.comConfirm('需要实名认证之后,才能变身配送员').subscribe(data => {
           setTimeout(() => { 
-            this.common.goToPage('UserRealQueryPage', { scene: 1 });
+            this.navCtrl.push('UserRealQueryPage', { scene: 1 });
           },1000)
         })
         return
@@ -237,26 +228,26 @@ export class UserInfoPage {
             if (cardInfo.sourceType == 1) {
               //进入卡片
               this.common.tostMsg({msg:'已经是司机，请勿重复申请！'})
-              // this.common.goToPage('LogisticsPage');
+              // this.navCtrl.push('LogisticsPage');
             } else if (cardInfo.sourceType == 0) {
               //资料审核中
               setTimeout(() => { 
-                this.common.goToPage('ApplyLogisticsSuccessPage');
+                this.navCtrl.push('ApplyLogisticsSuccessPage');
               },300)
             } else if (cardInfo.sourceType == -1) {
               setTimeout(() => { 
-              this.common.goToPage('ApplyLogisticsFailPage');
+              this.navCtrl.push('ApplyLogisticsFailPage');
               },300)
               //黑名单/拉黑/解聘=-1
             } else if (cardInfo.sourceType == 2) {
               setTimeout(() => { 
-                this.common.goToPage('ApplyLogisticsFailPage');
+                this.navCtrl.push('ApplyLogisticsFailPage');
               },300)
               //离职
             } else {
               //驳回中 cardInfo.sourceType == 3
               setTimeout(() => { 
-                this.common.goToPage('ApplyLogisticsFailPage');
+                this.navCtrl.push('ApplyLogisticsFailPage');
               },300)
             }
           } else {
@@ -270,7 +261,7 @@ export class UserInfoPage {
               if (data.success) {
                 data.result = data.result ? data.result : '';
                 setTimeout(() => { 
-                  this.common.goToPage('ApplyLogisticsRolePage', {_belonCompanyid: data.result});
+                  this.navCtrl.push('ApplyLogisticsRolePage', {_belonCompanyid: data.result});
                 },500)
               } else { 
                 this.common.tostMsg({msg:data.msg})

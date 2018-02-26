@@ -1,7 +1,6 @@
 import { Component, Input , forwardRef, Inject} from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { CommonProvider } from '../../../providers/common/common';
-import { UserSetInfoSubPage } from '../../user-set/user-set-info-sub/user-set-info-sub'
 import { Api } from '../../../providers/api/api';
 
 /**
@@ -11,13 +10,13 @@ import { Api } from '../../../providers/api/api';
  * on Ionic pages and navigation.
  */
 
- 
+@IonicPage()
 @Component({
   selector: 'page-user-set-info',
   templateUrl: 'user-set-info.html',
 })
 export class UserSetInfoPage {
-  userSetInfoSubPage = UserSetInfoSubPage;
+  userSetInfoSubPage = 'UserSetInfoSubPage';
   pageData;
   constructor(public navCtrl: NavController, public navParams: NavParams, public common: CommonProvider, public api: Api) {
     
@@ -47,7 +46,7 @@ ionViewDidEnter() {
 
 
   goToPage() { 
-    this.common.goToPage(this.userSetInfoSubPage, {user:this.pageData.user})
+    this.navCtrl.push(this.userSetInfoSubPage, { user: this.pageData.user });
   }
     
   

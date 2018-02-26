@@ -13,7 +13,9 @@
     <div class="img-wrap">
       <img [src]="item.original_img || item.originalImg">
     </div>
-    <div class="name">{{ item.goodsName }}</div>
+    <div class="history_name">
+      <div class="name">{{ item.goodsName }}</div>
+    </div>
     <div class="price">{{ item.goodsPrice | currency:'CNY':true }}</div>
     <div class="buy-btn" (click)="goToGoodsDetailPage(item)">购买</div>
   </div>

@@ -1,22 +1,19 @@
 import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 
 import { CommonProvider } from '../../../providers/common/common';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { OrderAlertModalPage } from './../user-info-order-modal/order-alert-modal/order-alert-modal';
 import { OrderWholesalePage } from './../order-wholesale/order-wholesale';
-import { OrderLogisticsInfoPage } from './../order-logistics-info/order-logistics-info';
-import { UserInfoOrderSharePage } from './../user-info-order-share/user-info-order-share';
-import { UserInfoOrderDetailPage } from './../user-info-order-detail/user-info-order-detail';
 /**
  * Generated class for the UserInfoOrderServicesPage page.
  *
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-order-services',
   templateUrl: 'user-info-order-services.html',
@@ -28,9 +25,9 @@ export class UserInfoOrderServicesPage {
     loadEnd: false
   }
   orderAlertModalPage = OrderAlertModalPage;
-  orderLogisticsInfoPage = OrderLogisticsInfoPage;
-  userInfoOrderSharePage = UserInfoOrderSharePage;
-    userInfoOrderDetailPage = UserInfoOrderDetailPage;
+  orderLogisticsInfoPage = 'OrderLogisticsInfoPage'; //物流订单
+  userInfoOrderSharePage = 'UserInfoOrderSharePage'; //圈子
+    userInfoOrderDetailPage = 'UserInfoOrderDetailPage'; //详情
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public common: CommonProvider, public commondata: CommonData,public mainCtrl:MainCtrl) {
     this.queryOorderAftersale();
   }
@@ -105,7 +102,7 @@ export class UserInfoOrderServicesPage {
     }else if (_url == '详情') {
       url = this.userInfoOrderDetailPage;
     } 
-    this.common.goToPage(url);
+    this.navCtrl.push(url)
   }
 
   //删除订单

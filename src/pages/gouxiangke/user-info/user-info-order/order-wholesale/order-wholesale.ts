@@ -6,7 +6,6 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonProvider } from '../../../providers/common/common';
 import { CommonData } from '../../../providers/user/commonData.model';
-import { UserInfoOrderDetailPage } from '../../user-info-order/user-info-order-detail/user-info-order-detail';
 import { WholesaleModalUsersPage } from './wholesale-modal-users/wholesale-modal-users';
 import { GoodsDetailGroupPage } from "../../../user-common/goods-detail-group/goods-detail-group";
 
@@ -22,7 +21,7 @@ import { GoodsDetailGroupPage } from "../../../user-common/goods-detail-group/go
   templateUrl: 'order-wholesale.html',
 })
 export class OrderWholesalePage {
-  userInfoOrderDetailPage = UserInfoOrderDetailPage;
+  userInfoOrderDetailPage = 'UserInfoOrderDetailPage';//详情
   wholesaleModalUsersPage = WholesaleModalUsersPage;
   goodsDetailGroupPage = GoodsDetailGroupPage
   wholesale: any;
@@ -148,12 +147,12 @@ export class OrderWholesalePage {
 
   //跳转订单详情
   goTopage() { 
-    this.common.goToPage(this.userInfoOrderDetailPage);
+    this.navCtrl.push(this.userInfoOrderDetailPage)
   }
 
   goToGoodsDetail(item) { 
-    let goodsId = item.goods_id || item.goodsId ||item.id;
-    this.common.goToPage(this.goodsDetailGroupPage, { goods_id: goodsId });
+    let goodsId = item.goods_id || item.goodsId || item.id;
+    this.navCtrl.push(this.goodsDetailGroupPage, { goods_id: goodsId })
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad OrderWholesalePage');

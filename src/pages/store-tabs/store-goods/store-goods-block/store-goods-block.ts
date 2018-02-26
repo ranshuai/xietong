@@ -106,7 +106,7 @@ export class StoreGoodsBlockComponent {
 
     let goodsIds = [];
     goodsIds.push(item.goodsId);
-    this.api.post(this.api.config.host.bl + 'v2/goodsList/addAgentGoods',[]).subscribe(data => { 
+    this.api.post(this.api.config.host.bl + 'v2/goodsList/addAgentGoods',goodsIds).subscribe(data => { 
       if (data.success) {
         this.commonProvider.showToast('添加代售成功', 1500);
         this.events.publish('otherGoodsList:refresh');

@@ -67,7 +67,7 @@ export class NewPasswordPage {
   goToLogin(){    
     this.api.post(this.api.config.host.org + 'v2/user/makenewPwd?mobile='+ this.mobile + '&code=' + this.code + '&password=' + this.modifyPassData.password ).subscribe(data=>{
       if(data.success){
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage');
         this.common.tostMsg({msg:"请重新登录"});
       }
     })

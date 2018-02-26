@@ -1,7 +1,7 @@
 <!-- Generated template for the OrderGoodsListComponent component -->
 <div class="wrap" *ngIf="data">
     <div class="store-list">
-      <div class="store-item" *ngFor="let store of data">
+      <div class="store-item" *ngFor="let store of data;let _index = index">
         <div *ngIf="store.hasBuy">
           <div class="store-title">
             <div class="check-btn">
@@ -33,14 +33,24 @@
               </div>
             </div>
           </div>
-          <ion-item class="leave-message">
-            <ion-label>备注：</ion-label>
+          <ion-item class="leave-message important">
+            <ion-label>买家备注：</ion-label>
             <ion-input placeholder="（选填）请填写对商家的留言信息~" [(ngModel)]="store.leaveMessage"></ion-input>
           </ion-item>
+          <div class="self_ion_item R_clearfix" (click)="goToSelectLogistics(store,_index)">
+            <span>配送方式：</span>
+            <span class = "R_fr">
+                {{store.defaultSelectTxt}}
+            </span>
+          </div>
           <div class="total">
             <div class="left">商品合计</div>
             <div class="price">{{ store.price | currency:'CNY':true }}</div>
           </div>
+          <div class="total">
+              <div class="left">运费</div>
+              <div class="price">{{ store.freight || 0 | currency:'CNY':true }}</div>
+            </div>
         </div>
       </div>
     </div>

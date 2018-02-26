@@ -2,7 +2,7 @@ import { MainCtrl } from './../../../../providers/MainCtrl';
 import { HttpConfig } from './../../../../providers/HttpConfig';
 import { Config } from './../../providers/api/config.model';
 import { Component} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Events } from 'ionic-angular';
 import { ModalController } from "ionic-angular";
 import { Api } from "../../providers/api/api";
 import { ThirdPartyApiProvider } from "../../../../providers/third-party-api";
@@ -38,7 +38,8 @@ export class GoodsDetailPage {
     private thirdPartyApi: ThirdPartyApiProvider,
     public config: Config,
     public httpConfig: HttpConfig,
-    public mainCtrl:MainCtrl
+    public mainCtrl: MainCtrl,
+    public events:Events
   ) {
     this.goodsId = navParams.get('goods_id');
   }
@@ -87,10 +88,17 @@ export class GoodsDetailPage {
       { cssClass: 'specs-modal' }
     );
     specsModal.present();
-    specsModal.onDidDismiss(() => {
+    specsModal.onDidDismiss((data) => {
       //传递商品收藏状态
       this.goodsInfo.collectStatus = this.goods.collectStatus;
+      if (data) {
+        this.navCtrl.push(data.page)
+       }
     });
+  }
+  ionViewWillLeave() { 
+    //页面离开的时候触发
+    this.events.publish('GetServiceModalPage:events')
   }
 
 }

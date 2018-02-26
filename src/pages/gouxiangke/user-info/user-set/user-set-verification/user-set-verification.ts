@@ -160,7 +160,7 @@ export class UserSetVerificationPage {
     let url = this.api.config.host.org+'v2/user/login';
     this.api.post(url, this.setPassWordData).subscribe(data => {
       if (data.success) {
-        this.common.goToPage(this.userSetPasswordPage);
+        this.navCtrl.push(this.userSetPasswordPage);
       } else {
         this.common.tostMsg({ msg: data.msg });
       }

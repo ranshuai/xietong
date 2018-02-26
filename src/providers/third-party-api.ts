@@ -63,6 +63,11 @@ export class ThirdPartyApiProvider {
   //上传图片
   uploadImage(_File, type = 'user') {
     // 功能名称 (商品 : goods; 店铺:company;店铺资质:qualification;用户:user;主题:topic;身份资质:identify;默认:default;评论:comment;圈子:circle)
+    if(!new RegExp("(jpg|jpeg|gif|png)+","gi").test(_File.type)){
+      this.nativeService.showToast("上传文件类型必须是图片！");
+      return new Observable((observer: Subscriber<any>) => {
+      });
+    }
 
     let loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
@@ -171,7 +176,7 @@ export class ThirdPartyApiProvider {
      * @param payAmount
      */
     pingppWebPay(orderNo,all,payAmount){
-      window.location.href=this.httpConfig.baseUrl+"/assets/testPay/pay_tip.html"+
+    window.location.href=this.httpConfig.baseUrl+"/assets/testPay/pay_tip.html"+
         "?openId=1&orderSn=" + orderNo+"&space="+this.httpConfig.space + "&all=" + all+"&userId="+
         this.commonModel._userId+"&payAmount="+payAmount;
     }

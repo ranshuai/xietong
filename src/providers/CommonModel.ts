@@ -5,7 +5,13 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CommonModel {
+  public shoppingCartHide: any; //购物车是否隐藏
   public cacheOtherGoodsListLength: number = 0; //店铺管理 准备代售商品的数量
+  public freightOrderGoods: number = 0; //运费
+  public pageOrderConfirmSelfInfo: any = {}; //缓存订单相关的信息
+  public pageOrderConfirm: any = {}; //缓存点击配送方式的下表和店铺Id
+  public userDefaultAndSetAddres: any = {}; //用户默认和选中的地址
+  public pageOrderConfirmpick: any = {}; //点击购物车进入订单确认页面
   public isPayPwd: any;
   shopCarNum: any; //店铺购物车显示数量的角标；
   private _mode: string = 'dark';//日间模式dark  light夜间模式

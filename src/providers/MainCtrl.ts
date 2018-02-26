@@ -148,34 +148,20 @@ export class MainCtrl {
       var ua = window.navigator.userAgent.toLowerCase();
       let micro: any = "micromessenger";
       if (ua.match(/MicroMessenger/i) == micro) {
-        //动态设置space
-        if (window.localStorage.getItem('space')) {
-          this.httpService.config.space = window.localStorage.getItem('space');
-          window.localStorage.removeItem('space');
-        }
         //动态设置openId
         if (window.localStorage.getItem('openId')) {
           this.httpService.config.openId = window.localStorage.getItem('openId');
           window.localStorage.removeItem('openId')
         }
-       //动态设置storeId
-        if (window.localStorage.getItem('selfStoreId')) {
-          this.httpService.config.storeId = window.localStorage.getItem('selfStoreId');
-          window.localStorage.removeItem('selfStoreId')
-        }
-        
         this.httpService.config.platform = 'wx';
       } else {
         this.httpService.config.platform = 'web';
       }
     }
-      
-    if (this.nativeService.isMobile() || this.httpService.config.platform == 'web' ) { 
-      this.httpService.config.space = (<any>window).colink.space;
-      this.httpService.config.storeId = (<any>window).colink.storeId;
-    }
 
-    
+      
+    this.httpService.config.space = (<any>window).colink.space;
+    this.httpService.config.storeId = (<any>window).colink.storeId;
     this.httpService.config.clientType = (<any>window).colink.clientType;
     switch ((<any>window).colink.host) {
       case 'test':

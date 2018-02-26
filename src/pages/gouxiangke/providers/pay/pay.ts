@@ -6,8 +6,10 @@ import { Subscriber } from 'rxjs/Subscriber';
 import { Api } from '../api/api';
 import { CommonProvider } from "../common/common";
 import { RequestOptions, Headers } from '@angular/http';
-import {ThirdPartyApiProvider} from "../../../../providers/third-party-api";
-import {HttpConfig} from "../../../../providers/HttpConfig";
+import { HttpConfig } from "../../../../providers/HttpConfig"
+
+import { ThirdPartyApiProvider} from "../../../../providers/third-party-api"
+
 /*
   Generated class for the PayProvider provider.
 
@@ -22,8 +24,8 @@ export class PayProvider {
     private loadingCtrl: LoadingController,
     private common: CommonProvider,
     private thirdPartyApi: ThirdPartyApiProvider,
-    private httpConfig:HttpConfig,
-    public config:Config
+    public config: Config,
+    public httpConfig:HttpConfig
   ) { }
 
     /**
@@ -101,74 +103,72 @@ export class PayProvider {
   //     });
   //   });
   // }
-    // app微信支付
-    /**
-     * @ orderNo 订单好
-     * @ type 支付类型
-     * @  b 是否父订单
-     */
-    wxPay(orderNo, type?,b?) {
-        console.log(type);
-        // this.common.showToast('暂未开通，敬请期待~');
-        let loading = this.loadingCtrl.create({
-            dismissOnPageChange: true,
-            content: '支付中，请稍后...'
-        });
-        return new Observable((observer: Subscriber<any>) => {
-            loading.present();
-            //如果是微信调用微信js的支付
-            if (this.config.PLATFORM == 'WX') {
-                let options = new RequestOptions({ headers: new Headers({ orderSn: orderNo, openId: this.httpConfig.openId }) });
-                this.api.get(this.api.config.host.org + 'v2/weixinPay/wxPayUnifiedorder', null, options).subscribe(data => {
-                    loading.dismiss();
-                    if (data.success) {
-                        if(data.result == 3001){
-                            this.common.showToast(data.msg)
-                            return
-                        }
-                        let charge = data.result.weiXinPayVo;
-                        // charge = JSON.stringify(charge);
-                        this.thirdPartyApi.wxPay(charge).subscribe(data => {
-                            if (data) {
-                                observer.next(data);
-                            }
-                        });
-                    } else {
-                        this.common.showToast(data.msg || '支付失败,请稍后再试~');
-                    }
-                });
+  // app微信支付
+  /**
+   * @ orderNo 订单好
+   * @ type 支付类型
+   * @  b 是否父订单
+   */
+   wxPay(orderNo, type?,b?) {
+    console.log(type);
+    // this.common.showToast('暂未开通，敬请期待~');
+    let loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+      content: '支付中，请稍后...'
+    });
+    return new Observable((observer: Subscriber<any>) => {
+      loading.present();
+      //如果是微信调用微信js的支付
+      if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') {
+        let options = new RequestOptions({ headers: new Headers({ orderSn: orderNo, openId:this.httpConfig.openId  }) });
+        this.api.get(this.api.config.host.org + 'v2/weixinPay/wxPayUnifiedorder', null, options).subscribe(data => {
+          loading.dismiss();
+          if (data.success) {
+              if(data.result == 3001){
+                this.common.showToast(data.msg)
                 return
             }
-            //如果是APP 调用P++支付
-            if (this.config.PLATFORM == 'APP'|| this.config.PLATFORM == 'STOREAPP') {
-                this.api.post(this.api.config.host.bl + 'payment/charge/'+type+'/get', {
-                    orderSn: orderNo,
-                    all: b,
-                    // openId: window.localStorage.openid
-                }).subscribe(data => {
-                    loading.dismiss();
-                    if (data.success) {
-                        if(data.result == 3001){
-                            this.common.showToast(data.msg)
-                            return
-                        }
-                        let charge = data.result;
-                        charge = JSON.stringify(charge);
-                        this.thirdPartyApi.wxPay(charge).subscribe(data => {
-                            if (data) {
-                                observer.next(data);
-                            }
-                        });
-                    } else {
-                        this.common.showToast(data.msg || '支付失败,请稍后再试~');
-                    }
-                });
-                return
-            }
+            let charge = data.result.weiXinPayVo;
+            // charge = JSON.stringify(charge);
+              this.thirdPartyApi.wxPay(charge).subscribe(data => {
+                if (data) {
+                  observer.next(data);
+                }
+              });
+          } else {
+            this.common.showToast(data.msg || '支付失败,请稍后再试~');
+          }
         });
-    }
-
-
+        return 
+      }
+      //如果是APP 调用P++支付
+      if (this.config.PLATFORM == 'APP'|| this.config.PLATFORM == 'STOREAPP') {
+        this.api.post(this.api.config.host.bl + 'payment/charge/'+type+'/get', {
+          orderSn: orderNo,
+          all: b,
+          // openId: window.localStorage.openid
+        }).subscribe(data => {
+          loading.dismiss();
+          if (data.success) {
+            if(data.result == 3001){
+              this.common.showToast(data.msg)
+              return
+          }
+          let charge = data.result;
+          charge = JSON.stringify(charge);
+            this.thirdPartyApi.wxPay(charge).subscribe(data => {
+              if (data) {
+                observer.next(data);
+              }
+            });
+          } else {
+            this.common.showToast(data.msg || '支付失败,请稍后再试~');
+          }
+        });
+        return 
+      }
+    });
+  }
 
   deliveryPay(orderNo,description?) {
     let loading = this.loadingCtrl.create({

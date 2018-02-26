@@ -1,6 +1,6 @@
+import { NavController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { CommonProvider } from "../../providers/common/common";
-
 /**
  * Generated class for the SearchButtonComponent component.
  *
@@ -14,11 +14,10 @@ import { CommonProvider } from "../../providers/common/common";
 export class SearchButtonComponent {
 
   @Input() shadowLeft: string;
-
-  constructor(public common: CommonProvider) { }
+  constructor(public common: CommonProvider,public navController:NavController) { }
 
   goToSearchPage() {
-    this.common.goToPage('SearchPage');
+    this.navController.push('SearchPage');
   }
 
 }

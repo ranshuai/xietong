@@ -1,3 +1,4 @@
+import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { CommonModel } from './../../../../../providers/CommonModel';
 import { UserCommon } from './../../../providers/user/user-common';
 import { CommonData } from './../../../providers/user/commonData.model';
@@ -9,10 +10,9 @@ import { GoodsProvider } from "../../../providers/goods/goods";
 import { Storage } from '@ionic/storage';
 import {ThirdPartyApiProvider} from "../../../providers/third-party-api/third-party-api";
 import { Config } from "../../../providers/api/config.model";
-import { UserSetMobilePage } from '../../../user-info/user-set/user-set-mobile/user-set-mobile';
 import {HttpService} from "../../../../../providers/HttpService";
 import {HttpConfig} from "../../../../../providers/HttpConfig";
-import {NativeService} from "../../../../../providers/NativeService";
+import { NativeService } from "../../../../../providers/NativeService";
 /**
  * Generated class for the GoodsDetailFooterComponent component.
  *
@@ -30,7 +30,7 @@ export class GoodsDetailFooterComponent {
   @Output() openSpecsModalEmit = new EventEmitter();
   @Output() addCartEmit = new EventEmitter();
   @Output() nowBuyEmit = new EventEmitter();
-  userSetMobilePage = UserSetMobilePage;
+  userSetMobilePage = 'UserSetMobilePage';
 
   constructor(
     private api: Api,
@@ -45,7 +45,8 @@ export class GoodsDetailFooterComponent {
     public modalCtrl: ModalController,
     public commonModel:CommonModel,
     public navCtrl:NavController,
-    public httpService:HttpService,public httpConfig:HttpConfig,public nativeService:NativeService
+    public httpService: HttpService, public httpConfig: HttpConfig, public nativeService: NativeService,
+    public mainCtrl:MainCtrl
   ) { }
 
   ngAfterContentInit() {
@@ -90,12 +91,12 @@ export class GoodsDetailFooterComponent {
                       }
                       ,from:"productDetail"
                     };
-                    this.common.goToPage('ChatPage',{
-                      "extra":extra,
-                        "toUserId": this.data.ownerPerson,
-                        "toUserName": data.result.nickname||"",
-                        "headPic":  data.result.headPic||'./assets/images/public/anonymity.png'
-                    });
+                  this.navCtrl.push('ChatPage',{
+                    "extra":extra,
+                      "toUserId": this.data.ownerPerson,
+                      "toUserName": data.result.nickname||"",
+                      "headPic":  data.result.headPic||'./assets/images/public/anonymity.png'
+                  })
                 }else{
                   // this.nativeService.showToast("")
                 }
@@ -149,7 +150,7 @@ export class GoodsDetailFooterComponent {
             });
           }
           else {
-            this.common.goToPage('PublicLoginPage');
+            this.navCtrl.push('PublicLoginPage');
           }
         });
     }
@@ -163,17 +164,22 @@ export class GoodsDetailFooterComponent {
   goToHomePage() {
     if (this.isModal == 'true') {
       this.viewCtrl.dismiss(null, null, { animate: false });
-      this.common.goToPage('TabMenuPage');
+      this.mainCtrl.setRootPage('TabMenuPage');
     } else {
-      this.common.goToPage('TabMenuPage');
+      this.mainCtrl.setRootPage('TabMenuPage');
     }
   }
 
   //收藏
   collect() {
+    
     //没有登录去登录
     if (!this.commonModel.userId) {
-      this.common.goToPage('PublicLoginPage');
+      if (this.viewCtrl.isOverlay) {
+        this.viewCtrl.dismiss({page:'PublicLoginPage'})
+        return 
+       }
+      this.navCtrl.push('PublicLoginPage');
       return;
      }
     let dealCallBack = (success, status) => {
@@ -202,8 +208,8 @@ export class GoodsDetailFooterComponent {
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') { 
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
-        this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage,{type:1})
         })
       }else{
         this.openSpecsModalEmit.emit();
@@ -220,8 +226,8 @@ export class GoodsDetailFooterComponent {
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') { 
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
-        this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage,{type:1})
         })
       }else{
         this.addCartEmit.emit();
@@ -238,8 +244,8 @@ export class GoodsDetailFooterComponent {
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') { 
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
-        this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage,{type:1})
         })
       }else{
         this.nowBuyEmit.emit();

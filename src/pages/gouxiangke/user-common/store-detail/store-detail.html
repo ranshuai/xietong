@@ -28,8 +28,6 @@
   <div *ngIf="storeInfo">
     <div class="store-info" id="store-info">
       <div class="headpic">
-        <!--<img *ngIf="storeInfo.headPic" [src]="storeInfo.headPic">-->
-        <!--<img *ngIf="!storeInfo.headPic" src="./assets/img/shop-head-pic.png">-->
         <img *ngIf="!isLoading&&storeInfo.headPic" [src]="storeInfo.headPic">
         <img *ngIf="!isLoading&&!storeInfo.headPic" src="./assets/img/shop-head-pic.png">
       </div>

@@ -1,9 +1,8 @@
 import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ModalController } from "ionic-angular";
+import { ModalController,NavController } from "ionic-angular";
 import { GoodsSpecsDetailPage } from "../../goods-detail/goods-specs-detail/goods-specs-detail";
 import { ShoppingCart } from "../../../providers/user/shopping-cart";
-import { GoodsDetailPage } from './../../goods-detail/goods-detail';
 import { CommonProvider } from './../../../providers/common/common';
 
 /**
@@ -24,12 +23,12 @@ export class UserShoppingCartListComponent {
   @Output() modifySpecsEmit = new EventEmitter();
 
   goodsSpecsDetailPage = GoodsSpecsDetailPage;
-  goodsDetailPage = GoodsDetailPage;
   constructor(
     private modalCtrl: ModalController,
     private shoppingCart: ShoppingCart,
     private common: CommonProvider,
-    public mainCtrl:MainCtrl
+    public mainCtrl: MainCtrl,
+    public navCtrl:NavController
   ) { 
 
     console.log(this.data);
@@ -99,7 +98,7 @@ export class UserShoppingCartListComponent {
   }
   //打开商品详情
   goToGoodsDetail(item) {
-    this.common.goToPage(this.goodsDetailPage, { goods_id: item.goodsId });
+    this.navCtrl.push('GoodsDetailPage', { goods_id: item.goodsId });
   }
   stopProp(event) {
     this.common.stopProp(event);

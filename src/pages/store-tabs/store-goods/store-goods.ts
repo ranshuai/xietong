@@ -80,6 +80,39 @@ export class StoreGoodsPage {
          * 用户在后台设置了售价模式，前台数据没有即使更新
          * 在点击添加商品的时候触发点击事件
          */
+        // this.api.post(this.api.config.host.org + 'v2/check/queryModuleInfo').subscribe(data => {
+        //   if (data.success) {
+        //     data.result = data.result ? data.result : {};
+        //     if (data.result.sellingMode == 1) {
+        //       this.common.goToPage(this.storeAddGoodsPage);
+        //     } else {
+        //       this.common.comSellingMode(`<div class="com-selling-mode">由于您的店铺采用会员分级售价模式，请在电脑上发布您的商品信息，网址：
+        //       <br/>
+        //       <span>http://ws.snsall.com</span></div>`).subscribe((data) => { });
+        //     }
+        //   } else {
+        //     this.common.tostMsg({ msg: data.msg })
+        //   }
+        // });
+      
+
+    /**
+     * 自建商品
+     * 代售商品
+    */
+
+    let addStoreGoodsModal = this.modalCtrl.create(
+      'AddStoreGoodsPage',
+      {},
+      { cssClass: 'add_store_goods'}
+    );
+    addStoreGoodsModal.onDidDismiss(data => {
+      if (data == 2) {
+        //会员不能添加商品
+        /**
+         * 用户在后台设置了售价模式，前台数据没有即使更新
+         * 在点击添加商品的时候触发点击事件
+         */
         this.api.post(this.api.config.host.org + 'v2/check/queryModuleInfo').subscribe(data => {
           if (data.success) {
             data.result = data.result ? data.result : {};
@@ -94,44 +127,11 @@ export class StoreGoodsPage {
             this.common.tostMsg({ msg: data.msg })
           }
         });
-      
-
-    /**
-     * 自建商品
-     * 代售商品
-    */
-
-    // let addStoreGoodsModal = this.modalCtrl.create(
-    //   'AddStoreGoodsPage',
-    //   {},
-    //   { cssClass: 'add_store_goods'}
-    // );
-    // addStoreGoodsModal.onDidDismiss(data => {
-    //   if (data == 2) {
-    //     //会员不能添加商品
-    //     /**
-    //      * 用户在后台设置了售价模式，前台数据没有即使更新
-    //      * 在点击添加商品的时候触发点击事件
-    //      */
-    //     this.api.post(this.api.config.host.org + 'v2/check/queryModuleInfo').subscribe(data => {
-    //       if (data.success) {
-    //         data.result = data.result ? data.result : {};
-    //         if (data.result.sellingMode == 1) {
-    //           this.common.goToPage(this.storeAddGoodsPage);
-    //         } else {
-    //           this.common.comSellingMode(`<div class="com-selling-mode">由于您的店铺采用会员分级售价模式，请在电脑上发布您的商品信息，网址：
-    //           <br/>
-    //           <span>http://ws.snsall.com</span></div>`).subscribe((data) => { });
-    //         }
-    //       } else {
-    //         this.common.tostMsg({ msg: data.msg })
-    //       }
-    //     });
-    //   } else if (data == 1) {
-    //     this.common.goToPage(this.otherGoodsListPage);
-    //   } 
-    // });
-    // addStoreGoodsModal.present();
+      } else if (data == 1) {
+        this.common.goToPage(this.otherGoodsListPage);
+      } 
+    });
+    addStoreGoodsModal.present();
    
   }
 

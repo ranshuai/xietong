@@ -1,6 +1,6 @@
 import { HttpConfig } from './../../../../providers/HttpConfig';
 import { Component,ViewChild } from '@angular/core';
-import { NavController, NavParams,Content } from 'ionic-angular';
+import { NavController, NavParams,Content,IonicPage } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
 
@@ -11,7 +11,7 @@ import { CommonProvider } from '../../providers/common/common';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-collection',
   templateUrl: 'user-info-collection.html',
@@ -142,7 +142,7 @@ export class UserInfoCollectionPage {
   //跳转商品详情
   goToGoodsDetail(item) {
     let goodsId = item.goods_id || item.goodsId;
-    this.common.goToPage('GoodsDetailPage', { goods_id: goodsId });
+    this.navCtrl.push('GoodsDetailPage', { goods_id: goodsId });
   }
 
      //页面初始化

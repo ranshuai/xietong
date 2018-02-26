@@ -1,4 +1,14 @@
 order-goods-list {
+  .self_ion_item{
+    padding: pxrem(22) pxrem(24) pxrem(22) 0;
+    border-bottom: 1px solid #E5E5E5;
+  }
+  .leave-message,.leave-message.important{
+    padding: 0px !important;
+    ion-label{
+      color: #333;
+    }
+  }
   .store-list {
     .store-item {
       margin-top: pxrem(8);

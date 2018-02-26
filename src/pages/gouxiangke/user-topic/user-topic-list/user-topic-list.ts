@@ -1,6 +1,7 @@
+import { NavController } from 'ionic-angular';
 import { Component, Input, forwardRef, Inject } from '@angular/core';
 import { CommonProvider } from "../../providers/common/common";
-import { UserTopicDetailsPage } from "../user-topic-details/user-topic-details"
+// import { UserTopicDetailsPage } from "../user-topic-details/user-topic-details"
 
 /**
  * Generated class for the UserTopicListPage page.
@@ -18,12 +19,12 @@ export class UserTopicListComponent {
 
   @Input() data: any;
 
-  userTopicDetailsPage = UserTopicDetailsPage
+  userTopicDetailsPage = 'UserTopicDetailsPage'
 
-  constructor(public common: CommonProvider) { }
+  constructor(public common: CommonProvider,public navCtrl:NavController) { }
 
   goTopic(_topicId) {
-    this.common.goToPage(this.userTopicDetailsPage, { id: _topicId })
+    this.navCtrl.push(this.userTopicDetailsPage, { id: _topicId })
   }
 
 }

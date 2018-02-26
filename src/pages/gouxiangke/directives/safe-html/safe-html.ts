@@ -19,7 +19,9 @@ export class SafeHtmlDirective {
     let div = document.createElement('div');
     div.innerHTML = this.safeHtml;
     if ('safeHtml' in changes) {
-      this.element.nativeElement.innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, div.innerHTML);
+            // this.element.nativeElement.innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, div.innerHTML); //行内样式被忽略
+
+      this.element.nativeElement.innerHTML = this.safeHtml;
       // this.element.nativeElement.innerHTML = this.sanitizer.sanitize(SecurityContext.HTML, div.textContent);
     }
   }

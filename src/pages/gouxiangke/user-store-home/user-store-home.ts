@@ -9,11 +9,11 @@ import { Component,ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
 import { GoodsListBlockComponent } from '../../gouxiangke/components/goods-list-block/goods-list-block';
 
-import { UserInfoCollectionPage } from "../user-info/user-info-collection/user-info-collection";
-import { UserInfoCouponPage } from "../user-info/user-info-coupon/user-info-coupon";
-import { UserInfoOrderPage } from "../user-info/user-info-order/user-info-order";
+// import { UserInfoCollectionPage } from "../user-info/user-info-collection/user-info-collection";
+// import { UserInfoCouponPage } from "../user-info/user-info-coupon/user-info-coupon";
+// import { UserInfoOrderPage } from "../user-info/user-info-order/user-info-order";
 import { UserInfoPage } from "../user-info/user-info";
-import { UserSetMobilePage } from './../user-info/user-set/user-set-mobile/user-set-mobile';
+// import { UserSetMobilePage } from './../user-info/user-set/user-set-mobile/user-set-mobile';
 /**
  * Generated class for the UserStoreHomePage page.
  *
@@ -33,11 +33,11 @@ export class UserStoreHomePage {
   modal;
   template: number;
   advImgs = [];
-  userInfoCollection = UserInfoCollectionPage;
-  userInfoCouponPage = UserInfoCouponPage;
-  userInfoOrderPage = UserInfoOrderPage;
+  userInfoCollection = 'UserInfoCollectionPage';
+  userInfoCouponPage = 'UserInfoCouponPage';
+  userInfoOrderPage = 'UserInfoOrderPage';
   userInfoPage = UserInfoPage;
-  userSetMobilePage = UserSetMobilePage;
+  userSetMobilePage = 'UserSetMobilePage';
   navImgs = [];
   adImg;
   hotGoodsList; //店铺模板为4时，用来放置数据的list
@@ -187,7 +187,7 @@ export class UserStoreHomePage {
   goToHistoryOrderPage() {
     if (this.config.PLATFORM == 'STOREAPP') {
       if (!this.commonModel.userId) {
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage');
       } else {
       this.common.goToPage(this.userInfoOrderPage, { type: 'all' });
       }
@@ -209,7 +209,7 @@ export class UserStoreHomePage {
   goToCollectPage() {
     if (this.config.PLATFORM == 'STOREAPP') {
       if (!this.commonModel.userId) {
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage')
       } else {
         this.common.goToPage(this.userInfoCollection);
       }
@@ -234,7 +234,7 @@ export class UserStoreHomePage {
   goToCouponPage() {
     if (this.config.PLATFORM == 'STOREAPP') {
       if (!this.commonModel.userId) {
-        this.common.goToPage('PublicLoginPage');
+        this.navCtrl.push('PublicLoginPage')
       } else {
         this.common.goToPage(this.userInfoCouponPage);
       }

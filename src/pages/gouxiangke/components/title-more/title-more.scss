@@ -8,18 +8,22 @@ title-more {
     line-height: pxrem(110);
     .left {
       float: left;
-      margin-left: pxrem(24);
+      margin-left: 42%;
       font-size: pxrem(30);
-      color: $black;
+      color: #333;
+      font-size: pxrem(32);
     }
     .right {
       float: right;
       padding: 0 pxrem(30);
       font-size: pxrem(24);
-      color: $greyLight;
+      color: #A3A3A3;
       vertical-align: middle;
       ion-icon {
         font-size: pxrem(24);
+        margin-top: pxrem(4);
+        border: 1px solid;
+        border-radius: 50%;
       }
     }
   }

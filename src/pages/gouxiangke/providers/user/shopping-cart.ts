@@ -65,7 +65,6 @@ export class ShoppingCart {
   add(data) {
     return new Observable((observer: Subscriber<any>) => {
       //是否有userId
-      if (this.commonModel.userId) { 
         if (data.goodsNum == 0) {
           this.common.showToast('仔细瞅瞅，数量为零~');
           observer.next(false);
@@ -87,9 +86,6 @@ export class ShoppingCart {
             observer.next(false);
           }
         });
-      }else { 
-        this.common.goToPage('PublicLoginPage')
-      }
     });
   }
 
@@ -198,6 +194,7 @@ export class ShoppingCart {
         addressId: data.addressId,
         postAge: 0,
         sourceFrom: 2,
+        pick:this.commonModel.pageOrderConfirmpick //缓存读取
       };
       if (data.acitivityType) {
         body.acitivityType = data.acitivityType;
@@ -226,6 +223,7 @@ export class ShoppingCart {
 
   //立即购买确认下单
   nowBuy(data) {
+    console.log(this.commonModel);
     let loading = this.loadingCtrl.create({
       dismissOnPageChange: true,
       showBackdrop:false, //是否显示遮罩层
@@ -241,6 +239,8 @@ export class ShoppingCart {
         goodsSpecKey: data.goodsSpecKey,
         sourceFrom: 2,
         postAge: 0,
+        pickId: this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf&&this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf.id,
+        pickName:this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf&&this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf.pickName
       };
       if (data.acitivityType) {
         body.acitivityType = data.acitivityType;

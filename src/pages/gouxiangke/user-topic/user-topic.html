@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar hideBackButton>
+  <ion-navbar>
 
     <!-- home页面顶部nav -->
     <ion-title>热门专题</ion-title>
@@ -29,5 +29,5 @@
   </ion-infinite-scroll>
 
   <div class="no-more-data" *ngIf="loadEnd">{{ '没有更多了~' }}</div>
-
+  <user-shopping-cart></user-shopping-cart>
 </ion-content>

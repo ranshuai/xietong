@@ -91,6 +91,23 @@
         } else {
           var isSelfOpenId = window.sessionStorage.removeItem('isSelfOpenId');
           window.localStorage.setItem('openId', openId);
+
+
+          window.colink.space= window.localStorage.getItem('space');
+          window.localStorage.removeItem('space');
+
+          //如果clientType 连接上会跟店铺id  如果是申请开店页面  会强制设置配置信息为域的
+          var hashUrl=window.localStorage.getItem('hashUrl');
+          if(hashUrl.indexOf('#/open_store')>-1 || hashUrl.indexOf('#/store_claim')>-1){
+            window.colink.clientType='1';
+            window.colink.storeId=null;
+          }else{
+            window.colink.clientType=window.sessionStorage.getItem('clientType');
+          if(window.colink.clientType=='2'){
+            let storeId=getQueryString('storeId');
+            window.colink.storeId=storeId?storeId:null;
+          }
+          }
         }
       } else {
         //如果没有openid,第一次授权的时候,将赋值,预防第二次授权
@@ -104,10 +121,21 @@
 
     // 获取跳转url跟type
     function getUrl(space) {
+      let url='https://t.o.snsall.com/v2/auth2/userAccessTokenBefore?type=1';
+      //店铺开店没有店铺ID
+      if(window.location.hash.indexOf('#/open_store')==-1 || window.location.hash.indexOf('#/store_claim')==-1){
+        if(window.sessionStorage.getItem('clientType')=='2'&&getQueryString('storeId')){
+        url=url+'&clientType='+window.sessionStorage.getItem('clientType')+'&storeId='+getQueryString('storeId')
+      }
+    }
+
+
+
+    
       ajax({
         type: 'GET',
         space: space,
-        url: 'https://t.o.snsall.com/v2/auth2/userAccessTokenBefore?type=1',
+        url:url,
         success: function (data) {
           data = JSON.parse(data);
           if (data.success) {
@@ -131,13 +159,6 @@
 
     //微信授权初始化 
     function init() {
-      //第一次通过URL进入，获取storeId，并存储
-      var storeId = getQueryString('storeId'); //跳转前保存storeId
-      if (storeId) {
-        //保存店铺ID selfStoreId和storeId 做区分
-        window.localStorage.setItem('selfStoreId', storeId);
-      }
-
       //获取space
       ajax({
         type: 'GET',
@@ -145,6 +166,7 @@
         success: function (data, xmlhttp) {
           var space = xmlhttp.getResponseHeader('space'); //http://jsp.snsall.com
           window.localStorage.setItem('space', space);
+          window.sessionStorage.setItem('clientType',xmlhttp.getResponseHeader('clientType'))
           getUrl(space);
         }
       });
@@ -152,13 +174,12 @@
 
     //是否是微信浏览器
     function is_Wx() {
+      //购享客 DF4D69929FD7F405 独角鲸 92E21DE17C0CE872
       window.colink={
-
        space:'DF4D69929FD7F405',//域或店铺的appkey
         storeId:null,//如果是店铺 传店铺id
         clientType:'1',//'1'是域 '2'是店铺
         host:'test',//  'dev'  'test' 'prod'
-
       }
       var ua = window.navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == 'micromessenger') {

@@ -50,7 +50,6 @@ export class LoginPage {
   //获取验证码定时器
   timeInterval;
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     private toastCtrl: ToastController,
     public config: Config,

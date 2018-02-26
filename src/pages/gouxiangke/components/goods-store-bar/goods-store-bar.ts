@@ -1,8 +1,8 @@
+import { NavController } from 'ionic-angular';
 import { HttpConfig } from './../../../../providers/HttpConfig';
 import { Api } from './../../providers/api/api';
 import { Component, Input } from '@angular/core';
 import { CommonProvider } from '../../providers/common/common';
-
 /**
  * Generated class for the GoodsStoreBarComponent component.
  *
@@ -23,12 +23,13 @@ export class GoodsStoreBarComponent {
   constructor(
     private common: CommonProvider,
     public api: Api,
-    public httpConfig:HttpConfig
+    public httpConfig: HttpConfig,
+    public navCtrl:NavController
   ) { }
   //跳转店铺主页
   goToStoreDetailPage() {
     if (this.noGoTo) return;
-    this.common.goToPage('StoreDetailPage', { store_id: this.data.tbCompanyInfo.companyInfoId });
+    this.navCtrl.push('StoreDetailPage', { store_id: this.data.tbCompanyInfo.companyInfoId })
   }
   //加入店铺
   joinCompany() {

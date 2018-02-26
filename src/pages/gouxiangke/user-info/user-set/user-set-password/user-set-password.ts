@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { UserSetPasswordLoginPage } from './user-set-password-login/user-set-password-login';
-import { UserSetPasswordPayPage } from './user-set-password-pay/user-set-password-pay';
 import { CommonProvider } from '../../../providers/common/common';
 import {Api } from '../../../providers/api/api';
 
@@ -18,7 +17,7 @@ import {Api } from '../../../providers/api/api';
 })
 export class UserSetPasswordPage {
   userSetPasswordLoginPage = UserSetPasswordLoginPage;
-  userSetPasswordPayPage = UserSetPasswordPayPage;
+  userSetPasswordPayPage = 'UserSetPasswordPayPage'; //设置密码 | 修改密码
   constructor(public navCtrl: NavController, public navParams: NavParams, public commonProvider: CommonProvider,public api:Api) {
   }
 

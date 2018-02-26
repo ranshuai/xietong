@@ -1,6 +1,6 @@
 import { Config } from './../../../providers/api/config.model';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonProvider } from '../../../providers/common/common';
 import { CommonData } from '../../../providers/user/commonData.model';
@@ -17,7 +17,7 @@ import { RequestOptions, Headers } from '@angular/http';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-wallet-recharge',
   templateUrl: 'user-info-wallet-recharge.html',

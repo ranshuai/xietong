@@ -69,6 +69,7 @@ export class CommonProvider {
 
   //判断上一页名字是否是pageName
   lastPageIs(pageName) {
+    console.log(this.appCtrl.getRootNavs());
     return this.appCtrl.getRootNav().getPrevious().name == pageName;
   }
 

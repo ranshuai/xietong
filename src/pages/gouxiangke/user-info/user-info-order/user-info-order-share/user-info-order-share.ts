@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { CommonProvider } from '../../../providers/common/common';
@@ -10,7 +10,7 @@ import { ThirdPartyApiProvider } from "../../../providers/third-party-api/third-
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-order-share',
   templateUrl: 'user-info-order-share.html',

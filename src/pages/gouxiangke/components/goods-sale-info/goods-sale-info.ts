@@ -1,6 +1,6 @@
+import { NavController } from 'ionic-angular';
 import { Component, Input } from '@angular/core';
 import { CommonProvider } from "../../providers/common/common";
-
 /**
  * Generated class for the GoodsSaleInfoComponent component.
  *
@@ -19,6 +19,7 @@ export class GoodsSaleInfoComponent {
 
   constructor(
     public common: CommonProvider,
+    public navCtrl:NavController
   ) {
 
   }

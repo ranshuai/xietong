@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { UserTopicPage } from './user-topic';
-import { UserTopicDetailsPage } from "./user-topic-details/user-topic-details";
+// import { UserTopicDetailsPage } from "./user-topic-details/user-topic-details";
 import { UserTopicListComponent } from './user-topic-list/user-topic-list';
 import { ComponentsModule } from "../components/components.module";
 import { DirectivesModule } from "../directives/directives.module";
@@ -9,7 +9,7 @@ import { DirectivesModule } from "../directives/directives.module";
   //声明IonicPage
   declarations: [
     UserTopicPage,
-    UserTopicDetailsPage,
+    // UserTopicDetailsPage,
     UserTopicListComponent,
   ],
   imports: [
@@ -18,7 +18,7 @@ import { DirectivesModule } from "../directives/directives.module";
     DirectivesModule
   ],
   entryComponents: [
-    UserTopicDetailsPage
+    // UserTopicDetailsPage
   ],
   exports: [
     UserTopicListComponent,

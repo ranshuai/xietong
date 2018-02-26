@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavParams } from 'ionic-angular';
 import { Api } from "../../../providers/api/api";
 import { CommonProvider } from "../../../providers/common/common";
 import { RequestOptions, Headers } from '@angular/http';
@@ -23,7 +23,6 @@ export class GoodsGiftDetailPage {
   selfStoreId;
 
   constructor(
-    public navCtrl: NavController,
     public navParams: NavParams,
     private api: Api,
     private common: CommonProvider,

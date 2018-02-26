@@ -5,14 +5,9 @@ import {
     IonicPage, NavController, NavParams, ToastController, ModalController, LoadingController,
     Events
 } from 'ionic-angular';
-import { UserSetInfoPage } from "../user-set/user-set-info/user-set-info";
 import { CommonProvider } from '../../providers/common/common';
 import { Config } from '../../providers/api/config.model';
 import { Api } from '../../providers/api/api';
-import { UserSetCertificationPage } from '../user-set/user-set-certification/user-set-certification';
-
-import { UserSetPasswordPage } from './user-set-password/user-set-password';
-import { UserSetMobilePage } from './user-set-mobile/user-set-mobile';
 import { CommonData } from '../../providers/user/commonData.model';
 import { User } from "../../providers/user/user";
 import { NativeService } from "../../../../providers/NativeService";
@@ -23,6 +18,7 @@ import {HttpConfig} from "../../../../providers/HttpConfig";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
+@IonicPage()
 @Component({
   selector: 'page-user-set',
   templateUrl: 'user-set.html',
@@ -31,10 +27,9 @@ import {HttpConfig} from "../../../../providers/HttpConfig";
 //  UserSetPage  用户   页面跳转字符串
 export class UserSetPage {
 
-  userSetInfoPage = UserSetInfoPage;
-  userSetCertificationPage = UserSetCertificationPage;
-  userSetPasswordPage = UserSetPasswordPage;
-  userSetMobilePage = UserSetMobilePage;
+  userSetInfoPage = 'UserSetInfoPage'; //信息
+  userSetCertificationPage = 'UserSetCertificationPage'; //实名认证
+  userSetMobilePage = 'UserSetMobilePage'; // 手机号
   versionCode;
   mobile;
   constructor(public navCtrl: NavController, public navParams: NavParams, public commonProvider: CommonProvider, public config: Config, public api: Api,
@@ -72,19 +67,19 @@ export class UserSetPage {
 
   goToUserSetInfo(_url) {
     //获取当前页面root 跳转到2级页面
-    this.commonProvider.goToPage(this.userSetInfoPage)
+    this.navCtrl.push(this.userSetInfoPage);
   }
 
   goToPageUserSetCeal() {
-    this.commonProvider.goToPage(this.userSetCertificationPage)
+    this.navCtrl.push(this.userSetCertificationPage);
   }
 
   goToPageUserSetPassWord() {
-    this.commonProvider.goToPage('UserSetVerificationPage')
+    this.navCtrl.push('UserSetVerificationPage');
   }
 
   goToPageuSetMobilePage() {
-    this.commonProvider.goToPage(this.userSetMobilePage)
+    this.navCtrl.push(this.userSetMobilePage);
   }
 
     /**
@@ -149,6 +144,9 @@ export class UserSetPage {
 
   clearLogin() { 
     this.commonProvider.storeConfirm('确认退出吗').subscribe(data => { 
+
+      //用户退出清空购物车
+      this.commonModel.shopCarNum = '';
       window.localStorage.removeItem('storeId')
       window.localStorage.removeItem('_TAB_INIT_USERINFO')
       this.commonModel.TAB_INIT_USERINFO = null;
@@ -162,7 +160,8 @@ export class UserSetPage {
 
  
       this.mainCtrl.clearUserInfo();
-      this.mainCtrl.popRoot();
+      this.mainCtrl.setRootPage('TabMenuPage');
+      // this.mainCtrl.popRoot();
     });
   }
   ionViewDidEnter(){

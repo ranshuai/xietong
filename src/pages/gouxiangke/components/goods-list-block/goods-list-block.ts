@@ -2,17 +2,15 @@ import { MainCtrl } from './../../../../providers/MainCtrl';
 import { CommonModel } from './../../../../providers/CommonModel';
 import { Config } from './../../providers/api/config.model';
 import { CommonData } from './../../providers/user/commonData.model';
-import { UserSetMobilePage } from '../../user-info/user-set/user-set-mobile/user-set-mobile';
 import { GoodsSpecsDetailPage } from './../../user-common/goods-detail/goods-specs-detail/goods-specs-detail';
 import { GlobalDataProvider } from './../../providers/global-data/global-data.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RequestOptions, Headers } from '@angular/http';
 import { Api } from '../../providers/api/api';
-import { GoodsDetailPage } from "../../user-common/goods-detail/goods-detail";
 import { GoodsDetailGroupPage } from "../../user-common/goods-detail-group/goods-detail-group";
 import { CommonProvider } from "../../providers/common/common";
 import { ShoppingCart } from "../../providers/user/shopping-cart";
-import { LoadingController,ModalController } from "ionic-angular";
+import { LoadingController,ModalController,NavController } from "ionic-angular";
 import { Storage } from '@ionic/storage';
 import { HttpConfig } from './../../../../providers/HttpConfig';
 /**
@@ -47,10 +45,9 @@ export class GoodsListBlockComponent {
   @Input() hasMore: Boolean = true;
   @Output() complete = new EventEmitter();
 
-  goodsDetailPage = GoodsDetailPage;
   goodsDetailGroupPage = GoodsDetailGroupPage;
   goodsSpecsDetailPage = GoodsSpecsDetailPage;
-  userSetMobilePage = UserSetMobilePage;
+  userSetMobilePage = 'UserSetMobilePage';
   page: number = 1;
   pageNo: number = 1
   rows: number = 10;
@@ -70,7 +67,8 @@ export class GoodsListBlockComponent {
     public config: Config,
     public commonModel:CommonModel,
     public httpConfig: HttpConfig,
-    public mainCtrl:MainCtrl
+    public mainCtrl: MainCtrl,
+    private navController:NavController,
   ) { 
     this.getTemplate = window.localStorage.getItem('getTemplate');
     console.log(this.data);
@@ -218,11 +216,11 @@ export class GoodsListBlockComponent {
     if (this.isGroup) {
       this.globalDataProvider.isGroupBuy = true;
       this.globalDataProvider.isNowBuy = false;
-      this.common.goToPage(this.goodsDetailGroupPage, { goods_id: goodsId });
+      this.navController.push(this.goodsDetailGroupPage, { goods_id: goodsId });
     } else {
       this.globalDataProvider.isGroupBuy = false;
       this.globalDataProvider.isNowBuy = false;
-      this.common.goToPage(this.goodsDetailPage, { goods_id: goodsId }); //测试完成放开注释
+      this.navController.push('GoodsDetailPage',{ goods_id: goodsId })
     }
     console.log(this.globalDataProvider.isGroupBuy);
   }
@@ -233,7 +231,7 @@ export class GoodsListBlockComponent {
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
         this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+          this.navController.push(this.userSetMobilePage,{type:1});
         })
         return 
       }
@@ -258,8 +256,11 @@ export class GoodsListBlockComponent {
             { cssClass: 'specs-modal' }
           );
           specsModal.present();
-          specsModal.onDidDismiss(() => { 
-
+          specsModal.onDidDismiss((data) => { 
+            console.log(data);
+            if (data) { 
+              this.navController.push(data.page);
+            }
           });
 
           //添加购物车

@@ -2,7 +2,6 @@ import { CommonModel } from './../../../../providers/CommonModel';
 import { ThirdPartyApiProvider } from './../../../gouxiangke/providers/third-party-api/third-party-api';
 import { Config } from './../../../gouxiangke/providers/api/config.model';
 import { CommonData } from './../../../gouxiangke/providers/user/commonData.model';
-import { UserInfoOrderDetailPage } from './../user-info-order/user-info-order-detail/user-info-order-detail';
 import { CommonProvider } from './../../../gouxiangke/providers/common/common';
 import { Api } from './../../../gouxiangke/providers/api/api';
 import { UserCommon } from './../../../gouxiangke/providers/user/user-common';
@@ -26,7 +25,7 @@ export class UserInfoGroupPage {
   activeType = 0;
   groupOrderList;
   orderWholesalePage = OrderWholesalePage;
-  userInfoOrderDetailPage = UserInfoOrderDetailPage;
+  userInfoOrderDetailPage = 'UserInfoOrderDetailPage'; //详情
   json = {
     page: 1,
     rows: 10,

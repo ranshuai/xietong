@@ -8,7 +8,6 @@ import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { ShoppingCart } from "../../providers/user/shopping-cart";
 import { CommonProvider } from "../../providers/common/common";
 import { GlobalDataProvider } from "../../providers/global-data/global-data.model";
-import { UserSetMobilePage } from '../../user-info/user-set/user-set-mobile/user-set-mobile';
 /**
  * Generated class for the UserShopingCartDetailPage page.
  *
@@ -25,7 +24,7 @@ export class UserShoppingCartDetailPage {
   shoppingCartInfo: any;
   canClick: Boolean;
   view: string = 'selected';
-  userSetMobilePage = UserSetMobilePage;
+  userSetMobilePage = 'UserSetMobilePage';
 
   constructor(
     private navCtrl: NavController,
@@ -211,13 +210,13 @@ export class UserShoppingCartDetailPage {
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') {
       if(!this.commonModel.TAB_INIT_USERINFO.mobile){
         this.common.count = true;
-        this.common.openMobileModal().subscribe(()=>{
-          this.common.goToPage(this.userSetMobilePage,{type:1});
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage,{type:1})
         })
       } else {
         this.globalData.isNowBuy = false;
         this.shoppingCart.ready().subscribe(data => {
-          this.common.goToPage('OrderConfirmPage', { data: data });
+          this.navCtrl.push('OrderConfirmPage', { data: data });
         });
        }
       return 
@@ -225,7 +224,7 @@ export class UserShoppingCartDetailPage {
     if (this.config.PLATFORM == 'APP' ||this.config.PLATFORM == 'STOREAPP') {
       this.globalData.isNowBuy = false;
       this.shoppingCart.ready().subscribe(data => {
-        this.common.goToPage('OrderConfirmPage', { data: data });
+        this.navCtrl.push('OrderConfirmPage', { data: data })
       });
       return 
      }

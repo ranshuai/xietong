@@ -1,14 +1,10 @@
 import { CommonModel } from './../../../../providers/CommonModel';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, Slides } from 'ionic-angular';
+import { NavController, NavParams, Slides,IonicPage } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
-import { UserInfoWalletRechargePage } from './user-info-wallet-recharge/user-info-wallet-recharge';
-import { UserInfoWalletWithdrawalsPage } from './user-info-wallet-withdrawals/user-info-wallet-withdrawals';
 import { CommonData } from '../../providers/user/commonData.model';
-import { UserSetPasswordPayPage } from '../user-set/user-set-password/user-set-password-pay/user-set-password-pay';
 import { User } from '../../providers/user/user';
-import { UserSetMobilePage } from "../../user-info/user-set/user-set-mobile/user-set-mobile";
 
 /**
  * Generated class for the UserInfoWalletPage page.
@@ -16,16 +12,16 @@ import { UserSetMobilePage } from "../../user-info/user-set/user-set-mobile/user
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-user-info-wallet',
   templateUrl: 'user-info-wallet.html',
 })
 export class UserInfoWalletPage {
-  userInfoWalletRechargePage = UserInfoWalletRechargePage;
-  userInfoWalletWithdrawalsPage = UserInfoWalletWithdrawalsPage;
-  userSetPasswordPayPage = UserSetPasswordPayPage;
-  userSetMobilePage = UserSetMobilePage;
+  userInfoWalletRechargePage = 'UserInfoWalletRechargePage'; //充值
+  userInfoWalletWithdrawalsPage = 'UserInfoWalletWithdrawalsPage';//提现
+  userSetPasswordPayPage = 'UserSetPasswordPayPage'; //设置密码|修改密码
+  userSetMobilePage = 'UserSetMobilePage';
   nav = {
     activeIndex: 0,
     page: 1,
@@ -116,8 +112,8 @@ export class UserInfoWalletPage {
       this.common.tostMsg({ mag: '请登录您的账号' })
     } else {
       if (!this.commonModel.TAB_INIT_USERINFO.mobile) {
-        this.common.openMobileModal().subscribe(()=>{
-            this.common.goToPage(this.userSetMobilePage);
+        this.common.openMobileModal().subscribe(() => {
+          this.navCtrl.push(this.userSetMobilePage)
            })
           } else {
             let url = _type == 0 ? this.userInfoWalletRechargePage : this.userInfoWalletWithdrawalsPage;
@@ -126,15 +122,15 @@ export class UserInfoWalletPage {
                 if (data.success) {
                   if (!data.result) {
                     this.common.tostMsg({ msg: '请设置支付密码' });
-                    this.common.goToPage(this.userSetPasswordPayPage, {})
+                    this.navCtrl.push(this.userSetPasswordPayPage, {});
                     return
                   } else {
-                    this.common.goToPage(url, {})
+                    this.navCtrl.push(url, {});
                   }
                 }
               })
             } else {
-              this.common.goToPage(url, {})
+              this.navCtrl.push(url, {});
             }
           }
     }

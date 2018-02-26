@@ -113,7 +113,7 @@ export class StoreSendGoodsPage {
   ) {
     this.order = navParams.get('order');
     this.sendGoodsData.orderId = this.order.orderId;
-
+    this.sendGoodsData.shippingType = this.order.shippingType;
     this.sendGoodsForm = this.formBuilder.group({
       shippingType: [this.sendGoodsData.shippingType, [Validators.required]],
     });
@@ -189,16 +189,18 @@ export class StoreSendGoodsPage {
 
   //打开发货方式选择
   openShippingTypeSelect() {
-    let iosSelect = new IosSelect(1, [this.shippingTypeMap], {
-      headerHeight: 44,
-      itemHeight: 35,
-      callback: (data) => {
-        this.initForm(data.id);
-        this.sendGoodsForm.controls.shippingType.reset(data.value);
-        this.shippingTypeMap.find(item => item.selected).selected = false;
-        this.shippingTypeMap.find(item => item.id == data.id).selected = true;
-      }
-    });
+    if (this.sendGoodsData.shippingType != '到店自提'){
+      let iosSelect = new IosSelect(1, [this.shippingTypeMap], {
+        headerHeight: 44,
+        itemHeight: 35,
+        callback: (data) => {
+          this.initForm(data.id);
+          this.sendGoodsForm.controls.shippingType.reset(data.value);
+          this.shippingTypeMap.find(item => item.selected).selected = false;
+          this.shippingTypeMap.find(item => item.id == data.id).selected = true;
+        }
+      });
+    }
   }
 
   //打开快递公司选择

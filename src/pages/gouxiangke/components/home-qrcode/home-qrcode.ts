@@ -40,7 +40,7 @@ export class HomeQrcodeComponent {
           }
         } 
       } else {
-        this.navCtrl.push('LoginPage')
+        this.navCtrl.push('PublicLoginPage');
       }
     })
   }

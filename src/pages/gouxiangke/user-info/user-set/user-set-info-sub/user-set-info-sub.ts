@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams,IonicPage } from 'ionic-angular';
 import { Api } from '../../../providers/api/api';
 import { CommonProvider } from '../../../providers/common/common';
 import { SexModalPage } from './sex-modal/sex-modal';
@@ -14,7 +14,7 @@ import { MainCtrl } from './../../../../../providers/MainCtrl';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'user-set-info-sub',
   templateUrl: 'user-set-info-sub.html',

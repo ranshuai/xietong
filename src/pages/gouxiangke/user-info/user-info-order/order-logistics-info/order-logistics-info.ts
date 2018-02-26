@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController,IonicPage } from 'ionic-angular';
 import { CommonProvider } from '../../../providers/common/common';
 import { Api } from '../../../providers/api/api';
 import { RequestOptions, Headers } from '@angular/http';
@@ -10,7 +10,7 @@ import { RequestOptions, Headers } from '@angular/http';
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-
+@IonicPage()
 @Component({
   selector: 'page-order-logistics-info',
   templateUrl: 'order-logistics-info.html',

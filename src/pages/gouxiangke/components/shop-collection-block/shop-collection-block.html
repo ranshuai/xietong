@@ -2,7 +2,7 @@
   <ul class="shop_list">
     <li *ngFor="let item of data">
       <div class="shop-logo-box">
-        <div class="shop-logo" [ngBackImg]="{img:item.headPic,type:1}"></div>
+        <div class="shop-logo" [ngBackImg]="{img:item.headPic||'./assets/img/shop-head-pic.png',type:1}"></div>
       </div>
       <div class="shop-info">
         <div class="shop-name">{{item.companyAlias || item.companyName}}</div>

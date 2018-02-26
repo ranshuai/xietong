@@ -1,6 +1,7 @@
+import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { UserCommon } from './../../../providers/user/user-common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { ViewController ,Events,ModalController} from 'ionic-angular';
+import { ViewController ,Events,ModalController,NavController} from 'ionic-angular';
 import { Api } from "../../../providers/api/api";
 import { CommonProvider } from "../../../providers/common/common";
 import { GoodsProvider } from "../../../providers/goods/goods";
@@ -35,7 +36,9 @@ export class GoodsDetailGroupFooterComponent {
     public config: Config,
     public events: Events,
     public userCommon: UserCommon,
-    public modalCtrl:ModalController
+    public modalCtrl: ModalController,
+    public mainCtrl: MainCtrl,
+    public navCtrl:NavController
   ) { }
 
   ngAfterContentInit() {
@@ -45,9 +48,9 @@ export class GoodsDetailGroupFooterComponent {
   goToHomePage() {
     if (this.isModal == 'true') {
       this.viewCtrl.dismiss(null, null, { animate: false });
-      this.common.goToPage('TabMenuPage');
+      this.mainCtrl.setRootPage('TabMenuPage');
     } else {
-      this.common.goToPage('TabMenuPage');
+      this.mainCtrl.setRootPage('TabMenuPage');
     }
   }
 
@@ -120,7 +123,7 @@ export class GoodsDetailGroupFooterComponent {
           });
         }
         else {
-          this.common.goToPage('PublicLoginPage');
+          this.navCtrl.push('PublicLoginPage');
         }
       });
     }

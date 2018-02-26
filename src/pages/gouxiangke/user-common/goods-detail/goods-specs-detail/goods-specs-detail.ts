@@ -89,7 +89,8 @@ export class GoodsSpecsDetailPage {
       let count;
       for (var i = 0; i < items.length; i++) {
         var element = items[i];
-        if (element.active || (goods.specKey && goods.specKey.split('_').pop() == element.id)) {
+        // if (element.active || (goods.specKey && goods.specKey.split('_').pop() == element.id)) {
+          if (element.flag) {
           //判断如果已经有选中的规格，直接跳出
           element.active = true;
           element.storeCount = count;
@@ -178,6 +179,10 @@ export class GoodsSpecsDetailPage {
 
   //添加购物车
   addCart() {
+    if (!this.commonModel.userId) { 
+      this.viewCtrl.dismiss({page:'PublicLoginPage'});
+      return 
+    }
     if (!this.goodsInfo.tpSpecGoodsPrice.buyCount) { 
       this.common.showToast('仔细瞅瞅，数量为零~');
       return 
@@ -215,7 +220,6 @@ export class GoodsSpecsDetailPage {
       this.common.showToast('仔细瞅瞅，数量为零~');
       return 
     }
-    this.viewCtrl.dismiss();
     if (this.config.PLATFORM == 'APP'||this.config.PLATFORM == 'STOREAPP') { 
       //是否有userId
       if (this.commonModel.userId) {
@@ -248,11 +252,11 @@ export class GoodsSpecsDetailPage {
               }]
             }];
             this.orderBuyNow.setData(stores);
-            this.common.goToPage('OrderConfirmPage');
+            this.viewCtrl.dismiss({page:'OrderConfirmPage'});
           }, 500)
         
       } else { 
-        this.common.goToPage('PublicLoginPage')
+        this.viewCtrl.dismiss({page:'PublicLoginPage'});
       }
     }
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') { 
@@ -286,7 +290,7 @@ export class GoodsSpecsDetailPage {
           }]
         }];
         this.orderBuyNow.setData(stores);
-        this.common.goToPage('OrderConfirmPage');
+        this.viewCtrl.dismiss({page:'OrderConfirmPage'});
       }, 500)
   
     }
