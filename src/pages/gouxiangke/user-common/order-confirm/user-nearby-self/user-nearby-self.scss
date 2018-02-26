@@ -1,0 +1,38 @@
+page-user-nearby-self {
+  .content-ios{
+    background: #e6e8ea;
+  }
+  .nearby_self{
+    background: #fff;
+    margin-bottom: pxrem(20);
+    li{
+      .flag{
+        width:pxrem(37);
+        height:pxrem(27); 
+        border-bottom:2px solid #F2786B;
+        border-left:2px solid #F2786B;
+        top: 50%;
+        margin-top: - pxrem(20);
+        right: pxrem(24);
+        transform: rotate(-50deg);
+      }
+      padding: pxrem(30) pxrem(24);
+      .title{
+        color: #333333;
+        font-size: pxrem(32);
+
+      }
+      .p{
+        color:#999999;
+        font-size: pxrem(26);
+        line-height: pxrem(65);
+      }
+      .address{
+        color: #ACB7BE;
+        font-size: pxrem(24);
+        padding-left: pxrem(58);
+      }
+    }
+  }
+
+}

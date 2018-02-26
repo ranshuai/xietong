@@ -1,0 +1,36 @@
+<!--
+  Generated template for the UserNearbySelfPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>附近自提点</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+
+    <ul class="nearby_self" *ngIf="dataList">
+      <li class="R_pr" *ngFor="let item of dataList" (click)="selectNearby(item)"> 
+          <div class="title">{{item.pickName}}</div>
+          <p class="p">
+              地址：{{item.provinceName}} {{item.cityName}}  {{item.districtName}} {{item.address}}
+          </p>
+          <div class="address">
+            <ion-icon name="ionic"></ion-icon>
+            <span>
+                {{item.distance}} 米
+            </span>
+          </div>
+          <div class="R_pa flag" [ngClass]="{'flag':item.default}">
+
+          </div>
+      </li>
+    </ul>
+
+</ion-content>

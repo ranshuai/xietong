@@ -1,0 +1,54 @@
+page-user-select-logistics {
+  .toolbar-content{
+    height:100%;
+  }
+  .select_confirm{
+    width: 100%;
+    height:100%;
+    background: #F2786B;
+    color:#fff;
+    text-align: center;
+    font-size: pxrem(32);
+    line-height: pxrem(100);
+
+  }
+  .content-ios{
+    background: #e6e8ea;
+  }
+  color:#333333;
+  font-size: 14px;
+  // .select-logistice 内边距
+  .select_logistice_padding{
+    padding:pxrem(30) pxrem(24);
+    background: #fff; 
+  }
+  .logistics_type{
+    background: #fff;
+    padding-left: pxrem(80);
+    margin-bottom: pxrem(20);
+    color:#333333;
+    .title{
+      margin-bottom: pxrem(28);
+    }
+    .cont{
+      font-size: pxrem(13);
+      .btn button{
+        width:pxrem(158);
+        height:pxrem(58); 
+        border-radius: pxrem(12);
+        border:1px solid #000000; 
+        background: #fff;
+        margin-left: pxrem(20);
+      }
+      .ac{
+        color: #F2786B !important;
+        border:1px solid #F2786B !important;
+      }
+      .btn:nth-child(1){
+        margin-left: pxrem(0);
+      }
+    }
+  }
+
+
+}

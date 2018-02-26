@@ -1,0 +1,300 @@
+page-store-claim {
+  .scroll-content {
+    background: #e6e8ea!important;
+  }
+  .item.item-block {
+    input {
+      height: pxrem(74);
+      line-height: pxrem(74);
+      margin: 0;
+    }
+  }
+  .claim_btnbox{
+    span{
+      display: block;
+      padding: pxrem(10) pxrem(30);
+      width: pxrem(690);
+      font-size: pxrem(32);
+      border: pxrem(2) solid #f2786b;
+      color: #f2786b;
+      text-align: center;
+      margin: pxrem(30) auto 0 auto;
+    }
+    span.disbled{
+      border: pxrem(2) solid #f6f6f6;
+      color: #f6f6f6;
+      pointer-events: none;
+    }
+  }
+  form {
+    .city_item {
+        padding: pxrem(28) pxrem(32);
+        font-size: pxrem(28);
+        color: rgb(155, 155, 155);
+    }
+    .city_item_show.city_item {
+        color: #000;
+    }
+    .from_inputItem {
+        position: relative;
+        padding-right: pxrem(200);
+        background: white;
+        .input_errorMsg {
+            position: absolute;
+            right: pxrem(20);
+            line-height: pxrem(96);
+            top: 0px;
+            font-size: pxrem(20);
+            color: #f2786b;
+        }
+    }
+    .from_subBtn {
+        position: absolute;
+        height: pxrem(90);
+        color: #fff;
+        font-size: pxrem(32);
+        text-align: center;
+        line-height: pxrem(90);
+        bottom: 0px;
+        width: 100%;
+        z-index: 9;
+        background-color: $userPrimaryColor;
+    }
+    .from_inputItem {
+        position: relative;
+        padding-right: pxrem(200);
+        background: white;
+        .input_errorMsg {
+            position: absolute;
+            right: pxrem(20);
+            line-height: pxrem(96);
+            top: 0px;
+            font-size: pxrem(20);
+            color: #f2786b;
+        }
+    }
+    .from_inputItem.showIcon {
+        padding-right: pxrem(400);
+        border-bottom: pxrem(2) solid #ddd;
+        .input_errorMsg {
+            right: pxrem(86);
+        }
+        .item.item-input {
+            margin-bottom: 0px;
+        }
+        ion-icon {
+            position: absolute;
+            right: pxrem(20);
+            line-height: pxrem(96);
+            top: 0px;
+            font-size: pxrem(36);
+            padding: 0 pxrem(16);
+        }
+    }
+    .from_inputItem.code_item {
+        padding-right: pxrem(200); // border-bottom: 2px solid #ddd;
+        .input_errorMsg {
+            right: pxrem(220);
+        }
+        .img_code {
+            position: absolute;
+            right: pxrem(20);
+            top: pxrem(9);
+            width: pxrem(192);
+            height: pxrem(75);
+            background-color: #ddd;
+            background-repeat: no-repeat;
+            background-size: contain;
+            text-align: center;
+            font-size: pxrem(24);
+            line-height: pxrem(80);
+        }
+        .msg_code {
+            position: absolute;
+            right: pxrem(26);
+            // top: pxrem(16);
+            width: pxrem(180);
+            height: pxrem(62);
+            border: pxrem(2) solid #333;
+            border-radius: pxrem(4);
+            font-size: pxrem(24);
+            text-align: center;
+            line-height: pxrem(60);
+        }
+        .item.item-input {
+            margin-bottom: 0px;
+        }
+    }
+    .from_inputItem.code_item:after {
+        content: ' ';
+        display: block;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        min-height: pxrem(2);
+        height: pxrem(2);
+        background: #ddd;
+    }
+    .form_item {
+        border-color: #ddd;
+        background-color: #fff;
+        color: #444;
+        position: relative;
+        z-index: 2;
+        display: block;
+        margin: pxrem(-2);
+        padding: pxrem(32);
+        border-width: pxrem(2);
+        border-style: solid;
+        font-size: pxrem(32);
+        .delete_address {
+            color: $userPrimaryColor;
+        }
+        .sign.money {
+            margin: 0;
+            display: inherit;
+            font-size: pxrem(28);
+            color: $userPrimaryColor;
+        }
+    }
+    .form_item_small {
+        padding: pxrem(20);
+        color: #838589;
+        font-size: pxrem(28);
+    }
+    .form_item.margin-bottom-10 {
+        margin-bottom: pxrem(10);
+    }
+}
+
+.item-ios.item-block .item-inner {
+  border-bottom:none;
+}
+
+
+
+  form {
+    .from_inputItem.item.item-block{
+        margin-bottom: 0;
+    }
+    .from_inputItem.no_input_padding{
+    padding: pxrem(28) pxrem(32);
+    }
+    .from_inputItem.code_item{
+      .item.item-block{
+        padding: pxrem(25) pxrem(32);
+        border-bottom:none;
+      }
+      .msg_code{
+        position: absolute;
+        right: pxrem(20);
+        height:pxrem(60);
+        top: pxrem(20);
+        padding: pxrem(10) pxrem(5);
+        text-align: center;
+        line-height: pxrem(36);
+        font-size: pxrem(32);
+        margin: 0!important;
+        border-radius: pxrem(10);
+        border: pxrem(2) solid #f2786b;
+        color: #f2786b;
+      }
+      .msg_code.active{
+        background: #f1f1f1;
+        color: white;
+        border:pxrem(2) solid transparent;
+
+      }
+    }
+    
+
+    .from_inputItem.code_item:after {
+      content: ' ';
+      display: block;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      min-height: 0px;
+      height: 0px;
+      background: #ddd;
+    }
+    .from_inputItem.showIcon {
+      padding-right: pxrem(200);
+      border-bottom: 1px solid #ddd !important;
+    }
+    .input_lable {
+      color: #444;
+      font-size: pxrem(32);
+    }
+    .input_right_btn{
+      position: absolute;
+      right: pxrem(20);
+      height:pxrem(60);
+      top: pxrem(20);
+      padding: pxrem(10) pxrem(30);
+      text-align: center;
+      line-height: pxrem(36);
+      font-size: pxrem(32);
+      margin: 0!important;
+      border-radius: pxrem(10);
+      border: pxrem(2) solid #f2786b;
+      color: #f2786b;
+      pointer-events:auto;
+    }
+
+    .input_right_btn.disbled{
+      border: pxrem(2) solid #ccc;
+      color: #ccc;
+      pointer-events: none;
+    }
+    .form_item_small{
+      background: white;
+      font-size: pxrem(32);
+      border-bottom: pxrem(1) solid #ddd;
+    }
+  }
+  .m-box-items {
+    padding-left: pxrem(20);
+    padding-right: pxrem(20);
+    display: block;
+    background: white;
+    padding-bottom: pxrem(20);
+    .items-money {
+      margin-left: pxrem(-20);
+      display: block;
+      .money_list {
+        letter-spacing: pxrem(-4);
+        list-style: none;
+        .money_list_item {
+          display: inline-block;
+          width: 49.9%;
+          padding-left: pxrem(20);
+          .money_li_item {
+            width: 100%;
+            border: pxrem(2) solid #f1f1f1;
+            text-align: center;
+            line-height: pxrem(100);
+            font-size: pxrem(32);
+            letter-spacing: 0;
+            margin-top: pxrem(20);
+          }
+        }
+      }
+    }
+  }
+  .from_subBtn {
+    position: absolute;
+    height: pxrem(98);
+    color: #fff;
+    font-size: pxrem(32);
+    text-align: center;
+    line-height: pxrem(99);
+    bottom: 0;
+    width: 100%;
+    background-color: #f2786b;
+  }
+  .disabledBtn {
+    pointer-events: none;
+    background: #838589 !important;
+  }
+}

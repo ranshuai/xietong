@@ -1,0 +1,32 @@
+<!--
+  Generated template for the StoreClaimPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>店铺认领</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="storeClaimForm">
+    <ion-item class="from_inputItem showIcon">
+      <ion-input class="input" formControlName="mobile" placeholder="请输入已绑定的手机号" type="text" maxlength="11" ></ion-input>
+      <div item-end class="input_right_btn" [ngClass]="{'disbled':storeClaimMessages.mobile.errorMsg||!storeClaimData.mobile}" (click)="searchStore()">查找店铺</div>
+    </ion-item>
+    <div class="from_inputItem showIcon no_input_padding">
+        <span class="input_lable" item-start>关联的店铺名:<span *ngIf="stroeData">{{stroeData.companyName}}</span></span>
+    </div>
+    <div class="from_inputItem code_item">
+      <ion-item>
+          <ion-input class="input" formControlName="mobileCode" placeholder="请输入短信验证码" type="tel"  maxlength="4"></ion-input>
+      </ion-item>
+       <div class="msg_code" *ngIf="storeClaimInterval==60" (click)="getPhone()">获取验证码</div> 
+      <div class="msg_code active"  *ngIf="storeClaimInterval!=60" >{{storeClaimInterval}}秒</div>
+  </div>
+  <div class="claim_btnbox" >
+   <span [ngClass]="{'disbled':!formFlag||!stroeData}" (click)="subCofirm()"> 确认认领</span>
+  </div>
+  </form>
+</ion-content>
