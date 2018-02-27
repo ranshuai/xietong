@@ -1,3 +1,4 @@
+import { CommonModel } from './../../../../providers/CommonModel';
 import { MainCtrl } from './../../../../providers/MainCtrl';
 import { UserCommon } from './../../providers/user/user-common';
 import { Component, ViewChild } from '@angular/core';
@@ -87,7 +88,7 @@ export class UserInfoOrderPage {
               public commondata: CommonData,public storage:Storage,
               public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config, public userCommon: UserCommon, public modalCtrl: ModalController,
-    public mainCtrl: MainCtrl,public events:Events
+    public mainCtrl: MainCtrl,public events:Events,public commonModel:CommonModel
               
 
     ) {
@@ -153,14 +154,18 @@ export class UserInfoOrderPage {
    */
 
   servicePopup(storeId) {
-    this.userCommon.getServiceList(storeId).subscribe(data => { 
-      let serviceModal = this.modalCtrl.create(
-        'GetServiceModalPage',
-        { data: data },
-        { cssClass: 'service-modal'}
-      );
-      serviceModal.present();
-    })
+    if (this.commonModel.canActive) {
+      this.commonModel.canActive = false;
+      this.userCommon.getServiceList(storeId).subscribe(data => { 
+        let serviceModal = this.modalCtrl.create(
+          'GetServiceModalPage',
+          { data: data },
+          { cssClass: 'service-modal'}
+        );
+        serviceModal.present();
+        this.commonModel.canActive = true;
+      })
+    } 
   }
 
   //订单查询

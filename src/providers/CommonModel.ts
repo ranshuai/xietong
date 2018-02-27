@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class CommonModel {
+  public canActive: boolean = true; //用户能否点击 限制用户多次操作
   public shoppingCartHide: any; //购物车是否隐藏
   public cacheOtherGoodsListLength: number = 0; //店铺管理 准备代售商品的数量
   public freightOrderGoods: number = 0; //运费

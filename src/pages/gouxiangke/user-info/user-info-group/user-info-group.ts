@@ -99,14 +99,19 @@ export class UserInfoGroupPage {
    */
 
   servicePopup(storeId) {
-    this.userCommon.getServiceList(storeId).subscribe(data => { 
-      let serviceModal = this.modalCtrl.create(
-        'GetServiceModalPage',
-        { data: data },
-        { cssClass: 'service-modal'}
-      );
-      serviceModal.present();
-    })
+    //禁止用户多次触发
+    if (this.commonModel.canActive) {
+      this.commonModel.canActive = false;
+      this.userCommon.getServiceList(storeId).subscribe(data => { 
+        let serviceModal = this.modalCtrl.create(
+          'GetServiceModalPage',
+          { data: data },
+          { cssClass: 'service-modal'}
+        );
+        serviceModal.present();
+        this.commonModel.canActive = true;
+      })
+    } 
   }
 
   goToPage() { 

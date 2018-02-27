@@ -1,3 +1,4 @@
+import { CommonModel } from './../../../../../providers/CommonModel';
 import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { UserCommon } from './../../../providers/user/user-common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
@@ -38,7 +39,8 @@ export class GoodsDetailGroupFooterComponent {
     public userCommon: UserCommon,
     public modalCtrl: ModalController,
     public mainCtrl: MainCtrl,
-    public navCtrl:NavController
+    public navCtrl: NavController,
+    public commonModel:CommonModel
   ) { }
 
   ngAfterContentInit() {
@@ -146,14 +148,19 @@ export class GoodsDetailGroupFooterComponent {
   }
 
   servicePopup(storeId) {
-    this.userCommon.getServiceList(storeId).subscribe(data => { 
-      let serviceModal = this.modalCtrl.create(
-        'GetServiceModalPage',
-        { data: data },
-        { cssClass: 'service-modal'}
-      );
-      serviceModal.present();
-    })
-  }
 
+    //禁止用户多次触发
+    if (this.commonModel.canActive) {
+      this.commonModel.canActive = false;
+      this.userCommon.getServiceList(storeId).subscribe(data => { 
+        let serviceModal = this.modalCtrl.create(
+          'GetServiceModalPage',
+          { data: data },
+          { cssClass: 'service-modal'}
+        );
+        serviceModal.present();
+        this.commonModel.canActive = true;
+      })
+    } 
+  }
 }

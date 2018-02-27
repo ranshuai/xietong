@@ -1,3 +1,4 @@
+import { CommonModel } from './../../../../../providers/CommonModel';
 import { UserCommon } from '../../../providers/user/user-common';
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, AlertController, Slides,ModalController,IonicPage,Events,Content } from 'ionic-angular';
@@ -51,7 +52,7 @@ export class UserInfoOrderDetailPage {
               public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config, public userCommon: UserCommon, public modalCtrl: ModalController, public events: Events,
     public mainCtrl: MainCtrl,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,public commonModel:CommonModel
   ) {
     this.orderId = navParams.get('orderId')
   }
@@ -136,14 +137,19 @@ export class UserInfoOrderDetailPage {
    * 客服聊天
   */
   servicePopup(storeId) {
-    this.userCommon.getServiceList(storeId).subscribe(data => {
-      let serviceModal = this.modalCtrl.create(
-        'GetServiceModalPage',
-        { data: data },
-        { cssClass: 'service-modal' }
-      );
-      serviceModal.present();
-    })
+    //禁止用户多次触发
+    if (this.commonModel.canActive) {
+      this.commonModel.canActive = false;
+      this.userCommon.getServiceList(storeId).subscribe(data => { 
+        let serviceModal = this.modalCtrl.create(
+          'GetServiceModalPage',
+          { data: data },
+          { cssClass: 'service-modal'}
+        );
+        serviceModal.present();
+        this.commonModel.canActive = true;
+      })
+    } 
   }
 
   //获取订单详情

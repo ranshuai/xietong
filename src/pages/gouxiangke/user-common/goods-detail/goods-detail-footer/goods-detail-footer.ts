@@ -258,18 +258,23 @@ export class GoodsDetailFooterComponent {
     }
   }
   servicePopup(storeId) {
-    //域商城才聊天，店铺显示号码
+      //域商城才聊天，店铺显示号码
       if(this.httpConfig.clientType=='1'){
           this.chat_web();
-      }else{
-    this.userCommon.getServiceList(storeId).subscribe(data => { 
-      let serviceModal = this.modalCtrl.create(
-        'GetServiceModalPage',
-        { data: data },
-        { cssClass: 'service-modal'}
-      );
-      serviceModal.present();
-    })
-  }
+      } else {
+        //禁止用户多次触发
+        if (this.commonModel.canActive) {
+          this.commonModel.canActive = false;
+          this.userCommon.getServiceList(storeId).subscribe(data => { 
+            let serviceModal = this.modalCtrl.create(
+              'GetServiceModalPage',
+              { data: data },
+              { cssClass: 'service-modal'}
+            );
+            serviceModal.present();
+            this.commonModel.canActive = true;
+          })
+        } 
+      }
   }
 }
