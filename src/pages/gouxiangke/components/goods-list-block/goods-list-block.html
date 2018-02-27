@@ -5,7 +5,8 @@
     <div class="item" *ngFor="let item of data; index as index" (click)="goToGoodsDetail(item)">
       <div class="img-wrap"> 
         <p class="self_nearby" *ngIf="item.goods_meter">距您{{filterKM(item.goods_meter)}}</p>
-        <img [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)">
+        <img-lazy-load [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)"></img-lazy-load>
+        <!-- <img [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)"> -->
       </div>
       <div class="name self_single">{{ item.goods_name || item.goodsName }}</div>
       <div class="self_min_buy_num_warp">

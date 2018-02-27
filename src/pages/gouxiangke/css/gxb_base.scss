@@ -44,6 +44,20 @@ a{text-decoration: none;}
   right: calc(50% - 18px) !important;
 }
 
+.conent_loadding{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: #fff;
+  img{
+    position:absolute;
+    top:50%;
+    margin-top:-32px;
+    left:50%;
+    margin-left:-32px;
+  }
+}
+
 // 消费者样式
 page-tab-menu,page-user-home,page-goods-detail,page-goods-detail-group,page-goods-list,page-user-shopping-cart-detail,page-order-confirm,page-store-detail,page-order-pay,page-pay-success,page-user-info-wallet,page-user-info-collection,page-user-info-address,page-user-info-coupon,page-user-info-wallet-recharge,page-user-info-wallet-withdrawals,page-user-info-order,page-user-info-address-new,page-search,user-topic-details,page-user-set-mobile,page-sex-modal,page-user-set-password-login,page-user-set-password-pay,
 page-user-info-bank-new,page-user-info-order-confirm,page-user-info-group,page-user-info-order-applyservices,page-user-info-prepay,page-apply-logistics-success,page-apply-logistics-fail,page-apply-logistics-role,page-user-info-address-editor,page-user-info-order-evaluate,page-order-coupon,page-user-info-order-services,page-user-set-info,page-new-password,page-user-real-query,page-user-set,page-user-set-verification,user-set-info-sub,page-user-select-logistics,page-user-nearby-self,

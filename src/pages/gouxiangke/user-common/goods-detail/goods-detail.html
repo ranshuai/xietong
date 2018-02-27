@@ -29,6 +29,13 @@
 
   </div>
 
+  <!-- <div class="!goodsInfo.goodsImgs">
+    
+  </div> -->
+  <div *ngIf="!goodsInfo" class="conent_loadding">
+    <img src="assets/images/public/35.gif" alt="">
+  </div>
+
   <user-shopping-cart></user-shopping-cart>
 
 </ion-content>

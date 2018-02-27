@@ -1,3 +1,4 @@
+import { ImgLazyLoadComponent } from './img-lazy-load/img-lazy-load';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 // import { IonicImageViewerModule } from 'ionic-img-viewer'; //查看图片
@@ -62,7 +63,8 @@ import { UserHomeNearbyPage } from '../user-home/user-home-nearby/user-home-near
     HomeQrcodeComponent,
     UserHomeGroupPage,
     UserHomeHistoryPage,
-    UserHomeNearbyPage
+    UserHomeNearbyPage,
+    ImgLazyLoadComponent
   ],
   imports: [
     IonicPageModule,
@@ -98,7 +100,8 @@ import { UserHomeNearbyPage } from '../user-home/user-home-nearby/user-home-near
     HomeQrcodeComponent,
     UserHomeGroupPage,
     UserHomeHistoryPage,
-    UserHomeNearbyPage
+    UserHomeNearbyPage,
+    ImgLazyLoadComponent
   ]
 })
 export class ComponentsModule { }

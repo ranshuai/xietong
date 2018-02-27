@@ -170,23 +170,26 @@ export class UserShoppingCartDetailPage {
     if (!this.canClick) {
       return;
     }
-    let cartIds = [];
-    this.shoppingCartInfo.stores.forEach((store, index) => {
-      store.goods.forEach((goods, index) => {
-        if (goods.edit) {
-          cartIds.push(goods.id);
-        }
+    //确认弹窗
+    this.common.comConfirm('确认要删除此商品吗？').subscribe(() => { 
+      let cartIds = [];
+      this.shoppingCartInfo.stores.forEach((store, index) => {
+        store.goods.forEach((goods, index) => {
+          if (goods.edit) {
+            cartIds.push(goods.id);
+          }
+        });
       });
-    });
-    this.shoppingCart.delete(cartIds).subscribe(data => {
-      this.shoppingCartInfo = data;
-      if (data == null) {
-        this.view = 'selected';
-        this.common.showToast('购物车已清空~');
-        this.commonModel.shopCarNum = '';
-      }
-      this.init();
-    });
+      this.shoppingCart.delete(cartIds).subscribe(data => {
+        this.shoppingCartInfo = data;
+        if (data == null) {
+          this.view = 'selected';
+          this.common.showToast('购物车已清空~');
+          this.commonModel.shopCarNum = '';
+        }
+        this.init();
+      });
+    })
   }
 
   modifySpecs(tpSpecGoodsPrice) {

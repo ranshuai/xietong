@@ -87,10 +87,14 @@ export class SearchPage {
       this.httpComplete = false;
       this.searchParams.params.likeVal = this.searchValue;//搜索项是拼在链接上的
       loading.present();
-      this.goodsListBlockComponent.init(); //触发搜索
-      loading.dismiss();
-      //保存搜索记录
+      setTimeout(() => { 
+        this.goodsListBlockComponent.init(); //触发搜索
+        loading.dismiss();
       this.saveHistory(this.searchValue);
+        
+      }, 1000)
+      
+      //保存搜索记录
      }
   }
 
