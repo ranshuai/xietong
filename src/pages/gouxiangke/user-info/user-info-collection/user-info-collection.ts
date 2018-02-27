@@ -68,17 +68,17 @@ export class UserInfoCollectionPage {
        rows: this.orderList[type].rows,
      }).subscribe(data => {
        if (data.success) {
-         if (data.result.length >= this.orderList[type].rows) {
+        var result;
+        if (type == 'goods') {
+         result = data.result.goods;
+       } else if (type == 'shop') {
+         result = data.result.tpCompanyVos;
+       }
+         if (result.length >= this.orderList[type].rows) {
            this.orderList[type].loadEnd = false;
          } else {
            this.orderList[type].loadEnd = true;
          }
-         var result;
-         if (type == 'goods') {
-          result = data.result.goods;
-        } else if (type == 'shop') {
-          result = data.result.tpCompanyVos;
-        }
          if (this.orderList[type].page == 1) {
            this.orderList[type].clist = undefined;
            this.orderList[type].clist =result;
