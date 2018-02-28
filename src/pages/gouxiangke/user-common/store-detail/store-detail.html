@@ -26,7 +26,7 @@
   </ion-header>
 
   <div *ngIf="storeInfo">
-    <div class="store-info" id="store-info">
+    <div #StoreBg class="store-info" id="store-info">
       <div class="headpic">
         <img *ngIf="!isLoading&&storeInfo.headPic" [src]="storeInfo.headPic">
         <img *ngIf="!isLoading&&!storeInfo.headPic" src="./assets/img/shop-head-pic.png">

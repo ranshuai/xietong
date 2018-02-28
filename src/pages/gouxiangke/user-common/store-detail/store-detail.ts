@@ -2,7 +2,7 @@ import { CommonModel } from './../../../../providers/CommonModel';
 import { Config } from './../../providers/api/config.model';
 import { ThirdPartyApiProvider } from './../../providers/third-party-api/third-party-api';
 import { UserCommon } from './../../providers/user/user-common';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, Slides } from 'ionic-angular';
 import { CommonProvider } from "../../providers/common/common";
 import { StoreProvider } from "../../providers/store/store";
@@ -28,6 +28,7 @@ export class StoreDetailPage {
 
   @ViewChild(Content) content: Content;
   @ViewChild(Slides) slides: Slides;
+  @ViewChild('StoreBg') storeBg: ElementRef;
 
   storeInfo: any;
   storeId: string;
@@ -118,10 +119,9 @@ export class StoreDetailPage {
   }
 
   ionViewDidEnter() {
-    debugger;
     setTimeout(() => {
       if (this.storeInfo && this.storeInfo.unitBackground) { 
-        document.getElementById('store-info').style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
+        this.storeBg.nativeElement.style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
       }
     }, 200)
   }
