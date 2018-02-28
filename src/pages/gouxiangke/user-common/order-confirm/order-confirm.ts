@@ -377,13 +377,16 @@ export class OrderConfirmPage {
             }).subscribe(data => { 
               if (data.success) {
                 //保存运费  Nu
-                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
                 console.log(this.commonModel.freightOrderGoods);
-                // 对象里添加运费的字段
-                this.stores[_i].freight = data.result;
-                if (!this.stores[_i].defaultSelectTxt) {
+                if (!this.stores[_i].defaultSelectTxt || this.stores[_i].defaultSelectTxt == "物流配送 - 送货上门") {
                   this.stores[_i].defaultSelectTxt = '物流配送 - 送货上门';
-                 }
+                } else { 
+                  data.result = 0;
+                }
+                 // 对象里添加运费的字段
+                this.stores[_i].freight = data.result;
+                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
+                
                 console.log(this.stores);
               }
             })

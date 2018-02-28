@@ -118,6 +118,7 @@ export class StoreDetailPage {
   }
 
   ionViewDidEnter() {
+    debugger;
     setTimeout(() => {
       if (this.storeInfo && this.storeInfo.unitBackground) { 
         document.getElementById('store-info').style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';

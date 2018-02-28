@@ -65,6 +65,37 @@ export class UserHomeHomePage {
     console.log('user-home-home')
   }
 
+  //重新加载轮播图 bug pc后台更新了轮播图的链接 应用没有更新
+  getHomeHomeDataRefresher() { 
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 1 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv = data.result;
+        this.homeHomeData.adv.length > 0 ? this.homeHomeDataAdvShow = true : this.homeHomeDataAdvShow = false;
+      }
+    })
+
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 4 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv1 = data.result;
+        this.homeHomeData.adv1.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 5 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv2 = data.result;
+        this.homeHomeData.adv2.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+
+    this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 6 }).subscribe((data: any) => { 
+      if (data.success) { 
+        this.homeHomeData.adv3 = data.result;
+        this.homeHomeData.adv3.length>0 ? this.homeHomeDataAdvsShow = true : this.homeHomeDataAdvsShow = false;
+      }
+    })
+  }
+
   getHomeHomeData(refresher?) {
     this.api.get(this.api.config.host.bl + 'v2/homePage/homeAdLoad', { pid: 1 }).subscribe((data: any) => { 
       if (data.success) { 
