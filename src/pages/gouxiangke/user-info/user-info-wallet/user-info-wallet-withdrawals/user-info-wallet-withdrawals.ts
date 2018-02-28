@@ -20,6 +20,9 @@ import { IntervaConfig } from '../../../providers/user/intervaConfig';
   templateUrl: 'user-info-wallet-withdrawals.html',
 })
 export class UserInfoWalletWithdrawalsPage {
+
+  //默认提现金额
+  defaultMoney = '提现金额最低10元';
   userInfoWalletPage = 'UserInfoWalletPage';
   //模拟线程锁
   isend: boolean = false;
@@ -75,7 +78,9 @@ export class UserInfoWalletWithdrawalsPage {
 
   formFlag: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public common: CommonProvider, private formBuilder: FormBuilder, public interva: IntervaConfig, public commonData: CommonData,public commonModel:CommonModel) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public common: CommonProvider, private formBuilder: FormBuilder, public interva: IntervaConfig, public commonData: CommonData, public commonModel: CommonModel) {
+    //给默认的提现金额赋值
+    this.defaultMoney = '提现金额最低'+this.commonModel.APP_INIT['getAppconfig'].data.min_withdraw+'元' ;
     this.walletWithdrawalsForm = this.formBuilder.group({
       money: [this.walletWithdrawalsData.money, [Validators.required, Validators.money]],
       code: [this.walletWithdrawalsData.code, [Validators.required]],

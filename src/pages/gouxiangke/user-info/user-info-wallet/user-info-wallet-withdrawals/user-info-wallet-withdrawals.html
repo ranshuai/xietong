@@ -18,7 +18,7 @@
             <span>提现金额</span>
         </div>
         <ion-item class="from_inputItem showIcon">
-            <ion-input class="input" placeholder="提现金额最低10元" type="tel" maxlength="5" formControlName="money"></ion-input>
+            <ion-input class="input" placeholder={{defaultMoney}} type="tel" maxlength="5" formControlName="money"></ion-input>
             <div item-end class="input_errorMsg" *ngIf="walletWithdrawalsMessages.money.errorMsg">{{walletWithdrawalsMessages.money.errorMsg}}</div>
         </ion-item>
         <div class="form_item margin-bottom-10">
