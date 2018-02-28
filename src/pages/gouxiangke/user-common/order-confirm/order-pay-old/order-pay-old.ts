@@ -27,6 +27,8 @@ export class OrderPayOldPage {
   paySuccessPage = 'PaySuccessPage';
   userSetPasswordPayPage='UserSetPasswordPayPage'; //设置密码|修改密码
   order: any;
+  storeIds: any; //为了调用 支付方式查询 接口 需要的字段
+  payTypes: any = {};
   payChannel: string = 'wx';
 
   constructor(
@@ -44,6 +46,7 @@ export class OrderPayOldPage {
 
   ) {
     this.order = navParams.get('order');
+    this.storeIds = navParams.get('storeIds');
   }
 
   ionViewDidLoad() {
@@ -52,7 +55,14 @@ export class OrderPayOldPage {
     this.shoppingCart.getShoppingCartInfo().subscribe(data => {
 
     })
-
+    //支付方式查询
+    this.api.get(this.api.config.host.org + 'companyInfo/payType/multiple', {
+      storeIds:this.storeIds
+    }).subscribe(data => { 
+      if (data.success) {
+        this.payTypes = data.result;
+      }
+    })
   }
 
   ionViewDidLeave(){

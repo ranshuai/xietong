@@ -83,12 +83,12 @@ page-store-detail {
         border: 1px solid #9099a6;
       }
       button {
-        width: pxrem(300);
+        width: 36%;
         height: pxrem(70);
         border-radius: pxrem(10);
         font-size: pxrem(22);
         &:nth-child(1) {
-          margin-right: pxrem(45);
+          margin-right: pxrem(40);
         }
         &:active {
           background: none;

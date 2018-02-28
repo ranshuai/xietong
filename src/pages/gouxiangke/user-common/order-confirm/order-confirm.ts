@@ -212,7 +212,8 @@ export class OrderConfirmPage {
         //   console.log(data)
         //   this.navCtrl.push(this.orderPayPage, { order: data });
         // }, 1000)
-        this.navCtrl.push(this.orderPayPage, { order: data });
+        //storeIds 为了调用 支付方式查询 接口 需要的字段
+        this.navCtrl.push(this.orderPayPage, { order: data,storeIds:this.stores[0].storeId });
       });
     } else if (this.globalData.isGroupBuy) {
       //拼团购买
@@ -229,11 +230,12 @@ export class OrderConfirmPage {
       //和购物车代码保持一样的风格 把拼团生成订单的接口放在 shopping-cart 组件中
       this.shoppingCart.groupBuy(data).subscribe(data => {
         setTimeout(()=>{
-          this.navCtrl.push(this.orderPayPage, { order: data });
+          this.navCtrl.push(this.orderPayPage, { order: data,storeIds:this.stores[0].storeId });
         },1000)
       });
 
     } else { //购物车下单
+      let storeIds=[];
       let cartIds = [];
       let leaveMessage = {};
       this.stores.forEach(store => {
@@ -241,6 +243,7 @@ export class OrderConfirmPage {
         store.goods.forEach(goods => {
           if (goods.selected) {
             cartIds.push(goods.id);
+            storeIds.push(store.storeId);
           }
         });
       });
@@ -254,10 +257,8 @@ export class OrderConfirmPage {
         data.acitivityType = 1;
       }
       this.shoppingCart.order(data).subscribe((data) => {
-        console.log('')
-        console.log(this.navCtrl);
         setTimeout(()=>{
-          this.navCtrl.push(this.orderPayPage, { order: data });
+          this.navCtrl.push(this.orderPayPage, { order: data ,storeIds:storeIds.join(',')});
         },1000);
       });
     }

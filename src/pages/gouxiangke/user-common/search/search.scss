@@ -1,11 +1,16 @@
 page-search {
+  ion-toolbar{
+    padding-left: pxrem(46) !important;
+    overflow: hidden !important;
+    height: pxrem(88) !important;
+  }
   .input-wrap {
     position: relative;
     float: left;
     width:80%;
     height: pxrem(55);
     margin-top: pxrem(15);
-    margin-left: pxrem(46);
+    // margin-left: pxrem(46);
     form{
       width: 100%;
       height:100%;
@@ -28,7 +33,7 @@ page-search {
   }
   .cancel-btn {
     float: right;
-    width: pxrem(90);
+    width: 20%;
     height: pxrem(88);
     font-size: pxrem(30);
     line-height: pxrem(88);

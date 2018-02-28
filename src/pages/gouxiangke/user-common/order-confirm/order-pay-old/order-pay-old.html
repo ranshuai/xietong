@@ -76,7 +76,7 @@
         </div>
       </div>
   
-      <div class="pay-item" (click)="checkPayChannel('delivery')" >
+      <div *ngIf="payTypes.cashOnDelivery" class="pay-item" (click)="checkPayChannel('delivery')" >
         <div class="pay-logo">
           <img src="assets/img/money.png">
         </div>
@@ -87,7 +87,7 @@
         </div>
       </div>
       <!-- commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1' -->
-      <div class="pay-item" *ngIf="commonModel.APP_INIT['getAppconfig'] && commonModel.APP_INIT['getAppconfig'].data.is_prepay==1" 
+      <div class="pay-item" *ngIf="commonModel.APP_INIT['getAppconfig'] && commonModel.APP_INIT['getAppconfig'].data.is_prepay==1 && payTypes.prePay" 
     (click)="checkPayChannel('prepay')" >
       <div class="pay-logo">
         <img src="./assets/img/money.png">
