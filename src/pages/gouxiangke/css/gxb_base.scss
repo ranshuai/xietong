@@ -50,6 +50,8 @@ a{text-decoration: none;}
   position: relative;
   background: #fff;
   img{
+    width: pxrem(80);
+    height:pxrem(80);
     position:absolute;
     top:50%;
     margin-top:-32px;

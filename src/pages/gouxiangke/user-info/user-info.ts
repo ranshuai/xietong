@@ -145,9 +145,8 @@ export class UserInfoPage {
         this.common.openMobileModal().subscribe(() => {
           this.navCtrl.push(this.userSetMobilePage, { type: 1 });
         })
-      } else {
-        this.getUserInfo();
       }
+      this.getUserInfo();
       return 
      }
      if (this.config.PLATFORM == 'APP'|| this.config.PLATFORM == 'STOREAPP') {

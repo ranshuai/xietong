@@ -123,11 +123,16 @@ export class UserSelectLogisticsPage {
   }
   //获取物流信息
   getLogisticsInfo(address?) {
+    let goods = [];
+    for (var i = 0; i < this.store.goods.length; i++) { 
+      goods.push(this.store.goods[i].goodsId);
+    }
     let str;
     str = address.provinceName + address.cityName + address.districtName +  address.consignee
     this.api.get(this.api.config.host.org + 'pick/type/sort', {
       address: str,
-      storeId:this.store.storeId
+      storeId: this.store.storeId,
+      goodsIds:goods.join(',')
     }).subscribe(data => { 
       console.log(data); 
       // data.result ||
