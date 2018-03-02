@@ -138,7 +138,6 @@ export class UserInfoPage {
   }
 
   ionViewDidEnter() {
-    window.document.title = this.commonModel.APP_INIT['getWechatDomainName'] &&this.commonModel.APP_INIT['getWechatDomainName'].data;
     if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') {
       if (!this.commonModel.TAB_INIT_USERINFO.mobile) {
         this.common.count = true;

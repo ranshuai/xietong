@@ -298,21 +298,9 @@ export class UserInfoOrderDetailPage {
          setTimeout(() => {
         this.common.tostMsg({ msg: data.msg ||'连接异常'})
          }, 800)
-         
-        
-        //兼容店铺和商城
-        if (this.httpConfig.clientType == '2') {
-          this.navCtrl.push('UserShoppingCartDetailPage', {shoppCartFlag:true});
-          this.shoppingCart.getShoppingCartInfo().subscribe();
-        } else {
-          this.navCtrl.push('UserShoppingCartDetailPage', {shoppCartFlag:true});
-          this.shoppingCart.getShoppingCartInfo().subscribe();
-        //   this.app.getRootNav().setRoot('TabMenuPage', { index: 3 },
-        //   { animate: false }
-        // )
-        }
-        
-        // this.common.goToPage('UserPage', { index: 2 }, { animate: false });
+         this.navCtrl.push('UserShoppingCartDetailPage', {shoppCartFlag:true});
+         this.shoppingCart.getShoppingCartInfo().subscribe();
+         this.events.publish('shoppingCart:refresh')
       }
 
     })

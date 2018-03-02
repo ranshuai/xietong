@@ -50,19 +50,12 @@ export class UserShoppingCartDetailPage {
 
 
   refresh() {
-
-    if (this.shoppingCart.data) {
-      this.shoppingCartInfo = this.shoppingCart.data;
-      this.init();
-    } else {
-      this.shoppingCart.getShoppingCartInfo().subscribe(data => {
-        this.shoppingCartInfo = data;
-        if (data) {
-          this.init();
-        }
-      });
-    }
-    console.log(this.shoppingCartInfo);
+    this.shoppingCart.getShoppingCartInfo().subscribe(data => {
+      this.shoppingCartInfo = data;
+      if (data) {
+        this.init();
+      }
+    });
   }
 
   init() {

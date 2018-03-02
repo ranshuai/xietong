@@ -84,7 +84,7 @@ export class GoodsDetailPage {
   openSpecsModal() {
     let specsModal = this.modalCtrl.create(
       this.goodsSpecsDetailPage,
-      { goods: this.goodsInfo, view: 'goodsDetail' },
+      { goods: this.goodsInfo, view: 'goodsDetail',shareId:window.sessionStorage.getItem('shareId') },
       { cssClass: 'specs-modal' }
     );
     specsModal.present();
@@ -97,6 +97,7 @@ export class GoodsDetailPage {
     });
   }
   ionViewWillLeave() { 
+    window.sessionStorage.removeItem('shareId');
     //页面离开的时候触发
     this.events.publish('GetServiceModalPage:events')
   }

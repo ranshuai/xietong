@@ -345,6 +345,7 @@ export class UserInfoOrderPage {
         this.navCtrl.push('UserShoppingCartDetailPage', { shoppCartFlag: true });
 
         this.shoppingCart.getShoppingCartInfo().subscribe();
+        this.events.publish('shoppingCart:refresh')
         
       }
       setTimeout(() => {

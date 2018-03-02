@@ -42,6 +42,8 @@ export class SearchPage {
   ) {
     //从参数获取value
     let searchValue = navParams.get('searchValue');
+    let storeId = '1';
+    // storeId ? (this.searchParams.headers as any).storeId = storeId : '';
     if (window.localStorage.getItem('searchEnd') == 'true') {
       this.searchHistory = (window.localStorage.getItem('searchHistory') && window.localStorage.getItem('searchHistory').split(',')) || [];
      }

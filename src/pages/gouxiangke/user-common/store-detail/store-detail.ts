@@ -84,7 +84,7 @@ export class StoreDetailPage {
   }
 
   search(searchValue) {
-    this.navCtrl.push('SearchPage', { searchValue: searchValue, storeId:this.storeId})
+    this.common.goToPage('SearchPage', { searchValue: searchValue, storeId:this.storeId})
   }
 
   collect(status) {

@@ -116,7 +116,9 @@ export class OrderConfirmPage {
     // } else {
     //   this.selectAddressBar.getAddress();
     // }
-    this.test();
+    //<!-- 运费模版 没有发布隐藏 -->
+    
+    // this.test();
   }
 
   //订单确认初始化信息

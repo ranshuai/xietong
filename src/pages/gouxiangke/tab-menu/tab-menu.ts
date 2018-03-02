@@ -36,12 +36,16 @@ export class TabMenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public app:App,
       private events: Events, public config: Config, public api: Api, public globalDataProvider: GlobalDataProvider, public commonModel: CommonModel, public httpConfig: HttpConfig,public mainCtrl:MainCtrl,public modalCtrl : ModalController,
       public httpService: HttpService) {
-        this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
-        if (data.success) {
-            document.title = data.result || '';
-            this.globalDataProvider.domainNameWX = data.result || '';
-        }
+      
+        this.api.get(this.api.config.host.bl + 'v2/CompanyInfo/get/index', {
+            storeId:this.httpConfig.storeId
+        }).subscribe((data) => {
+           if (data.success) {
+             //this._selfTitle = data.result.storeIndexVO && data.result.storeIndexVO.companyName;
+             this.globalDataProvider.domainNameWX = data.result.storeIndexVO.companyName;
+           }
         });
+  
         this.app.viewDidEnter.subscribe((view) => { 
             document.title = this.globalDataProvider.domainNameWX  
         })

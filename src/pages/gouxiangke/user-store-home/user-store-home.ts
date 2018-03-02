@@ -92,16 +92,6 @@ export class UserStoreHomePage {
       if (this.template == 4) {
         this.getHotGoodsList();
       }
-      if (this.config.PLATFORM == "STOREAPPWX") {
-        this.api.get(this.api.config.host.bl + 'v2/CompanyInfo/get/index', {
-          storeId: window.localStorage.storeId
-      }).subscribe((data) => {
-         if (data.success) {
-           //this._selfTitle = data.result.storeIndexVO && data.result.storeIndexVO.companyName;
-           document.title = data.result.storeIndexVO.companyName;
-         }
-      });
-       }
 
     });
     this.userHomeTemplate.getHomeAd().subscribe(data => {
@@ -130,20 +120,6 @@ export class UserStoreHomePage {
         }
       }
     });
-
-    if (this.config.PLATFORM == "STOREAPPWX") {
-
-      //给冉帅填坑,获取首页店铺的title信息
-    this.api.get(this.api.config.host.bl + 'v2/CompanyInfo/get/index', {
-            storeId: window.localStorage.storeId
-        }).subscribe((data) => {
-          console.log(data);
-          if (data.success) {
-            //this._selfTitle = data.result.storeIndexVO && data.result.storeIndexVO.companyName;
-            document.title = data.result.storeIndexVO.companyName;
-          }
-        });
-     }
   }
 
   ionViewDidEnter() {

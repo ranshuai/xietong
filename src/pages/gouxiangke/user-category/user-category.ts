@@ -31,7 +31,6 @@ export class UserCategoryPage {
       console.log(this.catId)
       this.getList({ cateId: id, pageNo: 1, rows: 10 }, null);
     });
-    document.title = this.globalDataProvider.domainNameWX;
     
   }
 
