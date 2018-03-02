@@ -146,9 +146,41 @@ export class UserStoreHomePage {
      }
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
+    this.userHomeTemplate.getHomeAd().subscribe(data => {
+      let list = data.result;
+      if (list.length > 0) {
+        this.advImgs = [];
+        this.navImgs = [];
+        list.forEach(item => {
+          if (item.pid == 4) {
+            this.advImgs.push(item);
+          }
+          if (item.pid == 5) {
+            this.navImgs.push(item);
+          }
+          if (item.pid == 6) {
+            this.adImg = item.adCode;
+          }
+        });
+        //判断没有banner的时候，载入默认的banner
+        if (this.advImgs.length == 0) {
+          if (this.template == 1) {
+            this.advImgs = [{ adCode: '../../../assets/img/banner1.jpg' }];
+          } else {
+            this.advImgs = [{ adCode: '../../../assets/img/banner2.jpg' }];
+          }
+        }
+      } else {
+        this.advImgs = [{ adCode: '../assets/img/defaultslide.png' }];
+      }
+    });
+  }
+
+  ionViewDidLoad() {
     this.init();
   }
+
 
   //根据模板改变tab颜色
   changeTabColor(number) {

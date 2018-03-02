@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,LoadingController } from 'ionic-angular';
+import { NavController, NavParams,LoadingController,IonicPage } from 'ionic-angular';
 import { RequestOptions, Headers } from '@angular/http';
 import { Api } from '../../../gouxiangke/providers/api/api';
 import { CommonProvider } from '../../../gouxiangke/providers/common/common';
@@ -9,6 +9,7 @@ import { CommonProvider } from '../../../gouxiangke/providers/common/common';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+@IonicPage()
 
 @Component({
   selector: 'page-user-info-prepay',
