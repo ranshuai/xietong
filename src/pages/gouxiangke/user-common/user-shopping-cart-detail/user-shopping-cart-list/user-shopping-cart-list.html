@@ -11,11 +11,7 @@
       <div class="goods-list">
         <div class="goods-item" *ngFor="let goods of store.goods">
           <div class="left">
-            <ion-checkbox *ngIf="goods.onSale && goods.storeCount > 0" [checked]="goods[view]" (click)="checkGoods(store, goods);$event.stopPropagation();"></ion-checkbox>
-
-            <ion-checkbox *ngIf="!goods.onSale " disabled={{!goods.onSale}} [checked]="goods[view]" (click)="checkGoods(store, goods);$event.stopPropagation();"></ion-checkbox>
-
-            <ion-checkbox *ngIf="goods.onSale && goods.storeCount == 0" disabled={{!goods.storeCount}}  [checked]="goods[view]" (click)="checkGoods(store, goods);$event.stopPropagation();"></ion-checkbox>
+            <ion-checkbox [checked]="goods[view]" (click)="checkGoods(store, goods)"></ion-checkbox>
             <div class="img-warp R_pr">
               <span class="img-warp_bg1 R_pa" *ngIf="goods.onSale && goods.storeCount == 0">库存不足</span>
               <span class="img-warp_bg2 R_pa" *ngIf="!goods.onSale ">已下架</span>

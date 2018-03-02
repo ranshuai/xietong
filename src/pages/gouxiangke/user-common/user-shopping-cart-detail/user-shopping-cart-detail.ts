@@ -99,19 +99,14 @@ export class UserShoppingCartDetailPage {
       store[this.view] = boolean;
       for (var j = 0; j < store.goods.length; j++) {
         let goods = store.goods[j];
-        if (!goods.onSale||goods.storeCount == 0) {
-          goods[this.view] = false;
-          this.shoppingCartInfo[this.view] = false;
-          store[this.view] = false;
-        } else { 
-          goods[this.view] = boolean;
-          modifyCartVOs.push({
-            cartId: goods.id,
-            goodsNum: goods.goodsNum,
-            goodsSpec: goods.specKey,
-            check: boolean
-          });
-        }
+        goods[this.view] = boolean;
+        modifyCartVOs.push({
+          cartId: goods.id,
+          goodsNum: goods.goodsNum,
+          goodsSpec: goods.specKey,
+          check: boolean
+        });
+
       }
     }
     if (boolean) {//底部按钮可用
