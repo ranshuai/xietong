@@ -40,12 +40,23 @@ export class UserShoppingCartListComponent {
     store.goods.forEach(goods => {
       //店铺全选与全取消
       goods[this.view] = store[this.view];
-      modifyCartVOs.push({
-        cartId: goods.id,
-        goodsNum: goods.goodsNum,
-        goodsSpec: goods.specKey,
-        check: store[this.view]
-      });
+      //如果购物车里面有下架的和库存不足的商品就不添加到modifyCartVOs数组里面
+      if (!goods.onSale || goods.storeCount == 0) {
+        //商品已下架goods.onSale，
+        //库存为 0 (goods.onSale && goods.storeCount == 0)
+        goods[this.view] = false;
+        //如果有库存不足或者商品下架
+        store[this.view] = false;
+      } else { 
+        modifyCartVOs.push({
+          cartId: goods.id,
+          goodsNum: goods.goodsNum,
+          goodsSpec: goods.specKey,
+          check: store[this.view]
+        });
+      }
+
+
     });
     this.clickCheckEmit.emit();
     if (this.view == 'selected') {

@@ -214,6 +214,8 @@
 
       <span *ngIf="orderDetailModelData.groupOrder && !(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)"
         (click)="goToPage('召集小伙伴',orderDetailModelData)">召集小伙伴</span>
+        <!--再来一单-->
+        <span  (click)="copayOrder(orderDetailModelData)">再来一单</span>
     </div>
   </ion-toolbar>
 </ion-footer>

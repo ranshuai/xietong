@@ -8,7 +8,7 @@
 
   <ion-navbar>
 
-    <ion-title>购物车</ion-title>
+    <ion-title>购物车 {{shoppCartFlag}}</ion-title>
 
     <ion-buttons end *ngIf="shoppingCartInfo">
       <button (click)="changeView('edit')" *ngIf="view == 'selected'">编辑</button>
@@ -19,7 +19,7 @@
 
 </ion-header>
 
-<ion-content [ngClass]="{'shopping_cart_1':httpConfig.clientType == '1'}" class=""> 
+<ion-content [ngClass]="{'shopp_cart_flag':shoppCartFlag}" class=""> 
 
   <user-shopping-cart-list [data]="shoppingCartInfo" [view]="view" (clickCheckEmit)="clickCheck()" (modifySpecsEmit)="modifySpecs($event)"></user-shopping-cart-list>
 
@@ -34,7 +34,7 @@
   </div>
 </ion-content>
 
-<ion-footer>
+<ion-footer #shoppingCartFooter>
   <ion-toolbar *ngIf="shoppingCartInfo">
 
     <div class="all-btn" *ngIf="shoppingCartInfo">

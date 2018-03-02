@@ -120,10 +120,11 @@ export class StoreDetailPage {
 
   ionViewDidEnter() {
     setTimeout(() => {
-      if (this.storeInfo && this.storeInfo.unitBackground) { 
-        this.storeBg.nativeElement.style.backgroundImage = ' url("' + this.storeInfo.unitBackground + '")';
+      if (this.storeInfo) { 
+        let url =  this.storeInfo.unitBackground || '../assets/img/hotshopbg.jpg';
+        this.storeBg.nativeElement.style.backgroundImage = ' url("' + url + '")';
       }
-    }, 200)
+    }, 300)
   }
 
   goToCategory() { 

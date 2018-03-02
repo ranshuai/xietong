@@ -1,7 +1,7 @@
 page-user-shopping-cart-detail {
-  .shopping_cart_1{
+  .shopp_cart_flag{
     .scroll-content{
-    margin-bottom: 0 !important;
+      margin-bottom: pxrem(100) !important;
     }
   }
   .cart_info_no{
@@ -42,10 +42,10 @@ page-user-shopping-cart-detail {
       }
     }
   }
-  ion-content.content {
+  ion-content {
     background: #e6e8ea;
     .scroll-content {
-      margin-bottom: pxrem(100);
+      margin-bottom: pxrem(200) !important;
     }
   }
   ion-footer {

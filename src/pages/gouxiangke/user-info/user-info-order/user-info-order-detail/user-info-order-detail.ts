@@ -1,7 +1,9 @@
+import { ShoppingCart } from './../../../providers/user/shopping-cart';
+import { HttpConfig } from './../../../../../providers/HttpConfig';
 import { CommonModel } from './../../../../../providers/CommonModel';
 import { UserCommon } from '../../../providers/user/user-common';
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams, AlertController, Slides,ModalController,IonicPage,Events,Content } from 'ionic-angular';
+import { NavController, NavParams, AlertController, Slides,ModalController,IonicPage,Events,Content,LoadingController,App } from 'ionic-angular';
 import { CommonProvider } from '../../../providers/common/common';
 import { CommonData } from '../../../providers/user/commonData.model';
 import { Api } from '../../../providers/api/api';
@@ -15,7 +17,6 @@ import { Storage } from '@ionic/storage';
 import { RequestOptions, Headers } from '@angular/http';
 import { MainCtrl } from '../../../../../providers/MainCtrl';
 import { CallNumber } from '@ionic-native/call-number';
-
 /**
  * Generated class for the UserInfoOrderDetailPage page.
  *
@@ -52,7 +53,7 @@ export class UserInfoOrderDetailPage {
               public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config, public userCommon: UserCommon, public modalCtrl: ModalController, public events: Events,
     public mainCtrl: MainCtrl,
-    private callNumber: CallNumber,public commonModel:CommonModel
+    private callNumber: CallNumber,public commonModel:CommonModel,public loadingCtrl:LoadingController,public app:App,public httpConfig:HttpConfig,public shoppingCart:ShoppingCart
   ) {
     this.orderId = navParams.get('orderId')
   }
@@ -283,6 +284,42 @@ export class UserInfoOrderDetailPage {
   openChangeModal(item) {
     this.common.openChangeModal(this.orderLogisticsInfoPage, false, { orderId: item.orderId }).subscribe();
   }
+
+  //再来一单
+  copayOrder(item) {
+    let loading = this.loadingCtrl.create({
+      dismissOnPageChange: true,
+      content: '提交中，请稍后...'
+    });
+    loading.present();
+    this.api.get(this.api.config.host.bl + '/shop/one/more/' + item.orderId, {}).subscribe(data => {
+      loading.dismiss()
+      if (data.success) {
+         setTimeout(() => {
+        this.common.tostMsg({ msg: data.msg ||'连接异常'})
+         }, 800)
+         
+        
+        //兼容店铺和商城
+        if (this.httpConfig.clientType == '2') {
+          this.navCtrl.push('UserShoppingCartDetailPage', {shoppCartFlag:true});
+          this.shoppingCart.getShoppingCartInfo().subscribe();
+        } else {
+          this.navCtrl.push('UserShoppingCartDetailPage', {shoppCartFlag:true});
+          this.shoppingCart.getShoppingCartInfo().subscribe();
+        //   this.app.getRootNav().setRoot('TabMenuPage', { index: 3 },
+        //   { animate: false }
+        // )
+        }
+        
+        // this.common.goToPage('UserPage', { index: 2 }, { animate: false });
+      }
+
+    })
+
+  }
+
+
   ionViewWillLeave() {
     //页面离开的时候触发
     this.events.publish('GetServiceModalPage:events')

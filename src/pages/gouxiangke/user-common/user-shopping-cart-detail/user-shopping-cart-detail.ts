@@ -20,7 +20,7 @@ import { GlobalDataProvider } from "../../providers/global-data/global-data.mode
   templateUrl: 'user-shopping-cart-detail.html',
 })
 export class UserShoppingCartDetailPage {
-
+  shoppCartFlag:boolean;// 点击购物车图标进入 
   shoppingCartInfo: any;
   canClick: Boolean;
   view: string = 'selected';
@@ -39,6 +39,9 @@ export class UserShoppingCartDetailPage {
     public mainCtrl: MainCtrl,
     public httpConfig:HttpConfig
   ) {
+
+    this.shoppCartFlag = navParams.get('shoppCartFlag');
+
     //监听刷新事件
     events.subscribe('shoppingCart:refresh', () => {
       this.refresh();
@@ -96,13 +99,19 @@ export class UserShoppingCartDetailPage {
       store[this.view] = boolean;
       for (var j = 0; j < store.goods.length; j++) {
         let goods = store.goods[j];
-        goods[this.view] = boolean;
-        modifyCartVOs.push({
-          cartId: goods.id,
-          goodsNum: goods.goodsNum,
-          goodsSpec: goods.specKey,
-          check: boolean
-        });
+        if (!goods.onSale||goods.storeCount == 0) {
+          goods[this.view] = false;
+          this.shoppingCartInfo[this.view] = false;
+          store[this.view] = false;
+        } else { 
+          goods[this.view] = boolean;
+          modifyCartVOs.push({
+            cartId: goods.id,
+            goodsNum: goods.goodsNum,
+            goodsSpec: goods.specKey,
+            check: boolean
+          });
+        }
       }
     }
     if (boolean) {//底部按钮可用
@@ -111,6 +120,7 @@ export class UserShoppingCartDetailPage {
       this.canClick = false;
     }
     if (this.view == 'selected') {
+      
       this.shoppingCart.modifyBatch(modifyCartVOs).subscribe();
     }
   }

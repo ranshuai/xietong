@@ -48,8 +48,8 @@ export class RongimMessageComponent {
 
   constructor( private events: Events, private httpService: HttpService,public httpConfig: HttpConfig,
                private commonModel: CommonModel,private appCtrl: App) {
-    console.log('Hello RongimMessageComponent Component');
-       this.appCtrl.viewWillEnter.subscribe((view) => {
+      console.log('Hello RongimMessageComponent Component');
+      this.appCtrl.viewWillEnter.subscribe((view) => {
             console.log("当前路由是：--------------",view.instance.constructor.name);
             if(view.instance.constructor.name=="ChatPage"){
                 this.isChatPage=true;

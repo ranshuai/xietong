@@ -35,7 +35,16 @@ export class TabMenuPage {
     index; //tabs 的下标;
   constructor(public navCtrl: NavController, public navParams: NavParams,public app:App,
       private events: Events, public config: Config, public api: Api, public globalDataProvider: GlobalDataProvider, public commonModel: CommonModel, public httpConfig: HttpConfig,public mainCtrl:MainCtrl,public modalCtrl : ModalController,
-              public httpService:HttpService) {
+      public httpService: HttpService) {
+        this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
+        if (data.success) {
+            document.title = data.result || '';
+            this.globalDataProvider.domainNameWX = data.result || '';
+        }
+        });
+        this.app.viewDidEnter.subscribe((view) => { 
+            document.title = this.globalDataProvider.domainNameWX  
+        })
       //订阅新消息
       events.subscribe("recMsg",(msg)=>{
          window.localStorage.setItem("hasUnread",'true');

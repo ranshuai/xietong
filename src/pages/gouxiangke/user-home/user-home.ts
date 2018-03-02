@@ -127,12 +127,12 @@ ionViewWillEnter(){
   ionViewDidEnter() {
     //重新加载轮播图 bug pc后台更新了轮播图的链接 应用没有更新
     this.userhomePage.getHomeHomeDataRefresher();
-    //获取当前域的名称
-    this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
-      if (data.success) {
-        document.title = data.result || '';
-        this.globalDataProvider.domainNameWX = data.result || '';
-      }
-    });
+    // //获取当前域的名称
+    // this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
+    //   if (data.success) {
+    //     document.title = data.result || '';
+    //     this.globalDataProvider.domainNameWX = data.result || '';
+    //   }
+    // });
   }
 }
