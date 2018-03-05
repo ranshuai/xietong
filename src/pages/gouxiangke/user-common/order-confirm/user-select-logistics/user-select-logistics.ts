@@ -92,7 +92,7 @@ export class UserSelectLogisticsPage {
         id:3
       }
     ];
-    this.navCtrl.push('UserNearbySelfPage', {dataList:this.getLogisticsInfoData.pickSelfList })
+    this.commonProvider.goToPage('UserNearbySelfPage', {dataList:this.getLogisticsInfoData.pickSelfList })
   }
 
   //确认
@@ -114,7 +114,7 @@ export class UserSelectLogisticsPage {
     }
     
     this.events.publish('defaultSelectTxt:OrderGoodsListComponent', json);
-    this.navCtrl.pop();
+    this.commonProvider.popToPage();
   }
 
   ionViewDidEnter() {
@@ -123,11 +123,11 @@ export class UserSelectLogisticsPage {
   }
   //获取物流信息
   getLogisticsInfo(address?) {
+    let str;
     let goods = [];
     for (var i = 0; i < this.store.goods.length; i++) { 
       goods.push(this.store.goods[i].goodsId);
     }
-    let str;
     str = address.provinceName + address.cityName + address.districtName +  address.consignee
     this.api.get(this.api.config.host.org + 'pick/type/sort', {
       address: str,
@@ -136,6 +136,7 @@ export class UserSelectLogisticsPage {
     }).subscribe(data => { 
       console.log(data); 
       // data.result ||
+      data.result = '';
       this.getLogisticsInfoData =data.result || 
         {
             "pickSelf":true,

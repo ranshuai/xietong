@@ -8,9 +8,9 @@ import { SpringboardPageModule } from "../pages/springboard/springboard.module";
 import { Code404PageModule} from "../pages/wechat/code404/code404.module"
 
 //每个卡牌的页面组件
-// import { LogisticsSharedModule } from "../pages/logistics/shared/logistics-shared.module";
-// import { ResultsPageModule} from "../pages/logistics/results/results.module";
-// import { ReceiveOrderPageModule} from "../pages/logistics/receive-order/receive-order.module";
+import { LogisticsSharedModule } from "../pages/logistics/shared/logistics-shared.module";
+import { ResultsPageModule} from "../pages/logistics/results/results.module";
+import { ReceiveOrderPageModule} from "../pages/logistics/receive-order/receive-order.module";
 
 
 /******************** 消费者 店铺 ********************************/
@@ -88,9 +88,9 @@ export class FunDebugErrorHandler implements ErrorHandler {
     IonicStorageModule.forRoot(),
     SpringboardPageModule,
     Code404PageModule,
-    // LogisticsSharedModule,
-    // ResultsPageModule,
-    // ReceiveOrderPageModule,
+    LogisticsSharedModule,
+    ResultsPageModule,
+    ReceiveOrderPageModule,
     PipesModule,
     DirectivesModule,
     SharedsModule,

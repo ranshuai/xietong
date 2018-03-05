@@ -165,8 +165,14 @@ export class StoreClaimPage {
         buttons: ['确认']
       });
       loading.dismiss();
+      let success = data.success;
       setTimeout(() => {
         alert.present();
+        alert.onDidDismiss(data => { 
+          if (success) { 
+            this.mainCtrl.thirdPartyApi.closeWeixin()
+          }
+        })
        },300)
     })
   }

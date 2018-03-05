@@ -37,22 +37,20 @@
             <ion-label>买家备注：</ion-label>
             <ion-input placeholder="（选填）请填写对商家的留言信息~" [(ngModel)]="store.leaveMessage"></ion-input>
           </ion-item>
-          <!-- 运费模版 没有发布隐藏 -->
-          <!-- <div class="self_ion_item R_clearfix" (click)="goToSelectLogistics(store,_index)">
+          <div class="self_ion_item R_clearfix" (click)="goToSelectLogistics(store,_index)">
             <span>配送方式：</span>
             <span class = "R_fr">
                 {{store.defaultSelectTxt}}
             </span>
-          </div> -->
+          </div>
           <div class="total">
             <div class="left">商品合计</div>
             <div class="price">{{ store.price | currency:'CNY':true }}</div>
           </div>
-          <!-- 运费模版 没有发布隐藏 -->
-          <!-- <div class="total">
+          <div class="total">
               <div class="left">运费</div>
               <div class="price">{{ store.freight || 0 | currency:'CNY':true }}</div>
-            </div> -->
+            </div>
         </div>
       </div>
     </div>

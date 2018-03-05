@@ -14,7 +14,7 @@ hot-goods-swiper {
         align-items: flex-start;
         // box-shadow: 0 0 pxrem(20) pxrem(5) $greyShadow;
         .img-wrap {
-          height: pxrem(285);
+          height: pxrem(260);
           img {
             width: 100%;
             height: 100%;
@@ -38,6 +38,14 @@ hot-goods-swiper {
           color: #FF0A0A;
           position: absolute;
           bottom: pxrem(-30);
+        }
+        .buyminNum{
+          width: 100%;
+          height: pxrem(40);
+          font-size: pxrem(20);
+          line-height: pxrem(40);
+          text-align: left;
+          color: #a3a3a3;
         }
       }
     }

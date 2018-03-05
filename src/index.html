@@ -33,10 +33,10 @@
       }
       document.body.appendChild(i);
     }
-
-
-
-
+    var  protocol=window.location.protocol;
+    var  hostname=window.location.hostname;
+    window.localStorage.setItem("currentHost",protocol+"//"+window.location.host+"/");
+//       alert("当前域名是："+protocol+"//"+window.location.host+"/");
     window.localStorage.host = window.location.host; //全局的host字符串，用来
     //获取url参数
     function getQueryString(name) {
@@ -73,12 +73,10 @@
     //获取微信授权
     function getAuthToken(data) {
       //第一次通过URL进入，获取shareId，并存储
-      //  var shareId = getQueryString('shareId'); //分享的Id
-      // if (shareId) {
-      //   window.localStorage.setItem('shareId', shareId);
-      //   window.localStorage.setItem('storeUrl', window.location.hash);
-      // }
-
+       var shareId = getQueryString('shareId'); //分享的Id
+      if (shareId) {
+        window.sessionStorage.setItem('shareId', shareId);
+      }
       window.localStorage.setItem('appId', data.appid);
       var openId = getQueryString('openId');
       if (openId && openId != 'null') {
@@ -104,7 +102,7 @@
           }else{
             window.colink.clientType=window.sessionStorage.getItem('clientType');
           if(window.colink.clientType=='2'){
-            let storeId=getQueryString('storeId');
+            var storeId=getQueryString('storeId');
             window.colink.storeId=storeId?storeId:null;
           }
           }
@@ -121,7 +119,7 @@
 
     // 获取跳转url跟type
     function getUrl(space) {
-      let url='https://t.o.snsall.com/v2/auth2/userAccessTokenBefore?type=1';
+      var url='https://t.o.snsall.com/v2/auth2/userAccessTokenBefore?type=1';
       //店铺开店没有店铺ID
       if(window.location.hash.indexOf('#/open_store')==-1 || window.location.hash.indexOf('#/store_claim')==-1){
         if(window.sessionStorage.getItem('clientType')=='2'&&getQueryString('storeId')){
@@ -175,12 +173,14 @@
     //是否是微信浏览器
     function is_Wx() {
       //购享客 DF4D69929FD7F405 独角鲸 92E21DE17C0CE872
-      window.colink={
-       space:'DF4D69929FD7F405',//域或店铺的appkey
-        storeId:null,//如果是店铺 传店铺id
-        clientType:'1',//'1'是域 '2'是店铺
-        host:'test',//  'dev'  'test' 'prod'
-      }
+     
+        window.colink={
+            space:'DF4D69929FD7F405',//域或店铺的appkey (!在微信中会根据域名获取 强制替换)
+            storeId:null,//如果是店铺 传店铺id    (!在微信中会根据域名获取 强制替换)
+            clientType:'1',//'1'是域 '2'是店铺   (!在微信中会根据域名获取 强制替换)
+            host:'test',//  'dev'  'test' 'prod'
+        }
+
       var ua = window.navigator.userAgent.toLowerCase();
       if (ua.match(/MicroMessenger/i) == 'micromessenger') {
         init();
@@ -223,7 +223,7 @@
 
 
   <!-- Ionic's root component and where the app will load -->
-  <ion-app></ion-app>
+  <ion-app id="app"></ion-app>
 
   <!-- The polyfills js is generated during the build process -->
   <script src="build/polyfills.js"></script>

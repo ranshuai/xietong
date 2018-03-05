@@ -6,18 +6,22 @@
       <div class="img-wrap"> 
         <p class="self_nearby" *ngIf="item.goods_meter">距您{{filterKM(item.goods_meter)}}</p>
         <img-lazy-load [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)"></img-lazy-load>
-        <!-- <img [src]="mainCtrl.imgFilter(item.original_img,imgSpace) || mainCtrl.imgFilter(item.originalImg,imgSpace)"> -->
+
       </div>
       <div class="name self_single">{{ item.goods_name || item.goodsName }}</div>
       <div class="self_min_buy_num_warp">
-          <div class="name self_min_buy_num R_margin_top_36 " *ngIf="getTemplate == 2 &&commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1' && item.minBuyNum > 0 "> 起批数量：{{ item.minBuyNum}}</div>
-          <div class="name self_min_buy_num" *ngIf="getTemplate != 2 && commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1'&& item.minBuyNum > 0 "> 起批数量：{{ item.minBuyNum}}</div>
+        <div class="name self_min_buy_num">
+          <span class="coupon-icon" *ngIf="item.hasSale">券</span>
+          <span class="gift-icon" *ngIf="item.hasGifts">赠</span> 
+          <span *ngIf="commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1' && item.minBuyNum > 0 ">起批数量：{{ item.minBuyNum}}</span>
+        </div>
+          <!-- <div class="name self_min_buy_num" *ngIf="getTemplate != 2 && commonModel.APP_INIT['getAppconfig'].data && commonModel.APP_INIT['getAppconfig'].data.is_allow_minbuynum == '1'&& item.minBuyNum > 0 "> 起批数量：{{ item.minBuyNum}}</div> -->
       </div> 
       
       <div class="price self_price">
         {{ item.shop_price || item.shopPrice || item.goodsPrice || item.price || item.marketPrice | currency:'CNY':true }}
-        <span class="coupon-icon" *ngIf="item.hasSale">券</span>
-        <span class="gift-icon" *ngIf="item.hasGifts">赠</span>
+        <!-- <span class="coupon-icon" *ngIf="item.hasSale">券</span>
+        <span class="gift-icon" *ngIf="item.hasGifts">赠</span> -->
       </div>
       <div class="cart-btn" (click)="addCart($event, item)">
         <ion-icon name="ios-cart"></ion-icon>

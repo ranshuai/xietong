@@ -45,12 +45,6 @@
   </div>
 
   <div class="line order-name">
-    <ion-icon class="ion-ios-icon-gxk-97"></ion-icon>
-    <div class="r">配送方式：{{ data.shippingType }}</div>
-  </div>
-
-
-  <div class="line order-name">
     <ion-icon class="ion-ios-icon-gxk-83"></ion-icon>
     <div class="r">
       <div class="person">收货人：
@@ -114,22 +108,6 @@
     </div>
   </div>
 
-  <div class="line line-b order-name"  *ngIf="view == 'delivering'">
-    <ion-icon class="ion-ios-icon-gxk-80"></ion-icon>
-    <div class="r">
-      <div class="r-l">
-        提货码：
-      </div>
-      <div class="r-r">
-        <span>{{data.pickCode}}</span>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
  <!-- 待付款底部 -->
  <div class="operate" *ngIf="view == 'notPay'" >
     <button ion-button (click)="goOderPricePage(data)">订单改价</button>
@@ -148,15 +126,8 @@
   <div class="operate " *ngIf="view == 'delivering'" [ngClass]="{'row_c2':commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'}" >
     <!-- <button class="l" ion-button>修改单号</button> -->
     <!-- <button class="r" ion-button>查看物流</button> -->
-    <div class="buttons-box" *ngIf="data.shippingType != '到店自提'" >
-      <button  ion-button (click)="viewSign()"  *ngIf="commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'">确认签收</button>
-      <button ion-button (click)="viewLogistics()">查看物流</button>
-    </div>
-
-    <div class="buttons-box" *ngIf="data.shippingType == '到店自提'" >
-      <button  class="full-button" ion-button (click)="viewSign()"  *ngIf="commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'">确认取货</button>
-    </div>
-  
+    <button ion-button (click)="viewSign()"  *ngIf="commonModel.APP_INIT['getAppconfig'].data.is_allow == 1 && data.shippingCode != 'carSelf'">确认签收</button>
+    <button ion-button (click)="viewLogistics()">查看物流</button>
   </div>
 
   <!-- 售后的底部信息 -->

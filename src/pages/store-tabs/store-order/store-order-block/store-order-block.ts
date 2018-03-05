@@ -53,7 +53,6 @@ export class StoreOrderBlockComponent {
   }
 
   sendOrder() {
-    // this.data.shippingType = "到店自提";
     let modal = this.modalCtrl.create(this.storeSendGoodsPage, { order: this.data });
     modal.present({ animate: false });
     modal.onDidDismiss(data => {

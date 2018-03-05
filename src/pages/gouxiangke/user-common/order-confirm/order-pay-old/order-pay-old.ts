@@ -47,6 +47,7 @@ export class OrderPayOldPage {
   ) {
     this.order = navParams.get('order');
     this.storeIds = navParams.get('storeIds');
+
   }
 
   ionViewDidLoad() {
@@ -55,14 +56,16 @@ export class OrderPayOldPage {
     this.shoppingCart.getShoppingCartInfo().subscribe(data => {
 
     })
-    //支付方式查询
-    this.api.get(this.api.config.host.org + 'companyInfo/payType/multiple', {
+    
+     //支付方式查询
+     this.api.get(this.api.config.host.org + 'companyInfo/payType/multiple', {
       storeIds:this.storeIds
     }).subscribe(data => { 
       if (data.success) {
         this.payTypes = data.result;
       }
     })
+
   }
 
   ionViewDidLeave(){

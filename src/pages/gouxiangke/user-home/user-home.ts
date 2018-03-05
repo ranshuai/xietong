@@ -125,7 +125,6 @@ ionViewWillEnter(){
   }
 
   ionViewDidEnter() {
-    //重新加载轮播图 bug pc后台更新了轮播图的链接 应用没有更新
     this.userhomePage.getHomeHomeDataRefresher();
   }
 }

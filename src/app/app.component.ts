@@ -45,9 +45,6 @@ export class MyApp {
 
                 public app:App) {
         platform.ready().then(() => {
-
-            // this.commonModel.userId = "75803";
-            this.commonModel.userId = "75816"; 
             //设置公用信息平台信息配置
             this.mainCtrl.setPlatfrom();
             //获取平台启动必须项
@@ -410,6 +407,13 @@ export class MyApp {
                     console.log('浏览器返回事件'+ window.location.hash) 
                     // console.log('当前浏览器地址记录长度是'+document.title)
                 }, false)
+                //针对IOS 在微信端横屏处理
+                window.addEventListener("orientationchange",()=>{              
+                    setTimeout(() => {
+                        document.getElementById('app').style.height = document.documentElement.clientHeight + 'px';
+                        document.getElementById('app').style.width = document.documentElement.clientWidth + 'px';
+                    }, 100);
+                }, false);
                 //所有页面返回都会触发此事件
                 //      this.appCtrl.viewDidEnter.subscribe((app) => {
                 //   }); 

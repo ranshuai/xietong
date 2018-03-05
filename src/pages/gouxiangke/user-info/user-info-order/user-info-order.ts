@@ -4,16 +4,16 @@ import { MainCtrl } from './../../../../providers/MainCtrl';
 import { UserCommon } from './../../providers/user/user-common';
 import { Component, ViewChild } from '@angular/core';
 
-import { NavController, NavParams, IonicPage, Content, AlertController,App,ModalController,Events,LoadingController } from 'ionic-angular';
+import { NavController, NavParams, IonicPage, Content, AlertController,App,ModalController,Events } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
 import { CommonData } from '../../providers/user/commonData.model';
+import { LoadingController } from "ionic-angular";
 import { OrderAlertModalPage } from './user-info-order-modal/order-alert-modal/order-alert-modal';
 import { OrderWholesalePage } from './order-wholesale/order-wholesale';
 import {ThirdPartyApiProvider} from "../../providers/third-party-api/third-party-api";
 import {Config} from "../../providers/api/config.model";
 import { Storage } from '@ionic/storage';
-
 
 /**
  * Generated class for the UserInfoOrderPage page.
@@ -89,7 +89,7 @@ export class UserInfoOrderPage {
               public commondata: CommonData,public storage:Storage,
               public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config, public userCommon: UserCommon, public modalCtrl: ModalController,
-    public mainCtrl: MainCtrl,public events:Events,public commonModel:CommonModel,public  loadingCtrl:LoadingController,public shoppingCart:ShoppingCart
+    public mainCtrl: MainCtrl,public events:Events,public commonModel:CommonModel,public loadingCtrl:LoadingController,public shoppingCart:ShoppingCart
               
 
     ) {
@@ -331,29 +331,29 @@ export class UserInfoOrderPage {
   openChangeModal(item) {
     this.common.openChangeModal(this.orderLogisticsInfoPage, false, { orderId: item.orderId }).subscribe();
   }
+     //再来一单
+     copayOrder(item) {
+      let loading = this.loadingCtrl.create({
+        dismissOnPageChange: true,
+        content: '提交中，请稍后...'
+      });
+      loading.present();
+      this.api.get(this.api.config.host.bl + '/shop/one/more/' + item.orderId, {}).subscribe(data => {
+        loading.dismiss()
+        if (data.success){
+          this.navCtrl.push('UserShoppingCartDetailPage', { shoppCartFlag: true });
+  
+          this.shoppingCart.getShoppingCartInfo().subscribe();
+          this.events.publish('shoppingCart:refresh')
+          
+        }
+        setTimeout(() => {
+          this.common.tostMsg({ msg: data.msg ||'连接异常'})
+        },800)
+      })
+  
+    }
 
-  //再来一单
-  copayOrder(item) {
-    let loading = this.loadingCtrl.create({
-      dismissOnPageChange: true,
-      content: '提交中，请稍后...'
-    });
-    loading.present();
-    this.api.get(this.api.config.host.bl + '/shop/one/more/' + item.orderId, {}).subscribe(data => {
-      loading.dismiss()
-      if (data.success){
-        this.navCtrl.push('UserShoppingCartDetailPage', { shoppCartFlag: true });
-
-        this.shoppingCart.getShoppingCartInfo().subscribe();
-        this.events.publish('shoppingCart:refresh')
-        
-      }
-      setTimeout(() => {
-        this.common.tostMsg({ msg: data.msg ||'连接异常'})
-      },800)
-    })
-
-  }
 
     //页面初始化
   ionViewDidEnter() {

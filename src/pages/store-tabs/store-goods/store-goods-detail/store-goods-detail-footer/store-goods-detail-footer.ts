@@ -10,6 +10,7 @@ import { GlobalDataProvider } from "../../../../gouxiangke/providers/global-data
 import { Storage } from '@ionic/storage';
 import {ThirdPartyApiProvider} from "../../../../gouxiangke/providers/third-party-api/third-party-api";
 import { Config } from "../../../../gouxiangke/providers/api/config.model";
+import {HttpConfig} from "../../../../../providers/HttpConfig";
 
 
 /**
@@ -38,7 +39,7 @@ export class StoreGoodsDetailFooterComponent {
     public storage:Storage,
     public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config,
-    public commonModel:CommonModel
+    public commonModel:CommonModel,public httpConfig:HttpConfig
   ) { 
   }
 
@@ -48,7 +49,7 @@ export class StoreGoodsDetailFooterComponent {
    */
   chat() {
     console.log("点击客服按钮了！");
-    if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX') {
+    if (this.config.PLATFORM == 'WX' || this.config.PLATFORM == 'STOREAPPWX'||!this.httpConfig.isMsgShow) {
       this.common.showToast('敬请期待')
       return 
      }

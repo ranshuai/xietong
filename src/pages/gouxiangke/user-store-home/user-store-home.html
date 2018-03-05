@@ -11,7 +11,7 @@
   <!-- 广告 -->
   <user-home-ad *ngIf="advImgs.length > 0" [data]="advImgs"></user-home-ad>
   <!-- 需求改动没有轮播图也显示搜索条 老盛-->
-  <search-bar-fake placeholder="输入搜索商品名的关键词"></search-bar-fake>
+  <search-bar-fake class="search" placeholder="输入搜索商品名的关键词"></search-bar-fake>
   <!-- 模板一 -->
   <div class="template1" *ngIf="template == 1">
 
@@ -136,30 +136,60 @@
   <!-- 模板四 -->
   <div class="template4" *ngIf="template == 4">
 
-    <div class="shortcut clear" *ngIf="navImgs.length > 0">
+    <!-- <div class="shortcut clear" *ngIf="navImgs.length > 0">
       <div class="coupon" (click)="goToCouponPage()" *ngIf="navImgs[0]" [ngBackImg]="{ img: navImgs[0].adCode }">优惠券</div>
       <div class="order" (click)="goToHistoryOrderPage()" *ngIf="navImgs[1]" [ngBackImg]="{ img: navImgs[1].adCode }">历史订单</div>
       <div class="collect" (click)="goToCollectPage()" *ngIf="navImgs[2]" [ngBackImg]="{ img: navImgs[2].adCode }">我的收藏</div>
       <div class="user" (click)="goToUserInfoPage()" *ngIf="navImgs[3]" [ngBackImg]="{ img: navImgs[3].adCode }">个人中心</div>
-    </div>
+    </div> -->
 
-    <div class="shortcut clear" *ngIf="navImgs.length == 0">
+    <!-- <div class="shortcut clear" *ngIf="navImgs.length == 0">
       <div class="coupon" (click)="goToCouponPage()">优惠券</div>
       <div class="order" (click)="goToHistoryOrderPage()">历史订单</div>
       <div class="collect" (click)="goToCollectPage()">我的收藏</div>
       <div class="user" (click)="goToUserInfoPage()">个人中心</div>
+    </div> -->
+    <div class="homeNav">
+      <div class="home nav" (click)="goToCategoryPage()">
+        <div class="icons">
+          <ion-icon class="icon ion-ios-icon-gxk-146-outline"></ion-icon>
+        </div>
+        <p>全部分类</p>
+      </div>
+      <div class="homeNear nav" (click)="goToHistoryOrderPage()">
+          <div class="icons"><ion-icon class="icon ion-ios-icon-gxk-94"></ion-icon></div>
+          <p>我的订单</p>
+      </div>
+      <div class="homeHost nav" (click)="goToCollectPage()">
+          <div class="icons"><ion-icon class="icon ion-ios-icon-gxk-57"></ion-icon></div>
+          <p>我的收藏</p>
+      </div>
+      <div class="homeHistory nav" (click)="goToCouponPage()">
+          <div class="icons">
+            <ion-icon class="icon ion-ios-icon-gxk-76"></ion-icon></div>
+          <p>优惠券</p>
+      </div>
     </div>
 
-    <title-more *ngIf="hotGoodsList" title="促销活动" noMore="true"></title-more>
-    <hot-goods-swiper *ngIf="hotGoodsList" [data]="hotGoodsList" slidesPerView="3.64" spaceBetween="40"></hot-goods-swiper>
+    <!-- <title-more *ngIf="hotGoodsList" title="促销活动" noMore="true"></title-more> -->
+    <div class="title">
+      <img src='assets/img/group.png' />
+    </div>
+    <hot-goods-swiper *ngIf="hotGoodsList && hotGoodsList.length > 0" [data]="hotGoodsList"></hot-goods-swiper>
+    <div class="hotGoods" *ngIf="hotGoodsList && hotGoodsList.length == 0">
+      <img src="assets/img/defaulthot.png" />
+    </div>
 
     <div class="ad-wrap" *ngIf="adImg">
       <div class="ad-img" [ngBackImg]="{img:adImg}"></div>
       <span>广告</span>
     </div>
 
-    <title-more title="商品列表" noMore="true"></title-more>
-    <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="22"></goods-list-block>
+    <!-- <title-more title="商品列表" noMore="true"></title-more> -->
+    <div class="title bgcolor">
+      <img src="assets/img/poromotion.png">
+    </div>
+    <goods-list-block class="goods" #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="22"></goods-list-block>
 
   </div>
   <user-shopping-cart></user-shopping-cart>

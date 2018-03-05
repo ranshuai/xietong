@@ -1,6 +1,7 @@
+import { MainCtrl } from './../../../../providers/MainCtrl';
 import { CommonModel } from './../../../../providers/CommonModel';
 import { Config } from './../../providers/api/config.model';
-import { ThirdPartyApiProvider } from './../../providers/third-party-api/third-party-api';
+import { ThirdPartyApiProvider } from './../../../../providers/third-party-api';
 import { UserCommon } from './../../providers/user/user-common';
 import { Component, ViewChild,ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content, Slides } from 'ionic-angular';
@@ -16,10 +17,7 @@ import {HttpConfig} from "../../../../providers/HttpConfig";
  * See http://ionicframework.com/docs/components/#navigation for more info
  * on Ionic pages and navigation.
  */
-@IonicPage({
-  segment: 'store/:store_id',
-  defaultHistory: ['UserPage']
-})
+@IonicPage()
 @Component({
   selector: 'page-store-detail',
   templateUrl: 'store-detail.html',
@@ -43,7 +41,9 @@ export class StoreDetailPage {
     public userCommon: UserCommon,
     public thirdPartyApiProvider: ThirdPartyApiProvider,
     public config: Config,
-    public commonModel:CommonModel
+    public commonModel: CommonModel,
+    public mainCtrl:MainCtrl
+
   ) {
     this.storeId = this.navParams.get('store_id');
     if (this.storeId) {
@@ -59,7 +59,7 @@ export class StoreDetailPage {
   }
 
   chat_web(){
-    if (this.httpConfig.clientType == '1') {
+    if (this.httpConfig.clientType == '1'&&this.httpConfig.isMsgShow) {
       this.navCtrl.push('ChatPage',{
         "toUserId": this.storeInfo.directorId,
         "toUserName": this.storeInfo.companyAlias||"",
@@ -75,16 +75,18 @@ export class StoreDetailPage {
         this.storeInfo = data.result.storeIndexVO;
 
         //注入分享 GXK 微信分享 (独有)
-        if (this.config.PLATFORMTYPE = 'WX') { 
-          let link ='http://' + window.localStorage.host+'/?shareId='+this.commonModel.userId+'#/store/'+this.storeId ;
-          this.thirdPartyApiProvider.shareWx({ title:this.storeInfo && this.storeInfo.companyName,link:link,imgUrl:this.storeInfo && this.storeInfo.headPic,desc:this.storeInfo && this.storeInfo.unitIntroduction})
+        if (this.config.PLATFORM == 'WX') { 
+          let link 
+          link = this.mainCtrl.commonModel.APP_INIT['getAppconfig'].data.app_net_url + '?shareId=' + this.mainCtrl.commonModel.userId +'#/store/' + this.storeId;
+          this.thirdPartyApiProvider.shareWx({ title:data.result.goodsName,link:link,imgUrl:this.storeInfo && this.storeInfo.headPic,desc:this.storeInfo && this.storeInfo.unitIntroduction});
         }
+
       }
     });
   }
 
   search(searchValue) {
-    this.common.goToPage('SearchPage', { searchValue: searchValue, storeId:this.storeId})
+    this.navCtrl.push('SearchPage', { searchValue: searchValue, storeId:this.storeId})
   }
 
   collect(status) {

@@ -70,11 +70,11 @@ export class ShoppingCart {
           observer.next(false);
           return;
         }
-        this.api.post(this.api.config.host.bl + 'shop/cart/1/add', {
+        this.api.post(this.api.config.host.bl + 'shop/cart/'+ (data.shareId ? 4 : 1)+'/add', {
           goodsId: data.goodsId,
           goodsSpec: data.goodsSpec,
           goodsNum: data.goodsNum,
-          shareId: window.localStorage.shareId,
+          shareId: data.shareId,
           isCheck: 0
         }).subscribe(data => {
           if (data.success) {
@@ -239,6 +239,7 @@ export class ShoppingCart {
         goodsSpecKey: data.goodsSpecKey,
         sourceFrom: 2,
         postAge: 0,
+        shareId:data.shareId,
         pickId: this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf&&this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf.id,
         pickName:this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf&&this.commonModel.pageOrderConfirmSelfInfo.defaultNearbySelf.pickName
       };

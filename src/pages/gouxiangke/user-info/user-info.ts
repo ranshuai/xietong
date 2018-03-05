@@ -144,7 +144,7 @@ export class UserInfoPage {
         this.common.openMobileModal().subscribe(() => {
           this.navCtrl.push(this.userSetMobilePage, { type: 1 });
         })
-      }
+      } 
       this.getUserInfo();
       return 
      }

@@ -154,7 +154,7 @@ export class UserSetPage {
       this.user = null;
       this.api.userId = 0;
  
-      if(this.httpConfig.clientType=='1'){
+      if(this.httpConfig.clientType=='1'&&this.httpConfig.isMsgShow){
           this.events.publish("RongIMLogout");
       }
 

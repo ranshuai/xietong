@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="goods-list">
-        <div class="goods-item" *ngFor="let goods of store.goods">
+        <div class="goods-item" *ngFor="let goods of store.goods" (click)="goToGoodsDetail(goods)">
           <div class="left">
             <ion-checkbox [checked]="goods[view]" (click)="checkGoods(store, goods)"></ion-checkbox>
             <div class="img-warp R_pr">

@@ -38,10 +38,10 @@ export class HttpConfig {
           org: 'https://o.snsall.com/'
         }
   };
-
+    isMsgShow=false;
   //测试环境,会根据headers中的数据，来切换
   host:any;
-    baseUrl="http://jsp.snsall.com";
+    baseUrl= window.localStorage.getItem("currentHost");
     // baseUrl="http://wow.snsall.com";//独角鲸微信需要用到
 
   /********接口名称 调用方法最好和此明明一样 方便后期搜索******/
@@ -96,6 +96,12 @@ export class HttpConfig {
         "store_claim": {
             isRoot: true,
             ionicPage: 'StoreClaimPage',
+        },
+        "store": {
+            isRoot: false,
+            ionicPage: 'StoreDetailPage',
+            root: 'TabMenuPage',
+            key: ['store_id']
         }
     }  
   

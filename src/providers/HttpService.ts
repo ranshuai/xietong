@@ -48,7 +48,8 @@ export class HttpService {
   }
 
 
-  public get(url: string, paramMap: any = null, header: any = {}){
+  public get(url: string, paramMap: any = null, header: any = {}) {
+    header['Content-Type'] = 'application/json; charset=UTF-8';
     return this.request(url, new RequestOptions({
       method: RequestMethod.Get,
       search: HttpService.buildURLSearchParams(paramMap),

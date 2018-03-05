@@ -271,7 +271,7 @@ export class CommonProvider {
       this.count == true ? title = "请绑定您的手机号~" : title = "开店需绑定手机号~";
       let alert = this.alertCtrl.create({
         title: title,
-        enableBackdropDismiss: false,
+        enableBackdropDismiss: true,
         buttons: [{
           text: '去绑定',
           handler: () => {

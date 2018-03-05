@@ -28,7 +28,7 @@ export class TabMenuPage {
     userInfoPage;//个人
     snsUserInfoPage; //消息 
     userCartPage;// STOREAPP=》购物车 
-
+    isMsgShow=false;
     msgEle;
     badgeEle;
     isShowPoint: any = true;
@@ -36,19 +36,8 @@ export class TabMenuPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public app:App,
       private events: Events, public config: Config, public api: Api, public globalDataProvider: GlobalDataProvider, public commonModel: CommonModel, public httpConfig: HttpConfig,public mainCtrl:MainCtrl,public modalCtrl : ModalController,
       public httpService: HttpService) {
-      
-        this.api.get(this.api.config.host.bl + 'v2/CompanyInfo/get/index', {
-            storeId:this.httpConfig.storeId
-        }).subscribe((data) => {
-           if (data.success) {
-             //this._selfTitle = data.result.storeIndexVO && data.result.storeIndexVO.companyName;
-             this.globalDataProvider.domainNameWX = data.result.storeIndexVO.companyName;
-           }
-        });
-  
-        this.app.viewDidEnter.subscribe((view) => { 
-            document.title = this.globalDataProvider.domainNameWX  
-        })
+
+      this.isMsgShow=this.httpConfig.isMsgShow;
       //订阅新消息
       events.subscribe("recMsg",(msg)=>{
          window.localStorage.setItem("hasUnread",'true');
@@ -104,18 +93,45 @@ export class TabMenuPage {
       console.log("即将离开底部菜单TabMenu");
   }
     ionViewDidLoad() {
+         
+      if (this.httpConfig.clientType == '1') {
+        //获取域商城
+        this.api.get(this.api.config.host.org + 'domain/selectDomainName').subscribe(data => {
+            if (data.success) {
+                document.title = data.result || '';
+                this.globalDataProvider.domainNameWX = data.result || '';
+            }
+        });
+    } else { 
+      this.api.get(this.api.config.host.bl + 'v2/CompanyInfo/get/index', {
+          storeId: this.httpConfig.storeId
+      }).subscribe((data) => {
+          if (data.success) {
+          //this._selfTitle = data.result.storeIndexVO && data.result.storeIndexVO.companyName;
+          this.globalDataProvider.domainNameWX = data.result.storeIndexVO.companyName;
+          }
+      });
+    }
+    
+      
+    this.app.viewDidEnter.subscribe((view) => { 
+        setTimeout(() => { 
+            document.title = this.globalDataProvider.domainNameWX;  
+        }, 300)
+      })
+        if (this.httpConfig.isMsgShow) {
 
-        let messageMenu=this.tabs.getNativeElement();
-        // let customeMsgEle=this.customeMsgTab.nativeElement;
+            let messageMenu = this.tabs.getNativeElement();
+            // let customeMsgEle=this.customeMsgTab.nativeElement;
 
-        this.msgEle =messageMenu.querySelectorAll("a.tab-button")[1];//消息菜单
-        if( this.msgEle){
-            this.badgeEle=this.msgEle.querySelector("ion-badge.tab-badge");//消息角标
-            this.msgMenuClick(); // 给消息菜单设置点击事件
+            this.msgEle = messageMenu.querySelectorAll("a.tab-button")[1];//消息菜单
+            if (this.msgEle) {
+                this.badgeEle = this.msgEle.querySelector("ion-badge.tab-badge");//消息角标
+                this.msgMenuClick(); // 给消息菜单设置点击事件
+            }
+            //查询是否有新消息
+            this.getTotalUnreadCount();
         }
-        //查询是否有新消息
-        this.getTotalUnreadCount();
-
         //微信只能的得到userId 通过userId获取用户信息
             if (this.httpConfig.clientType == '2') {
                 this.api.get(this.api.config.host.org + 'user/userinfo').subscribe(data => {
@@ -166,21 +182,11 @@ export class TabMenuPage {
 
   }
   msgMenuClick(){
-      this.msgEle.addEventListener("click",()=>{
-      console.log("消息菜单被点击了...");
-          this.events.publish('enterSnsPage');
-      });
+      // this.msgEle.addEventListener("click",()=>{
+      // console.log("消息菜单被点击了...");
+      //     this.events.publish('enterSnsPage');
+      // });
   }
-  
-   //监听tabs的change事件
-    changeTabs() {
-    //进入购物车tab 隐藏购物车图标
-        if (this.tabs.getSelected().tabTitle =='购物车') {
-            this.commonModel.shoppingCartHide = true;
-        } else { 
-            this.commonModel.shoppingCartHide = false;
-        }
-    }  
 
     ngAfterViewInit() {
 
@@ -191,11 +197,14 @@ export class TabMenuPage {
             }
         }, 30)
     }
-
     ionViewWillEnter(){
         window.localStorage.setItem("currentPage","tabMenu");
-        //查询是否有新消息
-        this.getTotalUnreadCount();
+        if (this.httpConfig.isMsgShow) {
+
+            //查询是否有新消息
+            this.getTotalUnreadCount();
+
+        }
         if (this.tabs.getSelected()) { 
             if (this.tabs.getSelected().tabTitle == '个人') {
                 if (this.commonModel.TAB_INIT_USERINFO) { 
@@ -252,5 +261,4 @@ export class TabMenuPage {
         }
 
     }
-    
 }

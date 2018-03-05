@@ -42,8 +42,8 @@ export class SearchPage {
   ) {
     //从参数获取value
     let searchValue = navParams.get('searchValue');
-    let storeId = '1';
-    // storeId ? (this.searchParams.headers as any).storeId = storeId : '';
+    let storeId = this.navParams.get('storeId');
+    storeId ? (this.searchParams.headers as any).storeId = storeId : '';
     if (window.localStorage.getItem('searchEnd') == 'true') {
       this.searchHistory = (window.localStorage.getItem('searchHistory') && window.localStorage.getItem('searchHistory').split(',')) || [];
      }
@@ -92,11 +92,9 @@ export class SearchPage {
       setTimeout(() => { 
         this.goodsListBlockComponent.init(); //触发搜索
         loading.dismiss();
-      this.saveHistory(this.searchValue);
-        
-      }, 1000)
-      
-      //保存搜索记录
+        //保存搜索记录
+        this.saveHistory(this.searchValue);
+      },1000)
      }
   }
 

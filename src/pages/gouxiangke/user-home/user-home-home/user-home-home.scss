@@ -220,7 +220,7 @@ page-user-home-home {
     justify-content: space-between;
     margin: pxrem(20) 0;
     .nav{
-      width: 25%;
+      width: 33.3%;
       text-align: center;
       .icons{
         width: pxrem(84);
@@ -290,17 +290,11 @@ page-user-home-home {
   .title{
     .wrap{
       background-color: #f5f5f5;
-      .left{
-        margin-left: 36%;
-      }
     }
   }
   .titles{
     .wrap{
       background-color: #fff;
-      .left{
-        margin-left: 36%;
-      }
     }
   }
 }

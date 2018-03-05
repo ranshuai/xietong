@@ -1,3 +1,4 @@
+import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component } from '@angular/core';
 import { NativeService } from "../../../../providers/NativeService";
 import { CommonModel } from "../../../../providers/CommonModel";
@@ -20,7 +21,8 @@ export class HomeQrcodeComponent {
   constructor(
     private nativeService: NativeService,
     public commonModel: CommonModel,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    private mainCtrl: MainCtrl,
   ) {
     console.log('Hello HomeQrcodeComponent Component');
     this.text = 'Hello World';
@@ -30,19 +32,20 @@ export class HomeQrcodeComponent {
    * 打开二维码
    */
   openQcScanner() { 
-    this.nativeService.OpenBarcodeScanner().subscribe(data => {
-      if (this.commonModel.userId) {
-        if (data.text) { 
-          if (data.text.indexOf('queryUserApply') > -1) {
-            // this.queryIsenrol(data.text.split('/').pop())
-          } else { 
-           this.nativeService.showToast('请扫描正确活动二维码') 
-          }
-        } 
-      } else {
-        this.navCtrl.push('PublicLoginPage');
-      }
-    })
+    this.mainCtrl.nativeService.showToast('此功能正在开发中，敬请期待~');
+    // this.nativeService.OpenBarcodeScanner().subscribe(data => {
+    //   if (this.commonModel.userId) {
+    //     if (data.text) { 
+    //       if (data.text.indexOf('queryUserApply') > -1) {
+    //         // this.queryIsenrol(data.text.split('/').pop())
+    //       } else { 
+    //        this.nativeService.showToast('请扫描正确活动二维码') 
+    //       }
+    //     } 
+    //   } else {
+    //     this.navCtrl.push('PublicLoginPage');
+    //   }
+    // })
   }
 
 }

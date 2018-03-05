@@ -8,7 +8,7 @@
 
   <ion-navbar>
 
-    <ion-title>购物车 {{shoppCartFlag}}</ion-title>
+    <ion-title>购物车</ion-title>
 
     <ion-buttons end *ngIf="shoppingCartInfo">
       <button (click)="changeView('edit')" *ngIf="view == 'selected'">编辑</button>
@@ -34,7 +34,7 @@
   </div>
 </ion-content>
 
-<ion-footer #shoppingCartFooter>
+<ion-footer>
   <ion-toolbar *ngIf="shoppingCartInfo">
 
     <div class="all-btn" *ngIf="shoppingCartInfo">

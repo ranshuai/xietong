@@ -107,6 +107,9 @@ export class GoodsDetailFooterComponent {
    * 客服聊天（融云）
    */
   chat() {
+    if (!this.httpConfig.isMsgShow){
+      return ;
+    }
     console.log("点击客服按钮了！");
 
     if (this.config.PLATFORM == 'APP') {
@@ -258,23 +261,23 @@ export class GoodsDetailFooterComponent {
     }
   }
   servicePopup(storeId) {
-      //域商城才聊天，店铺显示号码
-      if(this.httpConfig.clientType=='1'){
-          this.chat_web();
-      } else {
-        //禁止用户多次触发
-        if (this.commonModel.canActive) {
-          this.commonModel.canActive = false;
-          this.userCommon.getServiceList(storeId).subscribe(data => { 
-            let serviceModal = this.modalCtrl.create(
-              'GetServiceModalPage',
-              { data: data },
-              { cssClass: 'service-modal'}
-            );
-            serviceModal.present();
-            this.commonModel.canActive = true;
-          })
-        } 
-      }
-  }
+    //域商城才聊天，店铺显示号码
+    if(this.httpConfig.clientType=='1'&&this.httpConfig.isMsgShow){
+        this.chat_web();
+    } else {
+      //禁止用户多次触发
+      if (this.commonModel.canActive) {
+        this.commonModel.canActive = false;
+        this.userCommon.getServiceList(storeId).subscribe(data => { 
+          let serviceModal = this.modalCtrl.create(
+            'GetServiceModalPage',
+            { data: data },
+            { cssClass: 'service-modal'}
+          );
+          serviceModal.present();
+          this.commonModel.canActive = true;
+        })
+      } 
+    }
+}
 }

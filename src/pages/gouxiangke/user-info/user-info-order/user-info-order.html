@@ -30,13 +30,13 @@
 </ion-header>
 
 <ion-content>
-
   <ion-refresher (ionRefresh)="refresh($event)" pullMin="90" pullMax="150" *ngIf="orderList[activeType].clist">
     <ion-refresher-content pullingText="下拉刷新~"></ion-refresher-content>
   </ion-refresher>
-    <div *ngIf="!orderList[activeType].clist" class="conent_loadding">
-        <img src="assets/images/public/35.gif" alt="">
-    </div>
+  <div *ngIf="!orderList[activeType].clist" class="conent_loadding">
+    <img src="assets/images/public/35.gif" alt="">
+  </div>
+
   <section *ngIf="activeType == 'all'">
     <ul>
       <li *ngFor="let item of orderList[activeType].clist">
@@ -107,7 +107,6 @@
           <span *ngIf="item.aftersale == 0&&item.orderStatus==3" (click)="deleteOrderPop(item)">删除订单</span>
 
           <span *ngIf="item.groupOrder &&!(item.aftersale == 0&&item.orderStatus==3) " (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
-
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
 
@@ -163,6 +162,7 @@
           <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="active" (click)="goToPage('订单确认',item)">去付款</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
+
         </div>
       </li>
     </ul>
@@ -213,6 +213,7 @@
           <span *ngIf="item.groupOrder" (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
+
         </div>
       </li>
     </ul>
@@ -263,6 +264,7 @@
           <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="active" (click)="confirm_receiptPopup(item)">确认收货</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
+
         </div>
       </li>
     </ul>
@@ -313,6 +315,7 @@
           <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('评价',item)">我要评价</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
+
         </div>
       </li>
     </ul>

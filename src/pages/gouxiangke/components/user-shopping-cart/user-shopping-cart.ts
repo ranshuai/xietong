@@ -1,5 +1,4 @@
-import { MainCtrl } from './../../../../providers/MainCtrl';
-import { NavController ,App} from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import { CommonModel } from './../../../../providers/CommonModel';
 import { Component, Input } from '@angular/core';
 import { ViewController } from 'ionic-angular';
@@ -24,17 +23,13 @@ export class UserShoppingCartComponent {
     private viewCtrl: ViewController,
     private globalData: GlobalDataProvider,
     public commonModel: CommonModel,
-    public navCtrl: NavController,
-    public mainCtrl: MainCtrl,
-    public app:App
+    public navCtrl:NavController
   ) {
     shoppingCart.getShoppingCartInfo().subscribe();
   }
 
   openShoppingCartPage() {
-    // this.navCtrl.push('UserShoppingCartDetailPage');
     this.navCtrl.push('UserShoppingCartDetailPage', { shoppCartFlag: true });
-
   }
 
 }

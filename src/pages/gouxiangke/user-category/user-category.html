@@ -21,10 +21,10 @@
   <!--<user-category-list [data]="categoryListFirstLevel" (outerId)="childrenToparentId($event)"></user-category-list>-->
 
   <div style=" display:flex;height:100%;">
-    <section class="category-content-l">
+    <section class="category-content-l R_fl">
       <user-category-list-L [data]="userCategoryListL" (outerId)="idFromChildren($event)"></user-category-list-L>
     </section>
-    <section class="category-content-r">
+    <section class="category-content-r R_fr">
       <user-category-list-R [data]="userCategoryListR" [catId]="catId" [loadEnd]= "loadEnd"></user-category-list-R>
     </section>
   </div>

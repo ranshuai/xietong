@@ -94,7 +94,7 @@ export class UserInfoGroupPage {
     this.commonProvider.goToPage(this.userInfoOrderDetailPage, {'orderId':orderId});
   }
 
-  /**
+   /**
    *  联系客服
    */
 

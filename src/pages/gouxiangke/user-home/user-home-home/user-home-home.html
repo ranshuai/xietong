@@ -13,12 +13,12 @@
 <div *ngIf="template === 0">
 <!-- 首页导航 -->
   <div class="homeNav">
-    <div class="home nav" (click)="navCtrl.push('UserGroupPage')">
+    <!-- <div class="home nav" (click)="navCtrl.push('UserGroupPage')">
       <div class="icons">
         <ion-icon class="icon ion-ios-icon-gxk-156"></ion-icon>
       </div>
       <p>拼团优惠</p>
-    </div>
+    </div> -->
     <div class="homeNear nav" (click)="navCtrl.push('UserNearPage')">
         <div class="icons"><ion-icon class="icon ion-ios-icon-gxk-157"></ion-icon></div>
         <p>附近好货</p>
@@ -58,7 +58,7 @@
 </div>
 <!-- 推荐商品 -->
   <div *ngIf="homeHomeDataGoodsListShow"> 
-    <title-more  class="title" title="推 · 荐 · 商 · 品111" (click)="goToGoodsListPage('is_recommend')"></title-more>
+    <title-more [noMore]= true class="title" title="推 · 荐 · 商 · 品" (click)="goToGoodsListPage('is_recommend')"></title-more>
     <goods-list-block class="goods" [loadParams]="goodsListParams" [noMore]='true'  [data]="homeHomeData.bright_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168/quality,q_80'"></goods-list-block>
   </div>
 </div>

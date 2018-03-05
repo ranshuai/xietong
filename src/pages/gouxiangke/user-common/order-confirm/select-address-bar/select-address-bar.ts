@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import { OrderAddressProvider } from "../../../providers/user/order-address";
 import { CommonProvider } from "../../../providers/common/common";
 import { GlobalDataProvider } from "../../../providers/global-data/global-data.model";
+
 /**
  * Generated class for the SelectAddressComponent component.
  *

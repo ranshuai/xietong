@@ -20,6 +20,7 @@ import { GlobalDataProvider } from "../../providers/global-data/global-data.mode
   templateUrl: 'user-shopping-cart-detail.html',
 })
 export class UserShoppingCartDetailPage {
+
   shoppCartFlag:boolean;// 点击购物车图标进入 
   shoppingCartInfo: any;
   canClick: Boolean;
@@ -39,9 +40,7 @@ export class UserShoppingCartDetailPage {
     public mainCtrl: MainCtrl,
     public httpConfig:HttpConfig
   ) {
-
     this.shoppCartFlag = navParams.get('shoppCartFlag');
-
     //监听刷新事件
     events.subscribe('shoppingCart:refresh', () => {
       this.refresh();
@@ -99,7 +98,6 @@ export class UserShoppingCartDetailPage {
           goodsSpec: goods.specKey,
           check: boolean
         });
-
       }
     }
     if (boolean) {//底部按钮可用
@@ -108,7 +106,6 @@ export class UserShoppingCartDetailPage {
       this.canClick = false;
     }
     if (this.view == 'selected') {
-      
       this.shoppingCart.modifyBatch(modifyCartVOs).subscribe();
     }
   }
@@ -168,7 +165,6 @@ export class UserShoppingCartDetailPage {
     if (!this.canClick) {
       return;
     }
-    //确认弹窗
     this.common.comConfirm('确认要删除此商品吗？').subscribe(() => { 
       let cartIds = [];
       this.shoppingCartInfo.stores.forEach((store, index) => {

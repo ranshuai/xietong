@@ -19,7 +19,7 @@
           <ion-label>
             单位名称
           </ion-label>
-          <ion-input type="text" formControlName="companyName" placeholder="请输入营业执照名称" maxlength="28" (blur)="onCompanyNameBlur()">
+          <ion-input type="text" formControlName="companyName" placeholder="请输入单位名称" maxlength="28" (blur)="onCompanyNameBlur()">
           </ion-input>
         </ion-item>
         <div class="message" *ngIf="applyFormMsg.companyName.errorMsg">{{ applyFormMsg.companyName.errorMsg }}</div>
@@ -57,7 +57,7 @@
         </ion-item>
       </div>
 
-      <div class="input-wrap" (click)="openIsLegalPersonSelect()">
+      <div class="input-wrap" (click)="openIsLegalPersonSelect()" *ngIf="applyFormData.shopType != '个人店'">
         <ion-item>
           <ion-label>我是法人</ion-label>
           <ion-input type="text" formControlName="isLegalPerson" readonly></ion-input>
@@ -65,21 +65,21 @@
         <!-- <ion-icon name="ios-forward"></ion-icon> -->
       </div>
 
-      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否'">
+      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否' && applyFormData.shopType == '企业店'">
         <ion-item>
           <ion-label>法人姓名 </ion-label>
           <ion-input type="text" placeholder="请输入..." maxlength="10" formControlName="ownerperson"></ion-input>
         </ion-item>
         <div class="message" *ngIf="applyFormMsg.ownerperson.errorMsg">{{ applyFormMsg.ownerperson.errorMsg }}</div>
       </div>
-      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否'">
+      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否'&& applyFormData.shopType == '企业店'">
         <ion-item>
           <ion-label>法人身份证 </ion-label>
           <ion-input type="text" placeholder="请输入..." maxlength="18" formControlName="owner" required></ion-input>
         </ion-item>
         <div class="message" *ngIf="applyFormMsg.owner.errorMsg">{{ applyFormMsg.owner.errorMsg }}</div>
       </div>
-      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否'">
+      <div class="input-wrap" *ngIf="applyFormData.isLegalPerson == '否'&& applyFormData.shopType == '企业店'">
         <ion-item>
           <ion-label>法人手机号</ion-label>
           <ion-input type="tel" placeholder="请输入..." maxlength="11" formControlName="ownerMobile"></ion-input>
@@ -114,7 +114,7 @@
         </ion-item>
         <div class="message" *ngIf="applyFormMsg.address.errorMsg">{{ applyFormMsg.address.errorMsg }}</div>
       </div>
-      <div class="img-input" *ngIf="applyFormData.isLegalPerson == '否'">
+      <div class="img-input" *ngIf="applyFormData.isLegalPerson == '否'&& applyFormData.shopType == '企业店'">
         <div class="title">上传法人身份证正面照片(建议图片小于2M)</div>
         <div class="tip">请确保身份证清晰可见，勿重叠遮挡，参考照片</div>
         <div class="img-wrap">
@@ -130,7 +130,7 @@
         <input type="hidden" required formControlName="idCardFront">
       </div>
 
-      <div class="img-input" *ngIf="applyFormData.isLegalPerson == '否'">
+      <div class="img-input" *ngIf="applyFormData.isLegalPerson == '否'&& applyFormData.shopType == '企业店'">
         <div class="title">上传法人身份证反面照片(建议图片小于2M)</div>
         <div class="tip">请确保身份证清晰可见，勿重叠遮挡，参考照片</div>
         <div class="img-wrap">
@@ -146,7 +146,7 @@
         <input type="hidden" required formControlName="idCardReverse">
       </div>
 
-      <div class="img-input">
+      <div class="img-input" *ngIf="applyFormData.shopType != '个人店'" >
         <div class="title">上传营业执照照片(建议图片小于2M)</div>
         <div class="tip">请确保营业执照清晰可见，勿重叠遮挡，参考照片</div>
         <div class="img-wrap">
@@ -167,6 +167,6 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button ion-button (click)="submit()" [disabled]="!applyForm.valid" [ngClass]="{ 'active': applyForm.valid }">提交</button>
+    <button ion-button (click)="submit()" [disabled]="!checkForm" [ngClass]="{ 'active': checkForm }">提交</button>
   </ion-toolbar>
 </ion-footer>

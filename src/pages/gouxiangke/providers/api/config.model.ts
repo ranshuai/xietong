@@ -49,7 +49,7 @@ export class Config {
 
   //测试环境,会根据headers中的数据，来切换
   host = this.httpConfig.host;
-
+  baseUrl=window.localStorage.getItem("currentHost");
   timeout = 30 * 1000;
   timeout_long = 60 * 1000;
   version = '1.0.10';

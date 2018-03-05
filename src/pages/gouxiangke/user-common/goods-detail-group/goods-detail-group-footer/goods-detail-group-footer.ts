@@ -1,5 +1,5 @@
-import { CommonModel } from './../../../../../providers/CommonModel';
 import { MainCtrl } from './../../../../../providers/MainCtrl';
+import { CommonModel } from './../../../../../providers/CommonModel';
 import { UserCommon } from './../../../providers/user/user-common';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ViewController ,Events,ModalController,NavController} from 'ionic-angular';
@@ -39,7 +39,7 @@ export class GoodsDetailGroupFooterComponent {
     public userCommon: UserCommon,
     public modalCtrl: ModalController,
     public mainCtrl: MainCtrl,
-    public navCtrl: NavController,
+    public navCtrl:NavController,
     public commonModel:CommonModel
   ) { }
 
@@ -163,4 +163,5 @@ export class GoodsDetailGroupFooterComponent {
       })
     } 
   }
+
 }

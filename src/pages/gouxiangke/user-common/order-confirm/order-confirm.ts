@@ -39,6 +39,8 @@ export class OrderConfirmPage {
 
   //店铺的长度
   dataLength;
+  //分享ID
+  shareId;
 
   constructor(
     public navCtrl: NavController,
@@ -54,6 +56,7 @@ export class OrderConfirmPage {
     public commonModel: CommonModel,
     public events:Events
   ) {
+    this.shareId = navParams.get('shareId'); // 分享Id
     this.commonModel.freightOrderGoods = 0; // 进入订单确认页面把运费设置为 0；
     console.log('进入订单确认页面');
     if (globalData.isNowBuy) { //立即购买，从参数获取订单
@@ -116,9 +119,8 @@ export class OrderConfirmPage {
     // } else {
     //   this.selectAddressBar.getAddress();
     // }
-    //<!-- 运费模版 没有发布隐藏 -->
-    
-    // this.test();
+     //<!-- 运费模版 没有发布隐藏 -->
+    this.test();
   }
 
   //订单确认初始化信息
@@ -197,6 +199,7 @@ export class OrderConfirmPage {
         goodsNum: goods.goodsNum,
         addressId: addressId,
         leaveMessage: {},
+        shareId: this.shareId
       };
       if (this.acitivityType == 2) { //有买赠
         data.goodsActivityVOS = this.createGoodsActivityVOS();
@@ -214,8 +217,8 @@ export class OrderConfirmPage {
         //   console.log(data)
         //   this.navCtrl.push(this.orderPayPage, { order: data });
         // }, 1000)
-        //storeIds 为了调用 支付方式查询 接口 需要的字段
         this.navCtrl.push(this.orderPayPage, { order: data,storeIds:this.stores[0].storeId });
+
       });
     } else if (this.globalData.isGroupBuy) {
       //拼团购买
@@ -238,6 +241,7 @@ export class OrderConfirmPage {
 
     } else { //购物车下单
       let storeIds=[];
+
       let cartIds = [];
       let leaveMessage = {};
       this.stores.forEach(store => {
@@ -246,6 +250,7 @@ export class OrderConfirmPage {
           if (goods.selected) {
             cartIds.push(goods.id);
             storeIds.push(store.storeId);
+
           }
         });
       });
@@ -259,6 +264,8 @@ export class OrderConfirmPage {
         data.acitivityType = 1;
       }
       this.shoppingCart.order(data).subscribe((data) => {
+        console.log('')
+        console.log(this.navCtrl);
         setTimeout(()=>{
           this.navCtrl.push(this.orderPayPage, { order: data ,storeIds:storeIds.join(',')});
         },1000);
@@ -332,8 +339,6 @@ export class OrderConfirmPage {
 
   //
   test() { 
-
-    debugger;
     if (!this.commonModel.userDefaultAndSetAddres.province) { //北京市市辖区石景山区cehsi1 
       this.api.get(this.api.config.host.bl + 'address/all').subscribe(data => {
         if (data.success && data.result.length > 0) {
@@ -379,18 +384,17 @@ export class OrderConfirmPage {
               goodsFreightList:this.stores[i].goods
             }).subscribe(data => { 
               if (data.success) {
-                //保存运费  Nu
-                console.log(this.commonModel.freightOrderGoods);
+                
+                // 对象里添加运费的字段
                 if (!this.stores[_i].defaultSelectTxt || this.stores[_i].defaultSelectTxt == "物流配送 - 送货上门") {
                   this.stores[_i].defaultSelectTxt = '物流配送 - 送货上门';
                 } else { 
                   data.result = 0;
                 }
-                 // 对象里添加运费的字段
                 this.stores[_i].freight = data.result;
-                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
                 
-                console.log(this.stores);
+                //保存运费  Nu
+                this.commonModel.freightOrderGoods = this.commonModel.freightOrderGoods +data.result;
               }
             })
       }

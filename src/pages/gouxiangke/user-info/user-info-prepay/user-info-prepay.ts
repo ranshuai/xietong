@@ -10,7 +10,6 @@ import { CommonProvider } from '../../../gouxiangke/providers/common/common';
  * Ionic pages and navigation.
  */
 @IonicPage()
-
 @Component({
   selector: 'page-user-info-prepay',
   templateUrl: 'user-info-prepay.html',

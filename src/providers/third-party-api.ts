@@ -176,7 +176,9 @@ export class ThirdPartyApiProvider {
      * @param payAmount
      */
     pingppWebPay(orderNo,all,payAmount){
-    window.location.href=this.httpConfig.baseUrl+"/assets/testPay/pay_tip.html"+
+    //  alert("pingppWebPay当前域名是："+this.httpConfig.baseUrl);
+
+      window.location.href=this.httpConfig.baseUrl+"assets/testPay/pay_tip.html"+
         "?openId=1&orderSn=" + orderNo+"&space="+this.httpConfig.space + "&all=" + all+"&userId="+
         this.commonModel._userId+"&payAmount="+payAmount;
     }

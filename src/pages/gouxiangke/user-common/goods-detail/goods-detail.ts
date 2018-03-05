@@ -92,7 +92,7 @@ export class GoodsDetailPage {
       //传递商品收藏状态
       this.goodsInfo.collectStatus = this.goods.collectStatus;
       if (data) {
-        this.navCtrl.push(data.page)
+        this.navCtrl.push(data.page,{shareId:data.shareId})
        }
     });
   }

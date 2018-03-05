@@ -2,6 +2,7 @@ import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component, Input } from '@angular/core';
 import { App, ViewController,NavController } from 'ionic-angular';
 import { CommonProvider } from "../../providers/common/common";
+import { CommonModel } from '../../../../providers/CommonModel';
 
 /**
  * Generated class for the HotGoodsSwiperComponent component.
@@ -25,7 +26,8 @@ export class HotGoodsSwiperComponent {
     public appCtrl: App,
     private common: CommonProvider,
     public mainCtrl: MainCtrl,
-    public navCtrl:NavController
+    public navCtrl:NavController,
+    public commonModel :CommonModel
   ) { 
     console.log(this.imgSpace);
   }

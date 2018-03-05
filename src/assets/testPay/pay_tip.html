@@ -29,7 +29,7 @@
 
 <div id="paySuccess" class="success-content">
   <div class="success-top-content">
-    <img src="../assets/img/download-icon.png" class="success-img" alt="">
+    <img src="./img/download-icon.png" class="success-img" alt="">
 
   </div>
   <p class="amount" id="success_money">0</p>
@@ -39,6 +39,12 @@
 </div>
 
 <script>
+
+ var  protocol=window.location.protocol;
+    var  hostname=window.location.hostname;
+    var currentHost=protocol+"//"+window.location.host+"/";
+//        alert("当前域名是："+currentHost);
+		
   /**
    * 判断是否是微信浏览器
    * @returns {boolean}
@@ -227,8 +233,8 @@
       var requestData = {
         orderSn: orderSn,
         all: all,
-      successUrl: "http://jsp.snsall.com/testPay/pay_success.html",
-//        successUrl: "http://wow.snsall.com/testPay/pay_success.html",
+      successUrl: currentHost+"assets/testPay/pay_success.html",
+//        successUrl: currentHost+"assets/testPay/pay_success.html",
         cancelUrl: ""
       };
       $.ajax({

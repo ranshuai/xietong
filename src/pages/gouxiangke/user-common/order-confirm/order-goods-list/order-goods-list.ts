@@ -1,8 +1,7 @@
-import { NavController } from 'ionic-angular';
 import { GlobalDataProvider } from './../../../providers/global-data/global-data.model';
 import { Api } from './../../../providers/api/api';
 import { CommonModel } from './../../../../../providers/CommonModel';
-import { Events } from 'ionic-angular';
+import { Events,NavController } from 'ionic-angular';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonProvider } from "../../../providers/common/common";
 /**
@@ -23,14 +22,7 @@ export class OrderGoodsListComponent {
   selfIndex = null; // 选择配送方式 下标 
   selfkey = null;// 选择配送方式 key {}
   //默认的配送方式
-  constructor(private common: CommonProvider,public navCtrl:NavController, public events:Events, public commonModel:CommonModel, public api:Api, private globalData: GlobalDataProvider,) { 
-   
-    // //选择地址运费重新计算
-    // this.events.subscribe('selectAddress:OrderGoodsListComponent', () => { 
-    //   this.test();
-    // })
-
-  }
+  constructor(private common: CommonProvider, public events:Events, public commonModel:CommonModel, public api:Api, private globalData: GlobalDataProvider,public navCtrl:NavController) { }
 
   goToDetailPage(goodsId) {
     this.navCtrl.push( 'GoodsDetailPage', { goods_id: goodsId })
@@ -51,7 +43,7 @@ export class OrderGoodsListComponent {
     (this.commonModel.pageOrderConfirm as any).selfIndex = _i;
     (this.commonModel.pageOrderConfirm as any).selfkey = store.storeId;
     
-    this.navCtrl.push('UserSelectLogisticsPage', {store:store})
+    this.common.goToPage('UserSelectLogisticsPage', {store:store})
   }
   //获取运费
   

@@ -157,7 +157,7 @@ export class PublicLoginPage {
             this.mainCtrl.getUserInfo().subscribe(data => {
                 if (data.success) {
                     //只有域商城才登录融云
-                    if (this.httpConfig.clientType == '1' && !((<any>window).IMUserId)) {
+                    if (this.httpConfig.clientType == '1' && !((<any>window).IMUserId)&&this.httpConfig.isMsgShow) {
                         //融云登录
                         this.getRongIMToken(data);
                     }
@@ -166,7 +166,10 @@ export class PublicLoginPage {
                     this.nativeService.showToast(data.msg);
                 }
             })
-        }
+      } else {
+        this.nativeService.showToast(data.msg);
+      }
+
     });
   }
 

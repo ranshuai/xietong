@@ -1,6 +1,6 @@
 import { CommonModel } from './../../../../providers/CommonModel';
 import { Component } from '@angular/core';
-import { NavController, NavParams,Events ,IonicPage} from 'ionic-angular';
+import { NavController, NavParams,Events,IonicPage } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { CommonProvider } from '../../providers/common/common';
 import {UserInfoAddressNewPage } from '../user-info-address/user-info-address-new/user-info-address-new';

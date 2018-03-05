@@ -31,13 +31,7 @@ export class UserShoppingCartListComponent {
     public navCtrl:NavController
   ) { 
 
-  }
-  ngOnInit() {
     console.log(this.data);
-    
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
-    
   }
 
   checkStore(store) {
@@ -52,7 +46,6 @@ export class UserShoppingCartListComponent {
         goodsSpec: goods.specKey,
         check: store[this.view]
       });
-
     });
     this.clickCheckEmit.emit();
     if (this.view == 'selected') {

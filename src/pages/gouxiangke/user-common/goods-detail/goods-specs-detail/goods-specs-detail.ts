@@ -23,6 +23,7 @@ export class GoodsSpecsDetailPage {
 
   goods: any; //从参数中获取的goods，然后通过goodsId获取商品详情
   goodsInfo: any;
+  shareId: any; //分享Id
   view: string; //通过view判断，是商品详情还是购物车打开的modal，他们的底部footer不同
 
   constructor(public navCtrl: NavController,
@@ -38,6 +39,7 @@ export class GoodsSpecsDetailPage {
               public commonModel:CommonModel
   ) {
     this.view = navParams.get('view');
+    this.shareId = navParams.get('shareId'); //分享Id
     let goods = this.goods = navParams.get('goods');
     //获取商品详情
     this.api.get(this.api.config.host.bl + 'v2/goods/detail/' + goods.goodsId).subscribe(data => {
@@ -192,6 +194,7 @@ export class GoodsSpecsDetailPage {
       goodsId: this.goodsInfo.goodsId,
       goodsSpec: this.goodsInfo.tpSpecGoodsPrice.key_,
       goodsNum: this.goodsInfo.tpSpecGoodsPrice.buyCount,
+      shareId:this.shareId
     };
     this.shoppingCart.add(data).subscribe(data => {
       if (data) {
@@ -252,7 +255,7 @@ export class GoodsSpecsDetailPage {
               }]
             }];
             this.orderBuyNow.setData(stores);
-            this.viewCtrl.dismiss({page:'OrderConfirmPage'});
+            this.viewCtrl.dismiss({page:'OrderConfirmPage',shareId: this.shareId});
           }, 500)
         
       } else { 
@@ -290,7 +293,7 @@ export class GoodsSpecsDetailPage {
           }]
         }];
         this.orderBuyNow.setData(stores);
-        this.viewCtrl.dismiss({page:'OrderConfirmPage'});
+        this.viewCtrl.dismiss({page:'OrderConfirmPage',shareId: this.shareId});
       }, 500)
   
     }

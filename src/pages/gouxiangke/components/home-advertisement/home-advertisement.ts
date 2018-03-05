@@ -21,7 +21,7 @@ export class HomeAdvertisementComponent {
   }
   goToDetail(adLink) {
     if (adLink&&adLink != 0) {
-      this.common.goToPage('UserTopicDetailsPage', { id: adLink });
+      this.common.goToPage(this.userTopicDetailsPage, { id: adLink });
     }
   }
 }

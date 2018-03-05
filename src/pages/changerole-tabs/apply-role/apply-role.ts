@@ -3,7 +3,6 @@ import { MainCtrl } from './../../../providers/MainCtrl';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, ViewController } from 'ionic-angular';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { UserSetMobilePage } from '../../gouxiangke/user-info/user-set/user-set-mobile/user-set-mobile';
 import { Validators } from '../../../providers/Validators';
 import * as IosSelect from 'iosselect';
 
@@ -30,14 +29,13 @@ export class ApplyRolePage {
   checkForm = false;
   //营业执照必传
   isRequriedBusinessLicense = false;
-
   //招商人userid
   agentUserId: any;
   mobile: any;
   checkloading = false;//检测用户接口是否调用完毕
   checkInterval;
   detectUserInfo = false;//检测用户是否绑定手机号和实名认证
-  userIdentity: any;//用户实名认证信息
+  userIdentity: any = JSON.parse(window.localStorage.getItem('userIdentity'));//用户实名认证信息
 
   //上传图片
   uploadImageType: string;
@@ -48,7 +46,7 @@ export class ApplyRolePage {
     shopType: '个人店', //店铺类型，1个人店，2企业店
     serviceType: '销售', //服务类型 1销售 2租赁
     isAccount: '是', //会计实体 1是，0不是
-    isLegalPerson: '否',
+    isLegalPerson: '是',
     ownerperson: null, //法人姓名
     owner: null, //法人身份证
     ownerMobile: null, //法人电话
@@ -56,13 +54,14 @@ export class ApplyRolePage {
     mobile: null, //负责人手机号
     city: null, //地址
     address: null,
-    idCardFront: null, //法人身份证
+    idCardFront: null, //法人身份证正面
     idCardReverse: null, //法人身份证反面
     idCardHandheld: null, //法人手持身份证照片
     businessLicense: null, //营业执照
     sourceFrom: 2, //来源：1app 2weixin 3web
     personNo: null
   };
+
 
   applyFormMsg: any = {
     companyName: {
@@ -164,34 +163,15 @@ export class ApplyRolePage {
   storeId;
 
   //初始化表单校验规则
-  formInspection = {
-    companyName: [this.applyFormData.companyName, [Validators.required, Validators.maxLength(28)]],
-    companyAlias: [this.applyFormData.companyAlias, [Validators.required, Validators.maxLength(8)]],
-    shopType: [this.applyFormData.shopType, [Validators.required]],
-    // isAccount:[this.applyFormData.isAccount,[Validators.required]],
-    isLegalPerson: [this.applyFormData.isLegalPerson, [Validators.required]],
-    ownerperson: [this.applyFormData.ownerperson, [Validators.required, Validators.chinese, Validators.maxLength(10)]],
-    owner: [this.applyFormData.owner, [Validators.required, Validators.maxLength(18), Validators.idcard]],
-    ownerMobile: [this.applyFormData.ownerMobile, [Validators.required, Validators.phone]],
-    director: [this.applyFormData.director, [Validators.required, , Validators.chinese, Validators.maxLength(10)]],
-    mobile: [this.applyFormData.mobile, [Validators.required, Validators.phone]],
-    city: [this.applyFormData.city, [Validators.required]],
-    address: [this.applyFormData.address, [Validators.required]],
-    idCardFront: [this.applyFormData.idCardFront, [Validators.required]],
-    idCardReverse: [this.applyFormData.idCardReverse, [Validators.required]],
-    businessLicense: [this.applyFormData.businessLicense, [Validators.required]],
-    personNo: ['']
-  };
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private mainCtrl: MainCtrl, private formBuilder: FormBuilder,
     private loadingCtrl: LoadingController, private viewCtrl: ViewController, public cityData: AddressCityData) {
-
     this.type = this.navParams.get('type');
     //检测用户是否绑定过手机和实名认证
     this.detectIndividual();
+
     //招商人ID
     this.agentUserId = this.navParams.get('recruitUserId');
-    console.log(this.agentUserId)
     if (this.agentUserId) {
       //如果打开的是自己分享的招募店铺链接,直接跳转到首页
       if (this.mainCtrl.commonModel.userId == this.agentUserId) {
@@ -237,9 +217,8 @@ export class ApplyRolePage {
         }
       }
       Object.assign(this.applyFormData, this.applyForm.value);
-
+      console.log(this.applyFormData);
       this.checkForm = this.checkFormData();
-
     })
   }
 
@@ -348,13 +327,26 @@ export class ApplyRolePage {
                     //保存用户的真实信息
                     window.localStorage.setItem('userIdentity', JSON.stringify(data.result.identity));
                     this.userIdentity = JSON.parse(window.localStorage.getItem('userIdentity'));
+                    this.applyForm.controls.ownerperson.reset(this.userIdentity.idCardName); //法人姓名
+                    this.applyForm.controls.owner.reset(this.userIdentity.idCard); //法人身份证
+                    this.applyForm.controls.ownerMobile.reset(this.userIdentity.mobile); //法人电话
+                    this.applyForm.controls.idCardFront.reset(this.userIdentity.idCardFront); //法人身份证正面
+                    this.applyForm.controls.idCardReverse.reset(this.userIdentity.idCardReverse); //法人身份证反面
+                    this.initFormData();
                   }
                 })
               }
             }
+          } else {
+            this.applyForm.controls.ownerperson.reset(this.userIdentity.idCardName); //法人姓名
+            this.applyForm.controls.owner.reset(this.userIdentity.idCard); //法人身份证
+            this.applyForm.controls.ownerMobile.reset(this.userIdentity.mobile); //法人电话
+            this.applyForm.controls.idCardFront.reset(this.userIdentity.idCardFront); //法人身份证正面
+            this.applyForm.controls.idCardReverse.reset(this.userIdentity.idCardReverse); //法人身份证反面
+            this.initFormData();
           }
           //为2为驳回状态
-        } else if(data.result == 2) {
+        } else if (data.result == 2) {
           this.mainCtrl.httpService.get(this.mainCtrl.httpService.config.host.org + 'v2/admin/queryOrgStatusByUserId', {
             moduleId: 5,
           }).subscribe(data => {
@@ -366,14 +358,14 @@ export class ApplyRolePage {
                 this.applyForm.reset(data.result.status);
                 this.applyForm.controls.owner.reset(data.result.status.idCard);
                 this.applyForm.controls.city.reset(data.result.status.provinceName + '-' + data.result.status.cityName + '-' + data.result.status.districtName);
-                data.result.status.ownerpersonId == window.localStorage.getItem('userId') ? this.applyForm.controls.isLegalPerson.reset("是") : this.applyForm.controls.isLegalPerson.reset("否");
+                data.result.status.ownerpersonId == this.mainCtrl.commonModel.userId ? this.applyForm.controls.isLegalPerson.reset("是") : this.applyForm.controls.isLegalPerson.reset("否");
                 data.result.status.shopType == 1 ? this.applyForm.controls.shopType.reset("个人店") : this.applyForm.controls.shopType.reset("企业店");
                 this.initFormData();
               }
             }
           })
           //-2被拉黑
-        } else if (data.result == -2){
+        } else if (data.result == -2) {
           this.mainCtrl.utils.comConfirm('您的店铺被拉黑!', 2, false).subscribe(() => {
             //如果有值，说明是从招募店铺过来的
             if (this.agentUserId) {
@@ -382,8 +374,8 @@ export class ApplyRolePage {
               this.mainCtrl.thirdPartyApi.closeWeixin();
             }
           });
-        //-1被关闭
-        }else if(data.result == -1){
+          //-1被关闭
+        } else if (data.result == -1) {
           this.mainCtrl.utils.comConfirm('您的店铺被关闭,请联系客服~', 2, false).subscribe(() => {
             //如果有值，说明是从招募店铺过来的
             if (this.agentUserId) {
@@ -392,7 +384,7 @@ export class ApplyRolePage {
               this.mainCtrl.thirdPartyApi.closeWeixin();
             }
           });
-        }else{
+        } else {
           //不能再次开店,跳转到首页
           this.mainCtrl.utils.comConfirm('您已开店,不能再次申请!', 2, false).subscribe(() => {
             //如果有值，说明是从招募店铺过来的
@@ -444,6 +436,7 @@ export class ApplyRolePage {
       relation: [1, 1, 0, 0],
       showLoading: true,
       callback: (one, two) => {
+        console.log(this.applyFormData);
         //个人店铺不能选择租赁 one.id = 1; 企业 id =2
         if (one.id == 1) {
           this.applyForm.controls.shopType.reset(one.value);
@@ -576,7 +569,7 @@ export class ApplyRolePage {
             this.applyForm.reset(data.result.status);
             this.applyForm.controls.owner.reset(data.result.status.idCard);
             this.applyForm.controls.city.reset(data.result.status.provinceName + '-' + data.result.status.cityName + '-' + data.result.status.districtName);
-            data.result.status.ownerpersonId == window.localStorage.getItem('userId') ? this.applyForm.controls.isLegalPerson.reset("是") : this.applyForm.controls.isLegalPerson.reset("否");
+            data.result.status.ownerpersonId == this.mainCtrl.commonModel.userId ? this.applyForm.controls.isLegalPerson.reset("是") : this.applyForm.controls.isLegalPerson.reset("否");
             data.result.status.shopType == 1 ? this.applyForm.controls.shopType.reset("个人店") : this.applyForm.controls.shopType.reset("企业店");
             this.initFormData();
           }

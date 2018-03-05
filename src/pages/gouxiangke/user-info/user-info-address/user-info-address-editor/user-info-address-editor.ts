@@ -166,7 +166,7 @@ export class UserInfoAddressEditorPage {
 
   //删除用户地址
   deleateAddress() {
-    this.common.comConfirm('确认删除此地址吗？').subscribe(() => { 
+    this.common.comConfirm('确认删除此地址吗？').subscribe(() => {
       let options = new RequestOptions({ headers: new Headers({ addressId: this.navParams.get('addressId') }) });
       console.log(this.navParams.get('addressId'))
       this.api.delete(this.api.config.host.bl + 'address/remove', null, null, options)
