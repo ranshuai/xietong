@@ -356,8 +356,12 @@ export class UserInfoOrderPage {
   
   //申请售后
   gotoCustomerService(item) {
+    console.log(item);
+    //点击申请售后跳转到分商品的页面
+    this.navCtrl.push('UserServicePage',{orderInfo:item});
+    
 
-    this.navCtrl.push('UserCustomerServicePage', {orderData:item});
+    // this.navCtrl.push('UserCustomerServicePage', {orderData:item});
     
   }
 
