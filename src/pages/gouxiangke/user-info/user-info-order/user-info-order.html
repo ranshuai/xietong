@@ -213,7 +213,8 @@
           <span *ngIf="item.groupOrder" (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
-
+          <!-- 申请售后 -->
+          <span  (click)="gotoCustomerService(item)">申请售后</span>
         </div>
       </li>
     </ul>

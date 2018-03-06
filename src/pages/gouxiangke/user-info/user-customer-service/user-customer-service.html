@@ -1,0 +1,46 @@
+<!--
+  Generated template for the UserCustomerServicePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>选择服务类型</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content_bg">
+  <div>
+    <section class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:1})">
+      <p class="title">
+        仅退款
+      </p>
+      <p class="describe">
+        未收到货（包括未签收）或卖家协商同意前提下 
+      </p>
+      <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
+    </section>
+    <section class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:2})">
+      <p class="title">
+        退货退款
+      </p>
+      <p class="describe">
+        已收到货，需退还已收到的货物 
+      </p>
+      <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
+    </section>
+    <section class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:3})">
+      <p class="title">
+        换货
+      </p>
+      <p class="describe">
+        已收到货，需退还已收到的货物
+      </p>
+      <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
+    </section>
+  </div>
+</ion-content>

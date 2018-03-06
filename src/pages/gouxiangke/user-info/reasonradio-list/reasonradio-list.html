@@ -1,0 +1,20 @@
+<!--
+  Generated template for the ReasonradioListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="radio_list" (click)="close()">
+    <div class="div" >
+      <div class="title">{{RadioListInfo.title}}</div>
+      <ion-list radio-group>
+          <ion-item *ngFor="let item of RadioListInfo.RadioList">
+            <ion-label>{{item}}</ion-label>
+            <ion-radio ></ion-radio>
+          </ion-item>
+      </ion-list>
+      <div class="footer" (click)="close()">关闭</div>
+      
+    </div>
+    
+  </div>

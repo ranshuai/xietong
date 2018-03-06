@@ -352,7 +352,14 @@ export class UserInfoOrderPage {
         },800)
       })
   
-    }
+     }
+  
+  //申请售后
+  gotoCustomerService(item) {
+
+    this.navCtrl.push('UserCustomerServicePage', {orderData:item});
+    
+  }
 
 
     //页面初始化
