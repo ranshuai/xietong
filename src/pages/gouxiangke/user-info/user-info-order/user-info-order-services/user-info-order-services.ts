@@ -119,5 +119,13 @@ export class UserInfoOrderServicesPage {
     });    
   }
 
+  //售后详情
+  goToCustomerServeDetail() { 
+
+    this.navCtrl.push('CustomerServeDetailPage');
+    
+
+  }
+
 
 }

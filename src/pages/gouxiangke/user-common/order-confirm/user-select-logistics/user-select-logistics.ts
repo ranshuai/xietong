@@ -92,7 +92,7 @@ export class UserSelectLogisticsPage {
         id:3
       }
     ];
-    this.commonProvider.goToPage('UserNearbySelfPage', {dataList:this.getLogisticsInfoData.pickSelfList })
+    this.navCtrl.push('UserNearbySelfPage', {dataList:this.getLogisticsInfoData.pickSelfList })
   }
 
   //确认
@@ -114,7 +114,7 @@ export class UserSelectLogisticsPage {
     }
     
     this.events.publish('defaultSelectTxt:OrderGoodsListComponent', json);
-    this.commonProvider.popToPage();
+    this.navCtrl.pop()
   }
 
   ionViewDidEnter() {
@@ -136,52 +136,7 @@ export class UserSelectLogisticsPage {
     }).subscribe(data => { 
       console.log(data); 
       // data.result ||
-      data.result = '';
-      this.getLogisticsInfoData =data.result || 
-        {
-            "pickSelf":true,
-            "pickSelfList":[
-                            {
-                              "id": 23,
-                              "pickName": "CHARLES",
-                              "companyInfoId": 2192,
-                              "check": false,
-                              "provinceId": 1,
-                              "provinceName": "北京市",
-                              "cityId": 2,
-                              "cityName": "市辖区",
-                              "districtId": 14,
-                              "districtName": "西城区",
-                              "address": "北京市东城区东四街道东四二条甲20号",
-                              "location": "39.925718,116.419083",
-                              "default_": true,
-                              "enable": true,
-                              "addTime": 1518057615720,
-                              "updateTime": 1518057615720,
-                              "domainNo": "DF4D69929FD7F405",
-                              "distance": 6703384},
-                            {
-                              "id": 23,
-                              "pickName": "CHARLES11111",
-                              "companyInfoId": 2192,
-                              "check": false,
-                              "provinceId": 1,
-                              "provinceName": "北京市",
-                              "cityId": 2,
-                              "cityName": "市辖区",
-                              "districtId": 14,
-                              "districtName": "西城区",
-                              "address": "北京市东城区东四街道东四二条甲20号",
-                              "location": "39.925718,116.419083",
-                              "default_": true,
-                              "enable": true,
-                              "addTime": 1518057615720,
-                              "updateTime": 1518057615720,
-                              "domainNo": "DF4D69929FD7F405",
-                              "distance": 6703384
-                            }
-                        ]
-      }
+      this.getLogisticsInfoData = data.result;
       if (!this.defaultNearbySelfTxt) { 
         this.defaultNearbySelfTxt = this.getLogisticsInfoData.pickSelfList[0].pickName;
           this.defaultNearbySelf = this.getLogisticsInfoData.pickSelfList[0]

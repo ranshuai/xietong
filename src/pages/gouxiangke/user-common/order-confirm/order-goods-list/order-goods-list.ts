@@ -24,6 +24,17 @@ export class OrderGoodsListComponent {
   //默认的配送方式
   constructor(private common: CommonProvider, public events:Events, public commonModel:CommonModel, public api:Api, private globalData: GlobalDataProvider,public navCtrl:NavController) { }
 
+  ngOnInit() {
+
+    console.log(this.data);
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
+  ngAfterViewInit() { 
+    console.log(this.data);
+  }
+
   goToDetailPage(goodsId) {
     this.navCtrl.push( 'GoodsDetailPage', { goods_id: goodsId })
   }
@@ -43,7 +54,7 @@ export class OrderGoodsListComponent {
     (this.commonModel.pageOrderConfirm as any).selfIndex = _i;
     (this.commonModel.pageOrderConfirm as any).selfkey = store.storeId;
     
-    this.common.goToPage('UserSelectLogisticsPage', {store:store})
+    this.navCtrl.push('UserSelectLogisticsPage', {store:store})
   }
   //获取运费
   

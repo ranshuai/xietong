@@ -112,7 +112,7 @@ export class OrderConfirmPage {
 
   ionViewDidEnter() {
     this.selectAddressBar.getAddress();
-    
+    this.commonModel.freightOrderGoods = 0;
     //判断如果是从地址选择页面过来的，就从缓存获取地址数据
     // if (this.common.lastPageIs('UserInfoAddressPage')) {
     //   this.selectAddressBar.addressInfo = this.orderAddress.data;
@@ -301,11 +301,12 @@ export class OrderConfirmPage {
   joinGift(giftMap) {
     this.stores.forEach(store => {
       store.goods.forEach(goods => {
-        if (giftMap[goods.specKey||goods.goodsSpecKey]) {
-          goods.gifts = giftMap[goods.specKey||goods.goodsSpecKey];
+        let space = goods.goodsId +':'+goods.specKey
+        //50661:10254
+        if (giftMap[space]) {
+          goods.gifts = giftMap[space];
           goods.gifts[0].selected = true; //默认选中第一个
         }
-
       });
     });
   }

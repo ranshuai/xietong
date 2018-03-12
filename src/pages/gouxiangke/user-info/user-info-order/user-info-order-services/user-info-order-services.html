@@ -27,7 +27,8 @@
           <span *ngIf="item.aftersale == -1 " class="shop_flag">售后中</span>
           <span *ngIf="item.aftersale == 2" class="shop_flag">已售后</span>
         </div>
-        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
+        <!-- <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)"> -->
+        <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToCustomerServeDetail()">
           <div class="confirm-content">
             <div class="confirm-goods_img">
               <div [ngBackImg]="{img:mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80'),type:1}"></div>

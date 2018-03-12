@@ -50,8 +50,6 @@ export class UserNearbySelfPage {
     } 
     this.dataList[index].default = true;
 
-    this.commonProvider.popToPage();
+    this.navCtrl.pop()
   }
-
-
 }
