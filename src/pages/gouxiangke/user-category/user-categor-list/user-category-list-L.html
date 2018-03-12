@@ -1,4 +1,5 @@
   <!--S=分类列表-->
+  <ion-content>
   <div>
     <ul>
       <li *ngFor="let item of data;let i = index;" [ngClass]="{ac: i == _index}" (click)=" idToParent(item.id,i)">
@@ -6,4 +7,5 @@
       </li>
     </ul>
   </div>
+</ion-content>
   <!--E=分类列表-->

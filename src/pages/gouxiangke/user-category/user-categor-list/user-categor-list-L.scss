@@ -1,7 +1,12 @@
 user-category-list-L{
+  .scroll-content{
+    margin-bottom:0 !important;
+  }
+  height: 100%;
   ul{
     padding-left: 0;
     li{
+      color: #a9a9a9;
       display: flex;
       align-items: center;
       justify-content: center;
