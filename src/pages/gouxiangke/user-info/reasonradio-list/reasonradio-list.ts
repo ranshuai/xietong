@@ -17,7 +17,7 @@ export class ReasonradioListPage {
 
   //接受单选列表的数据
   RadioListInfo: any;
-
+  radioValue:any; //单选 
   /*
     3: {
         'RadioList' :[
@@ -37,10 +37,14 @@ export class ReasonradioListPage {
     console.log('ionViewDidLoad ReasonradioListPage');
   }
 
-  close() { 
-    console.log(11);
+  close(title?,selectedValue?) { 
+    console.log(this.selectedValue);
     if (this.viewCtrl.isOverlay) {
-      this.viewCtrl.dismiss();
+      let json ={
+        title:title,
+        selectedValue:selectedValue
+      };
+      this.viewCtrl.dismiss(json);
      }
   }
 

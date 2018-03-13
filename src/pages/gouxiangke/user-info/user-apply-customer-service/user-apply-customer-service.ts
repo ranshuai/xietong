@@ -1,3 +1,4 @@
+import { Api } from './../../providers/api/api';
 import { CommonProvider } from './../../providers/common/common';
 import { ThirdPartyApiProvider } from './../../providers/third-party-api/third-party-api';
 import { MainCtrl } from './../../../../providers/MainCtrl';
@@ -23,18 +24,22 @@ export class UserApplyCustomerServicePage {
   maxValue: number;
   selfApplyservicesImgIndex : number; //上传图片的下表，可以更新图片
   selfApplyservicesImgUpdate: boolean;//是否更新图片
+  //提交信息
+  submitInfo:any = {};
+  //退款金额
+  returnMoney:any;
 
-  imgArr = ["","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg"];
+  imgArr = [""];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl:ModalController,public mainCtrl:MainCtrl,public thirdPartyApiProvider:ThirdPartyApiProvider,public commonProvider:CommonProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl:ModalController,public mainCtrl:MainCtrl,public thirdPartyApiProvider:ThirdPartyApiProvider,public commonProvider:CommonProvider,public api:Api) {
     //orderInfo.orderData 订单数据
     //orderInfo.status 订单状态 1.仅退款 2.退货退款 3.换货
     //接收订单信息
     this.orderInfo.orderData = navParams.get('orderData');
     this.orderInfo.status = navParams.get('status');
     this.maxValue = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
-
+    this.returnMoney = this.orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice * this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
 
   }
 
@@ -75,6 +80,7 @@ export class UserApplyCustomerServicePage {
     modalCtrl.present();
     modalCtrl.onDidDismiss((data) => { 
       console.log(data);
+      this.submitInfo[data.title] =  data.selectedValue;
     })
   }
 
@@ -82,14 +88,17 @@ export class UserApplyCustomerServicePage {
   editNum(type?) { 
     if (type == 'add') {
       if (this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum == this.maxValue) {
+
         return
       }
       this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum+1
+      this.returnMoney = this.orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice * this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
     } else { 
       if (this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum == 1) {
         return 
        }
       this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum-1
+      this.returnMoney = this.orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice * this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
     }
 
 
@@ -120,6 +129,24 @@ export class UserApplyCustomerServicePage {
   deleteImg(index) { 
     this.commonProvider.comConfirm('确认删除如下图片吗？').subscribe(() => { 
       this.imgArr.splice(index,1)
+    })
+  }
+
+  submit() { 
+    let newArrImg = [];
+    for(var i=1;i<this.imgArr.length;i++){
+      newArrImg.push(this.imgArr[i]);
+    }
+
+    let json = { "orderId":this.orderInfo.orderData.orderId , "orderStatus": this.orderInfo.orderData.orderStatus, "returnType": this.orderInfo.status, "shippingStatus": this.orderInfo.orderData.shippingStatus, "payStatus": this.orderInfo.orderData.payStatus, "goodsId":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsId, "goodsName":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsName, "goodsSpecKey": this.orderInfo.orderData.orderGoodsSimpleVOS[0].specKey, "goodsNum": 1, "returnMoney": 1, "returnImgs": newArrImg, "returnReason": "退货原因", "buyerMarks": "麻溜的", "goodsStatus": 1 }
+    
+
+    this.api.post(this.api.config.host.bl + 'order/return/apply', json).subscribe((data) => { 
+      if (data.success) {
+        console.log(data);
+      } else { 
+        this.commonProvider.showToast(data.msg)
+      }
     })
   }
 

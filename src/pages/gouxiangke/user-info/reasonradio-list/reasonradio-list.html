@@ -7,13 +7,13 @@
 <div class="radio_list" (click)="close()">
     <div class="div" >
       <div class="title">{{RadioListInfo.title}}</div>
-      <ion-list radio-group>
+      <ion-list radio-group [(ngModel)]="radioValue">
           <ion-item *ngFor="let item of RadioListInfo.RadioList">
             <ion-label>{{item}}</ion-label>
-            <ion-radio ></ion-radio>
+            <ion-radio [value]='item'></ion-radio>
           </ion-item>
       </ion-list>
-      <div class="footer" (click)="close()">关闭</div>
+      <div class="footer" (click)="close(RadioListInfo.title,radioValue);$event.stopPropagation()">确认</div>
       
     </div>
     

@@ -1,4 +1,10 @@
 page-customer-serve-detail {
+  .ion-ios-icon-gxk-155{
+    position: absolute;
+    top: 50%;
+    margin-top: - pxrem(16);
+    right: pxrem(24);
+  }
   .padding_0{
     padding: 0 !important;
   }
@@ -9,7 +15,15 @@ page-customer-serve-detail {
     padding:0 pxrem(24);
 
     li{
+      .title._row{
+        button{
+          color: #333 !important;
+          background: #fff;
+          border:1px solid #A3A3A3;
+        }
+      }
       .title{
+        background: #fff;
         height:pxrem(96);
         text-align: center;
         span{
@@ -21,6 +35,8 @@ page-customer-serve-detail {
           border-radius: 4px;
         }
         button{
+          margin-top:pxrem(16);
+
           width: pxrem(150);
           height:pxrem(64);
           background: #FF0A0A;

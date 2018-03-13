@@ -209,12 +209,12 @@
         </div>
         <!-- 全部 -->
         <div class="oderform_list_btns">
-          <span *ngIf="[0,1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
+          <span *ngIf="[0].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" (click)="cancelOrderPop(item)">取消订单</span>
           <span *ngIf="item.groupOrder" (click)="goToPage('召集小伙伴',item)">召集小伙伴</span>
+          <!-- 申请售后 -->
+          <span *ngIf="item.orderStatus != 0" (click)="gotoCustomerService(item)">申请售后</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
-          <!-- 申请售后 -->
-          <span  (click)="gotoCustomerService(item)">申请售后</span>
         </div>
       </li>
     </ul>
@@ -263,6 +263,8 @@
         <div class="oderform_list_btns">
           <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" (click)="openChangeModal(item)">查看物流</span>
           <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="active" (click)="confirm_receiptPopup(item)">确认收货</span>
+          <!-- 申请售后 -->
+          <span (click)="gotoCustomerService(item)">申请售后</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>
 
@@ -312,7 +314,9 @@
         </div>
         <!-- 全部 -->
         <div class="oderform_list_btns">
-          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('申请售后',item)">申请售后</span>
+          <!-- <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('申请售后',item)">申请售后</span> -->
+          <!-- 申请售后 -->
+          <span (click)="gotoCustomerService(item)">申请售后</span>
           <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" (click)="goToPage('评价',item)">我要评价</span>
           <!--再来一单-->
           <span  (click)="copayOrder(item)">再来一单</span>

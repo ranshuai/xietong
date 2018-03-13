@@ -47,45 +47,51 @@
 
     <section class="">
       <ul class="customer_service_ul">
-        <li>
+        <li *ngIf="orderInfo.status != 3">
           <span>
-              退款金额：
+              退款金额:
           </span>
           <span style="color:#FF0A0A">¥</span>
-          <input style="color:#FF0A0A" type="number" class="price">
+          <input style="color:#FF0A0A"[(ngModel)]="returnMoney" type="number" class="price">
         </li>
-        <li class="R_pr" (click)="goToReasonRadioList(1)">
+        <li *ngIf="orderInfo.status != 3" class="R_pr" (click)="goToReasonRadioList(1)">
           <span>
-              退款原因：
+              退款原因:
           </span>
           <span class="A3A3A3">
-              请选择
+              {{submitInfo['退款原因'] || '请选择'}}
           </span>
           <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
         </li>
-        <li class="R_pr" (click)="goToReasonRadioList(2)">
+        <li *ngIf="orderInfo.status == 2" class="R_pr" (click)="goToReasonRadioList(2)">
             <span>
-                货物状态
+                货物状态:
             </span>
             <span class="A3A3A3">
-                请选择
+                {{submitInfo['货物状态'] || '请选择'}}
             </span>
             <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
           </li>
-          <li class="R_pr" (click)="goToReasonRadioList(3)">
+          <li *ngIf="orderInfo.status == 3" class="R_pr" (click)="goToReasonRadioList(3)">
               <span>
-                  换货原因
+                  换货原因:
               </span>
               <span class="A3A3A3">
-                  请选择
+                  {{submitInfo['换货原因'] || '请选择'}}
               </span>
               <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
             </li>
-        <li>
+        <li *ngIf="orderInfo.status != 3">
           <span>
-              退款说明：
+              退款说明:
           </span>
           <input type="text" placeholder="选填，限30字以内">
+        </li>
+        <li *ngIf="orderInfo.status == 3">
+            <span>
+                换货说明:
+            </span>
+            <input type="text" placeholder="选填，限30字以内">
         </li>
         <li>
           <span>
@@ -110,9 +116,6 @@
           </ion-slides>
           </div>
         </li>
-        <li>
-          
-        </li>
       </ul>
     </section>
 
@@ -120,7 +123,7 @@
 
 
 </ion-content>
-<ion-footer>
+<ion-footer (click)="submit()">
   提交
 </ion-footer>
 
