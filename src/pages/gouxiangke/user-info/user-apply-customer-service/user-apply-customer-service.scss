@@ -1,4 +1,28 @@
 page-user-apply-customer-service {
+  ion-slide{
+    padding-top: pxrem(20);
+  }
+  .swiper-wrapper{
+    i{
+      position: absolute;
+      top: pxrem(4);
+      right: - pxrem(4);
+      width: pxrem(32);
+      height: pxrem(32);
+      background: #FF0A0A;
+      border-radius: 50%;
+      text-align: center;
+      line-height: pxrem(32);
+      color: #fff;
+    }
+    .ion-ios-icon-gxk-59{
+      font-size: 12px;
+    }
+    img{
+      width:pxrem(160);
+      height: pxrem(160);
+    }
+  }
   .order_goods_section_item{
     background: #fff;
     padding:pxrem(30) pxrem(24);
@@ -33,9 +57,23 @@ page-user-apply-customer-service {
         margin-bottom: pxrem(40)
       }
       .number_component{
-        width:pxrem(160);
+        overflow: hidden;
         height: pxrem(44);
+        button{
+          border: 1px solid #ccc;
+          height: 20px;
+          float: left;
+          height: pxrem(40);
+        }
+        button:nth-child(1){
+          border-right: 0;
+        }
+        button:nth-child(3){
+          border-left: 0;
+        }
         input{
+          height: pxrem(40);
+          float: left;
           width: pxrem(72);
           border:1px solid #D8D8D8;
           text-align: center;
@@ -99,6 +137,7 @@ page-user-apply-customer-service {
         background-size: 100%;
     }
     p{
+      font-size: 14px;
       position: absolute;
       bottom: 0;
       left: 0;

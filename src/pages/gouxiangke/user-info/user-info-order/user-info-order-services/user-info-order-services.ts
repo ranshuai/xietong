@@ -120,9 +120,9 @@ export class UserInfoOrderServicesPage {
   }
 
   //售后详情
-  goToCustomerServeDetail() { 
+  goToCustomerServeDetail(orderInfo?) { 
 
-    this.navCtrl.push('CustomerServeDetailPage');
+    this.navCtrl.push('CustomerServeDetailPage', {orderInfo:orderInfo});
     
 
   }

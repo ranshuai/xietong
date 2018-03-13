@@ -18,7 +18,7 @@
     订单编号：{{orderInfo.orderSn}}
   </div>
   <ul>
-    <li *ngFor="let item of orderInfo.orderGoodsSimpleVOS">
+    <li *ngFor="let item of orderInfo.orderGoodsSimpleVOS; let _index = index">
         <section class="order_goods_section_item">
             <div class="R_pr R_clearfix">
                 <!-- <ion-checkbox [checked]="true"></ion-checkbox> -->
@@ -44,7 +44,7 @@
             </div>
           </section>
           <div class="btns">
-            <button class="btn" (click)="gotoCustomerService(item)">
+            <button class="btn" (click)="gotoCustomerService(_index)">
               申请售后
             </button>
           </div>

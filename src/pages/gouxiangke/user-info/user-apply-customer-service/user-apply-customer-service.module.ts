@@ -1,3 +1,4 @@
+import { DirectivesModule } from './../../directives/directives.module';
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { UserApplyCustomerServicePage } from './user-apply-customer-service';
@@ -8,6 +9,7 @@ import { UserApplyCustomerServicePage } from './user-apply-customer-service';
   ],
   imports: [
     IonicPageModule.forChild(UserApplyCustomerServicePage),
+    DirectivesModule
   ],
 })
 export class UserApplyCustomerServicePageModule {}

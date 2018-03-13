@@ -13,28 +13,32 @@
 </ion-header>
 
 
-<ion-content class="content_bg">
+<ion-content class="content_bg" *ngIf="orderInfo.orderData">
+    <input type="file" id="commentImg" accept="image/*" (change)="fileChange($event)" multiple style="display:none">
   <div>
     <section class="order_goods_section_item">
       <div class="R_pr R_clearfix">
           <!-- <ion-checkbox [checked]="true"></ion-checkbox> -->
           <div class="R_fl item_left">
-              <img src="http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/goods/75670/20c1887e-2fc9-4d9e-91f0-00cea0a15e7c.png?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80" alt="">
+              <img [src]="mainCtrl.imgFilter(orderInfo.orderData.orderGoodsSimpleVOS[0].goodsImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80')" alt="">
           </div>
           <div class="R_fl item_middle">
             <p>
-              惠发 商品
+             {{orderInfo.orderData.orderGoodsSimpleVOS[0]
+              .goodsName}}
             </p>
             <p class="A3A3A3">
-              规格：330X1
+              规格：{{orderInfo.orderData.orderGoodsSimpleVOS[0].specKeyName}}
             </p>
           </div>
           <div class="R_fr item_right">
               <p>
-                ¥128.00
+                {{orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice| currency}}
               </p>
               <div class="number_component">
-                <input type="number">
+                <button (click)="editNum('subtract')">-</button>
+                <input type="number" [(ngModel)]="orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum">
+                <button (click)="editNum('add')">+</button>
               </div>
           </div>
 
@@ -47,7 +51,8 @@
           <span>
               退款金额：
           </span>
-          <input type="number" class="price">
+          <span style="color:#FF0A0A">¥</span>
+          <input style="color:#FF0A0A" type="number" class="price">
         </li>
         <li class="R_pr" (click)="goToReasonRadioList(1)">
           <span>
@@ -87,28 +92,27 @@
               上传凭证  <span class="A3A3A3">（最多六张）</span>
           </span>
           <div>
-            
+            <ion-slides [slidesPerView]=" 4" [spaceBetween]=" 10" speed="100" *ngIf="imgArr">
+              <ion-slide *ngFor="let item of imgArr; let _index = index">
+                  <div class="load_pic_item" (click)="addImg()" *ngIf="!item">
+                      <div class="dashed_border">
+                        <span class="add_icon"></span>
+                        <p>
+                          上传凭证
+                        </p>
+                      </div> 
+                    </div>
+                  <i *ngIf="item" class="" (click)="deleteImg(_index)">
+                    <ion-icon class="ion-ios-icon-gxk-59"></ion-icon>
+                  </i>
+                  <img *ngIf="item" [src]="mainCtrl.imgFilter(item,'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80')">
+              </ion-slide>
+          </ion-slides>
           </div>
         </li>
         <li>
-          <div class="load_pic_item">
-            <div class="dashed_border">
-              <span class="add_icon"></span>
-              <p>
-                上传凭证
-              </p>
-            </div> 
-          </div>
-          <div class="load_pic_item">
-              <div class="dashed_border">
-                <span class="add_icon"></span>
-                <p>
-                  上传凭证
-                </p>
-              </div> 
-            </div>
+          
         </li>
-
       </ul>
     </section>
 

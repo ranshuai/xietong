@@ -1,6 +1,8 @@
+import { CommonProvider } from './../../providers/common/common';
+import { ThirdPartyApiProvider } from './../../providers/third-party-api/third-party-api';
+import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 /**
  * Generated class for the UserApplyCustomerServicePage page.
  *
@@ -16,16 +18,28 @@ import { IonicPage, NavController, NavParams,ModalController } from 'ionic-angul
 export class UserApplyCustomerServicePage {
 
   orderInfo: any = {};
+
+  //保存最大值
+  maxValue: number;
+  selfApplyservicesImgIndex : number; //上传图片的下表，可以更新图片
+  selfApplyservicesImgUpdate: boolean;//是否更新图片
+
+  imgArr = ["","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg","http://snsall.oss-cn-qingdao.aliyuncs.com/DF4D69929FD7F405/user/75803/8652e654-89cf-4df5-a32f-30b02debc276.jpg"];
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl:ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl:ModalController,public mainCtrl:MainCtrl,public thirdPartyApiProvider:ThirdPartyApiProvider,public commonProvider:CommonProvider) {
     //orderInfo.orderData 订单数据
     //orderInfo.status 订单状态 1.仅退款 2.退货退款 3.换货
     //接收订单信息
     this.orderInfo.orderData = navParams.get('orderData');
     this.orderInfo.status = navParams.get('status');
+    this.maxValue = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
 
 
+  }
+
+  ngAfterViewInit() { 
+    console.log(this.orderInfo);
   }
 
   ionViewDidLoad() {
@@ -63,4 +77,50 @@ export class UserApplyCustomerServicePage {
       console.log(data);
     })
   }
+
+  //数量的加减
+  editNum(type?) { 
+    if (type == 'add') {
+      if (this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum == this.maxValue) {
+        return
+      }
+      this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum+1
+    } else { 
+      if (this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum == 1) {
+        return 
+       }
+      this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum-1
+    }
+
+
+  }
+
+   //图片选中上传
+   fileChange(file) { 
+    let index = this.selfApplyservicesImgIndex;
+    this.thirdPartyApiProvider.uploadImage(file.target.files[0], 'user').subscribe(data => { 
+      if (data) { 
+        this.imgArr.push(data);
+      }
+    })
+   }
+  
+  //添加评论图片
+  addImg() {
+    if (this.imgArr.length > 6) {
+      this.commonProvider.showToast('最多上传6张');
+      return;
+     }
+    (<HTMLInputElement>document.getElementById("commentImg")).value = null;
+    document.getElementById("commentImg").click();
+    console.log(this.imgArr);
+    
+  }
+
+  deleteImg(index) { 
+    this.commonProvider.comConfirm('确认删除如下图片吗？').subscribe(() => { 
+      this.imgArr.splice(index,1)
+    })
+  }
+
 }

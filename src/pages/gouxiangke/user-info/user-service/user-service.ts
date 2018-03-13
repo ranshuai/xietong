@@ -27,9 +27,13 @@ export class UserServicePage {
     console.log('ionViewDidLoad UserServicePage');
   }
 
-  gotoCustomerService(item?) {  
-    console.log(item);
-    this.navCtrl.push('UserCustomerServicePage', {orderData:item});
+  gotoCustomerService(index?) {  
+    //需要显示订单的状态，
+    console.log(index);
+    let arr = [];
+    arr.push(this.orderInfo.orderGoodsSimpleVOS[index]);
+    this.orderInfo.orderGoodsSimpleVOS = arr;
+    this.navCtrl.push('UserCustomerServicePage', {orderData:this.orderInfo});
   }
 
 
