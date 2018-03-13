@@ -15,7 +15,7 @@
             <div class="img-warp R_pr">
               <span class="img-warp_bg1 R_pa" *ngIf="goods.onSale && goods.storeCount == 0">库存不足</span>
               <span class="img-warp_bg2 R_pa" *ngIf="!goods.onSale ">已下架</span>
-              <img [src]="mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62/quality,q_80')" [ngClass]="{ 'lose-efficacy': goods.isLose }">
+              <img [src]="mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62')" [ngClass]="{ 'lose-efficacy': goods.isLose }">
             </div>
           </div>
           <div class="middle">

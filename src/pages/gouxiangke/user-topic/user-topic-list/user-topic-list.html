@@ -1,6 +1,6 @@
 <section>
   <ul class="topic_list" *ngIf="data && data.length > 0">
-    <li *ngFor="let item of data" (click)="goTopic(item.topicId)" [ngBackImg]="{img:mainCtrl.imgFilter(item.topicImage,'?x-oss-process=image/resize,m_fixed,h_402,w_750/quality,q_80'),type:1}" >
+    <li *ngFor="let item of data" (click)="goTopic(item.topicId)" [ngBackImg]="{img:mainCtrl.imgFilter(item.topicImage,'?x-oss-process=image/resize,m_fixed,h_402,w_750'),type:1}" >
       <div class="title" > 
         <span>{{item.topicTitle}}</span>
         <i class="icon icon-ios"></i>

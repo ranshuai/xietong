@@ -21,9 +21,9 @@
   <div class="topic_abstract" [safeHtml]="topicDetail.topicContent || topicDetail.topic.topicContent"></div>
   </section> 
   <title-more title="推荐商品" class="center_topic" *ngIf="topicDetail && !topicDetail.storeVOList" [noMore]= true ></title-more>
-  <goods-list-block *ngIf="version != 2" [loadParams]="loadRecomendListParams" [ngShow]="topicDetail" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block> 
+  <goods-list-block *ngIf="version != 2" [loadParams]="loadRecomendListParams" [ngShow]="topicDetail" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79'"></goods-list-block> 
 
-  <goods-list-block *ngIf="version == 2 && topicDetail " [noMore]= true [hasMore] = false [data] = 'topicDetail.goodsVOList'  [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></goods-list-block> 
+  <goods-list-block *ngIf="version == 2 && topicDetail " [noMore]= true [hasMore] = false [data] = 'topicDetail.goodsVOList'  [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79'"></goods-list-block> 
   <title-more class="center_topic" title="推荐店铺" *ngIf="version == 2 && topicDetail &&topicDetail.storeVOList " [noMore]= true ></title-more>
   <div  *ngIf="version == 2 && topicDetail">
     <div class="store_vOList_warp" *ngFor="let item of topicDetail.storeVOList">

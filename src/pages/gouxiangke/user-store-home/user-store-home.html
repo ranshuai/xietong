@@ -64,11 +64,11 @@
     <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
 
     <div [ngShow]="navData.view == 'left'">
-      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="3"></goods-list-block>
+      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="3" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
     </div>
 
     <div [ngShow]="navData.view == 'right'">
-      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="3" ></goods-list-block>
+      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="3" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
     </div>
 
   </div>
@@ -97,11 +97,11 @@
       <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
 
       <div [ngShow]="navData.view == 'left'">
-        <goods-list-block #leftList [noMore]="true"  [loadParams]="goodsListParams" [colNum]="1"></goods-list-block>
+        <goods-list-block #leftList [noMore]="true"  [loadParams]="goodsListParams" [colNum]="1" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
       </div>
 
       <div [ngShow]="navData.view == 'right'">
-        <goods-list-block #rightList [noMore]="true"  [loadParams]="salesListParam" [colNum]="1"></goods-list-block>
+        <goods-list-block #rightList [noMore]="true"  [loadParams]="salesListParam" [colNum]="1" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
       </div>
 
   </div>
@@ -124,11 +124,11 @@
     <sub-nav [data]="navData" (changeNavEmit)="changeNav($event)"></sub-nav>
 
     <div [ngShow]="navData.view == 'left'">
-      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="11"></goods-list-block>
+      <goods-list-block #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="11" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
     </div>
 
     <div [ngShow]="navData.view == 'right'">
-      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="11"></goods-list-block>
+      <goods-list-block #rightList [noMore]="true" [loadParams]="salesListParam" [colNum]="11" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
     </div>
 
   </div>
@@ -189,7 +189,7 @@
     <div class="title bgcolor">
       <img src="assets/img/poromotion.png">
     </div>
-    <goods-list-block class="goods" #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="22"></goods-list-block>
+    <goods-list-block class="goods" #leftList [noMore]="true" [loadParams]="goodsListParams" [colNum]="22" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
 
   </div>
   <user-shopping-cart></user-shopping-cart>

@@ -3,7 +3,7 @@
   <div class="wrap" *ngIf="data">
     <ion-slides #ionSlides pager loop autoplay="3000" (ionSlideTap)="goToDetailV2($event)" (ionSlideAutoplayStop)="autoPlay()">
       <ion-slide *ngFor="let item of data">
-        <img [src]="mainCtrl.imgFilter(item.adCode,'?x-oss-process=image/resize,m_fixed,h_420,w_750/quality,q_80')" /> 
+        <img [src]="mainCtrl.imgFilter(item.adCode,'?x-oss-process=image/resize,m_fixed,h_420,w_750')" /> 
         <!-- <div class="img" [ngBackImg]="{ img: item.ad_code || item.adCode }"></div> -->
       </ion-slide>
     </ion-slides>

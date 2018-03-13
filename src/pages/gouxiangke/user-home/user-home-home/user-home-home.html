@@ -42,7 +42,7 @@
 <!-- 热销商品 -->
   <div *ngIf="homeHomeDataHotGoodsShow">
     <title-more class="titles" title="热 · 销 · 商 · 品" (click)="goToGoodsListPage('is_hot')"></title-more>
-    <hot-goods-swiper [data]="homeHomeData.hot_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80'"></hot-goods-swiper>
+    <hot-goods-swiper [data]="homeHomeData.hot_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_142,w_142'"></hot-goods-swiper>
   </div>
 <!-- 广告位二 -->
   <div *ngIf="homeHomeDataAdvsShow" >
@@ -50,7 +50,7 @@
   </div>
 <!-- 热门店铺 -->
   <div *ngIf="homeHomeDataShopsShow">
-    <hot-shop-swiper [data]="homeHomeData.shops" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79/quality,q_80'"></hot-shop-swiper>
+    <hot-shop-swiper [data]="homeHomeData.shops" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_79,w_79'"></hot-shop-swiper>
   </div>
 <!-- 广告位三 -->
 <div *ngIf="homeHomeDataAdvsShow" >
@@ -59,7 +59,7 @@
 <!-- 推荐商品 -->
   <div *ngIf="homeHomeDataGoodsListShow"> 
     <title-more [noMore]= true class="title" title="推 · 荐 · 商 · 品" (click)="goToGoodsListPage('is_recommend')"></title-more>
-    <goods-list-block class="goods" [loadParams]="goodsListParams" [noMore]='true'  [data]="homeHomeData.bright_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168/quality,q_80'"></goods-list-block>
+    <goods-list-block class="goods" [loadParams]="goodsListParams" [noMore]='true'  [data]="homeHomeData.bright_goods" [imgSpace]="'?x-oss-process=image/resize,m_fixed,h_168,w_168'"></goods-list-block>
   </div>
 </div>
 <user-shopping-cart></user-shopping-cart>

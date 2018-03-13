@@ -2,7 +2,7 @@
 <div class="wrap self_goods_imgs" >
   <ion-slides pager paginationType="fraction">
     <ion-slide *ngFor="let item of data">
-      <img [src]="mainCtrl.imgFilter(item.imageUrl,'?x-oss-process=image/resize,m_fixed,h_750,w_750/quality,q_80') || item">
+      <img [src]="mainCtrl.imgFilter(item.imageUrl,'?x-oss-process=image/resize,m_fixed,h_750,w_750') || item">
       <!-- <ion-img [src]="item.ad_code"></ion-img> -->
     </ion-slide>
   </ion-slides>

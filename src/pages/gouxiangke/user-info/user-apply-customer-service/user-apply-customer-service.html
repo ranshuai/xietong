@@ -20,7 +20,7 @@
       <div class="R_pr R_clearfix">
           <!-- <ion-checkbox [checked]="true"></ion-checkbox> -->
           <div class="R_fl item_left">
-              <img [src]="mainCtrl.imgFilter(orderInfo.orderData.orderGoodsSimpleVOS[0].goodsImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80')" alt="">
+              <img [src]="mainCtrl.imgFilter(orderInfo.orderData.orderGoodsSimpleVOS[0].goodsImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142')" alt="">
           </div>
           <div class="R_fl item_middle">
             <p>
@@ -105,7 +105,7 @@
                   <i *ngIf="item" class="" (click)="deleteImg(_index)">
                     <ion-icon class="ion-ios-icon-gxk-59"></ion-icon>
                   </i>
-                  <img *ngIf="item" [src]="mainCtrl.imgFilter(item,'?x-oss-process=image/resize,m_fixed,h_142,w_142/quality,q_80')">
+                  <img *ngIf="item" [src]="mainCtrl.imgFilter(item,'?x-oss-process=image/resize,m_fixed,h_142,w_142')">
               </ion-slide>
           </ion-slides>
           </div>
