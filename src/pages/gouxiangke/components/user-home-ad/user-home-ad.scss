@@ -5,6 +5,10 @@ user-home-ad {
       height: pxrem(420);
       .slide-zoom {
         height: 100%;
+        img{
+          width: 100%;
+          height:100%;
+        }
         .img {
           height: 100%;
         }

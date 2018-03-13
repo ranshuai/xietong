@@ -1,3 +1,4 @@
+import { MainCtrl } from './../../../../providers/MainCtrl';
 import { Component, Input, ViewChild } from '@angular/core';
 import { Slides,NavController } from "ionic-angular";
 import { CommonProvider } from "../../providers/common/common";
@@ -22,7 +23,8 @@ export class UserHomeAdComponent {
 
   constructor(
     private common: CommonProvider,
-    private navController:NavController
+    private navController: NavController,
+    public mainCtrl:MainCtrl
   ) {
   }
 

@@ -1,6 +1,8 @@
+import { MainCtrl } from './../../../../providers/MainCtrl';
 import { NavController } from 'ionic-angular';
 import { Component, Input, forwardRef, Inject } from '@angular/core';
 import { CommonProvider } from "../../providers/common/common";
+
 // import { UserTopicDetailsPage } from "../user-topic-details/user-topic-details"
 
 /**
@@ -21,7 +23,7 @@ export class UserTopicListComponent {
 
   userTopicDetailsPage = 'UserTopicDetailsPage'
 
-  constructor(public common: CommonProvider,public navCtrl:NavController) { }
+  constructor(public common: CommonProvider,public navCtrl:NavController,public mainCtrl:MainCtrl) { }
 
   goTopic(_topicId) {
     this.navCtrl.push(this.userTopicDetailsPage, { id: _topicId })
