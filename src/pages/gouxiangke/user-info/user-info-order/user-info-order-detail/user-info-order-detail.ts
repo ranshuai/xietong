@@ -272,4 +272,10 @@ export class UserInfoOrderDetailPage {
   }
 
 
+  gotoCustomerService(item){
+    console.log(item);
+    item.orderGoodsSimpleVOS = item.goods;
+    this.navCtrl.push('UserServicePage',{orderInfo:item});
+  }
+
 }

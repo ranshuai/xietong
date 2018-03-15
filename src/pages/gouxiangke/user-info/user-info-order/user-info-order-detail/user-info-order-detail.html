@@ -24,11 +24,11 @@
                     </span>
                   </span>
             </span>
-
-          <span *ngIf="[0,2].indexOf(orderDetailModelData.payStatus)>-1&&orderDetailModelData.orderStatus==0" class="shop_flag">待付款</span>
-          <span *ngIf="[0,1].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0" class="shop_flag">待发货</span>
-          <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" class="shop_flag">待收货</span>
-          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==4" class="shop_flag">已完成</span>
+          <span *ngIf="[0,2].indexOf(orderDetailModelData.payStatus)>-1&&orderDetailModelData.orderStatus==0" class="shop_flag">等待买家付款</span>
+          <span *ngIf="[0].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0" class="shop_flag">等待商家确认订单</span>
+          <span *ngIf="[1].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0" class="shop_flag">等待商家发货</span>
+          <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" class="shop_flag">商家已发货</span>
+          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==4" class="shop_flag">交易成功</span>
           <span *ngIf="orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3 " class="shop_flag">已取消</span>
           <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2" class="shop_flag">待评价</span>
           <span *ngIf="orderDetailModelData.payStatus == 1 && orderDetailModelData.shippingStatus >= 1 && orderDetailModelData.aftersale == -1" class="shop_flag">售后中</span>
@@ -116,14 +116,18 @@
           <span *ngIf="([0,2].indexOf(orderDetailModelData.payStatus)>-1)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)"  (click)="cancelOrderPop(orderDetailModelData)">取消订单</span>
           <span *ngIf="([0,2].indexOf(orderDetailModelData.payStatus)>-1)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)" class="active" (click)="goToPage('订单确认',orderDetailModelData)">去付款</span>
           <!-- 待发货 -->
-          <span *ngIf="([0,1].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0)" (click)="cancelOrderPop(orderDetailModelData)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)">取消订单</span>
+          <span *ngIf="([0].indexOf(orderDetailModelData.orderStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.shippingStatus==0)" (click)="cancelOrderPop(orderDetailModelData)&&!(orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==3)">取消订单</span>
 
           <!-- 代收货   -->
           <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" (click)="openChangeModal(orderDetailModelData)">查看物流</span>
           <span *ngIf="[1,2].indexOf(orderDetailModelData.shippingStatus)>-1&&orderDetailModelData.payStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==1" class="active" (click)="confirm_receiptPopup(orderDetailModelData)">确认收货</span>
 
           <!-- 待评价 -->
-          <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2" (click)="goToPage('申请售后',orderDetailModelData)">申请售后</span>
+          <!-- <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&（orderDetailModelData.orderStatus==2 || orderDetailModelData.orderStatus==1）" (click)="goToPage('申请售后',orderDetailModelData)">申请售后</span> -->
+
+          <span *ngIf="orderDetailModelData.payStatus==1 && (orderDetailModelData.shippingStatus==0||orderDetailModelData.shippingStatus==1)&&orderDetailModelData.aftersale == 0&&(orderDetailModelData.orderStatus==2 || orderDetailModelData.orderStatus==1)" (click)="gotoCustomerService(orderDetailModelData)">申请售后</span>
+
+
           <span *ngIf="orderDetailModelData.payStatus==1&&orderDetailModelData.shippingStatus==1&&orderDetailModelData.aftersale == 0&&orderDetailModelData.orderStatus==2"  (click)="goToPage('评价',orderDetailModelData)">我要评价</span>
 
           <!-- 已完成    -->

@@ -41,6 +41,28 @@ export class CustomerServeDetailPage {
     this.api.get(this.api.config.host.bl + 'order/return/detail/' + this.orderInfo.id).subscribe((data) => { 
       if (data.success) {
         this.returnInfo = data.result;
+        this.returnInfo[0].returnOrChange = 2;
+        this.returnInfo[1] = {
+          createTimeName:'2018-03-14  11:53:04',
+          returnStatus:1,
+          companyAddress:'西单',
+          sellerName:'gxk',
+          sellerPhone:'123'
+        }
+        this.returnInfo[2] = {
+          createTimeName:'2018-03-14  11:53:04',
+          buyerShippingName:'圆通',
+          buyerShippingNo:'1232323213213'
+        }
+        this.returnInfo[3] = {
+          createTimeName:'2018-03-14  11:53:04',
+          sellerShippingName:'圆通',
+          sellerShippingNo:'1232323213213'
+        }
+        // this.returnInfo[4] = {
+        //   createTimeName:'2018-03-14  11:53:04'
+        // }
+
       } else { 
         this.commonProvider.showToast(data.msg);
       }
@@ -102,6 +124,7 @@ export class CustomerServeDetailPage {
       this.api.get(this.api.config.host.bl + '/order/return/cancel/'+this.orderInfo.id,{ "id":this.orderInfo.id, "shippingCode":this.Logistics.code, "shippingName":this.Logistics.txt, "shippingNo":this.Logistics.scan }).subscribe(data => {
         if(data.success){
           this.commonProvider.showToast(data.msg);
+          this.navCtrl.pop();
         }else{
           this.commonProvider.showToast(data.msg);
         }

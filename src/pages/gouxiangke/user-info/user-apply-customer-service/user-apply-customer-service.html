@@ -63,7 +63,7 @@
           </span>
           <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
         </li>
-        <li *ngIf="orderInfo.status == 1" class="R_pr" (click)="goToReasonRadioList(2)">
+        <li *ngIf="(orderInfo.status == 0 && (orderInfo.orderData.payStatus == 1 && orderInfo.orderData.orderStatus == 1 && orderInfo.orderData.shippingStatus == 1 && (orderInfo.orderData.aftersale == 0 || orderInfo.orderData.aftersale == 1))) ||  (orderInfo.status == 0 && (orderInfo.orderData.payStatus == 1 && (orderInfo.orderData.orderStatus == 2 || orderInfo.orderData.orderStatus == 4) && orderInfo.orderData.shippingStatus == 1 && (orderInfo.orderData.aftersale == 0 || orderInfo.orderData.aftersale == 1)))" class="R_pr" (click)="goToReasonRadioList(2)">
             <span>
                 货物状态:
             </span>

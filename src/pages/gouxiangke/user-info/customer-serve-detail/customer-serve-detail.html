@@ -86,48 +86,147 @@
           审核未通过：
         </p>
         <div class="des padding_0 padding_l_24">
+          <!-- 买家取消申请  -->
           <div class="item" *ngIf="returnInfo[1].returnStatus == 7">
               <p>
                   买家已撤回本次售后申请
                 </p>
           </div> 
+          <!-- 卖家审核未通过  -->
           <div class="item" *ngIf="returnInfo[1].returnStatus == 2">
-              <p>
-                  {{returnInfo[1].returnReason}}
+                <p>
+                  {{returnInfo[1].sellerMarks}}
                 </p>
           </div>
-          <div class="item">
+          <!-- 卖家审核通过 -->
+          <div class="item" *ngIf="returnInfo[1].returnStatus == 1">
                 <p>
                   商家同意了本次售后服务申请：
                 </p>
-                <p>
-                  同意换货数量：2
+                <p *ngIf="returnInfo[0].returnOrChange == 1 || returnInfo[0].returnOrChange == 2">
+                  同意换货数量：{{returnInfo[0].goodsNum}}
+                </p>
+                <p *ngIf="returnInfo[0].returnOrChange == 0 || returnInfo[0].returnOrChange == 1">
+                  同意退款金额：{{returnInfo[0].returnMoney | currency}}
                 </p>
           </div>
-          <div class="item">
+          <div class="item" *ngIf="(returnInfo[1].returnStatus == 1 && returnInfo[0].returnOrChange == 1 && !returnInfo[2]) ||  (returnInfo[1].returnStatus == 1 && returnInfo[0].returnOrChange == 2 && !returnInfo[2])">
               <p>
                   请将商品寄到如下地址：
               </p>
               <p>
-                收货地址：北京昌平区西单大厦
+                收货地址：{{returnInfo[1].companyAddress}}
               </p>
               <p>
-                收货人姓名：购享客
+                收货人姓名：{{returnInfo[1].sellerName}}
               </p>
               <p>
-                联系电话 137238409382098
+                联系电话 {{returnInfo[1].sellerPhone}}
               </p>
         </div>
         </div>
 
       </div>
     </li>
-    <li *ngIf="returnInfo[1] && returnInfo[1].returnStatus == 1">
+    <li *ngIf="returnInfo[2]">
       <p class="title">
+        <span>
+          {{returnInfo[2].createTimeName}}
+        </span>
+      </p>
+      <div class="content">
+          <p class="title color_#FF0A0A">
+              买家已发货
+          </p>
+          <div class="des padding_0 padding_l_24">
+              <div class="item">
+                  <p>
+                    获取信息如下：
+                  </p>
+                  <p>
+                    物流公司：{{returnInfo[2].buyerShippingName}}
+                  </p>
+                  <p>
+                    物流单号：{{returnInfo[2].buyerShippingNo}}
+                  </p>
+            </div>
+          </div>
+        </div> 
+    </li>  
+    <!-- 退货退款成功， -->
+    <li *ngIf="returnInfo[3] && returnInfo[0].returnOrChange == 1">
+        <p class="title">
+          <span>
+            {{returnInfo[3].createTimeName}}
+          </span>
+        </p>
+        <div class="content">
+            <p class="title color_#FF0A0A">
+                退款成功
+            </p>
+            <div class="des padding_0 padding_l_24">
+                <div class="item">
+                    <p>
+                      退款金额：<span style="color:#FF0A0A">
+                          {{returnInfo[0].returnMoney | currency}}
+                        </span>
+                    </p>
+                    <p *ngIf="returnInfo[3].sellerShippingName">
+                      物流公司：{{returnInfo[3].sellerShippingName}}
+                    </p>
+                    <p *ngIf="returnInfo[3].sellerShippingNo">
+                      物流单号：{{returnInfo[3].sellerShippingNo}}
+                    </p>
+              </div>
+            </div>
+          </div> 
+    </li> 
+     <!-- 换货成功， -->
+    <li *ngIf="returnInfo[3] && returnInfo[0].returnOrChange == 2">
+        <p class="title">
+          <span>
+            {{returnInfo[3].createTimeName}}
+          </span>
+        </p>
+        <div class="content">
+            <p class="title color_#FF0A0A">
+                商家已发货
+            </p>
+            <div class="des padding_0 padding_l_24">
+                <div class="item">
+                    <p>
+                      货物信息如下：
+                    </p>
+                    <p *ngIf="returnInfo[3].sellerShippingName">
+                      物流公司：{{returnInfo[3].sellerShippingName}}
+                    </p>
+                    <p *ngIf="returnInfo[3].sellerShippingNo">
+                      物流单号：{{returnInfo[3].sellerShippingNo}}
+                    </p>
+              </div>
+            </div>
+          </div> 
+    </li> 
+     <!-- 买家确认收货， -->
+     <li *ngIf="returnInfo[4] && returnInfo[0].returnOrChange == 2">
+        <p class="title">
+          <span>
+            {{returnInfo[4].createTimeName}}
+          </span>
+        </p>
+        <div class="content">
+            <p class="title">
+                买家已确认收货
+            </p>
+          </div> 
+    </li> 
+      <!-- 买家填写物流信息 如果【2】有数据就不显示 -->
+    <li *ngIf="returnInfo[1] && returnInfo[1].returnStatus == 1 && returnInfo[0].returnOrChange != 0 && !returnInfo[2]">
+      <!-- <p class="title">
         <span>
           2018年2月28日 12:00
         </span>
-      </p>
+      </p> -->
       <div class="content">
         <p class="title">
           请填写发货信息：
@@ -151,13 +250,12 @@
           </p>
       </div>
     </li>
-    <li *ngIf="!returnInfo[1]">
+    <li class="white" *ngIf="!returnInfo[1]">
         <p class="title R_clearfix _row" (click)="revoke()">
             <button class="R_fr">
               撤销申请
             </button>
           </p>
     </li>  
-
   </ul>
 </ion-content>

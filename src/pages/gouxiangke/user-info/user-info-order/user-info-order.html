@@ -47,10 +47,11 @@
               <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
             </span> 
           </span>
-          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="shop_flag">待付款</span>
-          <span *ngIf="[0,1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">待发货</span>
-          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="shop_flag">待收货</span>
-          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==4" class="shop_flag">已完成</span>
+          <span *ngIf="[0,2].indexOf(item.payStatus)>-1&&item.orderStatus==0" class="shop_flag">等待买家付款</span>
+          <span *ngIf="[0].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">等待商家确认订单</span>
+          <span *ngIf="[1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">等待商家发货</span>
+          <span *ngIf="[1,2].indexOf(item.shippingStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.orderStatus==1" class="shop_flag">商家已发货</span>
+          <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==4" class="shop_flag">交易成功</span>
           <span *ngIf="item.aftersale == 0&&item.orderStatus==3 " class="shop_flag">已取消</span>
           <span *ngIf="item.payStatus==1&&item.shippingStatus==1&&item.aftersale == 0&&item.orderStatus==2" class="shop_flag">待评价</span>
           <span *ngIf="item.payStatus == 1 && item.shippingStatus >= 1 && item.aftersale == -1" class="shop_flag">售后中</span>
@@ -125,7 +126,7 @@
                 <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
               </span> 
             </span>
-          <span class="shop_flag">待付款</span>
+          <span class="shop_flag">等待买家付款</span>
 
         </div>
 
@@ -177,7 +178,9 @@
                 <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
               </span> 
             </span>
-          <span class="shop_flag">待发货</span>
+          <!-- <span class="shop_flag">待发货</span> -->
+          <span *ngIf="[0].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">等待商家确认订单</span>
+          <span *ngIf="[1].indexOf(item.orderStatus)>-1&&item.payStatus==1&&item.aftersale == 0&&item.shippingStatus==0" class="shop_flag">等待商家发货</span>
 
         </div>
         <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">
@@ -229,7 +232,7 @@
                 <ion-icon  class="ion-ios-icon-gxk-48"></ion-icon><span class="server_style">联系客服</span>
               </span> 
             </span>
-          <span class="shop_flag">待收货</span>
+          <span class="shop_flag">商家已发货</span>
 
         </div>
         <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)">

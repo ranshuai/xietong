@@ -1,4 +1,8 @@
 page-customer-serve-detail {
+  .colorFF0A0A{
+    color: #FF0A0A !important;;
+  }
+  .white{background:#fff;}
   .ion-ios-icon-gxk-155{
     position: absolute;
     top: 50%;
@@ -21,7 +25,7 @@ page-customer-serve-detail {
   .customer_serve_list{
     padding:0 pxrem(24);
     li:last-child(){
-      background: #FFF;
+      // background: #FFF;
       border-radius: 0 0 5px 5px;
     }
     li:nth-last-child(2){
