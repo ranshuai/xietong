@@ -27,7 +27,7 @@ export class UserCustomerServicePage {
 
   goToUserApplyCustomerServicePage(orderInfo: any) {
     //orderInfo.orderData 订单数据
-    //orderInfo.status 订单状态 1.仅退款 2.退货退款 3.换货
+    //orderInfo.status 订单状态 0.仅退款 1.退货退款 2.换货
     this.navCtrl.push('UserApplyCustomerServicePage', orderInfo);
   }
 

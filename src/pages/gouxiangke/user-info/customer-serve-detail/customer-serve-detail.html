@@ -14,11 +14,11 @@
 
 
 <ion-content class="gray_bg">
-  <ul class="customer_serve_list">
+  <ul class="customer_serve_list" *ngIf="returnInfo">
     <li>
       <p class="title">
         <span>
-          2018年2月28日 12:00
+          {{returnInfo[0].createTimeName}}
         </span>
       </p>
       <div class="content">
@@ -29,54 +29,73 @@
           <div class="R_pr R_clearfix">
               <!-- <ion-checkbox [checked]="true"></ion-checkbox> -->
               <div class="R_fl item_left">
-                  <img [src]="mainCtrl.imgFilter('http://snsall.oss-cn-qingdao.aliyuncs.com/92E21DE17C0CE872/goods/75550/137c75db-59c5-4ab4-ae72-04c259494015..jpg?x-oss-process=image/resize,m_fixed,h_142,w_142','?x-oss-process=image/resize,m_fixed,h_142,w_142')" alt="">
+                  <img [src]="mainCtrl.imgFilter(returnInfo[0].goodsImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142')" alt="">
               </div>
               <div class="R_fl item_middle">
                 <p>
-                  {{'白酒'}}
+                  {{returnInfo[0].goodsName}}
                 </p>
                 <p class="A3A3A3">
-                  规格：{{'默认'}}
+                  规格：{{returnInfo[0].goodsSpecName}}
                 </p>
               </div>
               <div class="R_fr item_right">
                   <p>
-                    ¥{{'100'}}
+                    {{returnInfo[0].returnMoney | currency}}
                   </p>
                   <p>
-                    x{{'1'}}
+                    x{{returnInfo[0].goodsNum}}
                   </p>
               </div>
           </div>
         </section>
         <div class="des">
           <p>
-            换货原因：商品质量有问题
+            换货原因：{{returnInfo[0].returnReason}}
+          </p>
+          <p *ngIf="returnInfo[0].goodsStatus">
+            货物状态：{{returnInfo[0].goodsStatus?'已收到货':'未收到货'}}
+          </p>
+          <p *ngIf="returnInfo[0].returnMoney">
+            退款金额：{{returnInfo[0].returnMoney | currency}}
           </p>
           <p>
-            货物状态：已收到货
+            申请件数：{{returnInfo[0].goodsNum}}
           </p>
-          <p>
-            申请件数：2
-          </p>
-          <p>
+          <!-- <p>
             售后编码：111111111
-          </p>
+          </p> -->
         </div>
 
       </div>
     </li>
-    <li>
+    <li *ngIf="returnInfo[1]">
       <p class="title">
         <span>
-          2018年2月28日 12:00
+          {{returnInfo[1].createTimeName}}
         </span>
       </p>
       <div class="content">
-        <p class="title">
+        <p class="title" *ngIf="returnInfo[1].returnStatus == 1">
           审核通过：
         </p>
+        <p class="title" *ngIf="returnInfo[1].returnStatus == 7">
+          已取消：
+        </p>
+        <p class="title" *ngIf="returnInfo[1].returnStatus == 2">
+          审核未通过：
+        </p>
         <div class="des padding_0 padding_l_24">
+          <div class="item" *ngIf="returnInfo[1].returnStatus == 7">
+              <p>
+                  买家已撤回本次售后申请
+                </p>
+          </div> 
+          <div class="item" *ngIf="returnInfo[1].returnStatus == 2">
+              <p>
+                  {{returnInfo[1].returnReason}}
+                </p>
+          </div>
           <div class="item">
                 <p>
                   商家同意了本次售后服务申请：
@@ -103,7 +122,7 @@
 
       </div>
     </li>
-    <li>
+    <li *ngIf="returnInfo[1] && returnInfo[1].returnStatus == 1">
       <p class="title">
         <span>
           2018年2月28日 12:00
@@ -113,24 +132,27 @@
         <p class="title">
           请填写发货信息：
         </p>
-        <p class="title">
-          韵达快递：
+        <p class="title" style="position:relative" (click)="selectedLogisticsCompany()">
+            {{Logistics.txt || '请选择物流公司' }}
+            <ion-icon class="ion-ios-icon-gxk-51">
+            
+            </ion-icon>
         </p>
         <p class="title" style="position:relative">
-          123434343257432598
-          <ion-icon class="ion-ios-icon-gxk-155">
+              {{Logistics.scan  || '请填写物流单号'}}
+          <ion-icon class="ion-ios-icon-gxk-155" (click)="scanCode()">
             
           </ion-icon>
         </p>
         <p class="title R_clearfix">
-            <button class="R_fr">
+            <button class="R_fr" (click)="save()">
               保存
             </button>
           </p>
       </div>
     </li>
-    <li>
-        <p class="title R_clearfix _row">
+    <li *ngIf="!returnInfo[1]">
+        <p class="title R_clearfix _row" (click)="revoke()">
             <button class="R_fr">
               撤销申请
             </button>

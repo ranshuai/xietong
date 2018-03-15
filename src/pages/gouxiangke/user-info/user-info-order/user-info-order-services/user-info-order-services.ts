@@ -38,8 +38,7 @@ export class UserInfoOrderServicesPage {
       refresher && refresher.complete();
       return false;
     }
-    this.api.get(this.api.config.host.bl + 'v2/order/query', {
-      type:'aftersale',
+    this.api.get(this.api.config.host.bl + 'order/return/list', {
       page: this.PageData.page,
       rows: this.PageData.rows,
     }).subscribe(data => {

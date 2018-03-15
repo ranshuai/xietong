@@ -38,7 +38,7 @@ export class ReasonradioListPage {
   }
 
   close(title?,selectedValue?) { 
-    console.log(this.selectedValue);
+    console.log(selectedValue);
     if (this.viewCtrl.isOverlay) {
       let json ={
         title:title,

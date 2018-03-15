@@ -54,14 +54,14 @@
 
       </div>
 
-      <div *ngIf="sendGoodsData.shippingType == '外包配送' || sendGoodsData.shippingType == '众包+外包配送'">
+      <div>
 
         <div class="input-title">快递公司</div>
 
         <div class="input-wrap right-arrow" (click)="openDeliverySelect()">
           <ion-item>
             <ion-label>快递公司:</ion-label>
-            <ion-input type="text" formControlName="shippingName" required readonly></ion-input>
+            <!-- <ion-input type="text" formControlName="shippingName" required readonly></ion-input> -->
           </ion-item>
           <ion-icon class="ion-ios-icon-gxk-51 self_rotate"></ion-icon>
         </div>
@@ -104,12 +104,12 @@
           </ion-item>
         </div> -->
 
-        <div class="input-wrap">
+        <!-- <div class="input-wrap">
           <ion-item>
             <ion-label>配送单号:</ion-label>
             <ion-input type="text" formControlName="thirdLogisticsNo" maxlength="20" required></ion-input>
           </ion-item>
-        </div>
+        </div> -->
 
         <!-- <div class="input-wrap right-arrow" (click)="openUsefulSelect()">
           <ion-item>

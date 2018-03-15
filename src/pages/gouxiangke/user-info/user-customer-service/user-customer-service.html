@@ -15,7 +15,7 @@
 
 <ion-content class="content_bg">
   <div>
-    <section  class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:1})">
+    <section  class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:0})">
       <p class="title">
         仅退款
       </p>
@@ -24,7 +24,7 @@
       </p>
       <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
     </section>
-    <section *ngIf="orderData.payStatus == 1 && (orderData.orderStatus == 1 ||orderData.orderStatus == 2 )&& orderData.shippingStatus == 1 && (orderData.aftersale == 0 || orderData.aftersale == 1)"  class="R_user_section_item R_pr"   class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:2})">
+    <section *ngIf="orderData.payStatus == 1 && (orderData.orderStatus == 1 ||orderData.orderStatus == 2 )&& orderData.shippingStatus == 1 && (orderData.aftersale == 0 || orderData.aftersale == 1)"  class="R_user_section_item R_pr"   class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:1})">
       <p class="title">
         退货退款
       </p>
@@ -33,7 +33,7 @@
       </p>
       <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
     </section>
-    <section *ngIf="orderData.payStatus == 1 && orderData.orderStatus == 2 && orderData.shippingStatus == 1 && (orderData.aftersale == 0 || orderData.aftersale == 1)" class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:3})">
+    <section *ngIf="orderData.payStatus == 1 && orderData.orderStatus == 2 && orderData.shippingStatus == 1 && (orderData.aftersale == 0 || orderData.aftersale == 1)" class="R_user_section_item R_pr" (click)="goToUserApplyCustomerServicePage({orderData:orderData,status:2})">
       <p class="title">
         换货
       </p>

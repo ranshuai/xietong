@@ -27,14 +27,20 @@ export class UserApplyCustomerServicePage {
   //提交信息
   submitInfo:any = {};
   //退款金额
-  returnMoney:any;
+  returnMoney: any;
+  //退款说明
+  buyerMarks: string;
+  //退款换货的愿意
+  returnReason: string;
+  //货物的状态
+  goodsStatus: number;
 
   imgArr = [""];
   
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public modalCtrl:ModalController,public mainCtrl:MainCtrl,public thirdPartyApiProvider:ThirdPartyApiProvider,public commonProvider:CommonProvider,public api:Api) {
     //orderInfo.orderData 订单数据
-    //orderInfo.status 订单状态 1.仅退款 2.退货退款 3.换货
+    //orderInfo.status 订单状态 0.仅退款 1.退货退款 2.换货
     //接收订单信息
     this.orderInfo.orderData = navParams.get('orderData');
     this.orderInfo.status = navParams.get('status');
@@ -80,7 +86,18 @@ export class UserApplyCustomerServicePage {
     modalCtrl.present();
     modalCtrl.onDidDismiss((data) => { 
       console.log(data);
-      this.submitInfo[data.title] =  data.selectedValue;
+
+      if (data.title == '货物状态') {
+        if (data.selectedValue == '未收到货') {
+          this.goodsStatus = 0;
+        } else { 
+          this.goodsStatus = 1;
+        }
+        this.submitInfo[data.title] = data.selectedValue;
+        return 
+       }
+      this.submitInfo[data.title] = data.selectedValue;
+      this.returnReason = data.selectedValue;
     })
   }
 
@@ -138,12 +155,17 @@ export class UserApplyCustomerServicePage {
       newArrImg.push(this.imgArr[i]);
     }
 
-    let json = { "orderId":this.orderInfo.orderData.orderId , "orderStatus": this.orderInfo.orderData.orderStatus, "returnType": this.orderInfo.status, "shippingStatus": this.orderInfo.orderData.shippingStatus, "payStatus": this.orderInfo.orderData.payStatus, "goodsId":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsId, "goodsName":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsName, "goodsSpecKey": this.orderInfo.orderData.orderGoodsSimpleVOS[0].specKey, "goodsNum": 1, "returnMoney": 1, "returnImgs": newArrImg, "returnReason": "退货原因", "buyerMarks": "麻溜的", "goodsStatus": 1 }
+    let json = { "orderId":this.orderInfo.orderData.orderId , "orderStatus": this.orderInfo.orderData.orderStatus, "returnType": this.orderInfo.status, "shippingStatus": this.orderInfo.orderData.shippingStatus, "payStatus": this.orderInfo.orderData.payStatus, "goodsId":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsId, "goodsName":this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsName, "goodsSpecKey": this.orderInfo.orderData.orderGoodsSimpleVOS[0].specKey, "goodsNum": this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum, "returnMoney": this.returnMoney, "returnImgs": newArrImg, "returnReason": this.returnReason, "buyerMarks": this.buyerMarks, "goodsStatus": this.goodsStatus }
     
 
     this.api.post(this.api.config.host.bl + 'order/return/apply', json).subscribe((data) => { 
       if (data.success) {
-        console.log(data);
+        this.commonProvider.showToast(data.msg);
+        this.navCtrl.getViews().forEach(data => {
+          if (data.name == 'UserInfoOrderPage') {
+            this.navCtrl.popTo(data);
+          }
+        })
       } else { 
         this.commonProvider.showToast(data.msg)
       }

@@ -47,14 +47,14 @@
 
     <section class="">
       <ul class="customer_service_ul">
-        <li *ngIf="orderInfo.status != 3">
+        <li *ngIf="orderInfo.status != 2">
           <span>
               退款金额:
           </span>
           <span style="color:#FF0A0A">¥</span>
           <input style="color:#FF0A0A"[(ngModel)]="returnMoney" type="number" class="price">
         </li>
-        <li *ngIf="orderInfo.status != 3" class="R_pr" (click)="goToReasonRadioList(1)">
+        <li *ngIf="orderInfo.status != 2" class="R_pr" (click)="goToReasonRadioList(1)">
           <span>
               退款原因:
           </span>
@@ -63,7 +63,7 @@
           </span>
           <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
         </li>
-        <li *ngIf="orderInfo.status == 2" class="R_pr" (click)="goToReasonRadioList(2)">
+        <li *ngIf="orderInfo.status == 1" class="R_pr" (click)="goToReasonRadioList(2)">
             <span>
                 货物状态:
             </span>
@@ -72,7 +72,7 @@
             </span>
             <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
           </li>
-          <li *ngIf="orderInfo.status == 3" class="R_pr" (click)="goToReasonRadioList(3)">
+          <li *ngIf="orderInfo.status == 2" class="R_pr" (click)="goToReasonRadioList(3)">
               <span>
                   换货原因:
               </span>
@@ -81,17 +81,17 @@
               </span>
               <ion-icon class="ion-ios-icon-gxk-51 R_pa"></ion-icon>
             </li>
-        <li *ngIf="orderInfo.status != 3">
+        <li *ngIf="orderInfo.status != 2">
           <span>
               退款说明:
           </span>
-          <input type="text" placeholder="选填，限30字以内">
+          <input type="text" placeholder="选填，限30字以内" [(ngModel)]="buyerMarks">
         </li>
-        <li *ngIf="orderInfo.status == 3">
+        <li *ngIf="orderInfo.status == 2">
             <span>
                 换货说明:
             </span>
-            <input type="text" placeholder="选填，限30字以内">
+            <input type="text" placeholder="选填，限30字以内" [(ngModel)]="buyerMarks">
         </li>
         <li>
           <span>

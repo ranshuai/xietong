@@ -28,26 +28,26 @@
           <span *ngIf="item.aftersale == 2" class="shop_flag">已售后</span> -->
         </div>
         <!-- <div class="confirm-box" *ngFor="let goods of item.orderGoodsSimpleVOS" (click)="goToPage('详情',item)"> -->
-          <section class="order_goods_section_item" *ngFor="let _item of item.orderGoodsSimpleVOS">
+          <section class="order_goods_section_item">
             <div class="R_pr R_clearfix">
                 <!-- <ion-checkbox [checked]="true"></ion-checkbox> -->
                 <div class="R_fl item_left">
-                    <img [src]="mainCtrl.imgFilter(_item.goodsImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142')" alt="">
+                    <img [src]="mainCtrl.imgFilter(item.originalImg,'?x-oss-process=image/resize,m_fixed,h_142,w_142')" alt="">
                 </div>
                 <div class="R_fl item_middle">
                   <p>
-                   {{_item.goodsName}}
+                   {{item.goodsName}}
                   </p>
                   <p class="A3A3A3">
-                    规格：{{_item.specKeyName}}
+                    规格：{{item.specKeyName}}
                   </p>
                 </div>
                 <div class="R_fr item_right">
                     <p>
-                      {{_item.marketPrice}}
+                      {{item.marketPrice | currency}}
                     </p>
                     <p>
-                      x{{_item.goodsNum}}
+                      x{{item.goodsNum}}
                     </p>
                 </div>
       
@@ -56,8 +56,8 @@
         <!-- 全部 -->
         <div class="order_goods_section_btns R_clearfix">
           <p class="_status R_fl">
-            <span>退货退款</span>
-            <span>审核中</span>
+            <span>{{item.returnOrChangeName}}</span>
+            <span>{{item.returnStatusName}}</span>
           </p>
           <button class="R_fr" (click)="goToCustomerServeDetail(item)">查看详情</button>
         </div>

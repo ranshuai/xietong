@@ -5,6 +5,13 @@ page-customer-serve-detail {
     margin-top: - pxrem(16);
     right: pxrem(24);
   }
+  .ion-ios-icon-gxk-51{
+    transform: rotate(180deg);
+    position: absolute;
+    top: 50%;
+    margin-top: - pxrem(16);
+    right: pxrem(24);
+  }
   .padding_0{
     padding: 0 !important;
   }
@@ -13,7 +20,15 @@ page-customer-serve-detail {
   }
   .customer_serve_list{
     padding:0 pxrem(24);
-
+    li:last-child(){
+      background: #FFF;
+      border-radius: 0 0 5px 5px;
+    }
+    li:nth-last-child(2){
+      .content{
+        border-radius:5px 5px 0 0 ;
+      }
+    }
     li{
       .title._row{
         button{
@@ -23,7 +38,6 @@ page-customer-serve-detail {
         }
       }
       .title{
-        background: #fff;
         height:pxrem(96);
         text-align: center;
         span{
@@ -89,7 +103,7 @@ page-customer-serve-detail {
       margin-right: pxrem(20);
     }
     .item_middle{
-      width: 70%;
+      width: 68%;
       p:nth-child(1){
         height:pxrem(68);
         overflow: hidden;
