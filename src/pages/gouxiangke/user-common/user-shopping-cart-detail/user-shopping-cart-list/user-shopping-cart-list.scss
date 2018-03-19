@@ -1,4 +1,13 @@
 user-shopping-cart-list {
+    ion-item-sliding{
+        ion-item.item-block.item-ios{
+            border-top: 1px solid #e5e5e5 !important;
+            border-bottom: 0px !important;
+        }
+        ion-label{
+            max-width:  100% !important;
+        }
+    }
     .store-list {
         .store-item {
             margin-top: pxrem(8);
@@ -26,7 +35,7 @@ user-shopping-cart-list {
             .goods-item {
                 position: relative;
                 height: pxrem(205);
-                border-top: 1px solid #e5e5e5;
+                // border-top: 1px solid #e5e5e5;
                 .left,
                 .middle {
                     float: left;

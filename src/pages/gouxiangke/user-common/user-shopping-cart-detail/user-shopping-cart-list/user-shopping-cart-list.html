@@ -9,28 +9,44 @@
         </div>
       </div>
       <div class="goods-list">
-        <div class="goods-item" *ngFor="let goods of store.goods" (click)="goToGoodsDetail(goods)">
-          <div class="left">
-            <ion-checkbox [checked]="goods[view]" (click)="checkGoods(store, goods)"></ion-checkbox>
-            <div class="img-warp R_pr">
-              <span class="img-warp_bg1 R_pa" *ngIf="goods.onSale && goods.storeCount == 0">库存不足</span>
-              <span class="img-warp_bg2 R_pa" *ngIf="!goods.onSale ">已下架</span>
-              <img [src]="mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62')" [ngClass]="{ 'lose-efficacy': goods.isLose }">
-            </div>
-          </div>
-          <div class="middle">
-            <div class="goods-title">{{ goods.goodsName }}</div>
-            <div class="specs">{{ goods.specKeyName }}</div>
-            <div class="price">
-              <span>{{ goods.goodsPrice | currency:'CNY':true }}</span>
-              <span class="coupon-icon" *ngIf="goods.hasSale">券</span>
-              <span class="gift-icon" *ngIf="goods.hasGifts">赠</span>
-            </div>
-          </div>
-          <div class="number">x{{ goods.goodsNum }}</div>
-          <!-- <div class="edit-btn" *ngIf="view == 'edit'" (click)="openSpecsModal(goods)">编辑</div> -->
-          <div class="edit-btn" (click)="openSpecsModal(goods);stopProp($event)">编辑</div>
-        </div>
+        <ion-list>
+          <ion-item-sliding *ngFor="let goods of store.goods">
+              <ion-item>
+                <ion-checkbox [checked]="goods[view]" (click)="checkGoods(store, goods)"></ion-checkbox>
+                <ion-label>
+                    <div class="goods-item" (click)="goToGoodsDetail(goods)">
+                        <div class="left">
+                          
+                          <div class="img-warp R_pr">
+                            <span class="img-warp_bg1 R_pa" *ngIf="goods.onSale && goods.storeCount == 0">库存不足</span>
+                            <span class="img-warp_bg2 R_pa" *ngIf="!goods.onSale ">已下架</span>
+                            <img [src]="mainCtrl.imgFilter(goods.goodsImg,'?x-oss-process=image/resize,m_fixed,h_62,w_62')" [ngClass]="{ 'lose-efficacy': goods.isLose }">
+                          </div>
+                        </div>
+                        <div class="middle">
+                          <div class="goods-title">{{ goods.goodsName }}</div>
+                          <div class="specs">{{ goods.specKeyName }}</div>
+                          <div class="price">
+                            <span>{{ goods.goodsPrice | currency:'CNY':true }}</span>
+                            <span class="coupon-icon" *ngIf="goods.hasSale">券</span>
+                            <span class="gift-icon" *ngIf="goods.hasGifts">赠</span>
+                          </div>
+                        </div>
+                        <div class="number">x{{ goods.goodsNum }}</div>
+                        <!-- <div class="edit-btn" *ngIf="view == 'edit'" (click)="openSpecsModal(goods)">编辑</div> -->
+                        <div class="edit-btn" (click)="openSpecsModal(goods);stopProp($event)">编辑</div>
+                      </div>
+                </ion-label>
+              </ion-item>
+              <ion-item-options>
+                <button danger >收藏</button>
+                <button danger >保存</button>
+              </ion-item-options>
+
+          </ion-item-sliding>
+        
+        </ion-list>
+        
       </div>
     </div>
   </div>
