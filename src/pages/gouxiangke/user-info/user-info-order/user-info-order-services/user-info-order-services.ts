@@ -126,5 +126,9 @@ export class UserInfoOrderServicesPage {
 
   }
 
+  goToStore(item?){
+    this.navCtrl.push('StoreDetailPage', {store_id:item.storeId})
+  }
+
 
 }

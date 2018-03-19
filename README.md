@@ -313,6 +313,34 @@ config 文件 和 HttpConfig文件
   
 
   1
+  REVIEW_WAIT(0, "审核中"),
+	REVIEW_PASS(1, "审核通过"),
+	REVIEW_NOT_PASS(2, "审核未通过"),
+	SELLER_RECEIVE_WAIT(3, "等待卖家收货"),
+	SELLER_SEND(4, "卖家已发货"),
+	REFUND_IN(5, "退款中"),
+	RETURN_SUCCESS(6, "售后成功"),
+	RETURN_CANCEL(7, "已撤消"),
 
-  shou
 
+
+
+  returnInfo[0].returnStatus =2  审核未通过
+  returnInfo[0].returnStatus =7  买家取消
+
+  returnInfo[1] 有没有值 有就显示没有就不显示
+  
+  审核通过：returnInfo[0].returnStatus !=2 || returnInfo[0].returnStatus !=7
+  卖家审核通过
+  returnInfo[0].returnOrChange == 0 仅退款
+  returnInfo[0].returnOrChange == 1 退货退款 
+  returnInfo[0].returnOrChange == 2 换货
+  同意退款金额 0，1
+  同意换货数量：1，2
+  请将商品寄到如下地址：returnInfo[0].returnOrChange ！= 0 显示
+
+  用户提交物流信息
+  returnInfo[1] && returnInfo[0].returnOrChange != 0 && !returnInfo[2]
+  returnInfo[1]有值
+  returnInfo[0].returnOrChange != 0 不是退款
+  !returnInfo[2] 没有值

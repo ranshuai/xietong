@@ -19,7 +19,7 @@
   <section>
     <ul>
       <li *ngFor="let item of PageData.clist">
-        <div class="order_shop_box">
+        <div class="order_shop_box" (click)="goToStore(item)">
           <ion-icon class="ion-ios-icon-gxk-85"></ion-icon>
           <span class="shop_title">{{item.companyAlias|| item.storeName}}
           </span>
