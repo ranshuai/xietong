@@ -46,7 +46,7 @@ export class MyApp {
                 public app:App) {
         platform.ready().then(() => {
 
-            this.mainCtrl.commonModel.userId = '75803';
+            this.mainCtrl.commonModel.userId = '75816';
             //设置公用信息平台信息配置
             this.mainCtrl.setPlatfrom();
             //获取平台启动必须项

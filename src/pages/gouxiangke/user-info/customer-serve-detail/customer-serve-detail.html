@@ -95,7 +95,7 @@
           <!-- 卖家审核未通过 -->
           <div class="item" *ngIf="returnInfo[0].returnStatus == 2">
                 <p>
-                  {{returnInfo[1].sellerMarks}}
+                  审核未通过原因：{{returnInfo[1].sellerMarks}}
                 </p>
           </div>
           <!-- 卖家审核通过 -->
@@ -110,7 +110,7 @@
                   同意退款金额：{{returnInfo[0].returnMoney | currency}}
                 </p>
           </div>
-          <div class="item" *ngIf="returnInfo[0].returnOrChange != 0 ">
+          <div class="item" *ngIf="returnInfo[0].returnOrChange != 0  && returnInfo[0].returnStatus !=2">
               <p>
                   请将商品寄到如下地址：
               </p>
@@ -238,7 +238,7 @@
             </ion-icon>
         </p>
         <p class="title" style="position:relative">
-              {{Logistics.scan  || '请填写物流单号'}}
+            <input type="text" class="input" [(ngModel)]="Logistics.scan" placeholder="请填写物流单号">
           <ion-icon class="ion-ios-icon-gxk-155" (click)="scanCode()">
             
           </ion-icon>

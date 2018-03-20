@@ -172,4 +172,16 @@ export class UserApplyCustomerServicePage {
     })
   }
 
+  keyup(event?) {
+    
+    if (event.inputType == 'deleteContentBackward') {
+      
+      console.log(this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum);
+      
+      if (!this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum) 
+        setTimeout(() => {
+        this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum = 1;
+        }, 10);
+      }
+  }
 }

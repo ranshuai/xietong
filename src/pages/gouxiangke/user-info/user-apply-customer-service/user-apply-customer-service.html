@@ -33,13 +33,16 @@
           </div>
           <div class="R_fr item_right">
               <p>
-                {{orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice| currency}}
+                {{orderInfo.orderData.orderGoodsSimpleVOS[0].goodsPrice| currency}}
               </p>
-              <div class="number_component">
+              <p>
+                x{{orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum}}
+              </p>
+              <!-- <div class="number_component">
                 <button (click)="editNum('subtract')">-</button>
-                <input type="number" [(ngModel)]="orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum">
+                <input type="number" (input)="keyup($event)" [(ngModel)]="orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum">
                 <button (click)="editNum('add')">+</button>
-              </div>
+              </div> -->
           </div>
 
       </div>
@@ -85,7 +88,7 @@
           <span>
               退款说明:
           </span>
-          <input type="text" placeholder="选填，限30字以内" [(ngModel)]="buyerMarks">
+          <input type="text" maxlength="30" placeholder="选填，限30字以内" [(ngModel)]="buyerMarks">
         </li>
         <li *ngIf="orderInfo.status == 2">
             <span>
