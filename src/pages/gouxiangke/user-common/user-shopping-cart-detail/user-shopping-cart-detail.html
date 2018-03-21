@@ -21,7 +21,7 @@
 
 <ion-content [ngClass]="{'shopp_cart_flag':shoppCartFlag}" class=""> 
 
-  <user-shopping-cart-list [data]="shoppingCartInfo" [view]="view" (clickCheckEmit)="clickCheck()" (modifySpecsEmit)="modifySpecs($event)"></user-shopping-cart-list>
+  <user-shopping-cart-list [data]="shoppingCartInfo" [view]="view" (clickCheckEmit)="clickCheck()" (modifySpecsEmit)="modifySpecs($event)" (deleteEmit)="deleteEmit($event)"></user-shopping-cart-list>
 
   <div class="cart_info_no" *ngIf="!shoppingCartInfo">
     <img src="assets/img/Cart@3x.png" alt="">

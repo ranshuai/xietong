@@ -1,6 +1,12 @@
 user-shopping-cart-list {
+
+    .w80{width: pxrem(160)}
+    .FF600A_bg{background: #FF600A; color: #fff !important;font-size: 14px;}
+    .FF0A0A_bg{background: #FF0A0A; color: #fff !important;font-size: 14px;}
     ion-item-sliding{
         ion-item.item-block.item-ios{
+            margin-bottom:0 !important;
+            padding:0 !important;
             border-top: 1px solid #e5e5e5 !important;
             border-bottom: 0px !important;
         }

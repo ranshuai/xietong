@@ -45,8 +45,12 @@ export class UserApplyCustomerServicePage {
     this.orderInfo.orderData = navParams.get('orderData');
     this.orderInfo.status = navParams.get('status');
     this.maxValue = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
-    this.returnMoney = this.orderInfo.orderData.orderGoodsSimpleVOS[0].marketPrice * this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
 
+    if (this.orderInfo.orderData.payCode) {
+      this.returnMoney = 0;
+    } else { 
+      this.returnMoney = this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsPrice * this.orderInfo.orderData.orderGoodsSimpleVOS[0].goodsNum;
+    }
   }
 
   ngAfterViewInit() { 

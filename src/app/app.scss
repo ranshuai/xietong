@@ -1089,4 +1089,13 @@ ion-app.ios {
 
   /****此文件只能放三方css样式 ionic 自带全局样式 如ion-header  ion-item其余样式一律删！！！END*****/
 /*************************************************************************************/
-
+// 产品让把提示信息的弹窗给改了
+.toast-wrapper{
+  background:transparent !important;
+  text-align: center;
+  .toast-container{
+    display:inline-block;
+    background:rgba(0, 0, 0, 0.9);
+    border-radius: 0.65rem;
+  }
+}

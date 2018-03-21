@@ -54,7 +54,7 @@
             换货原因：{{returnInfo[0].returnReason}}
           </p>
           <p *ngIf="returnInfo[0].goodsStatus">
-            货物状态：{{returnInfo[0].goodsStatus?'已收到货':'未收到货'}}
+            货物状态：{{returnInfo[0].goodsStatus == '0'?'未收到货':'已收到货'}}
           </p>
           <p *ngIf="returnInfo[0].returnMoney">
             退款金额：{{returnInfo[0].returnMoney | currency}}
@@ -110,7 +110,7 @@
                   同意退款金额：{{returnInfo[0].returnMoney | currency}}
                 </p>
           </div>
-          <div class="item" *ngIf="returnInfo[0].returnOrChange != 0  && returnInfo[0].returnStatus !=2">
+          <div class="item" *ngIf="returnInfo[0].returnOrChange != 0  && [2,7].indexOf(returnInfo[0].returnStatus) == -1">
               <p>
                   请将商品寄到如下地址：
               </p>

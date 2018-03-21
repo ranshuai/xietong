@@ -117,18 +117,18 @@ export class CustomerServeDetailPage {
 
   //保存买家的发货信息
   save(){
-    if(0){
+    if(1){
       this.commonProvider.showToast('请把信息填写完整');
       return 
     }else{
-      this.api.put(this.api.config.host.bl + '/order/return/',{ "id":this.orderInfo.id, "shippingCode":this.Logistics.code, "shippingName":this.Logistics.txt, "shippingNo":110 }).subscribe(data => {
-        if(data.success){
-          this.commonProvider.showToast(data.msg);
-          this.navCtrl.pop();
-        }else{
-          this.commonProvider.showToast(data.msg);
-        }
-      })
+      // this.api.put(this.api.config.host.bl + '/order/return/',{ "id":this.orderInfo.id, "shippingCode":this.Logistics.code, "shippingName":this.Logistics.txt, "shippingNo":110 }).subscribe(data => {
+      //   if(data.success){
+      //     this.commonProvider.showToast(data.msg);
+      //     this.navCtrl.pop();
+      //   }else{
+      //     this.commonProvider.showToast(data.msg);
+      //   }
+      // })
     }
 
   }

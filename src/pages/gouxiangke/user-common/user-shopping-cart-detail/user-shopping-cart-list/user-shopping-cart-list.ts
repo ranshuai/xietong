@@ -1,10 +1,10 @@
+import { GoodsProvider } from './../../../providers/goods/goods';
 import { MainCtrl } from './../../../../../providers/MainCtrl';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { ModalController,NavController } from "ionic-angular";
 import { GoodsSpecsDetailPage } from "../../goods-detail/goods-specs-detail/goods-specs-detail";
 import { ShoppingCart } from "../../../providers/user/shopping-cart";
 import { CommonProvider } from './../../../providers/common/common';
-
 /**
  * Generated class for the UserShoppingCartListComponent component.
  *
@@ -21,6 +21,7 @@ export class UserShoppingCartListComponent {
   @Input() view;
   @Output() clickCheckEmit = new EventEmitter();
   @Output() modifySpecsEmit = new EventEmitter();
+  @Output() deleteEmit = new EventEmitter();
 
   goodsSpecsDetailPage = GoodsSpecsDetailPage;
   constructor(
@@ -28,7 +29,8 @@ export class UserShoppingCartListComponent {
     private shoppingCart: ShoppingCart,
     private common: CommonProvider,
     public mainCtrl: MainCtrl,
-    public navCtrl:NavController
+    public navCtrl: NavController,
+    public goodsProvider:GoodsProvider
   ) { 
 
     console.log(this.data);
@@ -102,5 +104,21 @@ export class UserShoppingCartListComponent {
   }
   stopProp(event) {
     this.common.stopProp(event);
+  }
+  //添加收藏
+  add(item) { 
+    console.log(item);
+    this.goodsProvider.addCollect(item.goodsId).subscribe(data => { 
+      if (data) {
+        this.common.showToast('成功移入收藏夹，可在个人中心-收藏夹查找')
+      } else { 
+        this.common.showToast('收藏失败')
+      }
+    })
+  }
+  //删除 把事件发射给父模版
+  delete(item) { 
+    console.log(item);
+    this.deleteEmit.emit(item);
   }
 }

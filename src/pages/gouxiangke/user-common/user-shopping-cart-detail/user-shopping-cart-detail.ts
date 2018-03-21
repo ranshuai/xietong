@@ -186,6 +186,35 @@ export class UserShoppingCartDetailPage {
     })
   }
 
+  delete1(data) { 
+    console.log('调用了');
+    this.common.comConfirm('确认要删除此商品吗？').subscribe(() => { 
+      let cartIds = [];
+      this.shoppingCartInfo.stores.forEach((store, index) => {
+        store.goods.forEach((goods, index) => {
+          if (goods.goodsId == data.goodsId) {
+            cartIds.push(goods.id);
+          }
+        });
+      });
+      this.shoppingCart.delete(cartIds).subscribe(data => {
+        this.shoppingCartInfo = data;
+        if (data == null) {
+          this.view = 'selected';
+          this.common.showToast('购物车已清空~');
+          this.commonModel.shopCarNum = '';
+        }
+        this.init();
+      });
+    })
+  }
+
+  //子模块传递的事件
+  deleteEmit(data) { 
+    console.log(data)
+    this.delete1(data);
+  }
+
   modifySpecs(tpSpecGoodsPrice) {
     let data = {
       cartId: tpSpecGoodsPrice.cartId,

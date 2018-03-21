@@ -29,7 +29,13 @@ export class UserInfoOrderServicesPage {
   userInfoOrderSharePage = 'UserInfoOrderSharePage'; //圈子
     userInfoOrderDetailPage = 'UserInfoOrderDetailPage'; //详情
   constructor(public navCtrl: NavController, public navParams: NavParams, public api: Api, public common: CommonProvider, public commondata: CommonData,public mainCtrl:MainCtrl) {
+  }
+
+  ionViewDidEnter() {
+    this.PageData.page = 1;
+    this.PageData.loadEnd = false;
     this.queryOorderAftersale();
+    
   }
 
   //查询售后列表
